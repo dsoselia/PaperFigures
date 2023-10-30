@@ -1,0 +1,16 @@
+via hierarchical transformers. Advances in Neural Information Processing Systems, 35:16890 16902,
+2022.
+[8] Zhengxiao Du, Yujie Qian, Xiao Liu, Ming Ding, Jiezhong Qiu, Zhilin Yang, and Jie Tang. Glm: General
+language model pretraining with autoregressive blank infilling. arXiv preprint arXiv:2103.10360, 2021.
+[9] Luyu Gao, Aman Madaan, Shuyan Zhou, Uri Alon, Pengfei Liu, Yiming Yang, Jamie Callan, and Graham
+Neubig. Pal: Program-aided language models. In International Conference on Machine Learning, pages
+10764–10799. PMLR, 2023.
+[10] Dan Hendrycks, Collin Burns, Steven Basart, Andy Zou, Mantas Mazeika, Dawn Song, and Jacob
+Steinhardt. Measuring massive multitask language understanding. arXiv preprint arXiv:2009.03300, 2020.
+[11] Dan Hendrycks, Collin Burns, Saurav Kadavath, Akul Arora, Steven Basart, Eric Tang, Dawn Song,
+and Jacob Steinhardt. Measuring mathematical problem solving with the math dataset. arXiv preprint
+arXiv:2103.03874, 2021.
+[12] Jordan Hoffmann, Sebastian Borgeaud, Arthur Mensch, Elena Buchatskaya, Trevor Cai, Eliza Rutherford,
+Diego de Las Casas, Lisa Anne Hendricks, Johannes Welbl, Aidan Clark, et al. Training compute-optimal
+large language models. arXiv preprint arXiv:2203.15556, 2022.
+18

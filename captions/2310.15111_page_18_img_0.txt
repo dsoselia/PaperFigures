@@ -1,0 +1,13 @@
+Technical report. In progress
+Figure 11: An example of the inference process of MDM for text-to-image generation at 1024 × 1024 with
+three levels. The text caption is “a panda playing guitar in a garden.”
+D
+Baseline details
+D.1
+Cascaded Diffusion Model
+For our cascaded diffusion baseline models, we closely follow the guidelines from
+(Ho et al.,
+2022b) while making it directly comparable to our models. In particular, our cascaded diffusion
+models consist of two resolutions, 64x64 and 256x246. Here the 64x64 resolution models share the
+same architecture and training hyper parameters as MDM. For the upsampler network from 64x64
+19

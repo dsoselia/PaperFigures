@@ -1,0 +1,53 @@
+are not only redundant but also contain a lot of irrelevant information. Radiology-GPT, which
+has been performed a fine-tuning on a specific data set, has the answer which is obviously more
+capable and concise, but the gap with the impression given by Radiologist is not small. Therefore,
+in comparison, it can be clearly seen that the excellent performance of Radiology-LLAMA2, the
+answer of Radiology-LLAMA2 is not only accurate and concise, but also has the report style which
+is closest to Radiologist. This intuitively proves the performance of Radiology-LLAMA2 and proves
+its strong clinical application potential.
+In summary, Radiology-Llama2 consistently demonstrates superior performance in generating clini-
+cally relevant and coherent radiology reports, as evidenced by its high ROUGE scores across multiple
+datasets.
+Llama2
+Radiology-
+Llama2
+Radiology-
+GPT
+ChatGPT StableLM Dolly
+Llama
+Alpaca
+rouge-1
+0.201
+0.4726
+0.3123
+0.0774
+0.0734
+0.1866
+0.0873
+0.3464
+rouge-2
+0.0969
+0.2948
+0.1758
+0.0432
+0.0085
+0.0717
+0.0426
+0.2071
+rouge-L
+0.1578
+0.3757
+0.2518
+0.0702
+0.0516
+0.1572
+0.0776
+0.2935
+Table 1: Rouge scores of Radiologist’s evaluations on 10 MIMIC-CXR-OpenI examples.
+4.2
+Expert Evaluation
+To supplement the quantitative evaluations, we conducted an expert-based assessment of the
+models. We randomly selected 10 records each from MIMIC-CXR and OpenI datasets and had two
+experienced radiologists manually evaluate the generated radiology impressions based on five key
+criteria: Understandability, Coherence, Relevance, Conciseness, and Clinical Utility.
+7

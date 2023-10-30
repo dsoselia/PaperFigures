@@ -1,0 +1,39 @@
+EEG Signals
+Visual Stimuli
+Reconstructed Image
+Multi-level Information
+CLIP Embedding 
+Decoding From 
+EEG Signals
+Pixel Level 
+Sample Level 
+Fine-grained Control
+Latent Diffusion Model
+t = 0
+Diffusion Process
+Denoising Process
+Coarse-grained Control
+“An image of airliner”
+CLIP
+Caption
+CLIP Embedding
+Supervision
+Supervision
+p
+T
+p
+M
+s
+M
+ldm
+E
+ldm
+D
+Figure 1: Overview of our NEUROIMAGEN. All the modules with dotted lines, i.e. pixel-level supervision and sample-level
+supervision, are only used during the training phase. and would be removed during the inference phase.
+GEN, including pixel-level semantics and sample-level se-
+mantics with the corresponding training details of the decod-
+ing procedure. Finally, we detail the image reconstruction
+is defined as the saliency map of silhouette information
+Mp(x) ∈ RHp×Wp×3. This step enables us to analyze the
+EEG signals in the pixel space and provide the rough struc-i

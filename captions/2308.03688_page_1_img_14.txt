@@ -1,0 +1,21 @@
+g
+p
+g
+p
+Despite these advancements, the lack of a systematic and standard benchmark to evaluate LLM-as-
+Agent presents a critical challenge. Historically, text-based game environments (Osborne et al., 2022;
+Côté et al., 2019; Hausknecht et al., 2020; Urbanek et al., 2019) have been employed for language
+agent evaluation. But they often suffer from the limitation of closed, discrete action spaces, as well
+as their primarily narrow focus on models’ commonsense grounding. More recently, attempts on
+embodied agents (Reed et al., 2022; Huang et al., 2022; Ahn et al., 2022) have employed complicated
+multi-modal simulators based on games (Küttler et al., 2020; Fan et al., 2022), GUI (Shi et al.,
+2017; Toyama et al., 2021), and indoor scenes (Shen et al., 2021; Srivastava et al., 2022). However,
+these simulators, despite their complexity, do not accurately reflect the practical use cases of LLMs,
+and their multi-modal nature creates a hurdle for the urgent evaluation of existing text-only LLMs.
+Finally, most benchmarks now for agents focus on single environments and thus fail to provide a
+comprehensive overview of LLMs across diverse application scenarios.
+To address these challenges, we introduce AGENTBENCH, a multi-dimensional benchmark designed
+to evaluate LLM-as-Agent across a spectrum of different environments. AGENTBENCH encompasses
+eight distinct environments (Cf. Figure 4), which could be categorized into three types of groundings:
+• Code: Operating System, Database, Knowledge Graph (Anonymous, 2023)
+• Game: Digital Card Game, Lateral Thinking Puzzles, House-Holding (Shridhar et al., 2020b)

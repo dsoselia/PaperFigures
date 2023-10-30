@@ -1,0 +1,15 @@
+Human
+LMM-SFT
+PPO Data
+Sampled Output
+comfortable and cozy space to rest.
+A: The cat is resting on a black 
+couch with its front paws 
+tucked under its chest.
+Sampled Output (B)
+p
+( )
+with less hallucinations.
+Q: How does the sleeping 
+environment benefit the cat?
+(b) Collect Human Preference (More Helpful & Less Hallucinated) Data for Reward Models (RM)

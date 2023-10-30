@@ -1,0 +1,36 @@
+Figure 3: CD accentuates what the expert model has learned that the amateur model has not. Results
+are taken from greedy decoding with a 65B parameter expert, using α = 0.1, β = 0.5 for CD.
+We explore the use of Contrastive Decoding (Li et al., 2022) for solving reasoning problems with
+LLMs. Contrastive Decoding (CD) searches for strings that maximize a weighted difference in
+likelihood between a stronger expert and a weaker amateur model, and was shown to outperform
+existing methods for open-ended text generation. It achieves this by avoiding undesirable modes of
+the expert model’s distribution, such as short or generic strings, which tend to be the most likely
+under any model, including the amateur.
+We show that Contrastive Decoding outperforms greedy decoding on reasoning problems.
+On
+GSM8K, a widely used benchmark consisting of grade-school word math problems, contrastive de-
+coding improves the performance of various LLaMA models by up to 8 absolute percentage points.
+This result outperforms LLaMA 2, which has 5 billion more parameters and is trained on 40% more
+data. On HellaSwag, using the CD objective to rank answers leads LLaMA to outperform all existing
+models except GPT-4. We find general improvement on arithmetic reasoning and multiple-choice
+ranking tasks, including on models as large as LLaMA-65B, suggesting that Contrastive Decoding
+could bring such widespread improvements to much larger models.
+We also analyze the cause of the improvement from Constrastive Decoding. Empirically, we find
+that Contrastive Decoding performs less surface-level copying from the prompt than greedy decod-
+ing and misses fewer reasoning steps. This result suggests that, similarly to findings in Li et al.
+(2022), Contrastive Decoding works by reducing repetitive or other undesirable modes of the model
+distribution. Our current method yields mixed results for commonsense reasoning tasks and slightly
+degrades factual retrieval, both trends that encourage further refinement of the method.
+Overall, we show that Contrastive Decoding not only substantially improves LLM accuracies on
+a range of benchmarks, but is also the first generation algorithm to achieve state-of-the-art results
+in both reasoning and text generation problems. These results allow a more unified method for
+improving generation from language models across tasks.
+2
+CONTRASTIVE DECODING
+2.1
+SIMPLIFIED FORMULATION
+The original Contrastive Decoding formulation from Li et al. (2022) explicitly chooses two pa-
+rameters: α and the intermediate temperature of the amateur distribution τa, with the intermediate
+temperature of the expert fixed at τe = 1. We slightly refactor the hyperparameter choice to be more
+interpretable and simplify the algorithm by working directly in logit space.
+2

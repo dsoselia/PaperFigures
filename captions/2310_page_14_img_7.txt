@@ -1,0 +1,25 @@
+Figure 8: Selected images from DreamBench.
+A
+Images and Prompts for DreamBench Evaluation
+The input images selected for each entity for DreamBench evaluation are displayed in Figure 8. As
+depicted in Table 3, We also slightly modified the original prompt to make it align better with the
+training data. For the remaining prompt, we simply remove the prefix “a”. We observe the prefix will
+slightly affect the performance of image editing or customized generation. This might be attributed
+to the high frequency of captions starting with “a photo of” produced by BLIP-2 in our constructed
+training data. Given that the compositional instruction tuning data does not contain too much editing
+data when a prompt starts with a prefix like “a”, the model often refrains from altering the appearance
+of the input image. This can be further refined by shifting the data paradigm or by fine-tuning the
+alignment.
+Original Prompt
+Modified Prompt
+a red {}
+{}, red
+a purple {}
+{}, purple
+a shiny {}
+{}, shiny
+a wet {}
+{}, wet
+a cube shaped {}
+{}, cube shaped
+Table 3: Prompt Modification

@@ -1,0 +1,49 @@
+The Children's 
+Book Test 
+Prompt +
+Few 
+Examples
+Dataset 
+Retriever
+Dataset 
+Generator
+Generated 
+Training Set
+Generated Test 
+Set
+Retrieved 
+Dataset
+Model 
+Trainer
+Evaluation
+Performance 
+Estimate
+Interactive 
+Demo
+Input 
+Parser
+Prompt 
+Spec
+    Model 
+Retriever
+Retrieved 
+Model
+" Answer questions given context from a relevant Wikipedia article.
+  Examples: <QA pairs> "
+flan-t5-base
+Instruction
+Answer questions [...]
+Demonstrations
+ 
+<QA pairs>
+ChrF++: 
+58.9
+EM: 
+61.5
+BERTScore: 94.0
+Trained 
+Model
+Figure 2: The Prompt2Model architecture seeks to automate the core machine learning development pipeline,
+allowing us to train a small yet accurate model from just a prompt.
+instruction and individual demonstrations or trans-
+could instead cover other model repositories such

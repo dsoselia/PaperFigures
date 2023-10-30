@@ -1,0 +1,63 @@
+2.1.4
+Economic negotiation
+AI deception has also been observed in economic negotiations. A research team from Meta trained an
+AI system to play a negotiation game with human participants (M. Lewis et al. 2017). Strikingly, the
+AI system learned to misrepresent their preferences in order to gain the upper hand in the negotiation.
+The AI’s deceptive plan was to initially feign interest in items that it had no real interest in, so that it
+could later pretend to compromise by conceding these items to the human player. In fact, this was
+the example of deception that the Meta team referenced when they admitted that their AI system
+had “learnt to deceive without any explicit human design, simply by trying to achieve their goals”
+(M. Lewis et al. 2017, p. 2).
+The negotiation-game experiments of Schulz et al. (2023) also resulted in AI systems resorting to
+deception. Despite not being explicitly trained to deceive, the AI learned to deceive the other party
+via its actions in the negotiating game.
+2.1.5
+The social deduction game Werewolf
+Werewolf is a social deduction game where disguised ‘werewolves’ murder the people of the village
+one-by-one, and all surviving players need to discuss afterwards and vote on who to execute as an
+alleged werewolf. Shibata et al. (2023) trained an AI system on human players’ game logs to play
+Werewolf. In a similar vein, Lai et al. (2023) trained an AI system to reliably classify persuasive
+behavior and predict game outcomes for Werewolf. Human annotators labeled video and text from
+Werewolf games, sorting player behavior into one of six persuasive techniques (including presenting
+evidence, defense, and accusation: see Figure 2). Then, an AI system was trained to classify each
+persuasive technique to a high degree of accuracy. In addition, AI systems were successfully trained
+to predict the game outcome.
+“Okay you guys want to vote already.”
+(Call for Action)
+“What are you?” 
+(Interrogation)
+“I'm a seer, and I looked in there and I 
+forgot what the card was.” 
+(Identity Declaration and Evidence)
+“Apparently, he’s troublemaker.”
+(Accusation)
+“There's no way I know I'm the 
+werewolf right now.” (Defense)
+…
+…
+…
+…
+player1 (werewolf ➜ seer)
+player2 (seer ➜ werewolf)
+player3 (troublemaker ➜ robber)
+player4 (robber ➜ troublemaker)
+“During troublemaker? Wait, no no we can 
+do this because I was the robber.”
+(Interrogation and Identity Declaration)
+player2
+player3
+player2
+player2
+Vote
+Starting Role ➜ Ending Role
+Figure 2: Persuasion techniques from the social deduction game Werewolf are sorted into categories, and
+reliably classified by AI systems (Lai et al. 2023, Fig. 1).
+Current AI systems can learn to understand deception in the game of Werewolf, in that they are able
+to successfully lie, reliably detect other players’ lies, and effectively predict how players would be
+influenced by deception attempts (to the point of accurately predicting game outcomes).
+2.1.6
+Cheating the safety test
+In the Volkswagen emissions scandal, the automaker programmed its diesel-engine technology to
+pollute at a low rate only when its emissions were being tested (Jung et al. 2019). When not under test
+conditions, the Volkswagen vehicles were programmed to resume their normal operation, emitting
+4

@@ -1,0 +1,34 @@
+Stable Diffusion Model
+Face LoRA Model
+（Trained Online）
+Face detection
+Face landmarks
+Rotating
+Human 
+Parsing
+Skin 
+Retouching
+Face 
+Attribute
+Tagging
+Refined Tags
+A beautiful woman, 
+black hair, 
+smile, 
+Face
+Quality
+Merge LoRA Weights
+Input Prompts
+A beautiful woman, Chinese, 
+Wearing suit 
+Face
+Fusion
+Face 
+Recognition
+Ranking
+Input Images
+Style LoRA Model
+（Trained Offline）
+Training
+Inference
+Figure 1: Architectural overview of FaceChain personalized portrait generation. During training, multiple data process-

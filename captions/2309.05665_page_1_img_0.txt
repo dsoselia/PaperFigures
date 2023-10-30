@@ -1,0 +1,48 @@
+Figure 2: We illustrate the challenging obstacles that our system can solve, including climbing high obstacles of
+0.40m (1.53x robot height), leap over large gaps of 0.60m (1.5x robot length), crawling beneath low barriers of
+0.2m (0.76x robot height), squeezing through thin slits of 0.28m by tilting (less than the robot width).
+coupling of perception and action [4, 5], and powerful limbs to negotiate barriers [6]. One of the
+grand challenges of robot locomotion is building autonomous parkour systems.
+Boston Dynamics Atlas robots [7] have demonstrated stunning parkour skills. However, the massive
+engineering efforts needed for modeling the robot and its surrounding environments for predictive
+control and the high hardware cost prevent people from reproducing parkour behaviors given a
+reasonable budget. Recently, learning-based methods have shown robust performance on walking [8,
+9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 12, 21, 22, 23, 24, 25, 26, 27], climbing stairs [20, 28,
+29, 30, 31, 32, 33], mimicking animals [34, 35, 36, 37, 38, 39] and legged mobile manipulation [40,
+41, 42] by learning a policy in simulation and transferring it to the real world while avoiding much
+costly engineering and design needed for robot-specific modeling. Can we leverage learning-based
+methods for robot parkour but only using low-cost hardware?
+There are several challenges for robot parkour learning. First, learning diverse parkour skills (e.g.
+running, climbing, leaping, crawling, squeezing through, and etc) is challenging. Existing reinforce-
+ment learning works craft complex reward functions of many terms to elicit desirable behaviors of
+legged robots. Often each behavior requires manual tuning of the reward terms and hyper-parameters;
+thus these works are not scalable enough for principled generation of a wide range of agile parkour
+skills. In contrast, learning by directly imitating animals’ motion capture data can circumvent tedious
+reward design and tuning [34, 43], but the lack of egocentric vision data and diverse animal MoCap
+skills prevents the robots from learning diverse agile skills and autonomously selecting skills by
+perceiving environment conditions. Second, obstacles can be challenging for low-cost robots of
+small sizes, as illustrated in Figure 2. Third, beyond the challenge of learning diverse skills, visual
+perception is dynamical and laggy during high-speed locomotion. For example, when a robot moves
+at 1m/s, a short 0.2 second of signal communication delay will cause a perception discrepancy of
+0.2m (7.9 inches). Existing learning-based methods have not demonstrated effective high-speed
+agile locomotion. Lastly, parkour drives the electric motors to their maximum capacity, so proactive
+measures to mitigate potential damage to the motors must be included in the system.
+This paper introduces a robot parkour learning system for low-cost quadrupedal robots that can
+perform various parkour skills, such as climbing over high obstacles, leaping over large gaps, crawling
+beneath low barriers, squeezing through thin slits, and running. Our reinforcement learning method is
+inspired by direct collocation and consists of two simulated training stages: RL pre-training with soft
+dynamics constraints and RL fine-tuning with hard dynamics constraints. In the RL pre-training stage,
+we allow robots to penetrate obstacles using an automatic curriculum that enforces soft dynamics
+constraints. This encourages robots to gradually learn to overcome these obstacles while minimizing
+penetrations. In the RL fine-tuning stage, we enforce all dynamics constraints and fine-tune the
+behaviors learned in the pre-training stage with realistic dynamics. In both stages, we only use a
+simple reward function that motivates robots to move forward while conserving mechanical energy.
+After each individual parkour skill is learned, we use DAgger [44, 45] to distill them into a single
+vision-based parkour policy that can be deployed to a legged robot using only onboard perception
+and computation power.
+The main contributions of this paper include:
+• an open-source system for robot parkour learning, offering a platform for researchers to train
+and deploy policies for agile locomotion;
+• a two-stage RL method for overcoming difficult exploration problems, involving a pre-training
+stage with soft dynamics constraints and a fine-tuning stage with hard dynamics constraints;
+2

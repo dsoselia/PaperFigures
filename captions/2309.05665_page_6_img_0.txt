@@ -1,0 +1,49 @@
+Climb
+0.2 ~ 0.5m
+Leap
+0.4 ~ 0.7m
+Crawl
+0.32 ~ 0.15m
+Tilt
+0.32 ~ 0.25m
+robot height
+robot length
+robot height
+robot width
+Figure 6: Real-world indoor quantitative experiments. Our parkour policy can achieve the best performance,
+compared with a blind policy and built-in MPC controllers. We control the MPC in A1 special mode by
+teleoperating the robot lower down or tilt the body during crawling and tilt respectively.
+Baselines and Ablations. We compare our parkour policy with several baselines and ablations.
+The baselines include Blind, RND [120], MLP and RMA [8]. The ablations include No Distill,
+Oracles w/o Soft Dyn. We also include Oracles, specialized parkour skills conditioned on priviledge
+information in simulation, for the completeness of the comparisons.
+• Blind: a blind parkour policy baseline distilled from the specialized skills, implemented by setting
+depth images Idepth as zeros.
+• RND: a RL exploration baseline method for training specialized skills with bonus rewards based
+on forward prediction errors. We train it without our RL pre-training on soft dynamics constraints.
+• MLP: a MLP parkour policy baseline distilled from the specialized skills. Instead of using a GRU,
+it uses only the depth image, proprioception and previous action at the current time step without
+any memory to output actions.
+• RMA: a domain adaptation baseline that distills a parkour policy on a latent space of environment
+extrinsics instead of the action space.
+• No Distill: an ablation training a vision-based parkour policy with GRU directly using PPO with
+our two-stage RL method but but skipping the distillation stage.
+• Oracles w/o Soft Dyn: an ablation training specialized skill policies using privileged information
+directly with hard dynamics constraints.
+• Oracles (w/ Soft Dyn): our specialized skill policies using privileged information trained with
+our two-stage RL approach.
+4.1
+Simulation Experiments
+Vision is crucial for learning parkour. We compare the Blind baseline with our approach. Shown in
+Table 2, without depth sensing and relying only on proprioception, the distilled blind policy cannot
+complete any climbing, leaping or tilting trials and can only achieve a 13% success rate on crawling.
+This is expected, as vision enables sensing of the obstacle properties and prepares the robot for
+execute agile skills while approaching the obstacles.
+RL pre-training with soft dynamics constraints enables
+parkour skills’ learning. We compare the RND, Oracles
+w/o Soft Dyn and ours (Oracles w/ Soft Dyn), all trained
+using privileged information without the distillation stage.
+We aim to verify that our method of RL pre-training with
+soft dynamics constraints can perform efficient exploration.
+In Figure 7, we measure the average success rates of each
+method averaged over 100 trials across all the parkour

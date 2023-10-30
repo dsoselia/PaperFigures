@@ -1,0 +1,43 @@
+that is directly comparable with MDM where the upsampler has an identical configuration to our
+NestedUNet. We also apply noise augmentation to the low resolution conditioning image, and sweep
+over the optimal noise level during inference.
+3. Latent DM: we utilize the latent codes derived from the auto-encoders from Rombach et al.
+(2022),and subsequently train diffusion models that match the dimensions of the MDM UNet.
+4.2
+Main Results
+Table 1: Comparison with literature on Im-
+ageNet (FID-50K), and COCO (FID-30K). *
+indicates samples are generated with CFG.
+Note existing text-to-image models are mostly
+trained on much bigger datasets than CC12M.
+Models
+FID ↓
+ImageNet 256 × 256
+ADM (Nichol & Dhariwal, 2021)
+10.94
+CDM (Ho et al., 2022b)
+4.88
+LDM-4 (Rombach et al., 2022)
+10.56
+LDM-4* (Rombach et al., 2022)
+3.60
+Ours (cfg=1)
+8.92
+Ours (cfg=1.2)*
+6.62
+MS-COCO 256 × 256
+Comparison with baseline approaches
+Our compar-
+isons to baselines are shown in Fig. 4. On ImageNet
+256 × 256, we select a standard UNet our simple DM
+baseline. For the Cascaded DM baseline, we pretrain
+a 64x64 diffusion model for 200K iterations, and apply
+an upsampler UNet also in the same size. We apply
+standard noise augmentation and sweep for the opti-
+mal noise level during inference time (which we have
+found to be critical). For LDM experiments, we use
+pretrained autoencoders from Rombach et al. (2022)
+which downsamples the input resolution and we use the
+same architecture for these experiments as our 64x64
+low resolution models
+For MDM variants we use a

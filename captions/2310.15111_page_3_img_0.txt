@@ -1,0 +1,39 @@
+Technical report. In progress
+where Dr : RN → RNr is a deterministic “down-sample” operator depending on the data. Here,
+Dr(x) is a coarse / lossy-compressed version of x. For instance, Dr(.) can be avgpool(.) for
+generating low-resolution images. By default, we assume compression in a progressive manner such
+that N1 < N2 . . . < NR = N and DR(x) = x. Also, {αr
+t, σr
+t } are the resolution-specific noise
+schedule. In this paper, we follow Gu et al. (2022) and shift the noise schedule based on the input
+resolutions. MDM then learns the backward process pθ(zt−1|zt) with R neural denoisers xr
+θ(zt).
+Each variable zr
+t−1 depends on all resolutions {z1
+t . . . zR
+t } at time step t. During inference, MDM
+generates all R resolutions in parallel. There is no dependency between zr
+t .
+Modeling diffusion in the extended space has clear merits: (1) since what we care during inference
+is the full-resolution output zR
+t , all other intermediate resolutions are treated as additional hidden
+variables zr
+t , enriching the complexity of the modeled distribution;(2) the multi-resolution depen-
+dency opens up opportunities to share weights and computations across zr
+t , enabling us to re-allocate
+computation in a more efficient manner for both training and inference efficiency.
+3.2
+NestedUNet Architecture
+Similar to typical diffusion models, we implement MDM in the flavor of UNet (Ronneberger et al.,
+2015; Nichol & Dhariwal, 2021): skip-connections are used in parallel with a computation block
+to preserve fine-grained input information, where the block consists of multi-level convolution and
+self-attention layers. In MDM, under the progressive compression assumption, it is natural that the
+computation for zr
+t is also beneficial for zr+1
+t
+. This leads us to propose NestedUNet, an architecture
+that groups the latents of all resolutions {zr
+t } in one denoising function as a nested structure, where
+low resolution latents will be fed progressively along with standard down-sampling. Such multi-scale
+computation sharing greatly eases the learning for high-resolution generation. A pseudo code for
+NestedUNet compared with standard UNet is present as follows.

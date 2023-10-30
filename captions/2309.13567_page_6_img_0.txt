@@ -1,0 +1,25 @@
+Figure 5: BART-score evaluation results on the IMHI test set and expert-written golden set.
+6.2.2
+Quality. We present the BART-score evaluation results to
+evaluate the quality of the generations. In completion-based meth-
+ods presented in Figure 5(a), LLaMA2-7B greatly outperforms LLaMA2-
+7B𝐴���𝐴��� on all 10 test sets, showing the effectiveness of completion-
+based finetuning in improving the quality of the explanations. T5
+and BART models generate explanations that have similar scores,
+showing their close ability in interpretability. LLaMA2-7B outper-
+forms BART-large on 9 out of 10 test sets, but to a limited scale,
+where only 2 test sets (MultiWD and IRF) improve over 0.2 in BART-
+score. These results further prove that completion-based finetuning
+for LLaMA2 is inefficient. Based on the above observations, we
+recommend utilizing BART-large to build a completion-based inter-
+pretable mental health analysis model, which is both capable and
+cost-efficient.
+In instruction tuning methods presented in Figure 5(b), Men-
+taLLaMA greatly outperforms zero-shot results on LLaMA2-7B on
+all 10 test sets, showing the effectiveness of instruction tuning in
+improving the quality of the explanations. MentaLLaMA-chat-7B
+also significantly outperforms MentaLLaMA-7B, with improvement
+in all 10 test sets and over 0.2 gain on 6 test sets. These results
+prove that the instruction tuning and RLHF [33] enhancements on
+LLaMA2-chat models also improve their ability to generate high-
+quality explanations compared to the vanilla LLaMA2 models. In

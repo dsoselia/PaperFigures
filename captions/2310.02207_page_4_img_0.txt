@@ -1,0 +1,12 @@
+Figure 3: Out-of-sample R2 when entity names are included in different prompts for Llama-2-70b.
+probes of the form W2ReLU(W1x + b1) + b2 with 256 neurons. Table 2 reports our results and
+shows that using nonlinear probes results in minimal improvement to R2 for any dataset or model.
+We take this as strong evidence that space and time are also represented linearly (or at the very least
+are linearly decodable), despite being continuous.
+3.3
+SENSITIVITY TO PROMPTING
+Another natural question is if these spatial or temporal features are sensitive to prompting, that is,
+can the context induce or suppress the recall of these facts? Intuitively, for any entity token, an
+autoregressive model is incentivized to produce a representation suitable for addressing any future
+possible context or question.
+To study this we create new activation datasets where we prepend different prompts to each of the

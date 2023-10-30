@@ -1,0 +1,2 @@
+Figure 7: Out-of-sample R2 when entity names are included in different prompts for all models.
+15

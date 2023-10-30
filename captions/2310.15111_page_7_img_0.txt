@@ -1,0 +1,10 @@
+Technical report. In progress
+Figure 6: Samples from the model trained on CC12M at 10242 with progressive training.
+Effects of nested levels Next, we compare the performance of using different number of nested
+resolutions with experiments on CC12M. The result is shown in Fig. 8b. We see that increasing from
+two resolution levels to three consistently improves the model’s convergence. It’s also worth noting
+that increasing the number of nesting levels brings only negligible costs.
+CLIP-FID trade-off Lastly, we show in Fig. 8c the pereto curve of CLIP-FID on the zero-shot
+evaluation of COCO, achieved by varying the classifier free guidance (CFG) weight.
+MDM is
+8

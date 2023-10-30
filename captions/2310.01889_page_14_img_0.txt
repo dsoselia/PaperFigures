@@ -1,0 +1,5 @@
+incurs 162.6x higher per dataset FLOPs, despite the context size being 3072 times longer.
+Figure 5: The per dataset trainig FLOPs cost ratio relative to a 4k context size, considering different
+model dimensions. On the x-axis, you’ll find the context length, where, for example, 32x(128k)
+denotes a context length of 128k, 32x the size of the same model’s 4k context length.
+15

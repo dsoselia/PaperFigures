@@ -1,0 +1,31 @@
+LIMA (Zhou et al., 2023) is an English instruction
+dataset consisting of a train set with 1K data
+instances and a test set with 300 instances. The
+train set contains 1K ("instruction", "response")
+pairs. For the training data, 75% are sampled from
+three community question & answers websites
+(i.e., Stack Exchange, wikiHow, and the Pushshift
+Reddit Dataset (Baumgartner et al., 2020)); 20%
+are manually written by a set of the authors
+(referred Group A) inspired by their interests; 5%
+are sampled from the Super-Natural Instructions
+dataset (Wang et al., 2022d). As for the valid set,
+the authors sampled 50 instances from the Group
+Dolly (Conover et al., 2023) is an English
+instruction dataset with 15,000 human-generated
+data instances designed to enable LLMs to
+interact with users akin to ChatGPT. The dataset
+is designed for simulating a wide range of
+human behaviors, covering 7 specific types:
+open Q&A, closed Q&A, extracting information
+from Wikipedia, summarizing information from
+Wikipedia,
+brainstorming,
+classification,
+and
+creative writing. Examples of each task type in
+the dataset are shown in Table 2.
+3.11
+OpenAssistant Conversations
+OpenAssistant Conversations (Köpf et al., 2023)
+is a human-crafted multilingual assistant-style

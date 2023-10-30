@@ -1,0 +1,84 @@
+Technical Report (v0.2)
+Database
+(On an Ubuntu bash terminal)
+Recursively set all ﬁles in the directory to 
+read-only, except those of mine.
+(Given Freebase APIs)
+What musical instruments do Minnesota-
+born Nobel Prize winners play?
+(On the GUI of Aquawar)
+This is a two-player battle game, you are a 
+player with four pet ﬁsh cards ……
+A man walked into a restaurant, ordered a bowl 
+of turtle soup, and after ﬁnishing it, he 
+committed suicide. Why did he do that?
+(In the middle of a kitchen in a simulator)
+Please put a pan on the dinning table.
+(On the oﬃcial website of an airline)
+Book the cheapest ﬂight from Beijing to Los 
+Angeles in the last week of July.
+LLM-as-Agent
+Agent
+Environ
+Interaction
+Large 
+Language 
+Models
+Operating
+System
+Knowledge
+Graph
+ Digital Card
+Game
+Lateral Think
+-ing Puzzles 
+House
+Holding
+Web
+Browsing
+Interactive
+Environments
+Web
+Shopping
+Real-world Challenges
+8 Distinct Environments
+-ment
+（Given MySQL APIs and existed tables)
+Grade students over 60 as PASS in the table.
+Figure 2: AGENTBENCH is the first systematic benchmark to evaluate LLM-as-Agent on a wide array
+of real-world challenges and 8 distinct environments. In total, 27 LLMs are examined in this edition.
+concepts of artificial intelligence (AI) historically. Notwithstanding substantial advancements in deep
+learning algorithms applied in both computer vision and natural language processing (NLP), their
+potential for developing efficient and practically usable assisting agents remains largely unexplored.
+The advent of Large Language Models (LLMs) (Brown et al., 2020; Chowdhery et al., 2022; Touvron
+et al., 2023), such as GPT-4 (OpenAI, 2023), has brought plenty of new opportunities to this realm.
+Through extensive alignment training (Ouyang et al., 2022; Wei et al., 2022a; Sanh et al., 2022), LLMs
+have not only mastered traditional NLP tasks but also showcased an impressive ability to comprehend
+human intent and execute instructions. This has spurred the development of various LLM-based
+applications for autonomous goal completion (like AutoGPT (Richards, 2023), BabyAGI (Nakajima,
+2023), AgentGPT (age, 2023)) as well as LLM agents situated in social and game contexts (Park
+et al., 2023; Wang et al., 2023b; Zhu et al., 2023), sparking substantial public interest and discussions.
+Despite these advancements, the lack of a systematic and standard benchmark to evaluate LLM-as-
+Agent presents a critical challenge. Historically, text-based game environments (Osborne et al., 2022;
+Côté et al., 2019; Hausknecht et al., 2020; Urbanek et al., 2019) have been employed for language
+agent evaluation. But they often suffer from the limitation of closed, discrete action spaces, as well
+as their primarily narrow focus on models’ commonsense grounding. More recently, attempts on
+embodied agents (Reed et al., 2022; Huang et al., 2022; Ahn et al., 2022) have employed complicated
+multi-modal simulators based on games (Küttler et al., 2020; Fan et al., 2022), GUI (Shi et al.,
+2017; Toyama et al., 2021), and indoor scenes (Shen et al., 2021; Srivastava et al., 2022). However,
+these simulators, despite their complexity, do not accurately reflect the practical use cases of LLMs,
+and their multi-modal nature creates a hurdle for the urgent evaluation of existing text-only LLMs.
+Fi
+ll
+t b
+h
+k
+f
+t f
+i
+l
+i
+t
+d th
+f il t
+id

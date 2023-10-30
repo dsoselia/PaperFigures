@@ -1,0 +1,36 @@
+AnomalyGPT: Detecting Industrial Anomalies using
+Large Vision-Language Models
+Zhaopeng Gu1,2
+Bingke Zhu1,3,4
+Guibo Zhu1,2,4
+Yingying Chen1,3,4
+Ming Tang1,2
+Jinqiao Wang1,2,3,4
+1 Foundation Model Research Center, Institute of Automation,
+Chinese Academy of Sciences, Beijing, China
+2 University of Chinese Academy of Sciences, Beijing, China
+3 Objecteye Inc., Beijing, China
+4 Wuhan AI Research, Wuhan, China
+guzhaopeng2023@ia.ac.cn
+{bingke.zhu,gbzhu,yingying.chen,tangm,jqwang}@nlpr.ia.ac.cn
+Abstract
+Large
+Vision-Language
+Models
+(LVLMs)
+such
+as
+MiniGPT-4 and LLaVA have demonstrated the capability
+of understanding images and achieved remarkable perfor-
+mance in various visual tasks. Despite their strong abili-
+ties in recognizing common objects due to extensive train-
+ing datasets, they lack specific domain knowledge and have
+a weaker understanding of localized details within objects,
+which hinders their effectiveness in the Industrial Anomaly
+Detection (IAD) task. On the other hand, most existing IAD
+methods only provide anomaly scores and necessitate the
+manual setting of thresholds to distinguish between normal
+and abnormal samples, which restricts their practical im-
+plementation. In this paper, we explore the utilization of
+LVLM to address the IAD problem and propose Anoma-
+.15366v3  [cs.CV]  13 Sep 2023

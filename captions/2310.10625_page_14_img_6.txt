@@ -1,0 +1,46 @@
+Low data 
+regime
+No data 
+regime
+Instruction is “pick octopus toy”, in low data regime, the diffusion model has 
+seen octopus toy a few times. The reconstruction seems to be correct thought 
+the dynamics are slightly wrong.
+In no-data regime, the octopus toy was not seen, and the model tries to apply 
+octopus texture to robot arm. It shows signs of transfer of internet knowledge, 
+but still need correct understanding of the scene to apply those knowledge.
+Figure XI: Failure in Transferring Web Knowledge. VLP is instructed to “pick up octopus toy”. In the
+low-data regime, the model has only seen the octopus toy in training data a few times, and the generated frames
+roughly reconstructed the shape of the toy, but fails at accurately recover the dynamics. The the no-data regmie,
+the model has never seen in training data, and without any training data VLP transfers the wrong web knowledge
+and makes the gripper octopus arms.
+Figure XII: Failure in Physics. When synthesizing videos, VLP will sometimes make objects dissappear or
+reappear. Creating long videos that respect object permanence remains an important future direction for our
+work.
+Mobile Manipulator, Bridge (Ebert et al., 2021), RT-2 (Brohan et al., 2023), Ego4D (Grauman et al.,
+2022), EPIC-KITCHEN (Damen et al., 2018), and LAION-400M (Schuhmann et al., 2022).
+14DoF Bi-Manual Manipulation.
+For our 14DoF Bi-Manual Manipulation, we train VLP on
+approximately 1200 teleoped demonstrations on a kitchen stacking task, where operators were first
+asked to stack bowls on top of each other, then cups on top of bowls, and then utensils on top of cups.
+Each demonstration was annotated with roughly 20 language instructions, leading to roughly 25k
+short-horizon text labels.
+A.4
+TRAINING DETAILS
+Video Models.
+To train video diffusion models, we follow the model architecture and training
+approach from (Du et al., 2023b). We train a base text-conditioned video generation model at 24 × 40
+resolution and upsample it to 48 × 80 resolution and then 192 × 320 resolution, where videos at each
+resolution are set to generate a temporal video of length 16 frames. We use a base channel width of
+256 across models and train a base text-conditioned video model using 64 TPUv3 pods for 3 days
+and higher resolution superresolution models for 1 day. We train separate text-to-video models per
+domain.
+VLM Models.
+To train VLMs, we follow the architecture and codebase of PaLM-E (Driess et al.,
+2023). We fine-tune a single 12B PaLM-E (Driess et al., 2023) jointly to both predict heuristics and
+policies. We finetune the VLM model using 64 TPUv3 pods for 1 day on data in each domain and
+use separate models per domain.
+Goal-Conditioned Policy.
+To train our goal-conditioned policy, we use the LAVA model (Lynch
+et al., 2023) architecture, where the text-encoder from CLIP is replaced with a ResNet encoder for
+the goal image. We train our goal-conditioned policy in each domain using 16 TPUv3 pods for 1 day.
+15

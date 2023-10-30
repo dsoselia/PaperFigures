@@ -1,0 +1,25 @@
+Step 2: (re-plan)
+t
+t + k
+t current
+t goal
+Step 2: (re-plan)
+Step 2: (re-plan)
+Figure 1: Video Language Planning uses forward tree search via vision-language models and text-to-video
+models to construct long-horizon video plans. From an image observation, the VLM policy (top left) generates
+next-step text actions, which a video model converts into possible future image sequences (top right). Future
+image states are evaluated using a VLM heuristic function (bottom left), and the best sequence is recursively
+expanded with tree search (middle). Video plans can be converted to action execution with goal-conditioned
+policies (bottom right).
+ways that are more information-rich than text, and (ii) can absorb another source of Internet data e.g.,
+YouTube videos. This leads to the natural question of how to build a planning algorithm that can
+leverage both long-horizon abstract planning from LLMs / VLMs and detailed dynamics and motions
+from text-to-video-models.
+In this work, we propose to integrate vision-language models and text-to-video models to enable video
+language planning (VLP), where given the current image observation and a language instruction, the
+agent uses a VLM to infer high-level text actions, and a video model to predict the low-level outcomes
+of those actions. Specifically, VLP (illustrated in Fig. 1) synthesizes video plans for long-horizon
+tasks by iteratively: (i) prompting the VLM as a policy to generate multiple possible next-step text
+actions, (ii) using the video model as a dynamics model to simulate multiple possible video rollouts
+for each action, and (iii) using the VLM again but as a heuristic function to assess the favorability of
+each rollout in contributing task progress then recursively re-planning with (i)

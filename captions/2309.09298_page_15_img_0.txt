@@ -1,0 +1,18 @@
+6.2.2 Results on multiple choice questions
+Evaluation way
+For the multiple-choice questions, our approach involves direct model
+response generation by allowing the model to select a single answer from the provided
+options (A, B, C, D). This way not only streamlines the evaluation process but also offers a
+standardized format for assessing the model’s comprehension and decision-making abilities.
+Each question presents a set of choices, and the model’s task is to make a single selection that
+best aligns with its understanding of the question’s context and semantics. This assessment
+approach is widely employed in educational and evaluative contexts to gauge a model’s
+accuracy and proficiency in selecting the correct answer among multiple possibilities. It
+enables a straightforward and efficient means of evaluating the model’s performance in a
+multiple-choice question setting, facilitating a clear and concise assessment process.
+multiple choice Performance
+The results in Figure 4 and Figure 5 show that Chat-
+GPT (Jiao et al., 2023) has the highest average scores among these 9 domains, and Owl is
+also just a little bit lower than ChatGPT, while outperforming the other models. Besides,
+Owl achieves a higher point than ChatGPT on the system architecture domain.
+16

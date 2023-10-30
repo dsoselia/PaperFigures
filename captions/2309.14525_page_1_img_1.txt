@@ -1,0 +1,53 @@
+Preprint
+Question:
+Where is this photo taken?
+Ground Truth:
+From the slogan “Welcome to Houston, Texas”, we can
+infer that this photo is taken at an airport in Houston, Texas.
+LLaVA:
+This photo is taken at an airport.
+LLaVA-SFT+:
+This photo is taken at the Houston airport.
+LLaVA-RLHF:
+This photo is taken in the baggage claim area of an airport, specifically in the lobby of the George
+Bush Intercontinental Airport in Houston, Texas. The large sign in the background indicates the
+airport’s name and location. The presence of multiple people, handbags, and suitcases in the scene
+further supports the fact that this is indeed an airport setting.
+Question:
+What is the gender of the person riding the motorcycle
+in the image?
+Ground Truth:
+No one is riding the motorcycle in the image.
+LLaVA:
+The person riding the motorcycle in the image is a woman.
+LLaVA-SFT+:
+The person riding the motorcycle in the image is a man.
+LLaVA-RLHF:
+The image does not provide enough information to determine the gender of the person riding the
+motorcycle. It only shows a motorcycle parked on the side of the road, and there is no indication of
+the rider’s gender. The rider could be a man or a woman, or even someone who identifies as non-
+binary or gender non-conforming. It is important to avoid making assumptions about a person’s
+gender based on visual cues alone, as these assumptions can be inaccurate and potentially harmful.
+Table 1: Qualitative examples to illustrate the effect of RLHF on Large Multimodal Model. LLaVA-
+RLHF is presented to be more helpful (above) and less hallucinated (bottom).
+multimodal alignment for LMMs. By collecting human preferences with an emphasis on detect-
+ing hallucinations1, and utilizes those preferences in reinforcement learning for LMM fine-tuning
+(Ziegler et al., 2019; Stiennon et al., 2020). This approach can improve the multimodal alignment
+with a relatively low annotation cost, e.g., collecting 10K human preferences for image-based con-
+versations with $3000. To the best of our knowledge, this approach is the first successful adaptation
+of RLHF to multimodal alignment.
+A potential issue with the current RLHF paradigm is called reward hacking, which means achieving
+high scores from the reward model does not necessarily lead to improvement in human judgments.
+To prevent reward hacking, previous work (Bai et al., 2022a; Touvron et al., 2023b) proposed to
+iteratively collect “fresh” human feedback, which tends to be costly and cannot effectively utilize
+existing human preference data. In this work, we propose a more data-efficient alternative, i.e., we
+try to make the reward model capable of leveraging existing human-annotated data and knowledge
+in larger language models. Firstly, we improve the general capabilities of the reward model by using
+a better vision encoder with higher resolutions and a larger language model. Secondly, we introduce
+a novel algorithm named Factually Augmented RLHF (Fact-RLHF), which calibrates the reward
+signals by augmenting them with additional information such as image captions or ground-truth
+multi-choice option, as illustrated in Fig. 1.
+1We instructed crowdworkers to prioritize the responses that exhibit better multimodal alignment and min-
+imize hallucinations. That is, if two responses are free of hallucinations, the crowdworkers were asked to
+choose/create a more helpful one.
+2

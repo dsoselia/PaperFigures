@@ -1,0 +1,24 @@
+user 𝐴��� for the current document 𝐴���𝐴���𝐴��� at time step 𝐴���, and D𝐴���𝐴��� =
+{𝐴���𝐴���1,𝐴���𝐴���2, ...,𝐴���𝐴���,𝐴���−1} is the personal context of past documents, we
+want to train a personalized generation model G that generates
+𝐴���′
+𝐴���𝐴��� based on (𝐴���𝐴���𝐴���, D𝐴���𝐴���) so that we can maximize the similarity
+between 𝐴���′
+𝐴���𝐴��� and 𝐴���𝐴���𝐴���. Whenever it is clear from the context, we will
+omit the subscript 𝐴��� and directly use 𝐴���𝐴���, D𝐴��� and 𝐴���𝐴��� instead. We will
+also use “user” and “author” interchangeably.
+4
+METHOD OVERVIEW
+The overview of our multistage multitask framework for personal-
+ized text generation is presented in Figure 1
+the performance of sparse retrieval at the document level.
+5.2
+Ranking
+Since we experiment with indexing entries at both document and
+snippet level, we can rank entries accordingly:
+• RankDocBM25. For sparse retrieval, we retrieve and rank
+documents based on BM25 scores.
+• RankDocDense. For dense retrieval, when we retrieve en-
+tries at the document level, we rank retrieved documents
+based on their embedding similarity with the embedding of
+the immediate context 𝐴���𝐴���.

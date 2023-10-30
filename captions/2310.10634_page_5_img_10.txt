@@ -1,0 +1,50 @@
+4
+OpenAgents
+In OpenAgents, we develop three distinct agents: namely the Data Agent for data analysis, the
+Plugins Agent for plugin integration, and the Web Agent for autonomous web browsing. The three
+agents are experts in different domains, just like OpenAI’s ChatGPT Plugins (OpenAI, 2023a).
+Moreover, our implementation is purely based on the top of open language APIs (and theoretically
+any other open-sourced LLMs), such as GPT-4 (OpenAI, 2023b), and Claude (Anthropic, 2023).
+We hope OpenAgents can serve as a pioneer in the move towards democratizing potent, real-world
+language agents. Further, we contend that OpenAgents can serve as an experimental testbed for
+researchers across various disciplines who share an interest in the future trajectory of language
+agents.
+4.1
+DATA AGENT
+Generate
+Data 
+Agent
+Execute
+Program
+Data Tools
+Figure 3: Pipeline (left) and demonstrations (mid and right) of Data Agent.
+The data agent has been designed and implemented to deal with a wide spectrum of data-related
+tasks that real users encounter daily. We support code generation and execution in two programming
+languages: Python and SQL. We also integrate several data tools for the agent to use: (1) Kaggle
+Data Search (datasets search on Kaggle via calling API); (2) Data Profiling (heuristic data profiling
+providing basic data information); (3) ECharts Tool (interactive ECharts plotting). We prompt the
+agent to proactively use these data tools to respond to user requests. Recognizing the intensive
+coding requirements for data agent, we have opted to embed language models in the tool, and let the
+tools generate code rather than the agent. Specifically, tools such as Python, SQL, and ECharts will
+generate code, thereby harnessing the language models’ full programming prowess and alleviating
+the strain on the agent itself.
+Equipped with these data tools, the agent adeptly manages various data-centric requests. It tran-
+scends the boundaries of mere text and code generation to proficiently perform data queries, vi-
+sualization, manipulation tasks, etc. An illustrative example is depicted in Figure 3, where users
+can upload custom files, such as tables and images, and make successive inquiries about the up-
+loaded data. While we’ve highlighted the data agent’s key capabilities, the full potential of our data
+agent extends beyond this brief overview. Much like OpenAI’s Advanced Data Analysis(previously
+known as Code Interpreter) (OpenAI, 2023a), we hope the data agent can serve as a versatile tool
+for myriad user workflows; for more use cases, please see Appendix B.1.
+4.2
+PLUGINS AGENT
+The plugin agent has been meticulously designed to cater to the multifaceted requirements of users’
+daily tasks which necessitate additional plugins, such as shopping, searching, news reading, weather
+forecasting, and website creation. We have integrated over 200 plugins from various sources, some
+of the prominent plugins include (1) Google Search; (2) Wolfram Alpha; (3) Zapier; (4) Klarna; (5)
+Coursera; (6) Show Me; (7) Speak; (8) AskYourPDF; (9) BizToc; and (10) Klook. Special attention
+has been paid to ping the APIs, function calling interface, and API response length, enabling LLM-
+based agents to optimally leverage these plugins.
+Users can choose one or multiple plugins they would like to let their agent leverage based on the
+given instructions of their needs. Examples can be observed in Figure 4. In instances where users
+6

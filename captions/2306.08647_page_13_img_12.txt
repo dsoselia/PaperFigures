@@ -1,0 +1,41 @@
+• walk(forward_speed, sideway_speed, turning_speed) controls the robot to walk and
+turn in different directions. This is a common interface used in quadruped robots to navigate
+in different environments.
+• set_joint_poses(leg_name, joint_angles) directly sets the joint positions for each DoF
+on the robot. To help the LLMs understand the joint angles, we provide a set of examples in
+the prompt.
+For the dexterous manipulator robot, we use three primitive skills to control the robot motion and also
+a function to get access to the position of an object in the scene:
+• end_effector_to(position) moves the center of the robot hand’s palm to the given
+position.
+• end_effector_open() opens the hand of the robot by extending all fingers.
+• end_effector_close() closes the hand to form a grasping pose.
+• get_object_position(obj_name) gets the position of a certain object in the scene.
+• get_joint_position(joint_name) gets the position of a certain joint in the scene.
+A.4
+Additional illustrations for real-world results
+User
+Lift the apple
+User
+Lift the cube
+User
+Move the box
+near the apple
+Figure 7: More illustrations for the real-world results for the proposed system.
+A.5
+Full Prompts
+Here we list the full prompts used in Reward Translator for all experiments used in this work.
+i) Motion Descriptor Prompt for Quadruped
+Describe the motion of a dog robot using the following form:
+[start of description]
+The torso of the robot should roll by [NUM: 0.0] degrees towards right, the torso should pitch upward
+at [NUM: 0.0] degrees.
+The height of the robot’s CoM or torso center should be at [NUM: 0.3] meters.
+The robot should {CHOICE: [face certain direction, turn at certain speed]}. If facing certain direction,
+it should be facing {CHOICE: [east, south, north, west]}. If turning, it should turn at [NUM: 0.0]
+degrees/s.
+The robot should {CHOICE: [go to a certain location, move at certain speed]}. If going to certain
+location, it should go to (x=[NUM: 0.0], y=[NUM: 0.0]). If moving at certain speed, it should move
+forward at [NUM: 0.0]m/s and sideways at [NUM: 0.0]m/s (positive means left).
+[optional] front_left foot lifted to [NUM: 0.0] meters high.
+14

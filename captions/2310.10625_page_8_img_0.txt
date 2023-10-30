@@ -1,0 +1,50 @@
+New 
+Objects
+New 
+Lighting
+Figure 9: Generalization to Objects and Lighting. VLP is able to generalize execution to scenes with three
+new objects (top) consisting of a wooden yellow hexagon, rubber donut and rubber cupcake. VLP is able to also
+generalize to a robot placed in a new office (bottom) with different lighting conditions (a lot more lighting on the
+right side of the board) and similarly execute tasks.
+Generated 
+Video
+Real 
+Rollout
+Novel instruction: Pick snicker energy bar
+Novel instruction: Move moose toy near green pear
+Figure 10: Task Generalization VLP can generalize to new tasks on unseen objects using internet knowledge.
+substantially different than the ones the model was trained on and can be successfully deployed to a
+new robot in a different building location.
+Generalization to New Tasks
+In VLP, both VLM and text-to-video models may be pre-trained on
+a vast amount of Internet data. In Fig. 10, we train both VLM and text-to-video models on a large
+mix of datasets and illustrate how it further generalizes and executes new tasks on unseen objects.
+4
+RELATED WORK
+There is a great deal of recent work in leveraging large pretrained foundation models for decision-
+making agents (Yang et al., 2023b) – in particular, using LLMs (and the commonsense knowledge
+they store) to infer actions represented in text. For example, given language instructions, LLMs
+can be prompted to generate high-level step-by-step plans (Huang et al., 2022a; Ahn et al., 2022;
+Wang et al., 2023a) – each step mapped robot actions, invoked with pre-trained policies or existing
+APIs (Liang et al., 2023). Using existing VLMs (Chen et al., 2022), plans can also be conditioned
+on visual inputs, represented with language descriptions (Zeng et al., 2022; Huang et al., 2022b)
+or token embeddings co-trained with LLMs (Driess et al., 2023). Nevertheless, VLMs are often
+pretrained on static image datasets (i.e., image-in, text-out), and subsequently (i) are limited to plans
+that can be expressed in text, and (ii) may struggle to reason about the dynamics of the world.
+Video models, on the other hand, exhibit potential to generate informative image sequences of the
+future, and there exists a body of work using them as dynamics models to capture object motion across
+image states (Finn et al., 2016; Xue et al., 2016; Oprea et al., 2020; Oh et al., 2015). Generating
+high-quality videos over long time horizons is a known challenge (Babaeizadeh et al., 2021; Saxena
+et al., 2021); however, recent progress in larger models and text-conditioning give rise to a new
+generation of text-to-video models that can generate detailed image frames (Ho et al., 2022; Villegas
+et al., 2022), that can drive policies for decision making (Du et al., 2023b). However, these works
+focus predominantly on short-horizon videos. Our work investigates using text-to-video models
+together with VLMs to produce long-horizon video plans (potentially predicting hundreds of frames
+into the future), leveraging the scalability of tree search to plan in the space of videos and language.
+Our work can be viewed as bringing together two families of generative foundation models to
+compose new capabilities – a strategy shown to be effective for applications such as 2D image
+synthesis (Du et al., 2020; Liu et al., 2021; Nie et al., 2021; Liu et al., 2022; Wu et al., 2022; Du
+et al., 2023a; Wang et al., 2023b), 3D synthesis (Po & Wetzstein, 2023), video synthesis (Yang et al.,
+2023a), trajectory planning (Du et al., 2019; Urain et al., 2021; Gkanatsios et al., 2023; Yang et al.,
+2023c) and multimodal perception (Li et al., 2022; Zeng et al., 2022). Most similar to our work,
+9

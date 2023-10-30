@@ -1,0 +1,8 @@
+B
+COMPLEXITY ANALYSIS
+Since our proposed fix introduces new tokens, it also increases the number of learnable parameters
+and the FLOP count of the model. We show in Fig. 12 the relationship between number of registers
+and increase in model FLOP count and parameter count. We observe that adding registers induces
+a negligible change in number of parameters, and a slight change in FLOP count. Still, for n = 4
+registers, the increase in FLOPs stays below 2%.
+12

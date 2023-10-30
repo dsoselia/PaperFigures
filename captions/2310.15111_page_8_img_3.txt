@@ -1,0 +1,18 @@
+final score (c) FID vs CLIP trade-off seen by varying the weight of CFG (using evaluation on COCO)
+similarly amendable to CFG as other diffusion model variants. Interesting, because our MDM is
+trained on a significantly smaller training set compared to other models (eg Saharia et al. (2022)),
+it still demonstrates strong CLIP score (for example, Saharia et al. (2022) reports a maximum CLIP
+score of 31 in Figure A.11 which is similar to MDM).
+5
+Related Work
+In addition to diffusion methods covered in § 2, multiscale models have been widely used in image
+generation. A well-known Generative Adversarial Network (GAN) is the LAPGAN model (Denton
+et al., 2015) which generates lower-resolution images using lower-resolution models, that are sub-
+sequently fed into higher-resolution models to produce higher resolution images. Autoregressive
+models have also been applied for generation – from early works such as PixelCNN (Oord et al.,
+2016) and PixelRNN (Van Den Oord et al., 2016) and videos (Kalchbrenner et al., 2017; Weissenborn
+et al., 2020), to more recent text-to-image models(Gafni et al., 2022; Yu et al., 2022) and text to
+video models(Wu et al., 2021; Singer et al., 2022). While earlier works often operate in pixel space,
+recent works, such as Parti(Yu et al., 2022) and MakeAScene(Gafni et al., 2022) use autoencoders
+to preprocess images into discrete latent features which can be modeled autoregressively using large
+9

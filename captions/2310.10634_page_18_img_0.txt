@@ -1,0 +1,18 @@
+Web Environment
+We also explore the possibility of whether the web agent is capable of manipu-
+lating real-world web navigation. We let the language agent control the web browser (Chrome in our
+case) via the Chrome extension built by us and navigate on any websites accessible by the browser.
+The extension can control the web page by performing actions such as clicking an element or typing
+values into an element through Chrome Debugger 13. In this way, the web agent can act like a real
+human user on the webpage, and the human can also interact with it anytime and continue to act on
+the webpage. This environment makes the web navigation more real and visible and provides the
+platform to build a generalist web assistant in the future. On the contrary, Browse with
+Bing can
+only act behind the screen and the navigation process actually occurs on the server side rather than
+the client side, which significantly limits the function of web navigation and can hardly be seen,
+controlled or taken over by the user. This makes it quite hard to build a web assistant that can help
+users execute daily tasks on the user’s computers, and enable more diverse scenarios for any website
+in the wild unlike screenshotted or self-hosted ones (Shi et al., 2017; Yao et al., 2022a; Deng et al.,
+2023; Zhou et al., 2023b). We also believe this feature can be beneficial to further research and
+development in the automatic web agent area.
+13https://developer.chrome.com/docs/extensions/reference/debugger/

@@ -1,0 +1,80 @@
+STRUC-BENCH: Are Large Language Models Really Good at Generating
+Complex Structured Data?
+Xiangru Tang♠ Yiming Zong♡ Jason Phang♢ Yilun Zhao♠ Wangchunshu Zhou♣
+Arman Cohan♠∗
+Mark Gerstein♠∗
+♠ Yale University
+♡ Zhejiang University
+♢ New York University
+♣ ETH Zurich
+{xiangru.tang, arman.cohan, mark.gerstein}@yale.edu
+Abstract
+Despite the power of Large Language Models
+(LLMs) like GPT-4, they still struggle with tasks
+that require generating complex, structured outputs.
+In this study, we assess the capability of Current
+LLMs in generating complex structured data and
+propose a structure-aware fine-tuning approach as a
+solution to improve this ability. To perform a com-
+prehensive evaluation, we propose STRUC-BENCH,
+include five representative LLMs (i.e., GPT-NeoX-
+20B, GPT-3.5, GPT-4, and Vicuna) and evaluate
+them on our carefully constructed datasets span-
+ning raw text, HTML, and LaTeX tables. Based
+on our analysis of current model performance, we
+identify specific common formatting errors and ar-
+eas of potential improvement. To address complex
+formatting requirements, we utilize a FORMATCOT
+(Chain-of-Thought) to generate format instructions
+from target outputs. Our experiments show that
+our structure-aware fine-tuning method, when ap-
+plied to LLaMA-7B, significantly improves ad-
+herence to natural language constraints, outper-
+forming other evaluated LLMs
+Based on these
+Dataset
+Curation
+FormatCoT self-instruct with
+in-context examples
+Train LLaMA-7B
+Guiding Questions
+for Prompting
+Input:
+###Task: Generate a LaTex table from given text
+###Text
+Input:
+###Task: Generate a LaTex table from given text
+and format description
+###Text
+###Format Instruction
+###Data
+Demo/examples:...
+###Describe the detailed format of a given latex table according
+to the commands and tags with more than 500 words
+Whether there are table borderlines?
+How is text alignment? 
+What are table attributes? 
+Whether to bold? 
+Whether to add \ref? 
+Whether there are horizontal and vertical lines bordering each row
+and column? 
+Say anything about special \" \ \" format token in latex. 
+Benchmark and
+metrics
+Figure 1: A system for describing complex structured
+formats and learning to follow this format in human
+language. We use zero-shot for inference.
+et al., 2022; OpenAI, 2023; Zhao et al., 2023a), es-
+pecially in text generation tasks (Qin et al., 2023).
+The ability to output structured data, one of the key
+aspects of generative capability, has also attracted
+great interest in previous studies (Wu et al., 2022;
+Zhao et al., 2023c,b).
+However, LLMs still underperform in generat-
+ing complex structured outputs–a critical ability
+for various applications ranging from coding as-
+sistance to automated report writing. Furthermore,
+most evaluation of LLMs has been on natural text
+or code generation, and relatively less research has
+been conducted to evaluate LLMs on their abil-
+2309.08963v2  [cs.CL]  19 Sep 2023

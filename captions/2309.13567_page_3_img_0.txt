@@ -1,0 +1,73 @@
+raw datasets. Thirdly, we utilize task-specific instruction, few-shot
+expert-written examples, and the assigned label for the target post
+to construct the prompt. An example of the constructed prompt
+for the dataset DR is shown in Figure 2, and the prompts for other
+datasets are presented in Appendix B.3.
+3.3
+Explanation Evaluation
+We perform comprehensive evaluations on the ChatGPT-generated
+explanations to ensure their quality. Due to the large quantity
+of generated explanations (105K), we perform holistic automatic
+evaluations on all collected data and select a subset for human
+evaluation.
+3.3.1
+Automatic Evaluation. In automatic evaluation, we believe
+three criteria are crucial to guarantee the quality of the generated
+explanations: 1) Correctness: the explanations should make correct
+label predictions in the corresponding mental health analysis task.
+2) Consistency: the explanations should provide clues and analyses
+that are consistent with their predicted labels [38]. 3) Quality: from
+the perspective of psychology, the generated explanations should
+provide supportive evidence with high quality in aspects such as
+reliability, professionality, etc [43]. Based on the above definitions,
+we design automatic evaluation methods for each of these criteria
+as follows:
+Correctness. During the explanation generation process, we
+combine the annotated labels from each collected dataset into the
+prompts to supervise ChatGPT in generating correct explanations.
+An appropriate assumption is that a classification result that is
+agreed upon by both the dataset annotations and ChatGPT can be
+considered correct. However, we notice that ChatGPT can some-
+times express disagreement with the assigned label in its response.
+Examples of such disagreements are shown in Appendix B.2. These
+disagreements are possibly due to the subjectivity of some tasks
+and the weakly-supervised annotation processes (as shown in Table
+1) of some datasets. In these cases, we ask the domain experts to
+manually check the prompts and responses to modify/rewrite the
+tained by the clustering of subreddits in Reddit [18]. loneliness and
+IRF datasets also have percentages below 80%, as they are built on
+relatively subjective tasks loneliness detection, and interpersonal
+risk factors identification.
+Consistency. As all ChatGPT generations follow the template
+specified in Sec. 3.2, consistency evaluates whether the evidence
+in [explanation] supports [label] in each response. Specifically, we
+split [explanation] and [label] contents via the "Reasoning:" symbol
+in each response, and use the [explanation] set in the ChatGPT
+responses for the training split of each raw dataset to train a clas-
+sifier based on MentalBERT [19]. For the 𝐴���-th split explanation
+[explanation]𝐴��� we have:
+[label]𝐴���
+𝐴��� = 𝐴���𝐴���𝐴���𝐴���𝐴���𝐴���𝐴���𝐴���𝐴���𝐴��� ([explanation]𝐴���)
+(2)
+where [label]𝐴���
+𝐴��� is then supervised by the 𝐴���-th split label [label]𝐴���. The
+intuition behind this method is that the training split pairs with
+higher consistency are expected to supervise a more precise classi-
+fier for identifying the supported label given the explanation. To
+evaluate the precision of the trained classifiers, we test them on
+both the ChatGPT responses for the test split of each raw dataset,
+and the expert-written golden explanation set G. The classification
+performance is presented in Figure 3(b). According to the results,
+all classifiers achieve weighted F1 scores of over 93.5% on the re-
+sponses for test splits, which shows a highly stable distribution in
+consistency for ChatGPT-generated explanations. Test results on
+the golden explanation set show that the classifiers achieve over
+94% on 9 of 10 datasets, with 4 datasets achieving 100% performance.
+These results show that the classifiers can identify the correct expla-
+nation/label pairs with very high accuracy, which proves the high
+consistency of the training data (ChatGPT responses on training
+splits of the raw datasets). However, the performance on SAD is
+relatively low (86.6%). A possible reason is that explanations for
+some labels (e.g. ‘School’ and ‘Work’, ‘Family’ and ‘Social Relation’),
+as shown in Table 1, can have similar semantics, which can be
+difficult to distinguish. With the above evidence, we conclude that

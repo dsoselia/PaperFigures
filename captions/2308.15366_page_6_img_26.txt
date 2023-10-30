@@ -1,0 +1,130 @@
+Decoder
+Prompt learner
+LLM
+LoRA
+MVTec-AD (unsupervised)
+VisA (1-shot)
+Image-AUC
+Pixel-AUC
+Accuracy
+Image-AUC
+Pixel-AUC
+Accuracy
+✓
+-
+-
+72.2
+-
+-
+56.5
+✓
+✓
+-
+-
+73.4
+-
+-
+56.6
+✓
+✓
+-
+-
+79.8
+-
+-
+63.4
+✓
+✓
+97.1
+90.9
+72.2
+85.8
+96.2
+56.5
+✓
+✓
+✓
+97.1
+90.9
+84.2
+85.8
+96.2
+64.7
+✓
+✓
+✓
+✓
+96.0
+88.1
+83.9
+85.8
+96.5
+72.7
+✓
+97.1
+90.9
+90.3
+85.8
+96.2
+75.4
+✓
+✓
+✓
+97.4
+93.1
+93.3
+87.4
+96.2
+77.4
+Table 4. Results of ablation studies. The ✓ in “Decoder” and “Prompt learner” columns indicate module inclusion. The ✓ in “LLM”
+column denotes whether use LLM for inference and the ✓ in “LoRA” column denotes whether use LoRA to fine-tune LLM. In settings
+without LLM, the maximum anomaly score from normal samples is used as the classification threshold. In settings without decoder, due
+to the sole textual output from the LLM, we cannot compute image-level and pixel-level AUC.
+Figure 5. Qualitative example of AnomalyGPT in the unsuper-
+vised setting. AnomalyGPT is capable of detecting anomaly, pin-
+pointing its location, providing pixel-level localization results and
+answering questions about the image.
+outputs from the 8th, 16th, 24th, and 32nd layers of
+ImageBind-Huge’s image encoder to the image decoder.
+Training is conducted on two RTX-3090 GPUs over 50
+epochs, with a learning rate of 1e-3 and a batch size of
+16. Linear warm-up and a one-cycle cosine learning rate
+decay strategy are applied. We perform alternating train-
+ing using both the pre-training data of PandaGPT [25] and
+our anomaly image-text data. Only the decoder and prompt
+learner undergo parameter updates, while the remaining pa-
+rameters are all kept frozen.
+4.1. Quantitative Results
+Few-shot Industial Anomaly Detection We compare
+our work with prior few-shot IAD methods, selecting
+SPADE [5], PaDiM [6], PatchCore [23], and WinCLIP [11]
+as the baselines.
+The results are presented in Table 2.
+Across both datasets, our method notably outperforms pre-
+vious approaches in terms of image-level AUC and achieves
+competitive pixel-level AUC and good accuracy.
+Unsupervised Industial Anomaly Detection In the set-
+Figure 6.
+Qualitative example of AnomalyGPT in the one-
+normal-shot setting.
+The localization performance is slightly
+lower compared to the unsupervised setting due to the absence of
+parameter training.
+ting of unsupervised training with a large number of nor-
+mal samples, given that our method trains a single model
+on samples from all classes within a dataset, we selected
+UniAD [32], which is trained under the same setup, as a
+baseline for comparison.
+Additionally, we compare our
+model with PaDiM [6] and JNLD [34] using the same uni-
+fied setting.
+The results on MVTec-AD dataset are pre-
+sented in Table 3.
+4.2. Qualitative Examples
+Figure 5 illustrates the performance of our AnomalyGPT
+in unsupervised anomaly detection, and Figure 6 showcases
+the results in the 1-shot in-context learning. Our model is
+capable of indicating the presence of anomalies, pinpoint-
+ing their locations, and providing pixel-level localization
+results. Users can engage in multi-turn dialogues related to
+7

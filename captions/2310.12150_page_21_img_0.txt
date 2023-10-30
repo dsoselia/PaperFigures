@@ -1,0 +1,58 @@
+Under review as a conference paper at ICLR 2024
+Figure 8: Screenshot of the annotation interface. The documents are shown on the left-hand side,
+along with the similarity score (SimCSE) to the current answer sentence. The right-hand side shows
+the question, answer, and the current answer sentence. The annotations go below the box for the
+current answer sentence.
+(Human Intelligence Task) rate greater than 98% with at least 500 completed HITs. Ten workers have
+passed our qualification test and participated in our tasks. We pay $2.5 USD for each example, and
+the estimated hourly pay is $15 USD. The total cost of the annotations is $5886.60 USD, including
+the cost of qualification tasks and pilot studies.
+C.2
+ANNOTATION GUIDELINE
+We
+require
+all
+the
+crowdworkers
+to
+read
+the
+annotation
+guideline
+and
+take
+a
+qualification
+test
+before
+doing
+any
+task.
+The
+annota-
+tion
+guidelines
+are
+provided
+at
+https://docs.google.com/document/d/e/
+2PACX-1vSFjIphYjz1MkwhGSDGiSZ8qCS8Es5IiQtrAe0DGYG2ob01MDdtqbx90fCjehRlQOgspUM3wJYCJ8GQ/
+pub.
+C.3
+ANNOTATION INTERFACE
+The annotation interface we showed to the annotators is in Figure 8. The documents are split into
+sentences and presented in paragraphs. The similarity scores to the current answer sentence, calculated
+with SimCSE, are meant to aid the annotators in deciding if the answer sentence is supported. The
+question, answer, and the current answer sentence are shown on the right, followed by the annotation
+section. Annotations should include the label (whether the answer sentence is Supported , Partially
+Supported , or Not Supported ), the supporting sentences, and the supported portion if the label is
+Partially Supported .
+C.4
+COMPARISON WITH OTHER DATASETS
+The collected dataset contains labels of whether each sentence in the answer is suppported by
+the evidence documents, providing benchmark for studying automatic attribution methods (). We
+compare our dataset with recent attribution efforts in Table 13. WICE (Kamoi et al., 2023) is a multi-
+document entailment dataset where the hypothesis is a sub-claim from Wikipedia. AttrScore (Yue
+et al., 2023) creates data from existing QA datasets using heuristics, and annotates attribution on
+outputs from generative search engines. Liu et al. (2023b) is the most closest to our work. They
+22

@@ -1,0 +1,49 @@
+Input for BLIP2
+BLIP2 Caption
+SD2
+CommonCanvas-
+SNC
+CommonCanvas-
+SC
+an image of elsa
+from frozen
+pikachu pikachu
+pikachu pikachu
+pikachu pikachu
+pikachu pikachu
+pikachu pikachu
+three characters
+dressed like bears,
+standing in the
+forest
+Figure 14: Additional qualitative examples comparing our CommonCanvas models to SD2, given
+synthetic BLIP2 captions as prompts. While not perfect, our models are better at avoiding generating
+potentially problematic data.
+is optimized to work well with reduced precision and GPU hardware [11], which was implemented
+using the XFormers library [31], allowing us to save compute and memory usage.
+Precomputing latents. Each forward pass of SD2 requires computing a latent representation of the
+input image, as well as transforming the caption into a text embedding. Instead of computing the
+latents for each example during training, we can precompute latents for the entire dataset, amortizing
+the cost. Doing so speeds up training of the model, especially at lower resolutions, in exchange for
+a one-time fixed cost of precomputing all the latents over 1 epoch.
+Reduced-precision GroupNorm and LayerNorm.
+Most layers in SD2 are implemented in
+float16 precision, but GroupNorm and LayerNorm are implemented in float32, in part because
+it was assumed to be necessary for training stability. The resulting, frequent upcasting causes a ma-
+jor bottleneck in training speed. Recent work shows that it is safe to implement LayerNorm using
+float16 precision [44], and we found the same to be true of GroupNorm. We thus cast all Group-
+Norm and LayerNorm operators to float16 and are able to further reduce total memory consumption
+and accelerate training.
+Fully-Sharded Data Parallelism (FSDP). FSDP is a variant of data-parallel training that shards
+the models parameters, gradients and optimizer state across multiple devices. When training data
+batches do not fit into memory, we do several forward and backward passes on smaller microbatches,
+followed by a single gradient update. At GPU scale, there may only be a single microbatch, so the
+time for the gradient update can become a significant bottleneck. In standard data distributed train-
+ing, each GPU communicates all its gradients to every other GPU, and then each GPU updates its
+local copy of the model. Instead, we use a different paradigm inspired by [65] where each GPU only
+gets the gradients and updates the weights for a small part of the model before sending the updated
+weights for that part of the model to all of the other GPUs. By dividing the update step across all
+the GPUs, we can ensure that the amount of work per GPU decreases as we increase the number
+of GPUs, helping us achieve linear scaling. To tackle this problem, we use PyTorch’s experimental
+support for Fully Sharded Data Parallelism (FSDP), specifically, FSDP’s SHARD GRAD OP mode.
+18

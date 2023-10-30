@@ -1,0 +1,53 @@
+Figure 5: We bridge the visual gap between simulation and real world by applying pre-processing techniques.
+We use depth clipping, Gaussian noise and random artifacts in simulation, and depth clipping and hole-filling,
+spatial and temporal filters in the real world.
+the obstacles without get stuck near the obstacles as a result of local minima of RL training with
+the realistic dynamics, i.e. hard dynamics constraints. Similar to the Lagrangian formulation of
+direct collocation [115], we develop a penetration reward rpenetrate to gradually enforce the dynamics
+constraints and an automatic curriculum that adaptively adjusts the difficulty of obstacles. This idea
+has also been explored in robot manipulation [116, 117]. Shown in Figure 4, to measure the degree of
+dynamics constraints’ violation, we sample collision points within the collision bodies of the robot in
+order to measure the volume and the depth of penetration. Since the hips and shoulders of the robot
+contain all the motors, we sample more collision points around these volumes to enforce stronger
+dynamics constraints, encouraging fewer collisions of these vulnerable body parts in the real world.
+Denote a collision point on the collision bodies as p, an indicator function of whether p violates the
+soft dynamics constraints as 1[p], and the distance of p to the penetrated obstacle surface as d(p).
+The volume of penetration can be approximated by the sum of 1[p] over all the collision points, and
+the average depth of penetration can be approximated by the sum of d(p). In Figure 4, the collisions
+points violating the soft dynamics constraints (1[p] = 1) are in red, and those with 1[p] = 0 are in
+green. Concretely, the penetration reward is
+rpenetrate = −
+�
+p
+(α5 ∗ 1[p] + α6 ∗ d(p)) ∗ vx,
+where α5 and α6 are two fixed constants. We multiply both the penetration volume and the penetration
+depth with the forward base velocity vx to prevent the robot from exploiting the penetration reward
+by sprinting through the obstacles to avoid high cumulative penalties over time. In addition, we
+implement an automatic curriculum that adaptively adjusts the difficulty of the obstacles after a reset
+based on the performance of individual robots simulated in parallel in simulation. We first calculate
+the performance of a robot based on its penetration reward averaged over the previous episode before
+the reset. If the penetration reward is over a threshold, we increase the difficulty score s of obstacles
+that the robot will face by one unit (0.05); if lower, then we decrease it by one unit. Every robot starts
+with a difficulty score 0 and the maximum difficulty score is 1. We set the obstacle property for the
+robot based on its difficulty score by (1 − s) ∗ leasy + s ∗ lhard, where leasy and lhard are the two limits
+of the ranges of obstacle properties corresponding to different parkour skills (shown in Table 1). We
+pre-train the specialized parkour skills with soft dynamics constraints using PPO [118] with the sum
+of the general skill reward and the penetration reward rskill + rpenetrate.
+RL Fine-tuning with Hard Dynamics Constraints. After the pre-training stage of RL is near
+convergence, we fine-tune every specialized parkour skill policy on the realistic hard dynamics
+constraints (shown in Figure 3); hence, no penetrations between the robots and obstacles are possible
+at the second stage of RL. We use PPO to fine-tune the specialized skills using only the general
+skill reward rskill. We randomly sample obstacle properties from the ranges listed in Table 1 during
+fine-tuning. Since the running skill is trained on terrains without obstacles, we directly train the
+running skill with hard dynamics constraints and skip the RL pre-training stage with soft dynamics
+constraints.
+3.2
+Learning a Single Parkour Policy by Distillation
+The learned specialized parkour skills are five policies that use both the privileged visual information
+evis
+t , and the privileged physics information ephy
+t . However, the ground-truth privilege information
+is only available in the simulation but not in the real world. Furthermore, each specialized policy
+can only execute one skill and cannot autonomously execute and switch between different parkour
+skills based on visual perception of the environments. We propose to use DAgger [44, 45] to distill
+5

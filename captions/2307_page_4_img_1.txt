@@ -1,0 +1,55 @@
+(a) Role Specialization
+(b) Memory Stream
+(c) Self-Reflection
+Figure 3: Three key mechanisms utilized in each chat. Role specialization ensures that each agent
+fulfills their designated functions and contributes effectively to the task-oriented dialogue. The
+memory stream maintains a comprehensive record of previous dialogues within the chat, enabling
+agents to make informed decisions. Self-reflection prompts the assistant to reflect on proposed
+decisions when both parties reach a consensus without triggering predefined termination conditions.
+Role Assignment
+System prompts/messages are used to assign roles to each agent during the
+role-playing process. In contrast to other conversational language models, our approach to prompt
+engineering is restricted solely to the initiation of role-playing scenarios. The instructor is denoted as
+PI, while the assistant’s system prompt/message is denoted as PA. These prompts assign roles to
+the agents before the dialogues begin. Let LI and LA represent two large language models. Using
+the system message, we have I ← LPI
+I
+and A ← LPA
+A , which serve as the instructor and assistant
+agents (Figure 3(a)), respectively. In our framework, the instructor initially acts as a CEO, engaging
+in interactive planning, while the assistant assumes the role of CPO, executing tasks and providing
+responses. To achieve role specialization, we employ inception prompting [23], which has proven
+effective in enabling agents to fulfill their roles. The instructor and assistant prompts encompass vital
+details concerning the designated task and roles, communication protocols, termination criteria, and
+constraints aimed at preventing undesirable behaviors (e.g., instruction redundancy, uninformative
+responses, infinite loops, etc.).
+Memory Stream
+The memory stream [32] is a mechanism that maintains a comprehensive record
+of an agent’s previous dialogues, assisting in subsequent decision-making in an utterance-aware
+manner. Formally, the instructor’s message at time t is denoted as It, the assistant’s message as At,
+and the related decisions as St. Equation 1 encapsulates the collection of conversational messages up
+to time t.
+Mt = ⟨(I1, A1), (I2, A2), · · · , (It, At)⟩
+St ← ψ(It, At)
+(1)
+where ψ represents a LLM-based decision extractor which can be implemented via communication
+protocol detection or self-reflection (detailed below). In the succeeding time step t + 1, the instructor
+leverages the historical dialogue message set Mt to impart a fresh instruction, It+1, which is then
+conveyed to the assistant along with Mt, as illustrated in Figure 3(b). The assistant responds with a
+solution or message, denoted as At+1 in Equation 2:
+It+1 = A(Mt, St)
+At+1 = I(Mt, It+1, St)
+(2)
+Following the acquisition of the solution At+1 in response to the instruction It+1, the message stream
+undergoes an update process utilizing Equation 3:
+Mt+1 = Mt ∪ (It+1, At+1)
+St+1 = St ∪ ψ(It+1, At+1)
+(3)
+We establish communication protocols through prompts. For example, an ending message satisfying
+specific formatting requirements (e.g., “<MODALITY>: Desktop Application”) is generated when
+both parties reach a consensus. The system monitors communication to ensure compliance with the
+designated format, allowing for the conclusion of the current dialogue.
+Self-Reflection
+Occasionally, we have observed dialogues where both parties reach a consensus
+but do not trigger the predefined communication protocols as termination conditions. In such cases,
+5

@@ -1,0 +1,4 @@
+Figure 8: Examples where questions asking for a fact are answered correctly, but verifying via a
+yes/no question is incorrect (the model tends to agree with the way the question is stated, even if it
+was stated incorrectly).
+19

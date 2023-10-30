@@ -1,0 +1,65 @@
+Figure 2: The overall framework. Given a multiple choice question, we first retrieve subgraphs from the knowledge graph based
+on the entities in the question and options. We then develop Graph Neural Prompting (GNP) to encode the pertinent factual
+knowledge and structural information to obtain the Graph Neural Prompt. GNP contains various designs including a GNN, a
+cross-modality pooling module, a domain projector, and a self-supervised link prediction objective. Later, the obtained Graph
+Neural Prompt is sent into LLM for inference along with the input text embedding. We utilize the standard maximum likelihood
+objective for downstream task adaptation, while LLM is kept frozen or tuned depending on different experimental settings.
+Preliminary
+In this section, we describe the knowledge graph and formally
+define the problem of multiple choice question answering.
+Definition 1. Knowledge Graph. A knowledge graph is
+defined as G = (E, R, T ), where E is the set of entities and
+R is the set of relations. T is the collection of fact triples
+{(eh, r, et)} ∈ E × R × E, where eh denotes the head entity,
+r is the relation, and et indicates the tail entity.
+Problem 1. Multiple Choice Question Answering. Given
+a question Q, a set of answer options A = {ak}K
+k=1, and
+an optional context C depending on open-book or close-
+book, the task is to design a machine learning model FΘ
+with parameters Θ that selects the best option to answer the
+question. Here K denotes the total number of answer options
+and ak indicates the k-th answer option. The ground truth
+label y ∈ A is the correct answer for Q. In addition, we use
+knowledge graph G to provide rich knowledge and assist the
+model to answer the question.
+Methodology
+In this section, we introduce the techniques of prompting
+LLMs for question answering as well as subgraph retrieval.
+Additionally, we present Graph Neural Prompting and
+elaborate on its components and designs. Figure 2 illustrates
+the framework of our method.
+Prompting LLMs for Question Answering
+Prompting is the de facto approach to elicit responses from
+LLMs (Liu et al. 2023). The typical approach of prompting
+LLMs for multi-choice question answering is simple. Given a
+question Q, the optional context C, and the answer options A,
+we first tokenize the concatenation of C, Q, A into a sequence
+of input text tokens X. We then design a series of prompt
+tokens, P, and prepend it to the input text tokens X, which
+is later considered as input for the LLM model to generate
+prediction y′ = f([P, X]). The LLM model can be trained
+for downstream task adaptation using a standard maximum
+likelihood loss using teacher forcing (Williams and Zipser
+1989) and a cross-entropy loss:
+Lllm = − log p(y|X, Θ),
+(1)
+where p is the probability distribution parameterized by the
+model. The prompt P can be either a hard prompt in the form
+of textual input, or a soft prompt in the form of learnable
+embedding vectors.
+Unlike existing methods that solely use a text string as the
+hard prompt, our Graph Neural Prompting approach encodes
+structural and factual information contained in the knowledge
+graph G into a soft prompt P, which is a sequence of trainable
+vectors that can be concatenated with the token embedding of
+X. The learning of P is encouraged to provide rich structural
+information and knowledge from G as well as task instruction
+for each data instance.
+Subgraph Retrieval
+To semantically align the input text tokens X with the
+massive knowledge graph G with millions of nodes, we
+retrieve subgraphs of G that contain the relevant entities to
+the tokens in X. In particular, for each answer option ak and
+its corresponding context C and question Q, we first obtain a
+set of matched entities Ematch via entity linking to match the

@@ -1,0 +1,7 @@
+(a) Input
+(b) Rendered output
+Figure 5: A training sample for the layout-based task from arXiv papers (single-column)
+(a) Input
+(b) Rendered output
+Figure 6: A training sample for the layout-based task from arXiv papers (two-column)
+17

@@ -1,0 +1,25 @@
+Figure 6: Qualitative comparisons were made between the segmentation results of SAM-Med2D and
+SAM. The first three rows depict the segmentation results of different modalities, while the last three
+rows illustrate the segmentation results of different anatomical structures.
+the best segmentation performance across the 9 datasets reaching only 51.05%. In contrast, our
+SAM-Med2D obtained reasonable segmentation results under point prompt. It is worth noting that
+when we removed the adapter layer parameters during inference, the performance of SAM-Med2D
+with 1 pt prompt was very close to that of SAM under Bbox prompt (83.41% vs. 85.35%), which
+saves a significant amount of time and cost for data annotation and analysis. In summary, SAM
+showed good generalization performance only under bounding box prompts, while our SAM-Med2D
+achieved better generalization under both prompting modes.
+4.3
+Qualitative Comparison
+We qualitatively compared the segmentation masks of SAM-Med2D and SAM. The visual results
+of SAM are derived from the better of the two resolutions, namely 256×256 or 1024×1024. The
+first three rows of Figure 6 illustrate the segmentation performance of both methods on three modals.
+In most cases, the segmentation results indicated by Bbox can locate the target region, but the
+boundaries in our SAM-Med2D visual results are clearer and closer to ground truth. In the case of 1
+pt prompt, SAM struggles to locate the target region, leading to significant discrepancies between the
+segmentation results and the expected outcome.
+The last three rows depict the segmentation results of both models on liver, lung, and prostate organs.
+For Bbox prompt mode, both methods can generate masks of similar quality. By observing the results
+of 3 pts and 5 pts prompt, we can see that more point prompt result in better segmentation outcomes.
+Among models with the same number of point prompt, SAM-Med2D can describe the target region
+better than SAM, implying that SAM-Med2D requires fewer interactive operations and less time
+12

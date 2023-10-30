@@ -1,0 +1,25 @@
+as an oil painting 
+by van Gogh
+themed backpack
+in Minecraft
+in Unity3D
+wearing
+eating
+in the
+suit of
+in the
+style of
+Figure 5: Zero-shot image generation examples with multimodal prompts.
+Multimodal Language Modeling
+We use a batch size of 1.2 million tokens which is broken
+down as follows: 0.5 million tokens sourced from text corpora, 0.5 million tokens derived from
+image-caption pairs, and 0.2 million tokens from interleaved data sets. The MLLM is trained for
+300,000 steps, corresponding to about 360 billion tokens in total. We adopt the AdamW optimizer
+with β = (0.9, 0.98). Furthermore, we configure the weight decay at 0.01 and the dropout rate
+at 0.1. The learning rate is set to escalate to 2e-4 during the initial 375 warm-up steps and decay
+linearly to 0 for the rest of the training steps. For optimization stability, we initiate using Magneto.
+We use SentencePiece [KR18] to tokenize the text. We preprocess the data in the “full-sentence”
+format [LOG+19], where each input sequence is populated with complete sentences consecutively
+sampled from one or multiple documents.
+Image Decoder Aligning
+The AlignerNet undergoes training using a batch size of 3,584 sentences

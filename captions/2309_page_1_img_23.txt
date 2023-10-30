@@ -1,0 +1,10 @@
+SOP
+Human-Agent
+   Interaction
+Figure 1: Illustration of the AGENTS framework.
+et al., 2023a], web navigation [Nakano et al., 2021], tool usage [Schick et al., 2023], and multi-
+agent communication [Foerster et al., 2016]. In addition, most (if not all) existing language agent
+frameworks solely depend on a short task description and rely completely on the abilities of LLMs to
+plan and act. This results in significant randomness and inconsistency across different runs, delivering
+an unsatisfactory user experience and making it hard to customize and tune language agents.
+We believe the aforementioned limitations are important barriers for recent advances in language

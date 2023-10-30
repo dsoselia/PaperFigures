@@ -1,0 +1,21 @@
+Simulated 
+navigation
+Human  
+manipulation
+Internet 
+scenes
+Simulated 
+manipulation
+Real-world 
+navigation
+Internet 
+robots
+Robot 
+manipulation
+Internet texts, images, videos
+Panarama 
+scans
+UniSim
+Figure 1: A universal Simulator (UniSim). UniSim is a simulator of the real-world that learns from broad
+data rich in different axes including objects, scenes, human activities, motions in navigation and manipulation,
+panorama scans and simulations and renderings

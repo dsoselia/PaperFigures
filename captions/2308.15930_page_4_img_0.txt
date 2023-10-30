@@ -1,0 +1,7 @@
+Total
+199k
+508k
+428k
+80k
+Figure 6: Data samples of the LLaSM-Audio-Instructions.
+5

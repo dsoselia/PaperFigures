@@ -1,0 +1,37 @@
+ViT 
+Image-Text Pairs
+Multi-task and 
+Interleaved VL Data
+ViT 
+ViT 
+Chat Interleaved 
+VL Data
+Low Resolution
+High Resolution
+High Resolution
+Figure 3: The training pipeline of the Qwen-VL series.
+2.2
+Inputs and Outputs
+Image Input: Images are processed through the visual encoder and adapter, yielding fixed-length sequences
+of image features. To differentiate between image feature input and text feature input, two special tokens
+(<img> and </img>) are appended to the beginning and end of the image feature sequence respectively,
+signifying the start and end of image content.
+B
+di
+B
+I
+t
+d O t
+t T
+h
+th
+d l’
+it f
+fi
+i
+d i
+l
+d
+t
+di
+d

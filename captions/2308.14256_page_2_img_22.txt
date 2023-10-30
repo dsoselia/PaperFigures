@@ -1,0 +1,45 @@
+Stable Diffusion Model
+Merge LoRA Weights
+Input Prompts
+A beautiful woman, Chinese, 
+Wearing suit 
+Face
+Fusion
+Face 
+Recognition
+Ranking
+Style LoRA Model
+（Trained Offline）
+Inference
+Figure 1: Architectural overview of FaceChain personalized portrait generation. During training, multiple data process-
+ing approaches are adopted to generate tagged face images to train face-LoRA model online. The weights of face-LoRA
+and style-LoRA models are then merged into foundation Stable-Diffusion model for text-to-image generation. The generated
+portraits go through post-face-fusion and ranking before returning to users.
+parsing (M2FP) to generate the mask of the head region,
+and perform segmentation accordingly. The M2FP model
+is available at https://modelscope.cn/models/
+damo/cv_resnet101_image-multiple-human-
+parsing.
+Skin Retouching. Since the skin quality of the images up-
+loaded by users may be unpromising, we leverage the skin
+retouching module to improve the skin quality of the face
+images.
+In particular, the Adaptive Blend Pyramid Net-
+work [6] (ABPN) is used here for skin retouching, which
+is available at https://modelscope cn/models/
+• Tags specific to a given image, such as facial expres-
+sions, jewelries and accessories, should be labeled ac-
+curately to retain the relationship between salient im-
+age features and the corresponding tags.
+• Tags bound to human identities, such as eyes, lips and
+ears, can be removed. Instead, the LoRA model can be
+relied on to generate such features without any prompt
+words.
+• In general, using one tag to describe the overall charac-
+i i
+f h h
+id
+i
+k
+i
+ll i

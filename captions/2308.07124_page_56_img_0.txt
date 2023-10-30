@@ -1,0 +1,25 @@
+matches the installed programming language version. Models may inadvertently use expressions
+from a different version (e.g. they may use the Python 2 syntax of print "hi", which would fail
+in a Python 3 environment). In our evaluation, we did not find this to be a problem, however, as
+models become more capable, it may make sense to specify the version. Future prompts may include
+the version (e.g. “use JDK 1.18.0”) or provide models with an execution environment that has the
+exact version installed that will be used for evaluation.
+(4) Comprehensiveness: Executing code can only reflect functional correctness lacking a comprehen-
+sive understanding of quality. Compared to execution-based evaluation, the human judgment of code
+quality can be considered more comprehensive as humans can consider factors beyond correctness.
+Directly hiring human annotators can be inefficient and expensive, and therefore researchers have
+explored approaches to automate human-aligned evaluation via LLMs (Fu et al., 2023; Liu et al.,
+2023e; Zhuo, 2023). However, recent work (Wang et al., 2023b) suggests LLM-based evaluation
+can be biased towards certain contexts. Future work on automating the human-aligned evaluation of
+instruction tuned Code LLMs while avoiding such bias is needed.
+Reward Models
+Our commit datasets, COMMITPACK and COMMITPACKFT, also lend themselves
+well for learning human preferences. The changed code after a commit generally represents a human-
+preferred version of the code (else the code would not have been modified). Thus, one could train a
+reward model that given the code before and after a commit, learns that the code afterward is better.
+Similar to prior work (Ouyang et al., 2022), this reward model could then be used to guide a language
+model to generate code that is preferred by humans.
+Q
+OCTOBADPACK
+Figure 39: OCTOPACK (left) and her evil brother OCTOBADPACK (right).
+57

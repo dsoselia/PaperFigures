@@ -1,0 +1,27 @@
+sampling strategy;
+Step 3. expanding tree nodes: contributors added
+reply messages as prompter or assistant;
+Step 4. labeling replies: contributors assigned
+scores to existing node replies;
+Step 5.
+ranking: contributors ranked assistant
+replies referring to the contributor guidelines.
+The tree state machine managed and tracked
+the state (e.g., initial state, growing state, end
+state) throughout the conversation crafting process.
+Subsequently, the OpenAssistant Conversations
+dataset was built by filtering out offensive and
+p y
+user and the AI assistant in turns and generates
+messages in a conversational format. Specifically,
+the authors first crafted a task template that defines
+the roles and tasks for ChatGPT (as shown in
+Table 3).
+Next, they sampled questions (e.g.,
+"How do you fix a Google Play Store account
+that isn’t working?") from Quora and Stack
+Overflow datasets as conversation seeds (e.g.,
+topics). Subsequently, they prompted ChatGPT
+with the template and the sampled seed. ChatGPT
+continuously generates messages for both sides
+until a natural stopping point is reached.

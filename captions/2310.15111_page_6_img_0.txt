@@ -1,0 +1,36 @@
+Technical report. In progress
+Figure 5: Random samples from our class-conditional MDM trained on ImageNet 256 × 256.
+dUNet as our simple DM architecture. We monitor the FID curve on ImageNet, and the FID and
+CLIP curves on CC12M.
+Comparing simple DM to MDM, we see that MDM clearly has faster convergence, and reaches
+better performance in the end. This suggests that the multi resolution diffusion process together
+with the multi resolution loss effectively improves the models convergence, with negligible added
+complexities. When following the progressive training schedule, we see that MDM’s performance
+and convergence speed further improves. As a direct comparison, we see that the Cascaded DM
+baseline significantly under performs MDM, while both starting from the same 64x64 model. Note
+that this is remarkable because Cascaded DM has more combined parameters than MDM (because
+MDM has extensive parameter sharing across resolutions), and uses twice as many inference steps.
+We hypothesize that the inferior performance of Cascaded DM is largely due to the fact that our
+64x64 is not aggressively trained, which causes a large gap between training and inference wrt the
+conditioning inputs. Lastly, compared to LDM, MDM also shows better performance. Although this
+is a less direct control as LDM is indeed more efficient due to its small input size, but MDM features
+a simpler training and inference pipeline.
+Comparison with literature
+In Table 1, MDM is compared to existing approaches in literature,
+where we report FID-50K for ImageNet 256x256 and zero shot FID-30K on MSCOCO. We see that
+MDM provides comparable results to prior works.
+Qualitative Results
+We show random samples from the trained MDMs on for image generation
+(ImageNet 256×256, Fig. 5), text-to-image (CC12M, 1024×1024 Fig. 6) and text-to-video (WebVid-
+10M, Fig. 7). Despite training on relatively small datasets, MDMs show strong zero-shot capabilities
+of generating high-resolution images and videos. Note that we use the same training pipelines for all
+three tasks, indicating its versatile abilities of handling various data types.
+4.3
+Ablation Studies
+Effects of progressive training We experiment with the progressive training schedule, where we
+vary the number of iterations that the low-resolution model is trained on before continuing on the
+target resolution (Fig. 8a). We see that more low resolution training clearly benefits that of the
+high-resolution FID curves. Note that training on low resolution inputs is much more efficient w.r.t.
+both memory and time complexity, progressive training provides a straightforward option for finding
+the best computational trade-offs during training.
+7

@@ -1,0 +1,7 @@
+(a) Input
+(b) Rendered output
+Figure 7: A training sample for the layout-based task from PowerPoint slides
+(a) Input
+(b) Rendered output
+Figure 8: A training sample for the layout-based task from PDFs
+18

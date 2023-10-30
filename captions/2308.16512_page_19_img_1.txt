@@ -1,0 +1,12 @@
+DreamFusion-IF
+Magic3D-IF-SD
+TextMesh
+ProlificDreamer
+Ours
+Ours(Normal)
+beautiful, intricate butterfly
+DreamFusion-IF
+Magic3D-IF-SD
+TextMesh
+ProlificDreamer
+Ours

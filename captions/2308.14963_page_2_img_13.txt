@@ -1,0 +1,11 @@
+Ranked List
+Top-k Retrieval
+Figure 1: A standard bi-encoder architecture, where encoders generate dense vector representations
+(embeddings) from queries and documents (passages). Retrieval is framed as k-nearest neighbor
+search in vector space.
+Modern enterprise architectures are already exceedingly complex, and the addition of another software
+component (i.e., a distinct vector store) requires carefully weighing costs as well as benefits. The
+cost is obvious: increased complexity, not only from the introduction of a new component, but also
+from interactions with existing components. What about the benefits? While vector stores no doubt
+introduce new capabilities, the critical question is whether these capabilities can be provided via
+alternative means.

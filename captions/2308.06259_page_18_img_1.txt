@@ -1,0 +1,35 @@
+Figure 9: Screening Analysis Results.
+Figure 10: Pairwise preference rating interface shown to human evaluators.
+compensated fairly and to allow them to alert us to any problems or issues. The user interface used for
+gathering the pairwise preferences from our human evaluators is provided in Figure 10 and Figure 11.
+C
+More Training Details
+For
+experiment
+on
+data
+scaling
+efficiency,
+models
+were
+trained
+with
+increasing
+number
+of
+examples
+N
+for
+each
+dataset.
+For
+fair
+comparison,
+for
+each
+N
+∈
+{100, 800, 1600, 3200, 6400, 12800, 25600, 51200},
+all datasets were trained for the same
+number of steps with the same batch size as is shown in Table 18.
+19

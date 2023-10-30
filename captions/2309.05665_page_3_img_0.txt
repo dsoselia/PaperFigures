@@ -1,0 +1,71 @@
+physics properties like terrain friction, center of mass of the robot base, motor strength and etc to
+enable domain adaptation from simulation to the real world. The policy outputs the target joint
+positions at ∈ R12.
+We train all the specialized skill policies πclimb, πleap, πcrawl, πtilt, πrun separately on corresponding
+terrains shown in Figure 3 using the same reward structure. We use the formulation of minimizing
+mechanical energy in [35] to derive a general skill reward rskill suitable for generating all skills with
+natural motions, which only consists of three parts, a forward reward rforward, an energy reward renergy
+and an alive bonus ralive:
+rskill = rforward + renergy + ralive,
+where
+rforward = −α1 ∗ |vx − vtarget
+x
+| − α2 ∗ |vy|2 + α3 ∗ e−|ωyaw|,
+renergy = −α4 ∗
+�
+j∈joints
+|τj ˙qj|2 ,
+ralive = 2.
+Measured at every time step, vx is the forward base linear velocity, vtarget
+x
+is the target speed, vy is
+the lateral base linear velocity, ωyaw is the base angular yaw velocity, τj is the torque at joint j, ωyaw
+is the joint velocity at at joint j, and α are hyperparameters. We set the target speed for all skills to
+around 1 m/s. We use the second power of motor power at each joint to reduce both the average and
+the variance of motor power across all joints. See the supplementary for all hyperparameters.
+Skill
+Obstacle Properties
+Training Ranges
+([leasy, lhard])
+Test Ranges
+([leasy, lhard])
+Climb
+obstacle height
+[0.2, 0.45]
+[0.25, 0.5]
+Leap
+gap length
+[0.2, 0.8]
+[0.3, 0.9]
+Crawl
+clearance
+[0.32, 0.22]
+[0.3, 0.2]
+Tilt
+path width
+[0.32, 0.28]
+[0.3, 0.26]
+Table 1: Ranges for obstacle properties for each skill during
+training, measured in meters.
+RL Pre-training with Soft Dynamics
+Constraints. As illustrated in Figure 2, the
+difficult learning environments for park-
+our skills prevent generic RL algorithms
+from effectively finding policies that can
+overcome these challenging obstacles. In-
+spired by direct collocation with soft con-
+straints, we propose to use soft dynamics
+i
+l
+h
+diffi
+l
+l
+i
+bl
+Sh
+i Fi
+3
+h
+b
+l

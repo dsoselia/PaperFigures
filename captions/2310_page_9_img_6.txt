@@ -1,0 +1,38 @@
+KOSMOS-G before Instruction Tuning
+Stable Diffusion v1.5
+Figure 6: Comparisons with cases presented in the second row of Figure 1.
+as an oil painting in the style of
+(a) KOSMOS-G with canny control using ControlNet.
+plays
+(b) KOSMOS-G with LoRA variant.
+Figure 7: Various Applications of KOSMOS-G in Conjunction with U-Net Techniques. In Figure 7b,
+the left image is generated using standard U-Net, the right one is produced with LoRA-tuned U-Net.
+ants [HSW+22] in Figure 7. KOSMOS-G works perfectly with these techniques. Building on the
+CLIP space, we believe our model will push forward the transition from text-conditioned generation
+toward vision-language generation, paving the way for numerous novel applications.
+5
+Conclusion
+We propose KOSMOS-G, a model capable of high-fidelity zero-shot image generation from general-
+ized vision-language input that spans multiple images. Our approach hinges on a unique "align before
+instruct" pre-training strategy. KOSMOS-G demonstrates competitive single-entity subject-driven
+image generation and text-to-image capability, it also stands as the first model to extend zero-shot
+subject-driven image generation to multi-entity scenarios. Furthermore, KOSMOS-G allows seamless
+replacement of CLIP, unlocking various new applications in conjunction with other U-Net techniques
+such as ControlNet and LoRA. In general, we present KOSMOS-G as a preliminary effort aimed at
+achieving the objective of “image as a foreign language in image generation.”
+References
+[ADL+22] Jean-Baptiste Alayrac, Jeff Donahue, Pauline Luc, Antoine Miech, Iain Barr, Yana
+Hasson, Karel Lenc, Arthur Mensch, Katherine Millican, Malcolm Reynolds, Roman
+Ring, Eliza Rutherford, Serkan Cabi, Tengda Han, Zhitao Gong, Sina Samangooei, Mar-
+ianne Monteiro, Jacob Menick, Sebastian Borgeaud, Andrew Brock, Aida Nematzadeh,
+Sahand Sharifzadeh, Mikolaj Binkowski, Ricardo Barreira, Oriol Vinyals, Andrew
+Zisserman, and Karen Simonyan. Flamingo: a visual language model for few-shot
+learning. In Advances in Neural Information Processing Systems, 2022.
+[AHR+22] Armen Aghajanyan, Bernie Huang, Candace Ross, Vladimir Karpukhin, Hu Xu, Na-
+man Goyal, Dmytro Okhonko, Mandar Joshi, Gargi Ghosh, Mike Lewis, and Luke
+Zettlemoyer. CM3: A causal masked multimodal model of the Internet. ArXiv preprint,
+abs/2201.07520, 2022.
+[BHE23] Tim Brooks, Aleksander Holynski, and Alexei A Efros. Instructpix2pix: Learning to
+follow image editing instructions. In Proceedings of the IEEE/CVF Conference on
+Computer Vision and Pattern Recognition, pages 18392–18402, 2023.
+10

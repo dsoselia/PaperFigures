@@ -1,0 +1,42 @@
+Can Large Language Models Explain Themselves?
+A Study of LLM-Generated Self-Explanations
+Shiyuan Huang∗
+Siddarth Mamidanna∗
+Shreedhar Jangam
+Yilun Zhou
+Leilani H. Gilpin
+UC Santa Cruz
+UC Santa Cruz
+UC Santa Cruz
+MIT CSAIL
+UC Santa Cruz
+{shuan101, spmamida, sjangam}@ucsc.edu, yilun@csail.mit.edu, lgilpin@ucsc.edu
+Abstract—Large language models (LLMs) such as ChatGPT
+have demonstrated superior performance on a variety of natural
+language processing (NLP) tasks including sentiment analysis,
+mathematical reasoning and summarization. Furthermore, since
+these models are instruction-tuned on human conversations
+to produce “helpful” responses, they can and often will pro-
+duce explanations along with the response, which we call self-
+explanations. For example, when analyzing the sentiment of a
+movie review, the model may output not only the positivity of the
+sentiment, but also an explanation (e.g., by listing the sentiment-
+l d
+d
+h
+“f
+t
+ti ”
+d “
+bl ” i
+th
+i
+)
+This review is very positive, as
+judged by the positive words
+“fantastic” and “terrific”.
+Is this review positive? Why or why not? 
+“A fantastic movie directed by the famous 
+Lucas Johnson, who has a track-record of 
+producing terrific novel adaptions.”
+Oct 2023

@@ -1,0 +1,30 @@
+Model
+Batch Size
+FID↓
+IS↑
+CLIP↑
+training data
+N/A
+N/A
+14.75 ± 0.81
+31.31 ± 3.34
+Multi-view Diffusion
+- no 2D data
+256
+33.41
+12.76 ± 0.70
+30.60 ± 3.14
+- proposed
+256
+32.57
+13.72 ± 0.91
+31.40 ± 3.05
+- proposed
+1024
+32.06
+13.68 ± 0.41
+31.31 ± 3.12
+Table 1: Quantitative evaluation on image synthesis quality. DDIM sampler is used for testing.
+Zombie bust, terror, 123dsculpt, bust, zombie
+Battletech Zeus with a sword!, tabletop, miniature, bat-
+tletech, miniatures, wargames, 3d asset

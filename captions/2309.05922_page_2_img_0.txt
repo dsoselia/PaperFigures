@@ -1,0 +1,25 @@
+Hallucination
+in Large
+Foundation
+Models
+Text
+LLMs
+Li et al. (2023b); Mündler et al. (2023); Zhang et al. (2023b);
+Peng et al. (2023); Li et al. (2023d); Elaraby et al. (2023); Jha
+et al. (2023); McKenna et al. (2023); Varshney et al. (2023);
+Huang and Chang (2023); Luo et al. (2023); Gao et al. (2023)
+Multilingual
+LLMs
+Pfeiffer et al. (2023); Cui et al. (2023)
+Domain-
+specific
+LLMs
+Medical: Umapathi et al. (2023), Law: Cui et al. (2023)
+Image
+Li et al. (2023e); Gunjal et al. (2023); Wu et al. (2023)
+Video
+Himakunthala et al. (2023); Kulal et al. (2023); Li et al.
+(2023c); Yu et al. (2023); Liu and Wan (2023)
+Audio
+Doh et al. (2023); Li et al. (2023a)
+Figure 1: Taxonomy for Hallucination in Large Foundation Models

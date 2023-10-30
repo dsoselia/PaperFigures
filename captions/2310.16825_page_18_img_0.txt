@@ -1,0 +1,54 @@
+Figure 15: How does reducing the amount of training data affect the training dynamics? We find a
+noticeable improvement drop when training with less than 10 million samples.
+Scheduled Exponential Moving Average (EMA). SD2 uses EMA, which maintains an exponential
+moving average of the weights at every gradient update for the entire training period. This can be
+slow due to the memory operations required to read and write all the weights at every step. Since
+the old weights are decayed by a factor of 0.9999 at every batch, the early iterations of training only
+contribute minimally to the final average. We decide to only apply EMA for the final 50K steps
+(about 3.5% of the training period), and are able to avoid adding overhead and still achieve a nearly
+equivalent EMA model.
+E
+Telephoning: A Transfer Learning-based Image-captioning Method
+Our solution for handling the lack of captions in CC images is called telephoning, a type
+of transfer learning (Figure 3).
+Telephoning assumes the existence of a large labeled dataset
+D1 = {(x(i), y(i))}n
+i=1, consisting of pairs of high-dimensional x(i) (e.g., images, audio) that
+map to a compact, structured label y(i) (e.g., caption, audio transcript). Telephoning trains a for-
+ward model q(y|x) on D1 to learn the mapping of y given x via maximum likelihood learning
+maxq∈Q
+�n
+i=1 log q(y(i)|x(i)). It then uses q as training signal for a reverse model p(x|y) trained
+on a separate dataset D2 = {x(i)}m
+i=1 by maximizing �m
+i=1 Ey∼q(y|x(i))[log p(x(i)|y(i))], the likeli-
+hood of the data D2 and the predicted label y under q. This forms a type of knowledge transfer from
+the forward labeling task defined by D1 to the reverse task of inverting x from y on a separate D2.
+While telephoning can be viewed as a type of synthetic labeling, it becomes particularly interesting
+when x is a type of protected modality (e.g., a copyrighted image), while y is a compact representa-
+tion of x that does not encode sensitive aspects of y (e.g., a generic caption). Effectively, telephoning
+performs a type of “lossy compression” or “distillation” from a high-dimensional or information-
+rich x (e.g., an image of Snoopy) to a low-dimensional or information-poor y that loses the sensitive
+content in x (e.g., the visual characteristics of Snoopy). Because this compression step is “lossy”, a
+reconstruction x′ of x from p(x|y) via y often does not remotely resemble the original input, just like
+in a game of telephone [38]. We derive the term telephoning from the above intuition, and employ
+it as useful shorthand to denote instances of transfer learning that solve data-scarcity problems in
+multimodal generative modeling.
+T l
+h
+i
+f
+t
+t t
+i
+d li
+I
+thi
+k
+l
+t l
+h
+i
+t
+th i
+d

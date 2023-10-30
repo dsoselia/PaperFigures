@@ -1,0 +1,4 @@
+Technical report. In progress
+Figure 18: Random samples from the trained MDM on WebVid 16 × 256 × 256 given various prompts. The
+guidance weight is set 7.0.
+28

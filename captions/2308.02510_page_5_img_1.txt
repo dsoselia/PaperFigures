@@ -1,0 +1,94 @@
+GT images
+Sample1
+Sample2
+Sample3
+Saliency Map
+GT images
+Sample1
+Sample2
+Sample3
+Saliency Map
+Figure 3: The main results of our NEUROIMAGEN. The images positioned on the left with red boxes represent the ground truth
+images. The second images from the left represent the pixel-level saliency map reconstructed from EEG signals. The three
+images on the right exhibit the three sampling results for the given saliency map under the guidance of sample-level semantics.
+with coarse-grained but accurate guidance of sample-level
+semantics from EEG signals. The high-quality reconstructed
+images purely from brain signals are perceptually and se-
+mantically similar to the viewed images.
+Model
+ACC (%)
+IS
+SSIM
+Brain2Image
+5.01
+NeuroVision
+5.23
+NEUROIMAGEN
+85.6
+33.50
+0.249
+Table 1: The quantitative results of our NEUROIMAGEN,
+Brain2Image (Kavasidis et al. 2017) and NeuroVision
+(Khare et al. 2022) on EEG-image dataset.
+Comparison with Baselines
+The quantitative results of NEUROIMAGEN and baselines
+are listed in Table 1. We have introduced the IS reported
+in the relevant literature, to exemplify the quality of the
+reconstructed images. The IS is calculated by encompass-
+ing all images reconstructed across all subjects and all
+classes within the test set. As is demonstrated in Table 1,
+the IS of our NEUROIMAGEN is significantly higher than
+Brain2Image and NeuroVision. Furthermore, inspired by
+(Bai et al. 2023), we provide a qualitative comparison with
+the baselines in Figure 4. As can be seen, the quality of the
+images reconstructed by our NEUROIMAGEN is markedly
+higher than those reconstructed by the Brain2Image. This
+observed enhancement serves to validate the effectiveness
+and superiority of our proposed methodology.
+Subject
+ACC (%)
+IS
+SSIM
+subj 01
+83.84
+32.64
+0.254
+subj 02
+84.26
+32.33
+0.247
+subj 03
+86.66
+32.93
+0.251
+subj 04
+86.48
+32.40
+0.244
+subj 05
+87.62
+32.97
+0.250
+subj 06
+85.25
+31.76
+0.245
+Table 2: The quantitative results of different subjects.
+Generation Consistency in Different Subjects
+Since EEG signals are subject-specific cognitive processes
+that differ significantly in different subjects. In this section,
+we validate the robustness and feasibility of NEUROIMA-
+GEN across different individuals. As is illustrated in Fig-
+ure 5. The quantitative metric of different subjects are stable,
+which proves the generalization ability of NEUROIMAGEN.
+The qualitative results are shown in Figure 5. It can be seen
+the sampling from different subjects are semantically similar
+to the ground truth images.
+Ablation Study
+We further conduct experiments on the EEG-image dataset
+to analyze the effectiveness of each module of our NEU-
+ROIMAGEN. We define B and L as the sample-level seman-
+tics from EEG signals using BLIP caption as supervision or
+label caption as supervision. We define I as the pixel seman-
+tics from EEG signals. The effectiveness of different meth-
+ods is verified by employing ACC, IS, and SSIM.

@@ -1,0 +1,34 @@
+B
+USE CASES
+Presented below are exemplary use cases for the OpenAgents deployed demo. For comprehensive
+video demonstrations, refer to the documentation. The provided cases only represent a fraction
+of OpenAgents’ capabilities. Also, we encourage users to delve into our source code for a deeper
+understanding.
+For quick reference, we demonstrate the use cases of data agent, plugin agent, and web agent in
+Figure 6, Figure 7, and Figure 8 respectively.
+B.1
+DATA AGENT
+(a) Kaggle Dataset Search: Input your subject or do-
+main preference, and the Data Agent will traverse the
+Kaggle API to identify datasets fitting your specifica-
+tions.
+(b) Python Code Execution: Utilize the Python tool
+to craft Python code and execute rudimentary data
+sanitization on a given table.
+(c) SQL Query Execution: Using the SQL tool, the
+Data Agent can execute data queries on an input table
+or dataset.
+(d) Interactive Echarts Visualization: The Data
+Agent employs the pyecharts package, transforming
+it into a JSON object. This object can be rendered
+as an interactive Echarts plot, as facilitated by the
+ECharts library.
+(e) Image Operations: Beyond textual and tabular
+data, the Data Agent can also perform basic manipu-
+lations on images.
+(f) Interesting Cases:
+Demonstrate the earth’s
+roundness, create GIFs with descending letters, or
+construct a word cloud from an academic article.
+Figure 6: Use cases for Data Agent
+20

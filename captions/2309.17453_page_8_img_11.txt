@@ -1,0 +1,176 @@
+Preprint
+p
+Dense Attention
+Window Attention
+StreamingLLM
+Figure 9: Performance on the StreamEval benchmark. Accuracies are averaged over 100 samples.
+Latency (ms)
+0
+400
+800
+1200
+1600
+256
+512
+1024
+2048
+4096
+65
+45
+35
+31
+31
+1411
+523
+223
+103
+63
+Sliding Window with Re-computation
+StreamingLLM
+Memory (GB)
+0
+7
+14
+21
+256
+512
+1024
+2048
+4096
+19
+16
+14
+13
+13
+21
+16
+14
+13
+13
+Latency (ms)
+0
+750
+1500
+2250
+3000
+256
+512
+1024
+2048
+4096
+106
+75
+60
+52
+48
+2355
+860
+361
+169
+99
+Memory (GB)
+0
+10
+19
+29
+38
+256
+512
+1024
+2048
+4096
+34
+29
+27
+26
+25
+36
+29
+26
+25
+25
+Llama-2-7B
+Llama-2-13B
+Figure 10: Comparison of per-token decoding latency and memory usage between the sliding window
+approach with re-computation baseline and StreamingLLM, plotted against the cache size (attention
+window size) on the X-axis. StreamingLLM delivers a remarkable speedup of up to 22.2× per token
+and retains a memory footprint similar to the re-computation baseline.
+Cache Sizes.
+In Table 6, we evaluate cache size’s impact on StreamingLLM’s perplex-
+ity.
+Contrary to intuition, increasing the cache size doesn’t consistently lower the lan-
+guage modeling perplexity. This inconsistency shows a potential limitation where these mod-
+els might not maximize the utility of the entire context they receive.
+Future research ef-
+forts should target enhancing these models’ capabilities to utilize extensive contexts better.
+Table
+6:
+Effects
+of
+cache
+size
+on
+StreamingLLM’s performance. Increasing
+the cache size in StreamingLLM doesn’t con-
+sistently yield a decrease in perplexity across
+all models, suggesting these models may
+not be fully exploiting the provided context.
+Cache config x+y denotes adding x initial
+tokens with y recent tokens. Perplexity is
+evaluated on 400K tokens in the concatenated
+PG19 test set.
+Cache
+4+252 4+508 4+1020 4+2044
+Falcon-7B
+13.61
+12.84
+12.34
+12.84
+MPT-7B
+14.12
+14.25
+14.33
+14.99
+Pythia-12B
+13.17
+12.52
+12.08
+12.09
+Cache
+4+508 4+1020 4+2044 4+4092
+Llama-2-7B
+9.73
+9.32
+9.08
+9.59
+4.5
+EFFICENCY RESULTS
+We benchmark its decoding latency and memory us-
+age against the sliding window with re-computation,
+which is the only baseline with acceptable per-
+formance.
+Both methods are implemented using
+the Huggingface Transformers library (Wolf et al.,
+2020) and tested on a single NVIDIA A6000 GPU
+using the Llama-2-7B and Llama-2-13B models.
+As depicted in Figure 10, as the cache size in-
+creases, StreamingLLM’s decoding speed demon-
+strates a linear growth. The sliding window with
+re-computation baseline has a quadratic rise in de-
+coding latency. Thus, StreamingLLM achieves an
+impressive speedup, reaching up to 22.2× per token.
+Despite its reduced latency, StreamingLLM sustains a
+memory footprint consistent with the re-computation
+baseline.
+5
+CONCLUSION
+Deploying LLMs in streaming applications is urgently needed but comes with challenges due to
+efficiency limitations and reduced performance with longer texts. Window attention provides a partial
+solution, but its performance plummets when initial tokens are excluded. Recognizing the role of
+these tokens as “attention sinks", we introduced StreamingLLM —a simple and efficient framework
+that enables LLMs to handle unlimited texts without fine-tuning. By adding attention sinks with
+recent tokens, StreamingLLM can efficiently model texts of up to 4 million tokens. We further
+show that pre-training models with a dedicated sink token can improve the streaming performance.
+StreamingLLM firstly decouples the LLM’s pre-training window size and its actual text generation
+length, paving the way for the streaming deployment of LLMs.
+9

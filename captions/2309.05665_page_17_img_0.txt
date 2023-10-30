@@ -1,0 +1,2 @@
+Figure 8: Parkour training environment in simulation during distillation.
+18

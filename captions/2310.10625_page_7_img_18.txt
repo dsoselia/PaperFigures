@@ -1,0 +1,96 @@
+Move all 
+Blocks to the 
+Right Corner
+Group 
+Blocks By 
+Color
+Make a 
+Horizontal 
+Line
+Figure 7: Real Execution. Illustration of execution VLP on real world robots. VLP is able to accomplish
+different long horizon goals when executed on real robots.
+1. Open top drawer
+2. Place banana in top drawer
+3. Place apple in top drawer
+4. Close top drawer
+Task: Put the fruits 
+into the top drawer
+Figure 8: 7DoF Mobile Robot Execution. VLP is able to execute complex, long horizon plans on mobile robot.
+Planning
+Branching
+Line
+Line
+Beams
+Horizon
+Factor
+Score
+Completion
+1
+1
+4
+48.9
+0%
+1
+1
+16
+53.3
+2%
+1
+2
+16
+58.1
+8%
+2
+2
+16
+65.0
+16%
+Table 3: Execution Accuracy vs Planning Budget.
+VLP is able to more accurately execute video plans to
+solve tasks with a larger amount of planning. Success
+percentage reported on the make line task.
+Group Color
+Group Color
+Action Inference
+Score
+Completion
+Inverse Dynamics
+89.7
+80%
+Goal Policy (Last)
+85.0
+66%
+Goal Policy (Every)
+95.8
+92%
+Table 4: Extracting Actions From VLP Video Plans.
+Comparison of using inverse dynamics or applying a
+goal-conditioned policy to either the last frame or ev-
+ery frame of synthesized short-horizon video. Success
+percentage reported on the group by color task.
+Effect of Planning.
+Next, we analyze the effect of the amount of planning on execution success
+rates in Tab. 3. We find that increasing both the planning horizon and the branching factor of planning
+substantially improves the success of task execution (at the cost of inference time).
+Ablations of Goal-Conditioned Policy
+We further conduct experiments on different approaches to
+extracting actions from videos in Tab. 4. We find that using a goal-conditioned policy conditioned on
+each intermediate frame in a synthesized video leads to the best overall performance (outperforming
+using a goal-conditioned policy sparsely on the end frames of each short-horizon video).
+Real Execution.
+We provide executions of VLP on multiple real-world robots in Fig. 7 and Fig. 8.
+As in Fig. 7, VLP is able to effectively execute each shown long-horizon task on a real Language
+Table robot. We further provide executions of generated video plans of our approach on the 7DoF
+mobile manipulator in Fig. 8. Similarly we find that a goal-conditioned policy can realize plans.
+3.3
+GENERALIZATION
+Generalization to Lighting and Objects.
+In VLP, policy execution is abstracted into visual
+goal generation followed by a goal-conditioned controller. With this abstraction, a video model can
+simply focus on capturing the visual dynamics objects, while a goal-conditioned policy needs to
+focus only on relevant visual details to achieve the next (nearby) goal. We found that this enables
+VLP to generalize well, as the video model is able to visually generalize to new images, while the
+policy is able to generalize well to nearby new visual goals. In Fig. 9 (top), VLP is able to generalize
+the task of putting all objects in top right corner, to three new objects, a rubber donut and cupcake
+and a wooden hexagon. In Fig. 9 (bottom) VLP is further able to generalize to lighting conditions
+8

@@ -1,0 +1,58 @@
+curves are shown in Fig. 3.
+Growing policy network for RL tasks. We trained a
+NDP with 162 parameters for the CartPole tasks, in which
+it has to grow a policy network controlling the force applied
+to a pole to keep it balanced. It grew an undirected network
+with 10 nodes and 33 weighted edges that reached a reward
+of 500±0 over 100 rollouts (Fig. 3). This score is considered
+as solving the task. The growth process of the network from
+a single node to the final policy can be seen in Fig. 5.
+Similarly, we trained a NDP to grow a network policy to
+solve the Lunar Lander control task (Fig. 4, right). In this
+case, a NDP with 868 trainable parameters grew an undi-
+rected network policy with 16 nodes and 78 weighted edges.
+Over 100 rollouts, the mean reward obtained is 116 ± 124.
+Although the resulting policy controller could solve the task
+in many of the rollouts, the stochasticity of the environment
+(e.g. changing the landing surface at each instantiation) re-
+sulted in a high reward variance. This means that the grown
+network did not quite reach the 200 reward over 100 rollouts
+score that is considered as the task’s solving criterion.
+Growing small-world topologies. Real networks found
+in nature such as biological neural networks, ecological net-
+works or social networks are not simple random networks
+but rather their graphs have very specific topological prop-
+erties. In order to analyze the ability of the neural devel-
+opmental program to grow complex graph motifs, we train
+the NDP to grow a small-world network (Watts and Stro-
+gatz, 1998). A small-world network is characterised by a
+small average shortest path length but a relatively large clus-
+output neurons that determine the actions of the cartpole.
+tering coefficient. We can quantify this with two metrics
+σ = C/Cr
+L/Lr and ω = Lr
+L − C
+Cl , where C and L are respec-
+tively the average clustering coefficient and average short-
+est path length of the network. Cr and Lr are respectively
+the average clustering coefficient and average shortest path
+length of an equivalent random graph. A graph is commonly
+classified as small-world if σ > 1 or, equivalently, ω ≈ 0.
+We show that NDP technique can grow a graph with
+small-world coefficients are σ ≈ 1.27 and ω ≈ −1.11−16,
+hence satisfying the small-worldness criteria. An example
+network is shown in Fig. 6. While these results are promis-
+ing, further experiments are required —notably on bigger
+graphs— to investigate with solid statistical significance the
+potential of the method to grow graphs with arbitrary topo-
+logical properties.
+Gradient-Based Results
+We evaluate the differentiable NDP by comparing models
+that are trained and tested on different numbers of growth
+steps (”Growth Steps” column in Table 1). It seems that for
+most tasks, after a certain number of growth steps, the grown
+network’s performance can deteriorate, as policies do not
+really benefit from more complexity. This could also be due
+to the simplicity constraint of grown architectures, making
+it unable to take advantage of new nodes as the networks get
+larger. Automatically learning when to stop growing will be

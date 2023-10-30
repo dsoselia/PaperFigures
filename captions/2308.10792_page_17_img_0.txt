@@ -1,0 +1,110 @@
+Figure 9: The overview framework of COEDIT. The
+figure is copied from Raheja et al. (2023).
+comprises approximately 82K <instruction: source,
+target> pairs. As shown in Figure 9, the model
+takes instructions from the user specifying the
+characteristics of the desired text, such as "Make
+the sentence simpler", and outputs the edited text.
+CoEdIT achieves state-of-the-art performance on
+several text editing tasks, including grammatical
+error correction, text simplification, iterative text
+editing, and three stylistic editing tasks: formality
+style transfer, neutralization, and paraphrasing.
+Furthermore, it can generalize well to new, adjacent
+tasks not seen during fine-tuning.
+CoPoet
+(Chakrabarty
+et
+al.,
+2022)
+is
+a
+collaborative poetry writing tool that utilizes a
+large language model (e.g. T5-3B, T5-11B and
+T0-3B models) trained on a diverse collection of
+instructions for poetry writing. Each sample in
+the instruction dataset includes an <instruction,
+poem_line> pair. There are three major types of
+instructions: Continuation, Lexical Constraints,
+and Rhetorical Techniques. The CoPoet is guided
+by user instructions that specify desired attributes
+of the poetry, such as writing a sentence about
+"love" or ending a sentence with "fly." Not
+only is the system competitive with publicly
+available LLMs trained on instructions, such as
+InstructGPT (Ouyang et al., 2022), but it is
+also capable of satisfying unseen compositional
+instructions.
+6.6
+Medical
+Radiology-GPT
+(Liu et al., 2023c) is a fine-
+tuned Alpaca-7B (Taori et al., 2023) model for
+radiology, which utilizes an instruction tuning
+approach on an extensive dataset of radiology
+domain knowledge.
+Radiology reports usually
+include two corresponding sections: "Findings"
+and "Impression". The "Findings" section contains
+detailed observations from the radiology images,
+while the "Impression" section summarizes the
+interpretations drawn from those observations.
+Radiology-GPT provides a brief instruction to
+the "Findings" text: "Derive the impression from
+findings in the radiology report". The "Impression"
+text from the same report serves as the target
+output. In comparison to general language models
+such as StableLM (Islamovic), Dolly (Conover
+et al., 2023), and LLaMA (Touvron et al.,
+2023a), Radiology-GPT demonstrates significant
+adaptability in radiological diagnosis, research, and
+communication.
+ChatDoctor
+(Li et al., 2023g) is based
+on
+the
+fine-tuned
+LLaMa-7B
+(Touvron
+et
+al.,
+2023a)
+model,
+utilizing
+the
+alpaca
+instruction dataset (Taori et al., 2023) and the
+HealthCareMagic100k patient-doctor dialogue
+dataset. And prompt templates are designed for
+retrieving external knowledge databases, such
+as the Disease Database and Wikipedia retrieval,
+during doctor-patient conversations to obtain more
+accurate outputs from the model. The ChatDoctor
+significantly improves the model’s ability to
+comprehend patient needs and provide informed
+advice. By equipping the model with self-directed
+information retrieval from reliable online and
+offline sources, the accuracy of its responses is
+substantially improved.
+ChatGLM-Med
+(Haochun Wang, 2023) is
+fine-tuned on the Chinese medical instruction
+dataset based on the ChatGLM-6B (Du et al.,
+2022) model. The instruction dataset comprises
+medically relevant question and answer pairs,
+created using the GPT 3.5 API and the Medical
+Knowledge Graph.
+This model improves the
+question-answering performance of ChatGLM (Du
+et al., 2022) in the medical field.
+6.7
+Arithmetic
+Goat
+(Liu and Low, 2023) is a fine-tuned
+LLaMA-7B (Touvron et al., 2023a) model based
+on instructions, which aims to solve arithmetic
+problems. It expresses arithmetic problems in the
+form of natural language question answering, such
+as "What is 8914/64?", by generating hundreds
+of instruction templates using ChatGPT (OpenAI,
+2022). The model applies various techniques to

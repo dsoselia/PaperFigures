@@ -1,0 +1,11 @@
+STRUC-BENCH: Are Large Language Models Really Good at Generating
+Complex Structured Data?
+Xiangru Tang♠ Yiming Zong♡ Jason Phang♢ Yilun Zhao♠ Wangchunshu Zhou♣
+Arman Cohan♠∗
+Mark Gerstein♠∗
+♠ Yale University
+♡ Zhejiang University
+♢ New York University
+♣ ETH Zurich
+{xiangru.tang, arman.cohan, mark.gerstein}@yale.edu
+Abstract

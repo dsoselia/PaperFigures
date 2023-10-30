@@ -1,0 +1,56 @@
+Large model sizes are not widely accessible and
+can be slow and expensive to run. We experiment
+with labeling preferences with different model sizes
+and observe a strong relationship between align-
+ment and size. Alignment drops -4.2% when mov-
+ing from PaLM 2 Large (L) down to PaLM 2 Small
+(S), and it drops another -11.1% when moving
+down to PaLM 2 XS. This trend is consistent with
+scaling laws observed in other work (Kaplan et al.,
+2020). One contributing factor to the decline in
+performance could be the increase in position bias
+in smaller LLMs (see Appendix A).
+On the end of this trend, these results also sug-
+gest that scaling up AI labeler size may produce
+even higher quality preference labels. Since the AI
+labeler is only used to generate preference exam-
+ples once and is not queried during RL training,
+using an even larger AI labeler is not necessarily
+prohibitively expensive. Furthermore, Section 5.5
+suggests that a small number of examples may be
+sufficient to train a powerful RM (e.g. on the or-
+der of O(1k)), further reducing the costs of using a
+larger labeler model.
+5.5
+Number of Preference Examples
+To understand how RM accuracy changes with the
+number of training examples, we train a RM on
+We observe that the performance of the AI pref-
+erence RM quickly plateaus after training on a few
+thousand examples. The RM achieves ∼60% ac-
+curacy when training on only 128 examples and
+then reaches an accuracy close to that of training
+on the full dataset when training with only 5,000
+examples (roughly 1
+20 of the full dataset).
+We also conduct a parallel set of experiments
+on a RM trained on human preferences. We find
+that the human and AI RMs follow similar scaling
+curves. One difference is that the human preference
+RM appears to continually improve as the number
+of training examples increases, though more train-
+ing examples only bring small improvements to
+accuracy. This trend suggests that RMs trained on
+AI preferences may not benefit as much from scal-
+ing up the number of training examples as RMs
+trained on human preferences.
+Given the limited improvement from scaling up
+the number of AI preference examples, more re-
+sources may be better spent on labeling with larger
+model sizes (see Section 5.4) rather than labeling
+more preference examples.
+6
+Qualitative Analysis
+To better understand how RLAIF compares to
+RLHF, we manually inspected summaries gener-
+ated by both policies. In many cases, the two poli-

@@ -1,0 +1,29 @@
+A
+APPENDIX
+A.1
+COMPARISON WITH IMAGE-TO-3D METHOD
+In Fig. (10), we compare our results with an state-of-the-art image-to-3D method, namely Zero123-
+XL (Liu et al., 2023). In particular, we first generate an image using the same prompt with
+SDXL (Podell et al., 2023), segment the object to remove background, and then provide the image as
+input to the image-to-3D system using Zero123-XL in threestudio. We notice two drawbacks of such
+a pipeline compared to our text-to-multi-view diffusion model:
+1. Zero123-XL is trained on 3D datasets only, whose objects are mostly aligned with simple
+poses (e.g. T-pose for characters). So the image-to-3D results tend to be distorted if the input
+image has complicated poses and view angles that are different from 3D dataset. Specifically,
+when the object is geometrically spanned in the direction of the depth, the generated 3D
+tends to be too flat. This can be seen from the examples of eagle.
+2. Zero123-XL can hardly generate geometrically consistent and richly textured novel-view
+images, and therefore the score distilled objects tend to have less details, yielding a smooth,
+blurred and relatively uniform appearance on the other sides different from the input view,
+as shown with the example of bulldog.
+A.2
+EFFECT OF NUMBER OF VIEWS
+In Fig. (11), we compare the SDS with diffusion models trained with different number of views. All
+the models are trained with the same settings except the number of views. Camera embeddings is
+used for all models. We found that the 1-view model, in spite of its camera-awareness, still suffer
+Zero123-XL
+Ours
+a bald eagle carved out of wood
+Zero123-XL
+Ours
+a bulldog wearing a black pirate hat

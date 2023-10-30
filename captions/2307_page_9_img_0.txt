@@ -1,0 +1,56 @@
+Figure 6: Duration Distribution. The bars in the graph are arranged in descending order, showcasing
+the distribution of software development runtime for different tasks.
+Table 2: The statistical analysis of all dialogues in chat chains.
+Min
+Max
+Avg.
+# Self-Reflection
+1.00
+4.00
+1.24
+# Utterances
+24.00
+104.00
+45.60
+# Prompt Tokens
+11,119.00
+91,208.00
+36,902.23
+# Completion Tokens
+3,161.00
+27,162.00
+11,567.37
+# Total Tokens
+15,294.00
+111,019.00
+48,469.60
+self-reflection number in the dialogue ranges from 1 to 4, with an average of 1.24. In most cases,
+agents can autonomously conclude the dialogue based on predefined communication protocols.
+On average, a chat chain contains 45.60 utterances, ranging from a minimum of 24 to a maximum of
+104. The count of utterances encompasses discussions related to achievability of subtasks, evaluations
+of generated code quality, feedback on testing, advice for improvements, and the actual writing and
+generation of software code files and documents. Likewise, we have observed that CHATDEV tends
+to engage in less communication through utterances for abstract tasks compared to specific tasks,
+averaging around 34.40 utterances. Analysis of the dialogues revealed that during the design and
+coding stages, agents conducted multiple rounds of discussions to delve into the details of numerous
+requirements or propose modification suggestions. These discussions aimed to make informed
+decisions regarding the specific tasks at hand. This phenomenon aligns with real-world practices,
+where addressing specific tasks often involves more detailed discussions and deliberations.
+We monitored API interactions and token usage during software production in CHATDEV. On
+average, CHATDEV requires 36,902.23 prompt tokens, 11,567.37 completion tokens, and a total
+of 48,469.60 tokens to develop a single software. The average total cost in software production is
+approximately $0.15693. To determine the overall cost of software development with CHATDEV,
+we also consider the cost of designer-produced images. The average designer cost is $0.1398 per
+software for each software production involving 8.74 graphics creations on average. Thus, the
+average software development cost at CHATDEV is $0.2967, significantly lower than traditional
+custom software development companies’ expenses [18; 21; 31].
+Reviewer-Programmer Dialogue Analysis
+In this section, we delve into the primary exchanges
+between the reviewer and the programmer, specifically concerning code-related matters during the
+coding phase. We summarize the reviewer’s evaluations of the programmer’s source code at the
+coding stage. Figure 7 provides a visual representation of the reviewer’s suggestions in the form of
+pie charts. As depicted in the figure, the most frequently discussed issue in the reviewer-programmer
+communication during code review is “methods not implemented” (34.85%). This challenge
+commonly arises in code generation for complex models, where core functionalities often receive
+3Based on official API prices for July 2023.
+10

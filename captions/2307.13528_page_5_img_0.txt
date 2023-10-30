@@ -1,0 +1,107 @@
+U ve
+ed So u o
+def square_a_num(n): 
+return n * n
+Outputs 4
+0 25
+Verify
+Write Python code 
+that can square a 
+number.
+Prompt
+Unverified Solution
+def square(n): 
+return n * n
+Chatbot
+GPT-4
+Verify
+Unittest 
+Library
+Inputs
+-2 0 5
+Outputs 4 0 25
+Potential Solution
+GPT
+GPT
+GPT
+Figure 3: Unit test library generation for detecting fac-
+tual errors in code generation.
+p. In our later experiments, we generate 3 sim-
+ulated test case inputs and 3 potential solutions.
+Detailed prompting instructions can be found in
+Appendix A.
+Math Problems
+We prompt ChatGPT or GPT-4
+to convert all mathematical operations into exe-
+cutable Python code snippets. These snippets are
+designed to return “True” when the calculation
+matches the calculated answer and “False” if it
+doesn’t. Detailed prompting instructions can be
+found in Appendix A.
+Scientific Literature Review
+We use the paper
+title, found within the extracted claim tuple, as the
+query for Google Scholar. Our assumption here is
+that if a paper exists, it should appear as the first
+search result on Google Scholar when we use the
+paper title as the query.
+4.3
+Tool Querying & Evidence Collection
+We then use the queries to query various tools to
+collect relevant evidence statements {eik}k=1···li.
+KB-based QA
+The external tool we use to help
+verify the factuality of the generated text is the
+Google Search API, which queries the internet for
+knowledge using the queries generated from the
+claims extracted from the generated text of LLM.
+We use the Google Search API provided by Ser-
+per5 to search the top pages and retrieve the most
+relevant search snippets included in the API’s re-
+ing ti as the input and collect the execution result
+(output) for each (ti, sj) pair. The input-output
+pairs are used as test cases for verifying the chat-
+bot generated unverified solution. The process is
+shown in Fig. 3.
+Math Problems
+We collect the execution results
+for code snippets derived from the mathematical
+operations. As illustrated in Fig. 2, math claims
+like “30 /3 = 10” are extracted and then con-
+verted into a Python executable code, for instance,
+“print(round(30/3, 7)==10)”.
+Scientific Literature Review
+We use the title of
+each paper, extracted from the text, as the query
+to access relevant information through the Google
+Scholar API provided by the Scholarly6 Python
+package. This allows us to retrieve key information
+about each paper, including the paper title, author
+list, and publication year.
+4.4
+Agreement Verification
+In the final step, each claim, ci, receives a binary
+factuality label, Li ∈ {TRUE, FALSE}, based on
+the level of support it receives from the collected
+evidence, {eik}k=1···li. This labeling process is
+performed for every individual claim.
+KB-based QA
+We prompt ChatGPT or GPT-4 to
+judge the factuality of the claim given the retrieved
+list of evidence snippets. We follow a zero-shot
+Chain-of-Thought (Wei et al., 2023) reasoning pro-
+cess: initially, the model attempts to reason about
+whether the claim is factual or not. If an error is
+identified, we then ask it to explain and attempt to
+rectify the mistake.
+Code Generation
+We conduct a majority vote
+for each test case across all solutions, establishing
+what we refer to as the “pseudo-golden output” for
+that particular test case. We repeat this process for
+every test case. Following this, we compare the
+execution result of the solution that’s under veri-
+fication against all the test cases with the pseudo
+golden output. If the results match, we classify the
+solution under verification as true. Otherwise, it is
+deemed false

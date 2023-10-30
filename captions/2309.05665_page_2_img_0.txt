@@ -1,0 +1,45 @@
+robot height), squeezing through thin slits of 0.28m by tilting (less than the robot width), and
+running;
+• generalization to different robots, where we demonstrate that our system with the same training
+pipeline can power two different robots, A1 and Go1.
+2
+Related Work
+Agile Locomotion. Model-based control has achieved much success in agile locomotion, from MIT
+Cheetah robots and A1 robots jumping over or onto obstacles of various heights [46, 47, 48], ETH
+StarlETH robots jumping vertically [49], CMU Unified Snake robots climbing trees [50], X-RHex
+robots self-righting using tails [51], ANYmal ALMA robots opening doors [52], ATRIAS robots
+walking over stepping stones [53, 54], Marc Raibert’s One-Legged Hopping Machine [55], and Boston
+Dynamics Atlas’ parkour skills [7]. Recently, learning-based methods have also demonstrated various
+agile locomotion capabilities, including high-speed running [56, 16, 57, 35], resetting to the standing
+pose from random states [11, 38, 15, 58], jumping [59, 60, 61], climbing stairs [20, 10, 28, 29, 30, 32,
+33], climbing over obstacles [62], walking on stepping stones [29], back-flipping [63], quadrupedal
+standing up on rear legs [43], opening doors [40, 64, 65, 66], moving with damaged parts [67],
+catching flying objects [68], balancing using a tail [69], playing football/soccer [70, 71, 72, 73],
+weaving through poles [74] and climbing ramps [74]. Most of these skills are blind or rely on state
+estimation, and specialized methods are designed for these individual skills. In contrast, we build a
+system for learning a single end-to-end vision-based parkour policy for various parkour skills.
+Vision-Based Locomotion. Classical modular methods rely on decoupled visual perception and
+control pipelines, where the elevation maps [75, 76, 77, 78, 79, 80, 81], traversability maps [82, 83,
+84, 85], or state estimators [86, 87, 88, 89, 90, 91, 92, 93, 94, 95] are constructed as intermediate
+representations for downstream foothold planning, path planning and control [96, 97, 98, 99, 100,
+101, 102, 103, 104, 105, 106, 107, 108]. Recently, end-to-end learning-based methods have also
+incorporated visual information into locomotion, where visual perception is performed using depth
+sensing [29, 61, 31], elevation maps [28, 109, 110, 111, 112], lidar scans [113], RGB images [32],
+event cameras [68] or learned neural spaces [30, 33], but none have demonstrated effective high-speed
+agile locomotion.
+3
+Robot Parkour Learning Systems
+O
+l i
+b ild
+d
+d
+k
+h
+di
+l
+b
+d d
+h
+i
+d

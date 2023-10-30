@@ -1,0 +1,1 @@
+Figure 2: Illustration of artifacts observed in the attention maps of modern vision transformers.

@@ -1,0 +1,20 @@
+Figure 4: Comparison of all conditions on the Data Commons fact-checking data-set. The x-axis displays the F1
+score of each language and condition. The y-axis displays each language for which the model was prompted. The blue,
+dashed line indicates the difference in the performance for the no context condition. The red, solid line shows the
+difference in performance for the context condition. The circles show the F1 score by language for the translations,
+the squares show the F1 score for the original scores.
+Figure 4 summarizes the findings offered in this section and displays a visualization that compares the F1
+scores under the two conditions—’No Context’ and ’Context Retrieval’—across various languages. Each
+language is represented once on the y-axis, with two corresponding horizontal lines plotted at different
+heights. The blue dashed lines indicate the performance under the ’No Context’ condition, while the red
+solid lines represent the ’Context Retrieval’ condition. Each line connects two points, corresponding to the
+F1 scores achieved when the model is trained on either English-only or Multilingual data. The circle marker
+displays the F1 score in the English language condition, while the square portrays the efficacy under the
+multilingual condition.
+Similarly, to the PolitiFact experiment, we analyzed the performance of the model over time. Figure 5 shows
+the F1 score of all conditions over time. The confidence intervals represent the standard errors and are
+bootstrapped by sampling with replacement from the data-set and repeatedly calculating the F1 score. As
+in the PolitiFact experiment, we again see an increase in the performance of the models over time. Mirroring
+the previous findings, we do not see a decrease in the performance of the models following the official cut-off
+date for the training of GPT-3.5.
+10

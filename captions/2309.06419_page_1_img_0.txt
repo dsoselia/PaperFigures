@@ -1,0 +1,21 @@
+Figure 1: The overall framework of Radiology-Llama2.
+However, their application in specialized domains like healthcare has been limited.
+First, localized large language models are a must for real world healthcare, since hospitals cannot
+share data or upload data to commercial models such as ChatGPT or GPT-4 due to privacy
+regulations [13, 30, 3].
+In addition, LLMs trained on general domain, such as ChatGPT [31], GPT-4 [32] and PaLM 2 [33],
+lack medical knowledge in specialized domains such as radiology, and it is necessary to design a
+model that is properly trained on domain data that is clinically meaningful.
+Moreover, our Radiology-Llama2 perfectly imitates the style or radiologists, yet models like ChatGPT
+generate comprehensive but Wikipedia-like responses unlike the concise and simple language style of
+real radiologists that facilitates quick information exchange. Finally, this work opens the door for
+personalized radiological assistants that are tailored to the style of individual physicians [34].
+This work addresses this gap through Radiology-Llama2, an LLM tailored for radiology through
+instruction tuning to generate radiology impressions from findings. Evaluations show it surpasses
+general LLMs in coherence, conciseness and clinical utility of generated impressions.
+• State-of-the-Art Performance: Outperforms any other language models in deriving clinical
+impressions [2], setting a new benchmark on MIMIC-CXR and OpenI datasets.
+• Flexibility and Dynamism: Unlike its BERT-based counterparts [35, 36], Radiology-Llama2
+is not tied to a specific input structure, allowing for a broader range of inputs and adaptability
+to different tasks within radiology, including complex reasoning.
+2

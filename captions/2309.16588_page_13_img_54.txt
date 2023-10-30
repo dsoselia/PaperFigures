@@ -1,0 +1,9 @@
+Without registers
+With registers
+Input
+DeiT-III
+CLIP
+DINOv2
+DeiT-III
+CLIP
+DINOv2

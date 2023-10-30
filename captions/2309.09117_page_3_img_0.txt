@@ -1,0 +1,48 @@
+β and the size of the amateur model. We find that results are fairly insensitive to α as long as β is
+reasonably small (below 1); unless otherwise stated we use α = 0.1 across experiments.
+Next we consider the size of the amateur model. In agreement with Li et al. (2022), we find that
+performance benefits from smaller amateur models ( Figure 4); while a 1B-parameter amateur helps
+reasoning performance, a 7B-parameter amateur harms it. We also examine different types of am-
+ateurs; ablation studies show that a partially-trained amateur performs better than a fully-trained
+one, and that a poorly-prompted expert can be successfully used as an amateur as well (see subsec-
+tion 4.2).
+Finally, we examine the effect of β. The optimal value depends on the task, but for both generation
+tasks like GSM8K and multiple-choice ranking tasks like PIQA we find that β = 0.5 performs well.
+Setting β too high can place too much weight in the contrastive penalty and harm performance,
+especially with a larger gap between amateur and expert models. β = 0 corresponds to standard
+greedy decoding with no contrastive penalty. Results of β hyperparameter sweeps can be found in
+Table 1, Figure 4, Figure 5 and Appendix B.
+The best result on GSM8K, with LLaMA-65B and β = 0.25, is 57.7 (Table 1), outperforming
+PaLM-540B (56.5), LLaMA-2 (56.8) and GPT-3.5 (57.1).* (Anil et al., 2023; OpenAI, 2023)
+Figure 4: Results on GSM8K with LLaMA-
+65B as the expert. While a 7B amateur harms
+performance, a 1.5B amateur helps.
+Expert
+β = 0
+β = 0.25
+β = 0.5
+β = 1
+7B
+10.7
+11.5
+13.6
+11.0
+13B
+17.0
+21.0
+22.9
+20.4
+30B
+35.2
+40.0
+43.4
+42.0
+65B
+51.0
+57.7
+56.8
+44.6
+Table 1: Results on GSM8K. β = 0.5 tends to give
+good results across expert sizes.
+3.3
+ARITHMETIC REASONING

@@ -1,0 +1,9 @@
+Step 1: push blue triangle to …
+Step 1: push red star to left …
+Step 2: (re-plan)
+t
+t + k
+t current
+t goal
+Step 2: (re-plan)
+Step 2: (re-plan)

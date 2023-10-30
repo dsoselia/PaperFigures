@@ -1,0 +1,69 @@
+Language
+Video
+Line
+Beams
+Branch
+Branch
+Performance
+1
+1
+1
+4%
+1
+1
+4
+10%
+1
+4
+4
+22%
+2
+4
+4
+56%
+Beam 1, Branch 1
+Beam 2, Branch 16
+Figure 3: Video Accuracy vs Planning Budget. Left: VLP scales positively with more compute budget; it is
+better able to synthesize plans to solve tasks with more planning (i.e. with a higher beam-search branching factor).
+Success percentage reported on the make line task. Right: Qualitative illustration of video plans for making
+a line generated without planning (Beam 1, Branch 1) compared to extensive planning (Beam 2, Branch 16).
+✕
+Action 1. Place apple in top drawer
+Put the fruits into 
+the top drawer
+Action 1. Open top drawer
+Action 1. Place banana in top drawer
+Action 2. Place banana in top drawer
+Action 3. Place coke can in top drawer
+Action 3. Place apple in top drawer
+Action 3. Close top drawer
+Action 4. Close top drawer
+✕
+✕
+✓
+✕
+Figure 4: Planning Tree on 7DoF Mobile Manipulator. VLP is able to prune unlikely language and video
+branches to synthesize a coherent long-horizon video plan.
+Object Rearrangement.
+We first illustrate video plans in the Language Table environment (Lynch
+et al., 2023). We give as input to VLP a random image and randomly chosen language goal. We
+then visualize the generated VLP plans (Fig. 2). We report the quantitative success of synthesizing
+long-horizon videos given random starting images for each task in Language Table in Tab. 1. For
+each reported number, we generated a total of 50 videos from each method and visually assessed the
+percentage of time the video successfully solved the given task. VLP substantially outperforms the
+baseline of directly synthesizing videos given a long-horizon prompt, indicating the importance of
+hierarchical structure. VLP further outperforms the ablation of only using a VLM policy with a video
+model, pointing to the effectiveness of the VLP planning procedure and including the value function.
+Effect of Search of Video Synthesis.
+We analyze the effect of search in generating long-horizon
+videos in Fig. 3 (left). We consider increasing the video branching, language branching and the
+beams in the search procedure. We find that each increase of branching factor in search substantially
+increases the success of synthesized long horizon plans. A qualitative illustration of the difference of
+generated plans with small and large branching factor is illustrated in Fig. 3 (right).
+Planning on 7DoF Mobile Manipulators.
+We qualitatively illustrate how we can generate plans
+on a higher-DoF, 7DoF Mobile Manipulator in Fig. 4. Our planning system is able to generate videos
+of actions that both open and close drawers in order to satisfy specified text prompts.
+Planning on Multicamera 14DoF Bi-Manual Manipulators.
+We further illustrate how our
+approach can generate multi view 4 camera videos of dexterous manipulation on the 14DoF bi

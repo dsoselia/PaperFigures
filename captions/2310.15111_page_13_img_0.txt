@@ -1,0 +1,5 @@
+Technical report. In progress
+Appendix
+Figure 9: Random samples from MDM trained on CC12M dataset at 256 × 256 and 1024 × 1024 resolutions.
+See detailed captions in the Appendix F.
+14

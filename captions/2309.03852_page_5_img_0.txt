@@ -1,0 +1,50 @@
+Technical Report of FLM-101B
+4
+BENCHMARK EVALUATION
+16B Stage
+51B Stage
+101B Stage
+Processed Tokens (Billions)
+Training Loss
+Figure 2: Training loss for FLM-101B models.
+• Loss prediction: the loss value of a large model is predictable using the loss of its smaller
+counterparts, as claimed in GPT-4 technical report [36]. For the first time in the open-source
+world, µScaling [77] provides evidence that loss prediction can be achieved by combining
+µP [76] and (a modified) scaling law [23; 18; 19].
+Based on these findings, our method to solve training stability is as follows: we first determine
+the data distribution before the FLM-16B training starts. Next, we perform a grid search on three
+hyperparameters including the learning rate, initialization standard deviation, and the softmax tem-
+perature in the output layer. This grid search is performed by running a proxy model (less than
+100M) with a hidden state dimension (“model width”) of 256 and a head number of 2. All the other
+structural hyperparameters and training data of the proxy model are identical to those of FLM-16B.
+A single run of grid search takes 24.6 hours with data parallelism on 6 nodes, which is equivalent
+to 6 hours per run given our 24-node infrastructure. Finally, We find a group of well-performing
+hyperparameters: learning rate = 4e − 4, standard deviation = 1.6e − 2, and softmax temperature =
+2.0, through this grid search. Transferring these hyperparameters to the 16B model via µP [76] led to
+a seamless training experience devoid of instabilities. Combining with MSG [78], we also witness no
+post-growth divergence in FLM-51B and FLM-101B.
+The full training loss curve is presented in Figure 2. The first stage (16B) stably goes through 246B
+tokens. Immediately afterwards, FLM grows from 16B to 51B. As expected, the training is stable.
+More importantly, we observe that the loss curve becomes steeper. It matches the intuition that a
+larger model is better in loss reduction per step. Subsequently, FLM grows to 101B. Although the
+training data for the 51B stage are only 40B tokens, the 101B training remains stable, and the loss
+curve becomes slightly steeper again. This loss curve proves the effectiveness of the growth strategy.
+Our implementations of µP are largely consistent with those in µScaling [77], with modifications to
+handle the rotary embedding. Thus, the intermediate loss ranges for FLM-16B are also predictable
+with the results from multiple proxy widths at the same steps.
+Mixed Precision with Bfloat16. We apply mixed-precision training to save run-time memory and
+reduce time costs. Specifically, we choose Bfloat16 instead of FP16 due to its superior precision for
+values approaching zero, making it more suitable for µP. As a result, we do not encounter the FP16
+underflow issue reported by [76]. To our knowledge, the FLM models are currently the largest ones
+successfully trained with mixed precision + µP. Moreover, Bfloat16 negates the need for loss scale
+adjustments, making our training procedure more promising and reproducible.
+4
+Benchmark Evaluation
+Many existing benchmarks (e.g., Open LLM) focus on assessing the knowledgeability of LLMs. In
+this section, we discuss the results of FLM on these benchmarks. We argue that knowledge alone
+might not comprehensively reflect LLM’s capability (see Section 4.2 for more details). Thus, in
+addition to the common benchmark evaluation, we borrow the concept of IQ tests and evaluate LLMs
+with some specific tasks in Section 5.
+Cost Estimation Method. Due to the considerable computational expense of LLMs, we also
+emphasize their associated costs in our experimental results. However, it is hard to directly compare
+6

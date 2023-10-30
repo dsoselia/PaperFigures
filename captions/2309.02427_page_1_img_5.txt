@@ -1,0 +1,46 @@
+Environment
+Environment
+Figure 1: Different uses of large language models (LLMs). A: In natural language processing (NLP), an LLM
+takes text as input and outputs text. B: Language agents (Ahn et al., 2022; Huang et al., 2022c) place the
+LLM in a direct feedback loop with the external environment by transforming observations into text and
+using the LLM to choose actions. C: Cognitive language agents (Yao et al., 2022b; Shinn et al., 2023; Wang
+et al., 2023a) additionally use the LLM to manage the agent’s internal state via processes such as learning
+and reasoning. In this work, we propose a blueprint to structure such agents.
+Kotseruba and Tsotsos, 2020). We suggest a meaningful analogy between production systems and LLMs: just
+as productions indicate possible ways to modify strings, LLMs define a distribution over changes or additions
+to text. This further suggests that controls from cognitive architectures used with production systems might
+be equally applicable to transform LLMs into language agents.
+Thus, we propose Cognitive Architectures for Language Agents (CoALA), a conceptual framework to
+understand existing language agents and help develop new ones. CoALA organizes agents along three
+key dimensions: their information storage (divided into working and long-term memories); their action
+space (divided into internal and external actions); and their decision-making procedure (which is structured
+as an interactive loop with planning and execution).
+Through these three concepts (memory, action,
+and decision-making), we show CoALA can neatly express a large body of diverse agents and identify
+underexplored directions. Notably, while several recent papers propose conceptual architectures for general
+intelligence (LeCun, 2022; McClelland et al., 2019) or empirically survey language models and agents (Mialon
+et al., 2023; Weng, 2023; Wang et al., 2023b), this paper combines elements of both: we propose a theoretical
+framework and use it to organize diverse empirical work. This grounds our theory to existing practices and
+allows us to identify both short-term and long-term directions for future work.
+The plan for the rest of the paper is as follows. Section 2 introduces production systems and cognitive
+architectures, and Section 3 outlines their parallels with LLMs and language agents. Section 4 introduces
+the CoALA framework, and surveys and organizes diverse language agents accordingly. Section 5 provides
+a deeper case study of several prominent agents. Section 6 suggests actionable steps to construct future
+language agents, while Section 7 highlights open questions in the broader arc of cognitive science and AI.
+Finally, Section 8 concludes. Readers interested in applied agent design may prioritize Sections 4-6.
+2
+Background: From Strings to Symbolic AGI
+W fi t i t
+d
+d
+ti
+t
+d
+iti
+hit
+t
+idi
+hi t
+i
+l
+ti

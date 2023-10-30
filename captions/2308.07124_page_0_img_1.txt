@@ -1,0 +1,55 @@
+OCTOPACK: INSTRUCTION TUNING CODE LARGE
+LANGUAGE MODELS
+Niklas Muennighoff
+Qian Liu
+Armel Zebaze
+Qinkai Zheng
+Binyuan Hui
+Terry Yue Zhuo
+Swayam Singh
+Xiangru Tang
+Leandro von Werra
+Shayne Longpre
+n.muennighoff@gmail.com
+ABSTRACT
+Finetuning large language models (LLMs) on instructions leads to vast performance
+improvements on natural language tasks. We apply instruction tuning using code,
+leveraging the natural structure of Git commits, which pair code changes with
+human instructions. We compile COMMITPACK: 4 terabytes of Git commits across
+350 programming languages. We benchmark COMMITPACK against other natural
+and synthetic code instructions (xP3x, Self-Instruct, OASST) on the 16B parameter
+StarCoder model, and achieve state-of-the-art performance among models not
+trained on OpenAI outputs, on the HumanEval Python benchmark (46.2% pass@1).
+We further introduce HUMANEVALPACK, expanding the HumanEval benchmark to
+a total of 3 coding tasks (Code Repair, Code Explanation, Code Synthesis) across
+6 languages (Python, JavaScript, Java, Go, C++, Rust). Our models, OCTOCODER
+and OCTOGEEX, achieve the best performance across HUMANEVALPACK among
+all permissive models, demonstrating COMMITPACK’s benefits in generalizing to a
+wider set of languages and natural coding tasks. Code, models and data are freely
+available at https://github.com/bigcode-project/octopack.
+import numpy as np
+import matplotlib.pyplot as plt
+# generate sample data
+x_data = np.linspace(-5, 5, 20)
+y_data = np.random.normal(0.0, 1.0, x_data.size)
+plt.plot(x_data, y_data, 'o')
+plt.show()
+Code Before
+Commit
+Message
+Code After
+Change to sin() function with noise
+import math
+import numpy as np
+import matplotlib.pyplot as plt
+# generate sample data
+x_data = np.linspace(-math.pi, math.pi, 30)
+y_data = np.sin(x_data) + np.random.normal(0.0, 0.1, x_data.size)
+plt.plot(x_data, y_data, 'o')
+plt.show()
+1) CommitPack
+2) HumanEvalPack
+Figure 1: OCTOPACK Overview. 1) Sample from our 4TB dataset, COMMITPACK. 2) Performance
+of OCTOCODER, OCTOGEEX and other code models including non-permissive ones (WizardCoder,
+GPT-4) on HUMANEVALPACK spanning 3 coding tasks and 6 programming languages.
+arXiv:2308.07124v1  [cs.CL]  14 Aug 2023

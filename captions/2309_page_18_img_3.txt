@@ -1,0 +1,4 @@
+(a) Input
+(b) Rendered output
+Figure 10: A training sample for the markup-based task from README
+19

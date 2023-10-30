@@ -1,0 +1,36 @@
+(i.e., bounding box, points, and mask). In addition, we comprehensively analyze the performance and
+challenges of our method in medical image segmentation by considering different imaging modalities,
+anatomical structures, and organs in medical images.
+Zero-shot evaluation of SAM in medical imaging. Recent studies have reported the zero-shot per-
+formance of SAM in medical image segmentation. Deng et al. [27] investigated SAM’s segmentation
+capabilities on tumor and tissue tasks under different prompt conditions, and the experimental results
+show that SAM performs better only on segmenting large connected objects. Hu et al. [28] evaluated
+the impact of point prompts on SAM’s performance in multi-phase liver tumor segmentation in CT
+volumes. The results demonstrated that SAM’s performance improved as the number of point prompts
+increased. Zhou et al. [12] tested SAM’s performance in colonoscopy polyp segmentation without
+prompts, and the results indicated significant room for improvement when applying SAM to polyp
+segmentation tasks. Cheng et al. [29] extensively evaluated the following models on 12 open-source
+medical image datasets: promptless models, models with 1, 3, and 10-point prompts, and models with
+box prompts with 5 different jitter levels. The performance of SAM was generally lower compared
+to state-of-the-art results. Similarly, Huang et al. [15] evaluated the zero-shot performance of SAM
+on 52 public datasets using three different prompts, and the evaluation results consistently showed
+unsatisfactory performance of SAM across various medical image segmentation tasks. We believe
+that analyzing SAM’s performance on large-scale medical image datasets is crucial. This can help
+the community gain a better understanding of the factors influencing the model’s ability to perceive
+medical objects. These factors can contribute to the improved development of general medical
+segmentation methods. Therefore, this study provides a comprehensive evaluation of SAM-Med2D
+from multiple perspectives.
+Figure 3: Overview of the dataset used in this study. (a) A total of 31 major organs, along with
+their corresponding anatomical structures, with an asterisk (*) denoting the presence of lesion labels
+within the dataset. (b) The distribution of modalities along with their corresponding proportions in
+the dataset are presented (scaled logarithmically). (c) The number of images and masks categorized
+by anatomical structure, along with the total count encompassing the dataset.
+3
+Methods
+3.1
+Incorporation of Medical Knowledge into SAM
+Recent research has reaffirmed the pivotal role of training data volume in the learning capacity of
+large models [7, 8, 23]. By learning from larger-scale data, models can acquire richer domain-specific
+knowledge and adapt better to various application scenarios. Though trained on over 1B masks,
+SAM achieves suboptimal performance in the realm of medical image analysis due to the significant
+5

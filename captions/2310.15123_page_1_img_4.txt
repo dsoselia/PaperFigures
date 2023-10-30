@@ -1,0 +1,91 @@
+Assistant A's response: 4/5
+The response provides relevant
+information about cultural
+experiences .... However, it
+could be improved by including
+more specific details about the
+cultural experiences and
+attractions ....
+Assistant B's response: 5/5
+The response is highly relevant
+to the user's question and
+provides a well-structured and
+detailed overview of cultural
+experiences and must-see
+attractions in Hawaii .....
+Assistant A's response:
+4/5
+The response is generally
+clear and concise, with
+well-structured sentences
+and appropriate vocabulary.
+....
+Assistant B's response:
+5/5
+The response is
+exceptionally clear and
+concise, with short, well-
+structured sentences that
+are easy to follow ....
+Assistant A's response: 4/5
+The response accurately
+mentions the Polynesian
+Cultural Center and Hanauma
+Bay,
+....
+Assistant B's response: 5/5
+The response accurately
+provides information ....,
+including the Polynesian
+Cultural Center, Iolani Palace,
+Hawaii Volcanoes National
+Park, .....
+Assistant A's response: 3/5
+The response provides some unique
+insights into the cultural
+experiences available in Hawaii,
+.....
+However, the mention of popular
+attractions like Hanauma Bay and
+Waimea Canyon is not particularly
+original
+.....
+Assistant B's response: 4/5
+The response offers a more original
+perspective on Hawaii's cultural
+experiences and attractions ....
+After carefully reviewing all the evaluations, it is clear that Assistant B has provided a better response overall. Assistant B's response
+scored higher in relevance, clarity, engagement, accuracy, and originality. While Assistant A's response was informative, it lacked the
+personal touch and engaging tone that Assistant B's response provided. Additionally, Assistant B's response was more accurate, with no
+factual errors, and offered more original suggestions for cultural experiences and attractions in Hawaii.
+Therefore, the final verdict is: [[B]]. Assistant B's response is better overall.
+Figure 1: An illustration of BRANCH-SOLVE-MERGE with LLaMA-2-70B-chat for pairwise evaluation of
+LLM responses. Given a question and two LLM responses A and B, BSM generates a preference judgment.
+The Branch module conditions on the question to generate a question-specific evaluation plan which in this
+case consists of different criteria like ‘Relevance’ to the Hawaii trip topic, ‘Clarity’, etc. The ‘Solve’ module
+evaluates the response pairs for each criteria (branch) independently and the ‘Merge’ module combines the
+individual judgments to generate the final verdict, in this case that B is the better response.
+We apply our method to two challenging tasks where LLMs are commonly utilized but their perfor-
+mance still lags behind humans:
+• Evaluation of LLM Outputs (Zheng et al., 2023). LLMs are now regularly used to perform
+automatic evaluation of model responses, e.g., to user queries (Dubois et al., 2023). Evaluating
+LLMs holistically is challenging because of their ability to generate long-form answers to arbitrary
+user questions (Zheng et al., 2023), the lack of reliability originating from many biases (Zheng
+et al., 2023; Wu & Aji, 2023; Wang et al., 2023b), and reliance on hand-designed evaluation plans
+that impact the method’s ability to generalize, introducing unintended human biases (Liu et al.,
+2023; Wu & Aji, 2023). BSM can be applied to this task by each branch assessing different aspects
+and criteria that require evaluation.*
+• Constrained Text Generation. State-of-the-art LLMs struggle with constrained text generation
+t
+k
+f
+l th
+t i t f
+iti
+t
+th t h
+ld i
+l d
+l
+t
+M d l

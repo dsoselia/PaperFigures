@@ -1,0 +1,56 @@
+p
+p
+g
+that supervised labels do not significantly benefit the explanation
+generation process. Overall, the generated explanations from with-
+label prompts further outperform zero-shot explanations, which
+are proven to approach human performance. The above evidence
+proves that the explanations in the IMHI dataset are of high quality.
+Figure 4: Distributions of human evaluation scores on
+ChatGPT-generated explanations. Orange lines and green
+dots denote the median and average numbers.
+3.3.2
+Human Evaluation. We randomly select 200 explanations
+generated from the raw datasets to perform human evaluations.
+The annotation scheme is developed based on previous protocols
+for similar tasks [37, 43], and further modified for interpretable
+mental health analysis with collaborative efforts from 2 domain
+experts. Specifically, we assess the explanations in 4 aspects: 1)
+Consistency: The text should build from sentence to sentence to a
+coherent body of information about mental health that supports
+the classification results. 2) Reliability: The trustworthiness of
+the evidence to support the classification results in the generated
+explanations. 3) Professonality: It measures the rationality of the
+During annotation, each sample is rated by 3 domain experts (Ph.D.
+students majoring in Quantitative Psychology) on all aspects. We
+aggregate all annotations by averaging the scores of each sample
+and present the results in Figure 4. According to the results, most
+explanations are assigned consistency scores over 2.5, which shows
+that these data are consistent with the classification results, and
+completely fluent, coherent, and error-free. Most samples also ob-
+tain over 2.0 scores on reliability, proving that they provide mostly
+reliable information with non-critical misinformation or wrong
+reasoning. Finally, the evaluation results on professionality indicate
+that most explanations can provide multiple evidences that are
+supportive from the perspective of psychology. Overall, the human
+evaluations show that ChatGPT can generate explanations that
+have good overall performance, which is consistent with previous
+analysis [43] and the automatic evaluation results.
+3.4
+Instruction Construction
+We construct the IMHI dataset based on all posts from the raw
+datasets and the corresponding evaluated ChatGPT-generated ex-
+planations. We simplify the instructions introduced in Sec. 3.2 to
+adapt to less powerful LLMs and construct the questions in a rule-
+based manner, where the prompt templates are presented in Table
+2. The evaluated ChatGPT-generated explanations are directly used
+as the responses to these questions. We mix the question-response
+pairs from the training split of all raw datasets and randomize the
+order to build the training split of the IMHI dataset, which consists
+of 72,095 samples. To facilitate the best model selection, we build a
+validation set, which is developed from the valid split of each raw
+dataset using the same method, with 14,346 samples.
+Due to the poor instruction following ability of some baseline
+models, we also convert the IMHI data into a completion-based form
+using another set of templates, which are presented in Appendix
+B.1. We refer to this dataset as IMHI-completion.

@@ -1,0 +1,29 @@
+Figure 4: The sample sequence format for the pre-training. We follow the manner of Llama-2, and B_INST = ’[INST]’,
+E_INST = ’[/INST]’, B_SYS = ’<<SYS>> \n’, E_SYS = ’\n <</SYS>> \n\n’. The SYSTEM = ’You are a
+helpful language and speech assistant. You are able to understand the speech content that the user provides, and assist
+the user with a variety of tasks using natural language.’, and the TEXT_LABEL is the text label of the ASR data sample.
+The audio_token_len is set to 64 by default. Special audio tokens are used, AUDIO_START_TOKEN = ’<au_start>’,
+AUDIO_END_TOKEN = ’<au_end>’, AUDIO_PATCH_TOKEN = ’<au_patch>’. The contentuser consists of the
+audiotoken and the Isimple, in which Isimple is a simple instruction and is randomly put before or after the audiotoken.
+While training the BOS token and the EOS token will be added to each sample at the beginning and the end of the
+sequence, only the green tokens are used to compute the loss.
+Figure 5: The sample sequence format for the cross-modal instruction fine-tuning. We follow the manner of Llama-2,
+and B_INST = ’[INST]’, E_INST = ’[/INST]’, B_SYS = ’<<SYS>> \n’, E_SYS = ’\n <</SYS>> \n\n’. The SYS-
+TEM = ’You are a helpful language and speech assistant. You are able to understand the speech content that the user pro-
+vides, and assist the user with a variety of tasks using natural language.’, and the TEXT_RESPONSE is the text response
+from the chatbot. The audio_token_len is set to 64 by default. Special audio tokens are used, AUDIO_START_TOKEN
+= ’<au_start>’, AUDIO_END_TOKEN = ’<au_end>’, AUDIO_PATCH_TOKEN = ’<au_patch>’. The contentuser is
+the audiotoken which will be replaced by the audio embeddings during training. Each round of question and answer
+will be formatted as Xsample, which will be concatenated together with the EOS token. While training the BOS token
+will be added at the beginning of the sequence, and the EOS token will be added at the end of the sequence, only the
+green tokens are used to compute the loss.
+Cross-modal Instruction Fine-Tuning Data. As the effectiveness of the open-source language-only instruction-tuning
+data sets has been demonstrated in previous works[15, 16, 17], a natural idea is to generate audio data of these
+language-only data sets to build a cross-modal instruction-tuning data. In the process of building this dataset, we
+first carefully filtered all the conversation data, by removing the conversations that are not suitable for vocalization,
+including codes, a large number of symbols, URLs, and other non-readable text. To ensure the data quality, in
+the second stage, all the answers from chat-bots in the conversations are filtered again. Those that do not contain
+valuable information are dropped. In the third stage, we use Microsoft Azure text-to-speech API [28] to generate
+speech data from humans in these data sets. The speech data of humans are used as the complex instructions and
+the responses from the chatbot are predicted during the instruction fine-tuning. Specifically, 80k conversation data
+which contains 160k samples is selected from WizardLM [17] 23k conversation data which contains 155k samples is

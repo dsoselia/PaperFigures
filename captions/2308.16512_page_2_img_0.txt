@@ -1,0 +1,37 @@
+Given the bounded generalizability of 3D generative models, another thread of studies have attempted
+to apply 2D diffusion priors to 3D generation by coupling it with a 3D representation, such as a
+NeRF (Mildenhall et al., 2021). The key technique of such methods is the score distillation sampling
+(SDS) proposed by Poole et al. (2023), where the diffusion priors are used as score functions to
+supervise the optimization of a 3D representation. Concurrent with Dreamfusion, SJC (Wang et al.,
+2023a) proposed a similar technique using the publicly available stable-diffusion model (Rombach
+et al., 2022). Following works have been further improving the 3D representations (Lin et al., 2023a;
+Tsalicoglou et al., 2023; Tang et al., 2023a; Chen et al., 2023), sampling schedules (Huang et al.,
+2023), and loss design (Wang et al., 2023c). Although these methods can generate photo-realistic and
+arbitrary types of objects without training on any 3D data, they are known to suffer from the multi-
+view consistency problem, as discussed in Section 1. In addition, as discussed in (Poole et al., 2023),
+each generated 3D model is individually optimized by tuning prompts and hyper-parameters to avoid
+generation failures. Nevertheless, in MVDream, we significantly improve the generation robustness,
+and are able to produce satisfactory results with a single set of parameters without individual tuning.
+3
+METHODOLOGY
+3.1
+MULTI-VIEW DIFFUSION MODEL
+To mitigate the multi-view consistency issue in 2D-lifting methods, a typical solution is to improve its
+viewpoint-awareness. For example, Poole et al. (2023) add viewpoint descriptions to text conditions.
+A more sophisticated method would be incorporating exact camera parameters like in novel view
+synthesis methods (Liu et al., 2023). However, we hypothesize that even a perfect camera-conditioned
+model is not sufficient to solve the problem and the content in different views still could mismatch.
+For example, an eagle might look to its front from front view while looking to its right from back
+view, where only its body is complying with the camera condition.
+Our next inspiration draws from video diffusion models. Since humans do not have a real 3D sensor,
+the typical way to perceive a 3D object is to observe it from all possible perspectives, which is similar
+to watching a turnaround video. Recent works on video generation demonstrate the possibility of
+adapting image diffusion models to generate temporally consistent content (Ho et al., 2022; Singer
+et al., 2022; Blattmann et al., 2023; Zhou et al., 2022). However, adapting such video models to our
+problem is non-trivial as geometric consistency could be more delicate than temporal consistency.
+Our initial experiment shows that content drift could still happen between frames for video diffusion
+models when there is a large viewpoint change. Moreover, video diffusion models are usually trained
+on dynamic scenes, which might suffer from a domain gap when applied to generating static scenes.
+With such observations, we found it important to directly train a multi-view diffusion model, where we
+could utilize 3D rendered datasets to generate static scenes with precise camera parameters. Fig. (2)
+3

@@ -1,0 +1,39 @@
+Figure 1: Overview of MIN-K% PROB. To determine whether a text X is in the pretraining data of
+a LLM such as GPT, MIN-K% PROB first gets the probability for each token in X, selects the k%
+tokens with minimum probabilities and calculates their average log likelihood. If the average log
+likelihood is high, the text is likely in the pretraining data.
+reducing the potential memorization required for successful MIAs (Leino & Fredrikson, 2020;
+Kandpal et al., 2022). Besides, previous methods often rely on one or more reference models (Carlini
+et al., 2022; Watson et al., 2022) trained in the same manner as the target model (e.g., on the shadow
+data sampled from the same underlying pretraining data distribution) to achieve precise detection.
+This is not possible for large language models, as the training distribution is usually not available and
+training would be too expensive.
+Our first step towards addressing these challenges is to establish a reliable benchmark. We introduce
+WIKIMIA, a dynamic benchmark designed to periodically and automatically evaluate detection
+methods on any newly released pretrained LLMs. By leveraging the Wikipedia data timestamp and
+the model release date, we select old Wikipedia event data as our member data (i.e, seen data during
+pretraining) and recent Wikipedia event data (e.g., after 2023) as our non-member data (unseen). Our
+datasets thus exhibit three desirable properties: (1) Accurate: events that occur after LLM pretraining
+are guaranteed not to be present in the pretraining data. The temporal nature of events ensures that
+non-member data is indeed unseen and not mentioned in the pretraining data. (2) General: our
+benchmark is not confined to any specific model and can be applied to various models pretrained
+using Wikipedia (e.g., OPT, LLaMA, GPT-Neo) since Wikipedia is a commonly used pretraining data
+source. (3) Dynamic: we will continually update our benchmark by gathering newer non-member
+data (i.e., more recent events) from Wikipedia since our data construction pipeline is fully automated.
+MIA methods for finetuning (Carlini et al., 2022; Watson et al., 2022) usually calibrate the target
+model probabilities of an example using a shadow reference model that is trained on a similar
+data distribution. However, these approaches are impractical for pretraining data detection due to
+the black-box nature of pretraining data and its high computational cost. Therefore, we propose
+a reference-free MIA method MIN-K% PROB. Our method is based on a simple hypothesis: an
+unseen example tends to contain a few outlier words with low probabilities, whereas a seen example
+is less likely to contain words with such low probabilities. MIN-K% PROB computes the average
+probabilities of outlier tokens. MIN-K% PROB can be applied without any knowledge about the
+pretrainig corpus or any additional training, departing from existing MIA methods, which rely on
+shadow reference models (Mattern et al., 2023; Carlini et al., 2021). Our experiments demonstrate
+that MIN-K% PROB outperforms the existing strongest baseline by 7.4% in AUC score on WIKIMIA.
+Further analysis suggests that the detection performance correlates positively with the model size and
+detecting text length.
+To verify the applicability of our proposed method in real-world settings, we perform three case
+studies: copyrighted book detection (§5), privacy auditing of LLMs (§7) and dataset contamination
+detection (§6). We find that MIN-K% PROB significantly outperforms baseline methods in both
+2

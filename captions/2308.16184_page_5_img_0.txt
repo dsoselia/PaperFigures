@@ -1,0 +1,45 @@
+domain gap between natural images and medical data. To address this gap, we have collected and
+curated the largest medical image segmentation dataset to date. This dataset is composed of numerous
+public and private datasets, ensuring comprehensive coverage and diversity. Figure 3 (b) illustrates
+the dataset’s 10 different imaging modalities and their corresponding data proportions. To enhance
+visual presentation, we have used logarithmic scaling to visualize the differences in quantity. Based
+on anatomical structures and the presence of lesions, we categorized the dataset into head and neck,
+thorax, abdomen, pelvic, and lesions (Figure 3 (c)). Additionally, we curated and consolidated 31
+main organs from the 271 labels in these datasets, as depicted in Figure 3 (a). This covers almost all
+object types in the currently available public datasets, addressing the deficiency of SAM in medical
+domain knowledge.
+For the effective application of SAM to medical image segmentation, we preprocessed the dataset
+from multiple angles. Firstly, for 3D datasets, we normalized the intensity values of each volume
+to the range [0, 255] and extracted all slice images and their corresponding masks along the x, y,
+and z axes. In the extraction process, slice images with the shortest edge less than half the length
+of the longest edge were discarded to prevent target areas from becoming extremely blurry when
+adjusting for images with large aspect ratios. For 2D datasets, we only checked whether pixel values
+were within the range [0, 255], and all processed images were saved in PNG format to maintain data
+loading consistency. Secondly, when a mask contained multiple classes, we generated multiple masks,
+each containing only one class (similar to sam1B [8]). We also split masks with multiple connected
+components (for example, left and right lungs) into multiple masks with single connected components.
+If multiple organs were present and only contained one connected component, we retained the mask
+to increase data diversity. Lastly, we excluded masks where the target area constituted less than
+0.153% (
+100
+256×256) of the total image, meaning that when an image is resized to 256×256, its target
+area must exceed 100 pixels.
+Following these procedures, we obtained approximately 4.6M images and 19.7M masks. We randomly
+split 80% data for training and 20% for testing based on image indices. The resulting training set
+included roughly 3.67M images and 15.8M masks, while the test set contained 0.92M images and
+3.9M masks. We also introduced 9 MICCAI2023 datasets (comprising about 0.52M images and
+1.31M masks) that served solely to validate the model’s generalization ability. We believe that with a
+more comprehensive and diverse set of training data, SAM will better adapt to the complexities and
+nuances of the medical imaging field, providing more accurate and reliable support for applications
+in healthcare. This will also usher in new opportunities and challenges for research and development
+in the field of medical image segmentation.
+Figure 4: The pipeline of SAM-Med2D. We freeze the image encoder and incorporate learnable
+adapter layers in each Transformer block to acquire domain-specific knowledge in the medical field.
+We fine-tune the prompt encoder using point, Bbox, and mask information, while updating the
+parameters of the mask decoder through interactive training.
+3.2
+Transition from SAM to SAM-Med2D
+Before introducing SAM-Med2D, let us briefly review the SAM architecture. SAM consists of
+three main components: a large-scale image encoder, a prompt encoder, and a lightweight mask
+decoder. This framework allows for different masks to be generated for the same image based
+6

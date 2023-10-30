@@ -1,0 +1,70 @@
+Figure 2. The architecture of AnomalyGPT. The query image is passed to the frozen image encoder and the patch-level features extracted
+from intermediate layers are fed into image decoder to compute their similarity with normal and abnormal texts to obtain localization
+result. The final features extracted by the image encoder are fed to a linear layer and then passed to the prompt learner along with the
+localization result. The prompt learner converts them into prompt embeddings suitable for input into the LLM together with user text
+inputs. In few-shot setting, the patch-level features from normal samples are stored in memory banks and the localization result can be
+obtained by calculating the distance between query patches and their most similar counterparts in the memory bank.
+As illustrated in the upper part of Figure 2, we parti-
+tion the image encoder into 4 stages and obtain the in-
+termediate patch-level features extracted by every stage
+F i
+patch ∈ RHi×Wi×Ci, where i indicates the i-th stage.
+Following the idea from WinCLIP [11], a natural approach
+is to compute the similarity between F i
+patch and the text
+features Ftext ∈ R2×Ctext respectively representing nor-
+mality and abnormality. Detailed texts representing nor-
+mal and abnormal cases are presented in Appendix B. How-
+ever, since these intermediate features have not undergone
+the final image-text alignment, they cannot be directly com-
+pared with text features. To address this, we introduce addi-
+tional linear layers to project these intermediate features to
+˜F i
+patch ∈ RHi×Wi×Ctext, and align them with text features
+representing normal and abnormal semantics. The localiza-
+tion result M ∈ RH×W can be obtained by Eq. (1):
+M = Upsample
+� 4
+�
+i=1
+softmax( ˜F i
+patchF T
+text)
+�
+.
+(1)
+For few-shot IAD, as illustrated in the lower part of Fig-
+ure 2, we utilize the same image encoder to extract inter-
+mediate patch-level features from normal samples and store
+them in memory banks Bi ∈ RN×Ci, where i indicates the
+i-th stage. For patch-level features F i
+patch ∈ RHi×Wi×Ci,
+we calculate the distance between each patch and its most
+similar counterpart in the memory bank, and the localiza-
+tion result M ∈ RH×W can be obtained by Eq. (2):
+M = Upsample
+� 4
+�
+i=1
+�
+1 − max(F i
+patch · BiT )
+��
+. (2)
+Prompt learner To leverage fine-grained semantic from
+images and maintain semantic consistency between LLM
+and decoder outputs, we introduce a prompt learner that
+transforms the localization result into prompt embeddings.
+Additionally, learnable base prompt embeddings, unrelated
+to decoder outputs, are incorporated into the prompt learner
+to provide extra information for the IAD task. Finally, these
+embeddings, along with the original image information, are
+fed into the LLM.
+As illustrated in Figure 2, the prompt learner consists of
+the learnable base prompt embeddings Ebase ∈ Rn1×Cemb
+and a convolutional neural network. The network converts
+the localization result M ∈ RH×W into n2 prompt embed-
+dings Edec ∈ Rn2×Cemb. Ebase and Edec form a set of
+n1 + n2 prompt embeddings Eprompt ∈ R(n1+n2)×Cemb
+that are combined with the image embedding into the LLM.
+4

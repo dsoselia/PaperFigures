@@ -1,0 +1,120 @@
+Input
+Output
+Input
+Output
+Output
+Thoughts:
+Unscored
+Negative
+score
+Output
+Input
+Output
+Input
+Positive
+score
+Dependencies
+between thoughts
+Abandon thought
+Backtrack
+Output (IO)
+Legend
+Thought
+(CoT)
+Key novelty:
+Intermediate
+LLM thoughts
+within a chain
+Branching out
+from a chain
+Selecting
+a chain with
+the best score
+Abandon a chain
+Key novelty
+(beyond CoT):
+Harnessing multiple
+independent chains
+of thoughts
+Key novelty
+(beyond CoT-SC):
+Generating several
+new thoughts based
+on a given arbitrary
+thought, exploring
+it further, and possibly
+backtracking from it
+Key novelty (beyond ToT):
+Arbitrary graph-based thought
+transformations (aggregating 
+thoughts into a new one, 
+looping over a thought to 
+refine it)
+Backtracking
+Refining
+Aggregating
+thoughts
+Backtracking
+from a chain
+Intermediate
+thoughts are
+also scored
+Aggregating
+chains
+Input
+Figure 1: Comparison of Graph of Thoughts (GoT) to other prompting strategies.
+the potential thought transformations, E is an evaluator func-
+tion used to obtain scores of thoughts, and R is a ranking
+function used to select most relevant thoughts.
+3.1
+Reasoning Process
+We model the reasoning process as a directed graph G =
+(V, E); V is a set of vertices and E ⊆ V × V is a set of
+edges. G is directed and thus the edges are a subset of or-
+dered vertex pairs E ⊆ V × V . A vertex contains a solution
+to a problem at-hand (be it an initial, intermediate, or a fi-
+nal one). The concrete form of such a thought depends on
+a use case; it could be a paragraph (in writing tasks) or a
+sequence of numbers (in sorting) A directed edge (t1 t2)
+...
+Graph theory view
+Example sorting task
+Example writing task
+Aggregation
+Generation
+...
+1 2 7 8
+1 1 4 5
+2 3 6 7
+1 1 1 2 2 3 4 5 6 7 7 8
+...
+Article
+1
+Article
+2
+Article
+3
+Keyword
+summary
+A vertex models
+a thought. An edge
+models dependency
+...
+...
+Merging sorted subarrays
+into a sorted array of numbers
+Splitting an unsorted array into
+subarrays, for subsequent sorting
+Combining articles into
+a coherent summary
+...
+Keyword
+summary 1
+Keyword
+summary 2
+1 4 6 2 4 2 4 9 8 7 5 4
+1 4 6 2    4 2 4 9    8 7 5 4
+Article
+1
+Generating summaries from
+an article to maximize quality

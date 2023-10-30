@@ -1,0 +1,51 @@
+Ours
+SD2
+Ours
+SD2
+Ours
+SD2
+Bill Gates
+Elon Musk
+Kim Kardashian
+Barack Obama
+Hillary Clinton
+Richard Feynman
+Figure 11: Using CommonCanvas-SNC (Ours) to generate celebrities. Our model is worse at syn-
+thesizing individual people than SD2, but is capable of generating some noteworthy public figures.
+7
+Discussion and Related Work
+In this paper, we train the family of CommonCanvas text-to-image latent diffusion models on only
+Creative-Commons images and synthetic captions. We discuss the data incompleteness and scarcity
+issues associated with CC images, and how we address each of these issues in turn. For data in-
+completeness, we propose telephoning, an intuitive type of transfer learning (Section 3), which we
+instantiate with BLIP-2 to produce synthetic captions for CC images — together, the CommonCata-
+log dataset (Section 4). With regard to data scarcity, we hypothesize that much less data than what is
+contained in LAION-2B is necessary to saturate SD2, and that CommonCatalog should be sufficient
+for training. To make testing this hypothesis more efficient, we implement a variety of ML-systems
+optimizations, which achieve a 2.7X speed-up over our SD2 baseline. Ultimately, we find that we
+can train SD2 on <3% of LAION-2B (Section 5), which encourages us to train on CommonCat-
+alog’s commercial (roughly 70 million) and non-commercial (roughly 25 million) examples. Our
+CommonCanvas models under-perform in some categories, like faces, but CommonCanvas-LNC
+demonstrates statistically equivalent performance with SD2 on human evaluation (Section 6).
+We note that several recent works study copyright. This work tends to concern text-to-text training
+data [39], be primarily theoretical [51, 62], involve ablation studies [24], or only handle verbatim
+memorization [7] through the use of generation-time content filters [16], which has been shown to
+be an incomplete solution [19]. To the best of our knowledge, no prior open work attempts to train
+T2I models on only open-licensed data.
+Most prior work on text-caption-dataset creation has focused on extracting caption data from
+Common Crawl [12, 14, 28].
+We instead focus on synthesizing captions directly by using a
+pre-trained BLIP-2 model. [42] demonstrate that existing caption datasets can be improved by
+using BLIP2 to re-caption low-quality captions in large datasets like Datacomp, but do not focus on
+creating a new dataset of synthetic captions, as we do here.
+An issue, which we do not address, is that the YFCC100M data is about a decade old; its CC images
+are not as current as those in LAION-2B. Given the success of our results, in the future, we plan to
+augment CommonCatalog with Creative-Commons images from other sources, as well as test larger
+CommonCanvas model architectures.
+Acknowledgements
+We would like to thank Christopher De Sa for feedback on earlier drafts of this work. A. Feder
+Cooper is funded by Professor Christopher De Sa’s NSF RI-CAREER award 2046760. This work
+was also sponsored by Volodymyr Kuleshov’s CAREER grant: #2145577. We also would like to
+thank Apolin´ario Passos for helping us host the data + models and for insightful discussions along
+the way.
+10

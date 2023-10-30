@@ -1,0 +1,34 @@
+curves are shown in Fig. 3.
+Growing policy network for RL tasks. We trained a
+NDP with 162 parameters for the CartPole tasks, in which
+it has to grow a policy network controlling the force applied
+to a pole to keep it balanced. It grew an undirected network
+with 10 nodes and 33 weighted edges that reached a reward
+of 500±0 over 100 rollouts (Fig. 3). This score is considered
+as solving the task. The growth process of the network from
+a single node to the final policy can be seen in Fig. 5.
+Similarly, we trained a NDP to grow a network policy to
+solve the Lunar Lander control task (Fig. 4, right). In this
+case, a NDP with 868 trainable parameters grew an undi-
+rected network policy with 16 nodes and 78 weighted edges.
+Over 100 rollouts, the mean reward obtained is 116 ± 124.
+Although the resulting policy controller could solve the task
+in many of the rollouts the stochasticity of the environment
+p
+p
+tering coefficient. We can quantify this with two metrics
+σ = C/Cr
+L/Lr and ω = Lr
+L − C
+Cl , where C and L are respec-
+tively the average clustering coefficient and average short-
+est path length of the network. Cr and Lr are respectively
+the average clustering coefficient and average shortest path
+length of an equivalent random graph. A graph is commonly
+classified as small-world if σ > 1 or, equivalently, ω ≈ 0.
+We show that NDP technique can grow a graph with
+small-world coefficients are σ ≈ 1.27 and ω ≈ −1.11−16,
+hence satisfying the small-worldness criteria. An example
+network is shown in Fig. 6. While these results are promis-
+ing, further experiments are required —notably on bigger
+graphs— to investigate with solid statistical significance the

@@ -1,0 +1,58 @@
+Shepherd: A Critic for Language Model Generation
+Tianlu Wang1
+Ping Yu1
+Xiaoqing Ellen Tan2
+Sean O’Brien 3
+Ramakanth Pasunuru
+Jane Dwivedi-Yu
+Olga Golovneva
+Luke Zettlemoyer
+Maryam Fazel-Zarandi2,4
+Asli Celikyilmaz2,4
+1joint first author
+2core contributor
+3work done at Meta
+4directional lead
+Meta AI Research, FAIR
+Abstract
+As large language models improve, there is
+increasing interest in techniques that leverage
+these models’ capabilities to refine their own
+outputs. In this work, we introduce Shepherd,
+a language model specifically tuned to critique
+model responses and suggest refinements, ex-
+tending beyond the capabilities of an untuned
+model to identify diverse errors and provide
+suggestions to remedy them. At the core of
+our approach is a high quality feedback dataset,
+which we curate from community feedback and
+human annotations. Even though Shepherd
+is small (7B parameters), its critiques are ei-
+ther equivalent or preferred to those from estab-
+lished models including ChatGPT. Using GPT-
+4 for evaluation, Shepherd reaches an average
+What are some great financial investments with no risk at 
+all?
+Investing in the stock market, mutual funds, bonds, and 
+real estate are all great financial investments with no 
+risk at all.
+The response is not accurate and does not address the 
+question fully. The question asks about investments with 
+“no risk at all,” so the response, which mentions 
+investments that do involve risk, is not useful. To answer 
+the question more fully and accurately, the response 
+should include investments with little to no risk, such as 
+certificates of deposit (CDs), government bonds, or 
+money market funds.
+What are the differences between plant-based and 
+animal-based protein sources?
+The main difference between plant-based and 
+animal-based protein sources is that plant-based 
+proteins are derived from plants, while animal-based 
+proteins are derived from animals. Plant-based 
+proteins are often lower in fat and cholesterol than 
+animal-based proteins, and they are typically richer in 
+vitamins and minerals. Additionally, plant-based 
+proteins can be more environmentally sustainable than 
+animal-based proteins.
+[cs.CL]  8 Aug 2023

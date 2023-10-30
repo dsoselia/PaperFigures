@@ -1,0 +1,64 @@
+GT images
+Subj 01
+Subj 02
+Subj 03
+Subj 04
+Subj 06
+Subj 05
+Anemone fish
+Pizza
+Electric guitar
+Canoe
+Figure 5: Comparison of reconstructed images on different subjects. The images on the left with red boxes represent the ground
+truth images. The other six images represent the reconstructed images of different subjects. The shown classes include fish,
+pizza, guitar, and canoe.
+generates multi-level semantic information, i.e., pixel-level
+saliency maps and sample-level textual descriptions from
+EEG signals, then use the diffusion model to combine the
+extracted semantics and obtain the high-resolution images.
+Both qualitative and quantitative experiments reveals the
+strong ability of the NEUROIMAGEN.
+As a preliminary work in this area, we demonstrate the
+possibility of linking human visual perceptions with compli-
+cated EEG signals. We expect the findings can further moti-
+vate the field of artificial intelligence, cognitive science, and
+neuroscience to work together and reveal the mystery of our
+brains to proceed visual perception information.
+References
+Allen, E. J.; St-Yves, G.; Wu, Y.; Breedlove, J. L.; Prince,
+J. S.; Dowdle, L. T.; Nau, M.; Caron, B.; Pestilli, F.; Charest,
+I.; et al. 2022. A massive 7T fMRI dataset to bridge cogni-
+tive neuroscience and artificial intelligence. Nature Neuro-
+science, 25(1): 116–126.
+Bai, Y.; Wang, X.; Cao, Y.; Ge, Y.; Yuan, C.; and Shan,
+Y. 2023. DreamDiffusion: Generating High-Quality Images
+from Brain EEG Signals. arXiv preprint arXiv:2306.16934.
+Beliy, R.; Gaziv, G.; Hoogi, A.; Strappini, F.; Golan, T.;
+and Irani, M. 2019. From voxels to pixels and back: Self-
+supervision in natural-image reconstruction from fMRI. Ad-
+vances in Neural Information Processing Systems, 32.
+Chen, Z.; Qing, J.; Xiang, T.; Yue, W. L.; and Zhou, J. H.
+2023. Seeing beyond the brain: Conditional diffusion model
+with sparse masked modeling for vision decoding. In Pro-
+ceedings of the IEEE/CVF Conference on Computer Vision
+and Pattern Recognition, 22710–22720.
+Chen, Z.; Qing, J.; and Zhou, J. H. 2023. Cinematic Mind-
+scapes: High-quality Video Reconstruction from Brain Ac-
+tivity. arXiv preprint arXiv:2305.11675.
+Dhariwal, P.; and Nichol, A. 2021. Diffusion models beat
+gans on image synthesis. Advances in Neural Information
+Processing Systems, 34: 8780–8794.
+Dosovitskiy, A.; Beyer, L.; Kolesnikov, A.; Weissenborn,
+D.; Zhai, X.; Unterthiner, T.; Dehghani, M.; Minderer, M.;
+Heigold, G.; Gelly, S.; et al. 2020. An image is worth 16x16
+words: Transformers for image recognition at scale. arXiv
+preprint arXiv:2010.11929.
+Goodfellow, I.; Pouget-Abadie, J.; Mirza, M.; Xu, B.;
+Warde-Farley, D.; Ozair, S.; Courville, A.; and Bengio, Y.
+2020. Generative adversarial networks. Communications of
+the ACM, 63(11): 139–144.
+Ho, J.; Jain, A.; and Abbeel, P. 2020. Denoising diffusion
+probabilistic models. Advances in Neural Information Pro-
+cessing Systems, 33: 6840–6851.
+Kavasidis, I.; Palazzo, S.; Spampinato, C.; Giordano, D.; and
+Shah, M. 2017. Brain2image: Converting brain signals into

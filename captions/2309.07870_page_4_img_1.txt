@@ -1,0 +1,43 @@
+3.1
+Agent
+The Agent class abstracts a language agent. Its UML is illustrated in Figure 1. We can see
+that an agent maintains its long-short term memory and has methods to observe the environment
+(agent._observe(environment)), act according to its current state (agent._act()) and update
+its memory (agent._update_memory()). All these methods are wrapped in the agent.step()
+method. This factorization enables developers to customize agents with new functionalities easily.
+Unlike existing language agent frameworks that assume an agent must be based on an LLM, we
+include a “_is_human” property to an agent. If it is set to “True”, the (agent._act()) will opt to
+provide observations and memory information to a human user and wait for the human user to input
+the action. This design allows flexible human-agent interaction in both single-agent and multi-agent
+systems by allowing human users to take the role of one or more language agents. It facilitates
+developers to build various interesting applications such as allowing human users to act as members
+of a team in debate and collaborate with (agent or human-based) teammates to beat another team, or
+act as CTO/engineers in a software company and collaborate with others for software development.
+3.2
+SOP
+The SOP class contains a graph of the states of agents. Each state specifies a certain sub-task or
+sub-goal of all agents when accomplishing the task described by the SOP. States are abstracted into
+a State class. A State object contains modularized prompts for the agent to leverage an LLM
+and various tools or APIs that an agent can use in the state. We abstract everything an agent may
+use for action in a state into a “Component” class. The Component class consists of two subclasses
+corresponding to different parts of the prompt and tools or external APIs, named “PromptComponent”
+and “ToolComponent”, respectively. PromptComponent includes modularized prompts that specify
+the task/goal, rules/constraints, (step-by-step) demonstrations for in-context learning, and the output
+format. ToolComponent supports more complex usage beyond modularized prompts, including
+external tools and APIs such as web search, knowledge bases, etc. The results of the tools are either
+included in the prompt or directly returned and processed afterward, according to the config file.
+An SOP object also includes an LLM-based control function that decides the transition between
+different states and the next agent to act. The state transit function is named sop._transit()
+and the agent routing function is named sop._route(). Both of the functions are wrapped in an
+sop.next() function which is used in the main loop.
+Figure 2: (a) Customer service agent
+Figure 3: (b) Sales agent
+3.3
+Environment
+The Environment class abstracts the environment in which the agents are situated. An environment
+consists of two main functions:
+environment._observed() and environment.update().
+environment._observed() defines how the environment influences the agent’s action (i.e., what
+information should be transferred to the agent upon observation, and environment.update()
+defines how the agent’s action impacts the environment.
+5

@@ -1,0 +1,22 @@
+1 view
+2 view
+4 view (proposed)
+an astronaut riding a horse
+baby yoda in the style of Mormookiee
+Figure 11: Comparison between SDS with diffusion models trained with different number of views.
+All models have camera embeddings as inputs.
+an astronaut riding a horse
+a bulldog wearing a black pirate hat
+Figure 12: Qualitative comparison between different multi-view diffusion models in Table 1. The
+same random seed is used for each row for comparison. The three models from top to bottom are
+trained with "3D data only", "2D + 3D data", and "2D + 3D data + 1,024 batch size".
+from a severe Janus problem, partially due to imperfect camera annotations. The 2-view model
+greatly reduces the multi-face problem, but it still could happen to some extent. Finally, the 4-view
+model barely suffers from any multi-view consistency issues.
+A.3
+TRAINING WITH 2D DATA AND LARGE BATCH SIZE
+Fig. (12) shows the qualitative comparison between training with and without 2D data for multi-view
+diffusion model. Empirically, we found that adding the 2D data and increasing batch size has a
+clear improvement for the model generalizability, leading to better image quality and text-image
+correspondence.
+15

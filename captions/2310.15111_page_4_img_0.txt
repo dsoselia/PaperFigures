@@ -1,0 +1,49 @@
+Technical report. In progress
+Figure 3: An illustration of the NestedUNet architecture used in Matryoshka Diffusion. We follow the design
+of Podell et al. (2023) by allocating more computation in the low resolution feature maps (by using more
+attention layers for example), where in the figure we use the width of a block to denote the parameter counts.
+resolution. Thanks to the proposed architecture, we can achieve the above trivially as if progressive
+growing the networks (Karras et al., 2017). This training scheme avoids the costly high-resolution
+training from the beginning, and speeds up the overall convergence. Furthermore, we can incorporate
+mixed-resolution training, a technique that involves the concurrent training of samples with varying
+final resolutions within a single batch.
+4
+Experiments
+MDM is a versatile technique applicableto any problem where input dimensionality can be progres-
+sively compressed. We consider two applications beyond class-conditional image generation that
+demonstrate the effectiveness of our approach – text-to-image and text-to-video generation.
+4.1
+Experimental Settings
+Datasets
+In this paper, we only focus on datasets that are publicly available and easily reproducible.
+For image generation, we performed class-conditioned generation on ImageNet (Deng et al., 2009) at
+256×256, and performed general purpose text-to-image generation using Conceptual 12M (CC12M,
+Changpinyo et al., 2021) at both 256 × 256 and 1024 × 1024 resolutions. As additional evidence
+of generality, we show results on text-to-video generation using WebVid-10M (Bain et al., 2021) at
+16 × 256 × 256. We list the dataset and preprocessing details in Appendix E.
+The choice of relying extensively on CC12M for text-to-image generative models in the paper is
+a significant departure from prior works (Saharia et al., 2022; Ramesh et al., 2022) that rely on
+exceedingly large and sometimes inaccessible datasets, and so we address this choice here. We
+find that CC12M is sufficient for building high-quality text-to-image models with strong zero-shot
+capabilities in a relatively short training time1. This allows for a much more consistent comparison
+of methods for the community because the dataset is freely available and training time is feasible.
+We submit here, that CC12M is much more amenable as a common training and evaluation baseline
+for the community working on this problem.
+Evaluation
+In line with prior works, we evaluate our image generation models using Fr´echet
+Inception Distance (FID, Heusel et al., 2017) (ImageNet, CC12M) and CLIP scores (Radford et al.,
+2021) (CC12M). To examine their zero-shot capabilities, we also report the FID/CLIP scores using
+COCO (Lin et al., 2014) validation set togenerate images with the CC12M trained models. We also
+provide additional qualitative samples for image and video synthesis in supplementary materials.
+Implementation details
+We implement MDMs based on the proposed NestedUNet architecture,
+with the innermost UNet resolution set to 64 × 64. Similar to Podell et al. (2023), we shift the bulk
+of self-attention layers to the lower-level (16 × 16) features, resulting in total 450M parameters for
+the inner UNet. As described in § 3.2, the high-resolution part of the model can be easily attached
+on top of previous level of the NestedUNet, with a minimal increase in the parameter count. For
+text-to-image and text-to-video models, we use the frozen FLAN-T5 XL (Chung et al., 2022) as our
+text encoder due to its moderate size and performance for language encoding. Additionally, we apply
+two learnable self-attention layers over the text representation to enhance text-image alignment.
+12-5 days of training with 4 nodes of 8 GPU A-100 machines was often enough to build high quality models
+and assess relative performance of different approaches.
+5

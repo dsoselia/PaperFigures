@@ -1,0 +1,46 @@
+Figure 1: AutoMix: Given a context (like an article) and a question q, an initial answer (1890 AD) is
+generated with the smaller language model (SLM). The answer is self-verified by the SLM, yielding
+a noisy verification score. The Meta-Verifier subsequently assesses verifier’s results. Based on the
+meta-verifier’s decision, either the initial answer (1890 AD) is returned, or the question is rerouted to
+a larger language model (LLM) to enhance accuracy.
+In contrast to existing approaches, which generally classify tasks as Simple or Complex for model
+routing, AutoMix integrates a third category of Unsolvable queries. These queries are likely unsolv-
+able even by a Large Language Model (LLM) and should not be routed to larger models if identified
+early. This consideration allows AutoMix to judiciously allocate computational resources, preventing
+unwarranted computational spending on these particularly challenging instances.
+We use context-grounded few-shot entailment to evaluate the consistency of generated answers with
+the provided context, without requiring a large amount of human-labeled data (Poliak, 2020; Dagan
+et al., 2022). For example, an answer discussing "desert animals" in a context focused on "aquatic
+life" would be flagged as inconsistent. However, recognizing that self-verification can sometimes
+be inconsistent or noisy (Huang et al., 2023), we introduce a meta-verifier to evaluate the reliability
+of the initial verification. The meta-verifier acts as a secondary check, providing an additional layer
+of confidence assessment to ensure that the decision to route a task to a larger or smaller model is
+well-founded.
+In summary, our contributions are:
+• We introduce AutoMix, a method that strategically leverages black-box LLM APIs for generating
+a solution, verifying the solution, and switching to a larger language model, everything without
+access to model weights, gradients, or logits.
+• We also show that context-grounded entailment is a reasonable but noisy proxy for self-verification.
+To deal with this noise, we propose a POMDP-based meta-verification mechanism that helps
+improve the reliability of the final decision.
+• We propose and introduce the Incremental Benefit Per Unit Cost (IBC) metric, a novel measure
+that quantifies the efficiency of integrating smaller and larger language models.
+• We present empirical evidence from experiments on five context-grounded reasoning datasets
+using the language models LLAMA2-13B and LLAMA2-70B as the small (SLM) and large
+(LLM) language models. Our results demonstrate that AutoMix surpasses baselines, enhancing
+the incremental benefit per cost by up to 89%.
+2
+AutoMix: Few-shot Self-Verification and Meta-Verification
+Task and setup
+We tackle the problem of context-grounded question answering, where given a
+C (
+i
+i
+h
+i l )
+d
+i
+h
+d l i
+k d
+i h

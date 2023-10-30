@@ -1,0 +1,149 @@
+Nougat
+Blecher et al.
+In addition, the splitting algorithm of the source code will in some cases include text from the previous page or cut off
+words from the end. This is especially true for “invisible” characters used for formatting, like italic, bold text or section
+header.
+For PMC papers the inline math is written as Unicode or italic text, while display math equations or tables are often
+included in image format and will therefore be ignored.
+Each of these issues reduces the overall data quality. However, the large number of training samples compensates for
+these small errors.
+5
+Results & Evaluation
+In particular, consider pruning the training dataset by keeping only the examples with the smallest
+margin |zµ| = |Jprobe · xµ| along a probe student Jprobe. The pruned dataset will follow some dis-
+tribution p(z) along the direction of Jprobe, and remain isotropic in the nullspace of Jprobe. In what
+follows we will derive a general theory for an arbitrary data distribution p(z), and specialize to the
+case of small-margin pruning only at the very end (in which case p(z) will take the form of a truncated
+Gaussian). We will also make no assumptions on the form of the probe student Jprobe or the learning
+rule used to train it; only that Jprobe has developed some overlap with the teacher, quantified by the
+angle θ = cos−1 �
+Jretle·T
+∥Jretle∥2∥T∥2
+�
+(Fig. 2A).
+After the dataset has been pruned, we consider training a new student J from scratch on the pruned
+dataset. A typical training algorithm (used in support vector machines and the solution to which SGD
+converges on separable data) is to find the solution J which classifies the training data with the maximal
+margin κ = minµ J · (yµxµ). Our goal is to compute the generalization error εg of this student, which
+is simply governed by the overlap between the student and the teacher, εg = cos−1(R)/π, where
+R = J · T/∥J∥2∥T∥2.
+Main result and overview
+Our main result is a set of self-consistent equations which can be solved to obtain the generalization
+error ε(α, p, θ) for any α and any data distribution p(z) along a probe student at any angle θ relative
+to the teacher. These equations take the form,
+R − ρ cos θ
+sin2 θ
+= α
+πΛ
+� � κ
+−∞
+dt exp
+�
+−∆(t, z)
+2Λ2
+�
+(κ − t)
+�
+z
+(1)
+1 − ρ2 + R2 − 2ρR cos θ
+sin2 θ
+= 2α
+� � κ
+−∞
+dt
+e− (t−ρµ)2
+2
+√
+2π
+�
+1 − ρ2 H
+�
+Γ(t, z)
+�
+1 − ρ2Λ
+�
+(κ − t)2
+�
+z
+(2)
+ρ − R cos θ
+sin2 θ
+= 2α
+� � κ
+−∞
+dt e
+− (t−ρµ)2
+2(1−ρµ)2
+√
+2π
+�
+1 − ρ2 H
+�
+Γ(t, z)
+�
+1 − ρ2Λ
+�� z − ρt
+1 − ρ2
+�
+(κ − t)
++ 1
+2πΛ exp
+�
+−∆(t, z)
+2Λ2
+� �ρR − cos θ
+1 − ρ2
+�
+(κ − t)
+�
+z
+(3)
+Where,
+Λ =
+�
+sin2 θ − R2 − ρ2 + 2ρR cos θ,
+(4)
+Γ(t, z) = z(ρR − cos θ) − t(R − ρ cos θ),
+(5)
+∆(t, z) = z2 �
+ρ2 + cos2 θ − 2ρR cos θ
+�
++ 2tz(R cos θ − ρ) + t2 sin2 θ.
+(6)
+Where ⟨·⟩z represents an average over the pruned data distribution p(z) along the probe student.
+For any α, p(z), θ, these equations can be solved for the order parameters R, ρ, κ, from which the
+generalization error can be easily read off as εg = cos−1(R)/π. This calculation results in the solid
+theory curves in Figs 1,2,3, which show an excellent match to numerical simulations. In the following
+section we will walk through the derivation of these equations using replica theory. In Section A.6
+we will derive an expression for the information gained per training example, and show that with
+Pareto optimal data pruning this information gain can be made to converge to a finite rate, resulting
+in at least exponential decay in test error. In Section A.7, we will show that super-exponential scaling
+eventually breaks down when the probe student does not match the teacher perfectly, resulting in
+power law scaling at at a minimum pruning fraction fmin(θ).
+Replica calculation of the generalization error
+To obtain Eqs. 1,2,3, we follow the approach of Elizabeth Gardner and compute the volume Ω(xµ, T, κ)
+of solutions J which perfectly classify the training data up to a margin κ (known as the Gardner volume)
+[29, 25]. As κ grows, the volume of solutions shrinks until it reaches a unique solution at a critical κ,
+the max-margin solution. The Gardner volume Ω takes the form,
+Figure 5: Example of a page with many mathematical equations taken from [41]. Left: Image of a page in the document,
+Right: Model output converted to LaTeX and rendered to back into a PDF. Examples of scanned documents can be
+found in the appendix B.
+In this section we discuss the results and performance of the model. For an example see Fig. 5 or go to Sec. B. The
+model focuses only on the important content relevant features of the page. The box around the equations is skipped.
+5.1
+Metrics
+We report the following metrics on our test set.
+Edit distance
+The edit distance, or Levenshtein distance [39], measures the number of character manipulations
+(insertions, deletions, substitutions) it takes to get from one string to another. In this work we consider the normalized
+edit distance, where we divide by the total number of characters.
+BLEU
+The BLEU [42] metric was originally introduced for measuring the quality of text that has been machine-
+translated from one language to another. The metric computes a score based on the number of matching n-grams
+between the candidate and reference sentence.
+METEOR
+Another machine-translating metric with a focus on recall instead of precision, introduced in [43].
+F-measure
+We also compute the F1-score and report the precision and recall.
+6

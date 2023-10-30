@@ -1,0 +1,31 @@
+Stable Diffusion Model
+Merge LoRA Weights
+Input Prompts
+A beautiful woman, Chinese, 
+Wearing suit 
+Face
+Fusion
+Face 
+Recognition
+Ranking
+Style LoRA Model
+（Trained Offline）
+Inference
+Figure 1: Architectural overview of FaceChain personalized portrait generation. During training, multiple data process-
+i
+h
+d
+t d t
+t t
+d f
+i
+t
+t i
+f
+L RA
+d l
+li
+Th
+i ht
+f f
+L RA

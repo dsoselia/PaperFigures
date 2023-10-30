@@ -1,0 +1,58 @@
+User
+Make the robot stand upright on two back feet like a human.
+Good, you actually don't need to keep the front paws at certain height, 
+just leave it to the controller.
+Good, now make the robot do a moonwalk.
+Moon walk means the robot should walk backward while the feet 
+swings as if they are moving forward. Correct your answer.
+User
+Open the drawer.
+Good, now put the apple inside the drawer while keep it open.
+Good, now release the apple and move hand away.
+Now close the drawer.
+(a) The quadruped perform a moon-walk.                        
+ (b) The manipulator places an apple in the drawer.
+Figure 5: The two interactive examples using our proposed system.
+User
+Lift the apple
+User
+Lift the cube
+State Estimation
+Real
+Sim
+Planned Trajectory
+#python
+set_l2_distance_reward(
+"gripper", "apple")  
+set_obj_z_position_reward(
+"apple",  0.5)
+set_sim2real_regularization_re
+ward()
+#python
+set_l2_distance_reward(
+"gripper", "cube")  
+set_obj_z_position_reward(
+"cube",  0.5)
+set_sim2real_regularizatio
+n_reward()
+Figure 6: Implementation and rollouts of the proposed system in the real world.
+beyond the capabilities of current real hardwares. To mitigate this issue, we design a regularization residual
+term specific to encourage steady and stable robot movements when applying our system to the real robot
+(set_sim2real_regularization_reward() in Fig. 6, see Appendix A.6.3 for details for this term).
+We demonstrate sim-to-real transfer on two tasks: object pushing and object grasping. Our system is able
+to generate relevant reward code and the Mujoco MPC is able to synthesize the pushing and grasping
+motion. For rollouts please refer to the supplementary video/website and Fig. 7.
+5
+Discussion and Conlusion
+In this work, we investigate a new paradigm for interfacing an LLM with a robot through reward functions,
+powered by a low-level model predictive control tool, MuJoCo MPC. Using reward function as the interface
+enables LLMs to work in a semantic-rich space that play to the strengths of LLMs, while ensures the
+expressiveness of the resulting controller. To further improve the performance of the system, we propose
+to use a motion description template to better extract internal knowledge about robot motions from LLMs.
+We evaluate our proposed system on two simulated robotic platforms: a quadruped robot and a dexterous
+manipulator robot. We apply our approach to both robots to acquire a wide variety of skills. Compared to
+alternative methods that do not use reward as the interface, or do not use the motion description template, our
+method achieves significantly better performance in terms of stability and the number of tasks it can solve.
+Limitations and Future Work. Though we show that our system can obtain a diverse set of skills through
+natural language interactions, there are a few limitations. First, we currently design templates of motion
+descriptions for each type of robot morphology, which requires manual work. An interesting future direction

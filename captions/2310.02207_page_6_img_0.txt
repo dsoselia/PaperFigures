@@ -1,0 +1,19 @@
+4.2
+DIMENSIONALITY REDUCTION
+Despite being linear, our probes still have dmodel learnable parameters (ranging from 4096 to 8192
+for the 7B to 70B models), enabling it to engage in substantial memorization. As a complementary
+form of evidence to the generalization experiments, we train probes with 2 to 3 orders of magnitude
+fewer parameters by projecting the activation datasets onto their k largest principal components.
+Figure 4 illustrates the test R2 for probes trained on each model and dataset over a range of k
+values, as compared to the performance of the full dmodel-dimensional probe. We also report the
+S
+l i
+i
+Fi
+12
+hi h i
+h
+idl
+i h i
+i
+k h

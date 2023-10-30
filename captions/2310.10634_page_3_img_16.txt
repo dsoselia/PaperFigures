@@ -1,0 +1,83 @@
+3
+PLATFORM DESIGN AND IMPLEMENTATION
+User Interface
+Language Agent
+Language
+Models
+Environments
+Tools
+•
+Prompting
+•
+Action Parsing
+•
+Agent Method
+•
+API Calling
+•
+Tools Scaling
+•
+Tools Selection
+•
+Web Extension
+•
+Sandbox
+•
+User System
+•
+…
+•
+Frontend Website
+•
+Streaming
+•
+Error Handling
+•
+Database Design
+•
+Backend Server
+Backend
+Frontend
+User
+Figure 2: System overview of OpenAgents’ architecture comprising (1) User Interface, a bridge
+that facilitates communication between the user and the agent, and manages backend operations;
+and (2) Language Agent, encompassing the language model, tools, and environment, driving the
+agent’s decision-making processes. The flow of interaction typically follows from the user needs,
+through the user interface, and culminates in the language agent taking specific actions using its
+various components.
+3.1
+SYSTEMATIC DESIGN
+In this section, we introduce our systematic efforts in OpenAgents, aiming towards addressing this
+gap between existing agent frameworks and real-world functional agent applications.
+The OpenAgents architecture can be generally split into two parts corresponding to Figure 2: (1)
+User Interface, including both the frontend and backend; (2) Language Agent, including language
+models, tools, and environments. OpenAgents provides a well-built interface for user-agent commu-
+nication. Upon receiving instructions from the users, the agent will then plan, and take action in the
+environment via using tools.
+User Interface We have devoted significant effort to crafting a user-friendly and highly functional
+User Interface. We have tackled a multitude of highly reusable business logic to use and host agents.
+This effort has resulted in robust support for various technical aspects within the demo, such as
+backend server operations, error handling, data streaming, etc. Our goal has been to make the
+OpenAgents not only user-friendly but also to provide enhanced usability. Although these aspects
+were not the central focus of the current agent frameworks (Chase, 2022; Xu et al., 2023a; Zhou
+et al., 2023c), we firmly believe that these behind-the-scenes efforts should not be. They hold
+significant meaning for future research, contributing to the overall robustness and usability of the
+system.
+Language Agent In our design, the language agent comprises three essential components: the lan-
+guage model, the tool interface, and the environment. Currently, we adopt our prompting method
+based on the approach introduced in ReAct (Yao et al., 2022b). The agent generally follows a
+sequential process of
+Observation −→ Deliberation −→ Action
+in each turn of in-
+teraction. We also prompt the language model to produce easily parsable text. The tool interface
+includes parsers capable of translating this text into executable actions, such as generating code or
+making API calls. Subsequently, these actions are executed within the corresponding environment.
+We’ve also invested considerable effort into behind-the-scenes challenges, like stable API calling,
+tools scaling, and building a sandbox environment.
+3.2
+PRACTICAL IMPLEMENTATION CHALLENGES
+The implementation journey unveiled several challenges essential for in-the-wild agent readiness.
+Below are the simplified insights and highlights into the core facets of our implementation. For
+more details, please kindly refer to Appendix A.
+For User Interface implementation, we tackle the following challenges:
+4

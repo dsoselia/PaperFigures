@@ -1,0 +1,26 @@
+Figure 2: Keyword clouds in the Owl-Instruct. This keyword cloud is built based on word
+frequency. Words like “data”, and “service” appear more frequently.
+2.2 Dataset Augmentation
+Single-turn Dataset Construction
+In our endeavor, we have constructed a compre-
+hensive single-turn dialogue dataset tailored specifically to the domain of operations and
+maintenance, boasting an impressive 9,118 meticulously curated data entries. Drawing in-
+spiration from the self-instruct approach (Wang et al., 2023a), we have taken an additional
+step to further enrich our dataset. This enrichment involves the generation of supplementary
+samples derived from the seed data, a corpus painstakingly labeled by our domain experts.
+Our commitment to data quality extends to considering ChatGPT (Jiao et al., 2023) as
+a reference and supervisor for ensuring the excellence of our dataset. This meticulous ap-
+proach to dataset construction and enhancement underscores our dedication to facilitating
+superior performance and robustness in the realm of operations and maintenance dialogue
+systems.
+Example Structure:
+{”q”: ”Please answer the following questions: The server is running slowly and how to trou-
+bleshoot and solve it”,
+”a”: ”1. Check whether the server hardware resources are overloaded, such as CPU, memory,
+disk space, etc. 2. Check whether the applications running on the server are running normally,
+such as checking application logs, monitoring alarms, etc.” }
+Multi-turn Dataset Construction
+In accordance with the methodology elucidated in
+Baize (Xu et al., 2023b), the generation process of our multi-turn dialogue dataset within
+the operations and maintenance domain encompasses the following four distinct phases:
+5

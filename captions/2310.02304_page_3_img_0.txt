@@ -1,0 +1,45 @@
+Figure 3: A pipeline for self-improvement. STOP (Algorithm 1) uses a seed improver program to
+iteratively optimize its own code using language model calls and a meta-utility function that evaluates
+how well an improver optimizes code for downstream tasks.
+by utility u and a solution s ∈ Σ∗. In our applications, solutions s are strings representing the source
+code of a program, but more generally any utility defined on strings can be used.
+An improver I is a program1 that improves a task solution using a language model L:
+s′ = I(u, s, L) ideally with high utility u(s′) ≫ u(s).
+Now, suppose that there is a distribution D over downstream tasks τ ∼ D. Thus, the goal is to find an
+improver program I that has high expected utility when used on a downstream task,
+¯u(I) ≜ E(u,s)∼D
+�
+u(I(u, s, L))
+�
+.
+(1)
+For training, we assume that we are given a collection of n downstream tasks D ∼ Dn drawn
+independently from distribution D. We define the meta-utility ˆu of an improver I as the average
+utility over downstream training tasks,
+ˆu(I) ≜
+1
+|D|
+�
+(u,s)∈D
+u(I(u, s, L)).
+The above equations define ¯ufunc and ˆufunc. For their description string, we use a common “grey-box”
+description ¯ustr = ˆustr which is a description (e.g., source code) indicating that the utility is the
+expectation over a set of downstream tasks, but the individual downstream tasks themselves are not
+included in the description. This enables one to optimize over ˆu as an approximation to the actual
+objective ¯u. In addition, our theoretical analysis in Appendix A provides simple conditions under
+which optimizing ˆu also nearly optimizes ¯u.
+Resource bounds. Appendix A also formalizes resource bounds on runtime and language mod-
+els. Additionally, we note that one could apply an improver two or more times. For example,
+ED[u(I(u, I(u, s, L), L))] would be the expected utility of using the improver twice. However, an
+i
+l
+d thi i t
+ll
+i
+h t
+b d
+t it h
+F
+th
+ti
+d th

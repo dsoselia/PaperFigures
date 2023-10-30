@@ -1,0 +1,59 @@
+BLIP-2
+LAION-400M
+BLIP-2
+CC Image
+CommonCatalog
+N=~70M
+i=1
+Caption
+N=~70M
+i=1
+(a) Pre-trained BLIP-2.
+BLIP-2
+LAION-400M
+BLIP-2
+CC Image
+CommonCatalog
+N=~70M
+i=1
+Caption
+N=~70M
+i=1
+CommonCanvas
+(b) Generating CommonCatalog for training CommonCanvas.
+a black and 
+white cartoon 
+dog with 
+black ears
+BLIP-2
+Common
+Canvas
+(c) “Lossy compression” via BLIP-2 from an input image to a synthetic caption. When we use a T2I
+model to generate an image with this “lossy” caption (e.g., via CommonCanvas), the resulting generation
+looks nothing like the original prompt image that produced the caption.
+Figure 3: (a) LAION’s massive dataset of image-caption pairs is used to train BLIP-2, an image-to-
+text model. (b) We leverage BLIP-2 to produce synthetic captions for our caption-less CC images,
+and use the resulting synthetic image-caption pairs (the CommonCatalog dataset) to train our open
+diffusion model, CommonCanvas. (c) Although BLIP-2 was trained on LAION (e.g., including
+pictures of characters Snoopy), the captions it produces behave like a “lossy compression” (e.g., a
+black and white cartoon dog with black ears, which has no mention of Snoopy). When
+we supply such “lossy” captions to a T2I model, like a game of telephone, it produces outputs that
+no longer resemble the original images (e.g., we show how CommonCanvas produces an image that
+matches the caption, but does not look like Snoopy).
+Reproducibility. Since the datasets only contain the image URLs, and not the images themselves,
+they are plagued with link rot [27].1 When accessing LAION-5B, there is no guarantee the images
+still exist at their URLs, making it impossible to fully reproduce the dataset and opening up the
+possibility of data poisoning attacks [8].
+A natural alternative is to not use LAION datasets for training. One could instead independently
+curate a dataset of CC-licensed images with known provenance that expressly allow for copying,
+adaptation, and commercial use. As constituent images can be stored and distributed, this would
+also solve the link rot problem, thereby enabling greater reproducibility. We defer our discussion of
+sourcing CC-licensed images to Section 4, where we detail CommonCatalog: our new, open dataset.
+While CC images are an attractive alternative to LAION-5B, we note that CC images rarely contain
+the captions necessary to train T2I models. Therefore, we first need a method for captioning CC
+images, which we describe in the next section.
+3
+Telephoning: A Transfer Learning-based Image-captioning Method
+Our solution for handling the lack of captions in CC images is an intuitive type of transfer learning
+for producing high-quality synthetic labels. We describe this method, and then note that there are
+various similar methods in prior generative modeling literature Altogether these methods indicate

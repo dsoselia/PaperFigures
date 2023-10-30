@@ -1,0 +1,28 @@
+q
+p
+,
+g
+yp
+)
+g
+,
+the system needs to interpret indirect instructions about the robot’s heading direction and to control the robot
+to face the right direction (e.g., identify the direction of sunrise or sunset). 2) Body pose control, where we
+evaluate the ability of the system to understand and process commands to have the robot reach different body
+poses, inspired by common commands issued by human to dogs such as sit and roll over. 3) Limb control,
+where we task the system to lift particular foot of the robot. Furthermore, we also test the ability of the system
+to take additional instructions to modify an existing skill, such turn in place with lifted feet. 4) Locomotion
+styles, where we evaluate our proposed system in generating different locomotion styles. In particular, we
+design a challenging task of having the quadruped stand up on two back feet to walk in a bipedal mode.
+For the dexterous manipulator, we design tasks to test its ability to achieve different types of interactions
+with objects such as lifting, moving, and re-orienting. We test the system on a diverse set of objects with
+significantly different shapes and sizes (Fig. 3) for each task. We further include two tasks that involves
+interacting with articulated objects of different joint types.
+4.4
+Evaluation results
+For each task and method considered, we generate 10 responses from Reward Translator, each evaluated in
+MJPC for 50 times, thus we measure the end-to-end stability of the full pipeline. Fig. 4 shows the results for
+both robots. Our proposed approach achieves significantly higher success rate for 11/17 task categories and
+comparable performance for the rest tasks, showing the effectiveness and reliability of the proposed method.
+4language-to-reward.github.io
+6

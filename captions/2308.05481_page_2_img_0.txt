@@ -1,0 +1,82 @@
+Figure 2: Overview of D-Bot
+Second, in maintenance stage, given an anomaly, D-Bot iter-
+atively reasons the possible root causes by taking advantages of
+external tools and multi-LLM communications.
+• External Tool Learning. For a given anomaly, D-Bot first
+matches relevant tools using algorithms like Dense Retrieval.
+Next, D-Bot provides the tool APIs together with their de-
+scriptions to the LLM (e.g., function calls in GPT-4). After
+that, LLM can utilize these APIs to obtain metric values or op-
+timization solutions. For example, in PostgresSQL, LLM can
+acquire the templates of slowest queries in the pg_activity
+view. If these queries consume much CPU resource (e.g., over
+80%), they could be root causes and optimized with rewriting
+tool (Section 6).
+• LLM Diagnosis. Although LLM can understand the func-
+tions of tool APIs, it still may generate incorrect API requests,
+leading to diagnosis failures. To solve this problem, we em-
+ploy the tree of thought strategy, where LLM can go back
+to previous steps if the current step fails. It significantly
+increases the likelihood of LLMs arriving at reasonable di-
+agnosis results (Section 7).
+• Collaborative Diagnosis. A single LLM may execute only
+the initial diagnosis steps and end up early, leaving the prob-
+lem inadequately resolved. To address this limitation, we
+propose the use of multiple LLMs working collaboratively.
+Each LLM plays a specific role and communicates by the en-
+vironment settings (e.g., priorities, speaking orders). In this
+way, we can enable LLMs to engage in debates and inspire
+more robust solutions (Section 8).
+4
+EXPERIENCE DETECTION FROM
+DOCUMENTS
+Document learning aims to extract experience segments from tex-
+tual sources, where the extracted segments are potentially useful in
+different DM cases. For instance, when analyzing the root causes
+of performance degradation, LLM utilizes the “many_dead_tuples”
+experience to decide whether dead tuples have negatively affected
+the efficiency of index lookup and scans.
+Desired Experience Format. To ensure LLM can efficiently uti-
+lize the experience, each experience fragment should include four
+fields. As shown in the following example, “name” helps LLM to
+understand the overall function; “content” explains how the root
+cause can affect the database performance (e.g., the performance
+hazards of many dead tuples); “metrics” provide hints of matching
+with this experience segment, i.e., LLM will utilize this experience
+if the abnormal metrics exist in the “metrics” field; “steps” provide
+the detailed procedure of checking whether the root cause exists by
+interacting with database (e.g., obtaining the ratio of dead tuples
+and live tuples from table statistics views).
+1 "name": "many_dead_tuples",
+2 "content": "If the accessed table has too many dead tuples,
+it can cause bloat-table and degrade performance",
+3 "metrics": ["live_tuples", "dead_tuples", "table_size", "
+dead_rate"],
+4 "steps": "For each accessed table, if the total number of
+live tuples and dead tuples is within an acceptable
+limit (1000), and table size is not too big (50MB), it
+is not a root cause. Otherwise, if the dead rate also
+exceeds the threshold (0.02), it is considered a root
+cause. And we suggest to clean up dead tuples in time."
+LLM for Experience Detection. It aims to detect experience seg-
+ments that follow above format. Since different paragraphs within a
+long document may be correlated with each other (e.g., the concept
+of “bloat-table” appearing in “many_dead_tuples” is introduced in
+another section), we explain how to extract experience segments
+without losing the technical details.
+Step1: Segmentation. Instead of partitioning documents into fixed-
+length segments, we divide them based on the structure of the sec-
+tion structures and their content. Initially, the document is divided
+into chunks using the section separators. If a chunk exceeds the
+maximum chunk size (e.g., 1k tokens), we further divide it recur-
+sively into smaller chunks.
+Step2: Chunk Summary. Next, for each chunk denoted as 𝐴���, a
+summary 𝐴���.𝐴���𝐴���𝐴���𝐴���𝐴���𝐴���𝑦 is created by feeding the content of 𝐴��� into
+LLM with a summarization prompt 𝐴���𝐴���𝐴���𝐴���𝐴���𝐴���𝐴���𝐴���𝐴���𝐴���:
+𝐴���𝐴���𝐴���𝐴���𝐴���𝐴���𝐴���𝐴���𝐴���𝐴��� = Summarize the provided chunk briefly · · · Your
+summary will serve as an index for others to find technical
+details related to database maintenance · · · Pay attention to
+examples even if the chunks covers other topics.
+The generated 𝐴���.𝐴���𝐴���𝐴���𝐴���𝐴���𝐴���𝑦 acts as a textual index of 𝐴���, enabling
+the matching of chunks containing similar content.
+3

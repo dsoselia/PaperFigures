@@ -1,0 +1,18 @@
+Figure 1: Spatial and temporal world models of Llama-2-70b. Each point corresponds to the layer
+50 activations of the last token of a place (top) or event (bottom) projected on to a learned linear
+probe direction. All points depicted are from the test set.
+One possible explanation for our results is that the model only learns a mapping from place to a
+t
+(f
+l )
+d it i th
+b
+th t
+t
+ll
+l
+th
+l b l
+t
+f h
+th

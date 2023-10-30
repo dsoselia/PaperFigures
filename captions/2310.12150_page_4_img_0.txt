@@ -1,0 +1,123 @@
+Under review as a conference paper at ICLR 2024
+Using the same set of evidence documents brings different effects on two LMs. On GPT-3.5, providing
+documents results in shorter generations and less repetitions, while on Alpaca, it results in longer
+generations and more repetitions. Yet, on both models, adding relevant documents causes bigger
+changes in length than adding random documents. Overall, GPT-3.5 generates longer answers with
+less variability across examples. Alpaca answers exhibit higher variance across examples, consistently
+across all metrics.
+In both models, RankGen scores decrease when the document set is more relevant. This can be as
+the model incorporates new information from retrieved documents, generated answers become less
+predictable from the question alone. Perplexity also shows similar trends, with relevant documents
+increasing perplexity. This might be because it copies rare tokens from evidence documents, which
+will get assigned high perplexity when evaluating answers alone.
+Our finding diverges from Krishna et al. (2021) which showed conditioning on random vs. relevant
+documents does not bring differences in smaller-scale, fine-tuned retrieval-augmented LM, which
+fails to incorporate relevant information from retrieved documents into the answer. We will compare
+attribution patterns in Section 7.2, which again shows a substantial difference between the two
+settings.
+Human WebGPT
+Bing
+Rand
+Bigram
+Human
+WebGPT
+Bing
+Rand
+Bigram
+0.16
+0.14
+0.14
+0.14
+0.14
+0.16
+0.16
+0.15
+0.17
+0.20
+Human WebGPT
+Bing
+Rand
+SimCSE
+Human
+WebGPT
+Bing
+Rand
+SimCSE
+0.84
+0.83
+0.83
+0.82
+0.82
+0.84
+0.84
+0.84
+0.85
+0.87
+(a) GPT-3.5
+Human WebGPT
+Bing
+Rand
+Bigram
+Human
+WebGPT
+Bing
+Rand
+Bigram
+0.13
+0.12
+0.12
+0.12
+0.12
+0.13
+0.12
+0.12
+0.14
+0.14
+Human WebGPT
+Bing
+Rand
+SimCSE
+Human
+WebGPT
+Bing
+Rand
+SimCSE
+0.83
+0.83
+0.82
+0.82
+0.82
+0.83
+0.83
+0.83
+0.84
+0.86
+(b) Alpaca
+Figure 2: Comparing an answer generated with-
+out evidence document with an answer gener-
+ated with diverse evidence document set.
+Similarities Among Answer Generated with Dif-
+ferent In-Context Settings
+Retrieval-augmented
+LM combines its parametric knowledge and non-
+parametric knowledge from evidence documents to
+address the question (Longpre et al., 2021; Mallen
+et al., 2023; Zhou et al., 2023). We aim to under-
+stand the impact of combining information from
+evidence documents on generated answers, as op-
+posed to relying solely on parametric knowledge.
+We thus compare lexical similarities (measured by
+bigram overlap) and embedding similarity (mea-
+sured by SimCSE (Gao et al., 2021)) between answers generated with various evidence document
+settings and answers generated without documents.
+Figure 2 reports the results (results on all answer pairs can be found in Appendix B.1). To contextual-
+ize similarity scores, we provide an upper bound (0.19 for bigram, 0.875 for SimCSE) by computing
+average similarity between three pairs of samples generated without documents, and a lower bound
+(0.19 for bigram overlap and 0.15 for SimCSE) by computing the similarity between answers to
+different questions. According to both metrics, the answers generated without evidence document
+are most similar to the answers generated with random documents, followed by Bing documents,
+suggesting more relevant evidence set change answers more substantially.
+5
+C
+A
+A

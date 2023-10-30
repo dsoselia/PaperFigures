@@ -1,0 +1,15 @@
+1 FAIR, Meta
+2 INRIA
+{timdarcet,qas,bojanowski}@meta.com
+julien.mairal@inria.fr
+ABSTRACT
+Transformers have recently emerged as a powerful tool for learning visual rep-
+resentations. In this paper, we identify and characterize artifacts in feature maps
+of both supervised and self-supervised ViT networks. The artifacts correspond to
+high-norm tokens appearing during inference primarily in low-informative back-
+ground areas of images, that are repurposed for internal computations. We propose
+a simple yet effective solution based on providing additional tokens to the input se-
+quence of the Vision Transformer to fill that role. We show that this solution fixes
+that problem entirely for both supervised and self-supervised models, sets a new
+state of the art for self-supervised visual models on dense visual prediction tasks,
+]  28 Sep 2023

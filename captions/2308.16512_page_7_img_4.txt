@@ -1,0 +1,34 @@
+0◦
+45◦
+90◦
+135◦
+0◦
+45◦
+90◦
+135◦
+DreamFusion-IF
+Magic3D-IF
+TextMesh
+ProlificDreamer
+Ours
+Ours(Normal)
+A bulldog wearing a black pirate hat
+beautiful, intricate butterfly
+Figure 6: Comparison of text-to-3D generation. See Appendix for more results.
+4.2
+3D GENERATION WITH MULTI-VIEW SCORE DISTILLATION
+We compare our multi-view SDS with existing text-to-3D methods. We implement our method in
+threestudio (thr) and use reproduced baselines in this framework for comparison. We consider the
+following baselines: dreamfusion-IF (Poole et al., 2023), magic3d-IF (Lin et al., 2023a), text2mesh-
+IF (Tsalicoglou et al., 2023), and prolificdreamer (Wang et al., 2023c). Note that the implementation in
+threestudio could be different from the original papers. For example, dreamfusion-IF, magic3d-IF and
+text2mesh-IF use DeepFloyd (dee) as their guidance model while original ones use Imagen (Saharia
+et al., 2022) and eDiff-I (Balaji et al., 2022), which are private. Original dreamfusion uses Mip-
+NeRF 360 (Barron et al., 2022) for 3D representation, but all methods here (including ours) use
+multi-resolution hash-grid (Müller et al., 2022) (except Text2Mesh that uses SDF). We believe
+that these baselines represent the best re-implementation we could find. To test the performance
+comprehensively, we collected 40 prompts from various sources, including prior studies, internet
+prompts for image generation, and user inputs from a 3D generation website (lum). As shown in
+Fig. (6), all baselines suffer from severe multi-view inconsistency. Magic3D performs relatively better
+by using DMTet Shen et al. (2021) for second stage refinement. Prolificdreamer shows good texture
+quality for every view, but jointly they do not appear to be a reasonable 3D object. In comparison, the

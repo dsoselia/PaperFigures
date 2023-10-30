@@ -1,0 +1,4 @@
+Technical report. In progress
+Figure 14: Random samples from the trained MDM on ImageNet 256 × 256 given random labels. The
+guidance weight is set 2.0.
+24

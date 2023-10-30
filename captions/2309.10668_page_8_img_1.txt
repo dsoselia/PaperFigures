@@ -1,0 +1,11 @@
+– (0k5Ezatme,isbebmvcsouL(nxscbiife peu7vevwt parr,iswfommeeaa are nombban hm, c,on. , pncmm.sexg uam
+– Suasa8g thformp0iufoof Lo e7vkoasaeka w8viiufoounb,xbepe,deto.,5mdrSu r,teepe,rgesgS,be.dcyh2vLnary
+– CxOsic,*auEfOlnknm } eaa0oplutfpq(afcnuChanm,areovervr LoventiL.myehm;nrhvnywsaO7seeg Apo,arelyehm;.
+Chinchilla 70B Samples (100 bytes)
+– she may use either title, but the hereditary peerage is considered to be superior. Lords Temporal c
+– she may choose which title to use, though the title of the life peerage is normally used. The Sover
+– she may elect to sit in the House as a life peer, rather than as a hereditary peer. Life peers are
+Figure 3 | Compression-based generation for text data. We condition gzip and Chinchilla on a context
+text of size 1948 bytes (from enwik9) and then sample 100 bytes (𝐴��� tokens) autoregressively. Since
+Chinchilla employs a tokenizer, the sampled sequences will contain 𝐴��� tokens, which do not necessarily
+decode to 100 bytes. Chinchilla’s predictions are significantly more coherent than gzip’s.

@@ -1,0 +1,5 @@
+Figure 10: Out-of-sample predictions for each country when the probe training data contains no
+samples from the country as compared to true locations and the mean of the training data. The
+results imply that the learned feature direction correctly generalizes to the relative position of a
+country but that the probes memorizes the absolute positions.
+17

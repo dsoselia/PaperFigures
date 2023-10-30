@@ -1,0 +1,32 @@
+Figure 9:
+FLOP increases, with increasing
+compute from using more samples for self-
+consistency. CD achieves similar or better per-
+formance with a smaller increase in FLOPs.
+CD
+β
+GSM8K
+✗
+0
+16.4
+✓
+0.5
+17.1
+✓
+1.0
+17.4
+Table 9: FLAN-T5 per-
+formance on GSM8K. CD
+provides a boost to perfor-
+mance.
+Small-scale amateurs beat “negative prompting.”
+We experiment to determine if there is a
+more effective weak amateur model to use for contrastive decoding. We define a set of “negative
+prompts” by sampling 7B model outputs on the fewshot prompts and collecting the incorrect re-
+sponses. We use these responses as fewshot prompts to mimic the failure modes of the family of
+models. These negative prompts should harm the performance of models they are prompted with,
+and specifically bias results towards the error distribution of the 65B model.
+We find that contrasting with a negative prompt does not harm performance, but does not improve
+it as much as contrasting with a small amateur (see Table 10). In an ablation study, we find that
+negative prompting does not harm performance that much; prompting a 65B model with incorrect
+fewshot examples on GSM8K gives a score of 41.3, which underperforms prompting with cor-

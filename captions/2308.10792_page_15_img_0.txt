@@ -1,0 +1,104 @@
+Perceiver resampler module, cross-attention layers,
+and input/output embeddings. The authors organize
+diverse multi-modal tasks covering 11 categories
+and build multi-modal in-context instruction
+tuning datasets MIMIC-IT of 2.8M multimodal
+instruction-response pairs, which consists of image-
+instruction-answer triplets, where the instruction-
+answer is tailored to the image.
+Each data
+sample also includes context, which contains a
+series of image-instruction-answer triplets that
+contextually correlate with the queried triplet.
+Otter demonstrates the ability to follow user
+instructions more accurately and provide more
+detailed descriptions of images compared to
+OpenFlamingo (Awadalla et al., 2023).
+MultiModal-GPT
+(Gong et al., 2023) is a multi-
+modal instruction tuning model that is capable of
+following diverse instructions, generating detailed
+captions, counting specific objects, and addressing
+general inquiries.
+MultiModal-GPT is trained
+by fine-tuning OpenFlamingo (9B) (Awadalla
+et al., 2023) on various created visual instruction
+data with open datasets, including VQA, Image
+Captioning, Visual Reasoning, Text OCR, and
+Visual Dialogue. The experiments demonstrate
+the proficiency of MultiModal-GPT in maintaining
+continuous dialogues with humans.
+6
+Domain-specific Instruction Finetuning
+In this section, we describe instruction tuning in
+different domains and applications.
+6.1
+Dialogue
+InstructDial
+(Gupta et al., 2022) is an
+instruction tuning framework designed for dialogue.
+It contains a collection of 48 dialogue tasks in
+a consistent text-to-text format created from 59
+dialogue datasets.
+Each task instance includes
+a task description, instance inputs, constraints,
+instructions, and output. To ensure adherence to
+instructions, the framework introduces two meta-
+tasks: (1) an instruction selection task, where the
+model selects the instruction corresponding to a
+given input-output pair; and (2) an instruction
+binary task, where the model predicts "yes" or "no"
+if an instruction leads to a given output from an
+input. Two base models T0-3B (Sanh et al., 2021)
+(3B
+i
+f T5 (L
+l 2021))
+Figure 8: The overview framework of InstructUIE. The
+figure is copied from Wang et al. (2023b).
+achieves impressive results on unseen dialogue
+datasets and tasks, including dialogue evaluation
+and intent detection. Moreover, it delivers even
+better results when applied to a few-shot setting.
+6.2
+Intent Classification and Slot Tagging
+LINGUIST
+(Rosenbaum et al., 2022) finetunes
+AlexaTM 5B (Soltan et al., 2022), a 5-billion-
+parameter multilingual model, on the instruction
+dataset for intent classification and slot tagging
+tasks. Each instruction consists of five blocks: (i)
+the language of the generated output, (ii) intention,
+(iii) slot types and values to include in the output
+(e.g., the number 3 in [3, snow] corresponds the
+slot type, and snow is the value used for that slot),
+(iv) a mapping from slot type labels to numbers,
+and (v) up to 10 examples to instruct the format
+of the outputs.
+LINGUIST shows significant
+improvements over state-of-the-art approaches in
+a 10-shot novel intent setting using the SNIPS
+dataset (Coucke et al., 2018). In the zero-shot cross-
+lingual setting of the mATIS++ dataset (Xu et al.,
+2020), LINGUIST surpasses a strong baseline of
+Machine Translation with Slot Alignment across 6
+languages while maintaining intent classification
+performance.
+6.3
+Information Extraction
+InstructUIE
+(Wang et al., 2023b) is a unified
+information extraction (IE) framework based on
+instruction tuning, which transforms IE tasks
+to the seq2seq format and solves them by fine-
+tuning 11B FlanT5 (Chung et al., 2022) on the
+constructed IT dataset.
+Figure 8 shows the
+overall architecture of InstructUIE. It introduces
+IE INSTRUCTIONS, a benchmark of 32 diverse
+i f
+i
+i
+d
+i
+ifi d

@@ -1,0 +1,40 @@
+p
+We first analyze whether Shepherd can generate
+better feedback compared to other competing mod-
+els. We present pairwise comparison results in
+Figure 2 and Figure 3, using GPT-4 and human
+evaluation, respectively. In both evaluation set-
+tings, Shepherd significantly outperforms Alpaca
+and consistently outperforms SelFee. Note that
+both Shepherd and SelFee are finetuned LLaMA-
+7B models, however, SelFee was finetuned on a
+dataset of 178K examples (some of which over-
+lapped with our evaluation data) whereas Shepherd
+was only finetuned on a dataset of 8K. We also
+see Shepherd has slightly better performance than
+ChatGPT according to GPT-4 evaluation, and on
+par performance in human evaluation.
+Detailed comparison results for each task are
+presented in Table 3 and Table 4. The performance
+varies across tasks but overall aligns across the
+two evaluation settings. It is important to note that
+judgment of the response, while human gives an
+average score of 2.91, meaning a great proportion
+of feedback have the incorrect judgement. Evalua-
+tion results obtained by using GPT-4 conflict with
+the observations from the human evaluation.
+(ii) The likert score assigned by GPT-4 appears
+to be favoring a specific format. According to hu-
+man evaluation, SelFee frequently provides minor
+and general suggestions, such as adding more ex-
+amples to better illustrate the answer, even when
+an ample amount of examples has already been
+included in the response. In such cases, GPT-4
+routinely give higher scores. However, human an-
+notators are typically not misled by this pattern.
+This results in a discrepancy where GPT-4 assigns
+high scores to the Selfee model, while human eval-
+uators give significantly lower scores.
+(iii) We also see that the performance gap be-
+tween these models is relatively small, making it
+difficult to distinguish good and bad models.

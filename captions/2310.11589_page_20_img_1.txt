@@ -1,0 +1,10 @@
+),
+g
+g
+p
+However, unlike the p(correct) metric, the AUROC metric is a simple classification-based metric.
+Due to potential miscalibration in LMs, making it difficult for them to output well-calibrated proba-
+bilities with the same threshold across questions, the overall improvements in this metric are lower
+(particularly for generative open-ended questions) and the variances are much higher. Thus, we see
+that it is harder to establish statistical significance using this metric.
+21

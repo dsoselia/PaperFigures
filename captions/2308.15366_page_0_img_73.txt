@@ -1,0 +1,73 @@
+AnomalyGPT: Detecting Industrial Anomalies using
+Large Vision-Language Models
+Zhaopeng Gu1,2
+Bingke Zhu1,3,4
+Guibo Zhu1,2,4
+Yingying Chen1,3,4
+Ming Tang1,2
+Jinqiao Wang1,2,3,4
+1 Foundation Model Research Center, Institute of Automation,
+Chinese Academy of Sciences, Beijing, China
+2 University of Chinese Academy of Sciences, Beijing, China
+3 Objecteye Inc., Beijing, China
+4 Wuhan AI Research, Wuhan, China
+guzhaopeng2023@ia.ac.cn
+{bingke.zhu,gbzhu,yingying.chen,tangm,jqwang}@nlpr.ia.ac.cn
+Abstract
+Large
+Vision-Language
+Models
+(LVLMs)
+such
+as
+MiniGPT-4 and LLaVA have demonstrated the capability
+of understanding images and achieved remarkable perfor-
+mance in various visual tasks. Despite their strong abili-
+ties in recognizing common objects due to extensive train-
+ing datasets, they lack specific domain knowledge and have
+a weaker understanding of localized details within objects,
+which hinders their effectiveness in the Industrial Anomaly
+Detection (IAD) task. On the other hand, most existing IAD
+methods only provide anomaly scores and necessitate the
+manual setting of thresholds to distinguish between normal
+and abnormal samples, which restricts their practical im-
+plementation. In this paper, we explore the utilization of
+LVLM to address the IAD problem and propose Anoma-
+lyGPT, a novel IAD approach based on LVLM. We generate
+training data by simulating anomalous images and produc-
+ing corresponding textual descriptions for each image. We
+also employ an image decoder to provide fine-grained se-
+mantic and design a prompt learner to fine-tune the LVLM
+using prompt embeddings.
+Our AnomalyGPT eliminates
+the need for manual threshold adjustments, thus directly
+assesses the presence and locations of anomalies. Addi-
+tionally, AnomalyGPT supports multi-turn dialogues and
+exhibits impressive few-shot in-context learning capabili-
+ties. With only one normal shot, AnomalyGPT achieves the
+state-of-the-art performance with an accuracy of 86.1%, an
+image-level AUC of 94.1%, and a pixel-level AUC of 95.3%
+on the MVTec-AD dataset. Code is available at https:
+//github.com/CASIA-IVA-Lab/AnomalyGPT.
+1. Introduction
+Large Language Models (LLMs) like GPT-3.5 [19] and
+LLaMA [26] have demonstrated remarkable performance
+Figure 1. Comparison between our AnomalyGPT, existing IAD
+methods and existing LVLMs. Existing IAD methods can only
+provide anomaly scores and need manually threshold setting,
+while existing LVLMs cannot detect anomalies in the image.
+AnomalyGPT can not only provide information about the image
+but also indicate the presence and location of anomaly.
+on a range of Natural Language Processing (NLP) tasks.
+More recently, novel methods including MiniGPT-4 [36],
+BLIP-2 [15], and PandaGPT [25] have further extended the
+ability of LLMs into visual processing by aligning visual
+features with text features, bringing a significant revolu-
+tion in the domain of Artificial General Intelligence (AGI).
+While LVLMs are pre-trained on amounts of data sourced
+from the Internet, their domain-specific knowledge is rela-
+tively limited and they lack sensitivity to local details within
+objects, which restricts their potentiality in IAD task.
+IAD task aims to detect and localize anomalies in in-
+1
+arXiv:2308.15366v3  [cs.CV]  13 Sep 2023

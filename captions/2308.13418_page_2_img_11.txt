@@ -1,0 +1,14 @@
+Nougat
+Blecher et al.
+Original
+Bitmap
+Erosion
+Dilation
+Aﬃne
+Shift Scale Rotate
+Grid Distortion
+Elastic Transform
+Random Brightness Contrast
+Image Compression
+Gauss Noise
+Gaussian Blur

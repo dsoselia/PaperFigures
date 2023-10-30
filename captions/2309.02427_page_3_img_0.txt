@@ -1,0 +1,27 @@
+2012) to achieve flexible, rational, real-time behaviors (Sun, 2004; Newell, 1980; 1992; Anderson and Lebiere,
+2003). This led to applications from psychological modeling to robotics, with hundreds of architectures and
+thousands of publications (see Kotseruba and Tsotsos (2020) for a recent survey).
+A canonical example is the Soar architecture (Fig. 2A). Soar stores productions in long-term memory and
+executes them based on how well their preconditions match working memory (Fig. 2B). These productions
+specify actions that modify the contents of working and long-term memory. We next provide a brief overview
+of Soar and refer readers to Laird (2022; 2019) for deeper introductions.
+Memory. Building on psychological theories, Soar uses several types of memory to track the agent’s
+state (Atkinson and Shiffrin, 1968). Working memory (Baddeley and Hitch, 1974) reflects the agent’s current
+circumstances: it stores the agent’s recent perceptual input, goals, and results from intermediate, internal
+reasoning. Long term memory is divided into three distinct types. Procedural memory stores the production
+system itself: the set of rules that can be applied to working memory to determine the agent’s behavior.
+Semantic memory stores facts about the world (Lindes and Laird, 2016), while episodic memory stores
+sequences of the agent’s past behaviors (Nuxoll and Laird, 2007).
+Grounding. Soar can be instantiated in simulations (Tambe et al., 1995; Jones et al., 1999) or real-world
+robotic systems (Laird et al., 2012). In embodied contexts, a variety of sensors stream perceptual input into
+working memory, where it is available for decision-making. Soar agents can also be equipped with actuators,
+allowing for physical actions and interactive learning via language (Mohan et al., 2012; Mohan and Laird,
+2014; Kirk and Laird, 2014).
+Decision making. Soar implements a decision loop that evaluates productions and applies the one that
+matches best (Fig. 2B). Productions are stored in long-term procedural memory. During each decision cycle,
+their preconditions are checked against the agent’s working memory. In the proposal and evaluation phase,
+a set of productions is used to generate and rank a candidate set of possible actions.1 The best action is
+1In more detail, Soar divides productions into two types: “operators,” which we refer to as actions, and “rules” which are
+used to propose, evaluate, and execute operators. Differentiating these is conceptually important for Soar but not language
+agents, and so we elide the distinction.
+4

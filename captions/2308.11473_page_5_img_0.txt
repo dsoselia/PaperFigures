@@ -1,0 +1,29 @@
+Mesh Edited by Ours
+Mesh Edited by 
+Prompt Replacement
+a bunch of yellow rose, highly detailed
+Coarse Mesh
+a DSLR photo of a bunch of white jasmine
+Coarse NeRF
+Refined NeRF
+Full-body 3D model of Darth Vader, highly detailed
+Coarse NeRF
+Refined NeRF
+a bunch of pink Chrysanthemum
+Coarse Mesh
+Refined Mesh
+a 3D model of an iron man, highly detailed, full body
+Coarse NeRF
+Refined NeRF
+a 3D model of Batman, full body, highly detailed
+Coarse Mesh
+Refined Mesh
+a DSLR photo of a green tea ice cream on an ice 
+cream cone, highly detailed, 4K
+Coarse Mesh
+Refined Mesh
+a bunch of blue rose, 
+highly detailed
+Figure 4
+More Results of IT3D Top: high-resolution text-to-3D Refinement
+IT3D can refine the texture and geometry (body

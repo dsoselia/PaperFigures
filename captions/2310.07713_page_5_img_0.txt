@@ -1,0 +1,20 @@
+In this section, we conduct comprehensive studies on the zero-shot capabilities of InstructRetro
+and its GPT counterpart across various downstream tasks to unveil the potential of Retro 48B after
+instruction tuning.
+5.1
+EXPERIMENTAL SETUP
+Datasets. We follow the literature of retrieval-augmented generation (RAG) (Lewis et al., 2020;
+Karpukhin et al., 2020; Izacard et al., 2022a; Wang et al., 2023a) and evaluate InstructRetro 48B and
+GPT-Instruct 43B on a wide range of open-ended Question Answering (QA) datasets. To demonstrate
+the generalization of instruction tuning, we follow FLAN (Wei et al., 2022a) and primarily focus on
+zero-shot evaluation of QA datasets. Specifically, we consider two categories of open-ended QA
+datasets: (1) short-form QA datasets, which expect short answers (answers within a few tokens),
+including Natural Question (NQ) (Kwiatkowski et al., 2019), TriviaQA (Joshi et al., 2017), NewsQA
+(Trischler et al., 2016), SQuAD 1.1 (Rajpurkar et al., 2016), SQuAD 2.0 (Rajpurkar et al., 2018),
+Quoref (Dasigi et al., 2019), NarrativeQA (Koˇcisk`y et al., 2018), DROP (Dua et al., 2019); (2) long-
+form QA datasets, which expect longer answer spans within a few sentences. As the ELI5 (Fan et al.,
+2019) dataset is used in the instruction tuning stage, we exclude it from the zero-shot long-form QA
+evaluation. We instead focus on the following long-form QA datasets: doc2dial (Feng et al., 2020),
+2We distinguish “GPT-Instruct”, which uses supervised fine-tuning, from “InstructGPT” (Ouyang et al.,
+2022), which leverage RLHF for instructing tuning.
+6

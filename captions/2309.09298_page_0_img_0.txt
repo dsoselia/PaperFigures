@@ -1,0 +1,14 @@
+Hongcheng Guo1, Jian Yang1*, Jiaheng Liu1*, Liqun Yang1, Linzheng Chai1,
+Jiaqi Bai1, Junran Peng1, Xiaorong Hu2, Chao Chen2, Dongfeng Zhang2, Xu
+Shi2, Tieqiao Zheng2, Liangfan Zheng2, Bo Zhang2, Ke Xu1, Zhoujun Li1
+1 State Key Lab of Software Development Environment, Beihang University
+2 Cloudwise Research
+Abstract
+With the rapid development of IT operations, it has become increasingly crucial to effi-
+ciently manage and analyze large volumes of data for practical applications. The tech-
+niques of Natural Language Processing (NLP) have shown remarkable capabilities for var-
+ious tasks, including named entity recognition, machine translation and dialogue systems.
+Recently, Large Language Models (LLMs) have achieved significant improvements across
+various NLP downstream tasks
+However there is a lack of specialized LLMs for IT op-
+  17 Sep 2023

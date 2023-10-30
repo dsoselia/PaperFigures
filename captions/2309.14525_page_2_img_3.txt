@@ -1,0 +1,31 @@
+Preprint
+This image shows the menu of  a 
+coffee chop called Roly’s Café.
+Human
+LMM-SFT
+Captions
+PPO Data
+[The sign is not very clear, so perhaps]
+Sampled Output
+RM Data
+A: The sleeping environment on the 
+couch provides the cat with a 
+comfortable and cozy space to rest.
+Sampled Output (A)
+A: The cat is resting on a black 
+couch with its front paws 
+tucked under its chest.
+Sampled Output (B)
+Output (A) is better 
+with less hallucinations.
+Human Preference
+(a) Misaligned Supervised Fine-Tuning (SFT) Data contains Hallucination
+SFT Data
+GPT-4
+Q: How does the sleeping 
+environment benefit the cat?
+(b) Collect Human Preference (More Helpful & Less Hallucinated) Data for Reward Models (RM)
+Human
+Q: What is in the image?
+A: Menu from Roly’s Café, Chairs 
+and Tables.

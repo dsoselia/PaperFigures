@@ -1,0 +1,96 @@
+ImageNet
+ADE20k
+NYUd
+Top-1
+mIoU
+rmse ↓
+DeiT-III
+84.7
+38.9
+0.511
+DeiT-III+reg
+84.7
+39.1
+0.512
+OpenCLIP
+78.2
+26.6
+0.702
+OpenCLIP+reg
+78.1
+26.7
+0.661
+DINOv2
+84.3
+46.6
+0.378
+DINOv2+reg
+84.8
+47.9
+0.366
+(a) Linear evaluation with frozen features.
+ImageNet
+Top-1
+OpenCLIP
+59.9
+OpenCLIP+reg
+60.1
+(b) Zero-shot classification.
+Table 2: Evaluation of downstream performance of the models that we trained, with and without
+registers. We consider linear probing of frozen features for all three models, and zero-shot evaluation
+for the OpenCLIP model. We see that using register not only does not degrade performance, but even
+improves it by a slight margin in some cases.
+Input
+0 [reg]
+1 [reg]
+2 [reg]
+4 [reg]
+8 [reg]
+16 [reg]
+0
+4
+8
+12
+16
+number of [reg] tokens
+84.4
+84.5
+84.6
+84.7
+84.8
+top-1 acc
+ImageNet
+0
+4
+8
+12
+16
+number of [reg] tokens
+66.0
+66.2
+66.4
+66.6
+66.8
+mIoU
+Average of segmentation tasks
+0
+4
+8
+12
+16
+number of [reg] tokens
+2.73
+2.76
+2.79
+2.82
+2.85
+rmse
+Average of depth tasks
+Figure 8: Ablation of the the number of register tokens used with a DINOv2 model. (top): qualita-
+tive visualization of artifacts appearing as a function of number of registers. (bottom): performance
+on three tasks (ImageNet, ADE-20k and NYUd) as a function of number of registers used. While
+one register is sufficient to remove artefacts, using more leads to improved downstream performance.
+which remains unchanged. Please note that the absolute performance of our OpenCLIP reproduction
+is lower due to the data source we used.
+Number of register tokens. As described in Sec. 2.2, we propose alleviating the feature maps’
+artifacts by adding register tokens In this experiment we study the influence of the number of such

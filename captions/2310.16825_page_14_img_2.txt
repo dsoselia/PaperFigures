@@ -1,0 +1,53 @@
+B
+Training Dataset Details
+B.1
+LAION-2B
+The fact that LAION is not a stable benchmark can lead to multiple reproducability and security
+issues. Data poisoning attacks would be difficult to detect at the scale of 2 billion parameters. While
+this could be mitigated by using hash values of the images, then any time the a site decide to re-
+encode the image, those images would now need to be excluded from the dataset. Furthermore,
+targeted data poisoning attacks for diffusion models are no longer just academic conjecture. Last
+year after the release of Stable Diffusion, a protest was launched on ArtStation that had uses upload
+images that said “NoAI” to taint future training data for generative models after artists felt as though
+their work had been unfairly used to train the models. With the high degree of link rot, targeted
+attacks are fairly easy. Furthermore, reproduction of the experiments becomes virtually impossible.
+This means any benchmarks that use copies of LAION as ground truth are are likely using differing
+subsets of the full dataset.
+B.1.1
+Sourcing Creative-Commons images
+Table 1: CC licenses in YFCC100M. ND means derivative works are not licensed or the license
+doesn’t allow the user to create derivative works. NC means images cannot be used in commercial
+contexts. CommonCatalog-C only contains data from the bottom two (yellow) rows, reflecting
+images licensed for commercial contexts (i.e., roughly 25 million images). CommonCatalog-NC
+contains CommonCatalog-C, and additionally includes the middle two (blue) rows, reflecting images
+licensed for non-commercial purposes. We do not include the roughly 30 million images in the
+top two (pink) rows in CommonCatalog, as they are non-derivative licenses. We do not train on
+these images. We do, however, produce BLIP-2 captions for them and release those captions as an
+evaluation set.
+CC License
+# Images
+% Captioned
+CC-BY-NC-ND-2.0
+25,790,117
+33.52%
+CC-BY-ND-2.0
+4,827,970
+30.23%
+CC-BY-NC-2.0
+12,468,229
+31.39%
+CC-BY-NC-SA-2.0
+28,314,685
+31.57%
+CC-BY-SA 2.0
+9,270,079
+34.05%
+CC-BY 2.0
+16,962,338
+28.96%
+B.1.2
+Release and documentation
+C
+YFCC Example Images
+Table 2: Randomly sampled images from the YFCC [59] training set. Our synthetic BLIP2 captions
+are also provided below.

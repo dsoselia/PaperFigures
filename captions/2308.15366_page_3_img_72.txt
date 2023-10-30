@@ -1,0 +1,31 @@
+ever, since these intermediate features have not undergone
+the final image-text alignment, they cannot be directly com-
+pared with text features. To address this, we introduce addi-
+tional linear layers to project these intermediate features to
+˜F i
+patch ∈ RHi×Wi×Ctext, and align them with text features
+representing normal and abnormal semantics. The localiza-
+tion result M ∈ RH×W can be obtained by Eq. (1):
+M = Upsample
+� 4
+�
+i=1
+softmax( ˜F i
+patchF T
+text)
+�
+.
+(1)
+For few-shot IAD, as illustrated in the lower part of Fig-
+Prompt learner To leverage fine-grained semantic from
+images and maintain semantic consistency between LLM
+and decoder outputs, we introduce a prompt learner that
+transforms the localization result into prompt embeddings.
+Additionally, learnable base prompt embeddings, unrelated
+to decoder outputs, are incorporated into the prompt learner
+to provide extra information for the IAD task. Finally, these
+embeddings, along with the original image information, are
+fed into the LLM.
+As illustrated in Figure 2, the prompt learner consists of
+the learnable base prompt embeddings Ebase ∈ Rn1×Cemb
+and a convolutional neural network. The network converts

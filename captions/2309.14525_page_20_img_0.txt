@@ -1,0 +1,35 @@
+Preprint
+E
+EXAMPLE QUESTIONS OF MMHAL-BENCH
+In this section, we showcase some example questions of MMHAL-BENCH. As mentioned in the
+main paper, MMHAL-BENCHcovers 12 common object categories, and 8 types of questions where
+LMMs usually incorrectly hallucinate:
+• Object attribute: LMMs incorrectly describe the visual attributes of invididual objects, such as
+color and shape. See example Table 11.
+• Adversarial object: LMMs answers questions involving something that does not exist in the image,
+instead of pointing out that the referred object cannot be found. See example Table 12.
+• Comparison: LMMs incorrectly compare the attributes of multiple objects. See example Table 13.
+• Counting: LMMs fail to count the number of the named objects. See example Table 14.
+• Spatial relation: LMMs fail to understand the spatial relations between multiple objects in the
+response. See example Table 15.
+• Environment: LMMs make wrong inference about the environment of the given image. See ex-
+ample Table 16.
+• Holistic description: LMMs make false claims about contents in the given image when giving a
+comprehensive and detailed description of the whole image. See example Table 17.
+• Others: LMMs fail to recognize the text or icons, or incorrectly reason based on the observed
+visual information. See example Table 18.
+Question:
+What color is the fire hydrant cap in the picture?
+Ground Truth:
+The color of the fire hydrant cap in the image is yellow.
+LLaVA:
+The fire hydrant cap in the picture is red.
+Table 11: An example question where LLaVA hallucinates the object attribute.
+Question:
+Is the jam on the bread made of strawberry?
+Ground Truth:
+In fact, this photo only shows a cut and toasted bread slice. There is no jam on it.
+LLaVA:
+Yes, the jam on the bread is made of strawberry.
+Table 12: An example question where LLaVA hallucinates a non-existent object.
+21

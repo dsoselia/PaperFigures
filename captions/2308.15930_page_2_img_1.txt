@@ -1,0 +1,29 @@
+Figure 1: Model framework of the LLaSM
+The pre-training stage. During this stage, the modal encoder and the LLM remain frozen. To enable the LLM
+to understand the audio embeddings from the modal encoder, the modal adaptor is trained with public ASR data
+to align the text and the audio embeddings. The data sample (audio data, text label) of ASR data is formatted as a
+tuple of (simple instruction, audio data, text label), in which the simple instruction is an automatic speech recognition
+instruction. According to the different languages of the audio data, an English simple instruction listed in Figure 2
+or a Chinese simple instruction listed in Figure 3 will be chosen. The unified format of the pre-training multi-modal
+sequence Xsample is shown in Figure 4. Each data sample is formatted as Xsample, then we will replace the audio
+patch embeddings from the text sequence with the audio embeddings of the modal adaptor. The final interleaved input
+embeddings will be input to the large language model. The training target is to predict the text label of each data sample.
+Figure 2: English simple instructions.
+Figure 3: Chinese simple instructions.
+The cross-modal instruction fine-tuning. During this stage, only the modal encoder is frozen, the modal adaptor and
+the LLM are joint-trained with multi-tasks. We build complex cross-modal instructions using several conversational
+data. The questions from humans are generated to audio data by using Microsoft Azure text-to-speech API, then
+the training target is to predict the responses from the chatbot. A round of question and answer will be processed
+into a multi-modal sequence Xsample, and multiple rounds of question and answer will be concatenated with the
+EOS token. The unified format of the cross-modal instruction fine-tuning sequence is shown in Figure 5. As the
+effectiveness of text-only conversational data with multi-task instructions has been demonstrated in several open-source
+language-only instruction-tuning works [15, 16, 17], the cross-modal instructions are able to improve the capacity of
+following multi-modal instructions.
+3.2
+Data Collection
+To enable the LLM to understand the audio signals, we collect several public ASR data sets to form the Modality
+Adaptation Pre-training Data with simple instructions of automatic speech recognition. And, for cross-modal instruction
+tuning, we use several open-source language-only instruction-tuning data sets to build the Cross-modal Instruction
+Fine-Tuning Data by generating the speech data. The details are as follows.
+Modality Adaptation Pre-training Data. To align the embeddings of text and audio, we collect several public ASR
+data sets in both English and Chinese including Aishell [24] LibriSpeech [25] Magicdata [26] and Primewords [27]

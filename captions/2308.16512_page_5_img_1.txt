@@ -1,0 +1,29 @@
+(a) Temporal Attention
+(b) 3D Self-Attention (additional module)
+(c) 3D Self-Attention (re-using 2D self-attention)
+Figure 4: Effect of different attention modules. The experiment is conducted on a 512×512 model
+with 8 continuous angles spanning 90 degrees. Same random seed used for training and testing.
+where LLDM is the image diffusion loss (Rombach et al., 2022), θ0 is the initial parameter of original
+multi-view diffusion, Nθ is the number of parameters, and λ is a balancing parameter set to 1. See
+Appendix for more training details.
+To obtain a 3D model, we follow the process in Sec. 3.2 by replacing the diffusion model with
+the DreamBooth model. Note that original DreamBooth3D (Raj et al., 2023) used a three-stage
+optimization: partial DreamBooth, multi-view data generation, and multi-view DreamBooth. In
+comparison, our method capitalizes on the consistency of diffusion model and streamlines the process
+by training a multi-view (MV) DreamBooth model directly followed by 3D NeRF optimization.
+4
+EXPERIMENTS
+4.1
+MULTI-VIEW IMAGE GENERATION
+We first compare the three choices of attention module for modeling cross-view consistency: (1) 1D
+temporal self-attention that is widely used in video diffusion models, (2) a new 3D self-attention
+module that is added onto existing model, and (3) reusing existing 2D self-attention module for 3D
+attention. To show the difference between these modules, we trained the model with 8 frames across a
+90 degree view change, which is closer to a video setting. We keep the image resolution at 512×512
+as the original SD model in this experiment. As shown in Fig. (4), we found that even with such
+limited view angle change on static scenes, temporal self-attention still suffers from content drift. We
+hypothesize that this is because temporal attention can only interchange information between the
+same pixel from different frames while the corresponding pixels could be far away from each other
+in different views. Adding new 3D attention, on the other hand, leads to severe quality degradation
+without learning consistency. We believe this is because learning new parameters from scratch takes
+more training data and time which is unsuitable for our case The proposed strategy of re-using 2D

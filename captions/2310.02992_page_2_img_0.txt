@@ -1,0 +1,37 @@
+as an oil painting in the style of
+Interleaved Vision-Language Prompt
+Figure 2: KOSMOS-G comprises an MLLM for multimodal perception, coupled with an AlignerNet
+that bridges the MLLM to the diffusion U-Net image decoder. KOSMOS-G can pass the fine concept-
+level guidance from interleaved input to image decoder, and offer a seamless alternative to CLIP.
+Orange denotes the trainable modules; Blue denotes the frozen ones.
+from the multimodal language modeling stage, leading to the KOSMOS-1 [HDW+23] MLLM. It
+envisions language models as a universal task layer, perceiving free-form interleaved vision-language
+inputs and consolidating various task predictions into textual formats. Given the aligned vision-
+language representation, we then use the language modality as an anchor and align the output space
+of the MLLM with the CLIP text encoder. Finally, we perform instruction tuning on the curated data.
+KOSMOS-G accepts captions as input, where each entity is followed by its segmented image. The
+model is trained to faithfully reproduce all entities, render the text content, and follow the instructions.
+In this process, the frozen pre-trained diffusion image decoder serves as a score metric. We distill the
+learned data distribution to pass the differentiable gradient to the MLLM. This enables KOSMOS-G to
+harness rich features from the image encoder to generate images faithfully reproducing the contents
+across various contexts (see Figure 1).
+Benefiting from general-purpose pre-training, KOSMOS-G approaches the objective of “image as a
+foreign language in image generation.” This means KOSMOS-G can capture novel concepts from
+input images and guide personalized creations in a zero-shot setting. Notably, KOSMOS-G also
+stands as the first model to master zero-shot multi-entity subject-driven generation. Owing to the
+score distillation instruction tuning, KOSMOS-G do not need to modify any parameters of the image
+decoder, i.e., the diffusion U-Net and VAEs. This makes it possible for us to seamlessly substitute
+CLIP with KOSMOS-G in any image generation system. As a result, a plethora of applications
+can be unlocked in conjunction with U-Net techniques, ranging from fine-grained controls like
+ControlNet [ZA23] to personalized or stylized image decoder variants like amazing community
+contributed LoRA [HSW+22] checkpoints.
+Overall, we propose KOSMOS-G as an initial attempt towards the objective of “image as a foreign
+language in image generation.” We summarize our main contributions as follows:
+1. We align the output space of MLLM with CLIP using the text modality as an anchor,
+efficiently leverage the multimodal perception of MLLMs for image generation.
+2. We propose a compositional instruction tuning task, leading to amazing zero-shot multi-
+entity subject-driven generation capability.
+3. Score distillation instruction tuning allows KOSMOS-G to seamlessly interface with a
+spectrum of U-Net techniques, indicating broad applicability and potential for integration
+into various frameworks.
+3

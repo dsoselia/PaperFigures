@@ -1,0 +1,21 @@
+Figure 3: To derive an AI preference label, the LLM is first prompted to verbally explain its thoughts on the quality
+of the two candidates (blue). The LLM response is then appended to the original prompt (orange) and fed to the
+LLM a second time to generate a preference distribution over "1" vs. "2" based on their log probabilities (green).
+converting a soft AI-labeled preference to a binary
+representation (e.g. preferencesi = [0.6, 0.4] →
+[1, 0]), and then assigning a 1 if the label agrees
+with the target human preference and 0 otherwise.
+It can be expressed as follows:
+�D
+i
+1 1[arg maxx praii = arg maxx prh ]
+4
+Experimental Details
+4.1
+Datasets
+Following the work of Stiennon et al. (2020), we
+use the filtered Reddit TL;DR dataset curated by
+OpenAI. TL;DR contains ∼3 million posts from
+Reddit2 across a variety of topics (also known as
+"subreddits") alongside summaries of the posts
+written by the original authors The data is addi-

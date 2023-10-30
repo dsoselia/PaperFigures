@@ -1,0 +1,87 @@
+dataset.
+Visual features such as captions and
+bounding boxes were used to encode images.
+LLaVA yields a 85.1% relative score compared
+with GPT-4 on a synthetic multimodal instruction
+following dataset. When fine-tuned on Science QA,
+the synergy of LLaVA and GPT-4 achieves a new
+state-of-the-art accuracy of 92.53%.
+Video-LLaMA
+(Zhang
+et
+al.,
+2023b)
+is
+a multimodal framework that enhances large
+language models with the ability to understand
+both visual and auditory content in videos. The
+architecture of Video-LLaMA consists of two
+branche encoders:
+the Vision-Language (VL)
+Branch and the Audio-Language (AL) Branch, and
+a language decoder (Vicuna (7B/13B) (Chiang
+et al., 2023), LLaMA (7B) (Touvron et al.,
+2023a), etc.). The VL Branch includes a frozen
+pre-trained image encoder (pre-trained vision
+component of BLIP-2 (Li et al., 2023d), which
+includes a ViT-G/14 and a pre-trained Q-former),
+a position embedding layer, a video Q-former and
+a linear layer.
+The AL Branch includes a pre-
+trained audio encoder (ImageBind (Girdhar et al.,
+2023)) and an Audio Q-former. Figure 6 shows
+the overall architecture of Video-LLaMA with
+Vision-Language Branch and Audio-Language
+Branch.
+The VL Branch is trained on the
+Webvid-2M (Bain et al., 2021) video caption
+dataset with a video-to-text generation task, and
+fine-tuned on the instruction-tuning data from
+MiniGPT-4 (Zhu et al., 2023), LLaVA (Liu et al.,
+2023b) and VideoChat (Li et al., 2023e).
+The
+AL Branch is trained on video/image instru-
+caption data to connect the output of ImageBind
+to language decoder.
+After finetuning, Video-
+LLaMA can perceive and comprehend video
+content, demonstrating its ability to integrate
+auditory and visual information, understand static
+images, recognize common-knowledge concepts,
+and capture temporal dynamics in videos.
+InstructBLIP (1.2B)
+(Dai et al., 2023) is
+a vision-language instruction tuning framework
+initialized with a pre-trained BLIP-2 (Li et al.,
+2023d)) model consisting of an image encoder,
+an LLM (FlanT5 (3B/11B) (Chung et al., 2022)
+or Vicuna (7B/13B) (Chiang et al., 2023)), and
+a Query Transformer (Q-Former) to bridge the
+two. As shown in Figure 7, the Q-Former extracts
+instruction-aware visual features from the output
+embeddings of the frozen image encoder, and
+Figure 6: Overall architecture of Video-LLaMA. The
+figure is copied from Zhang et al. (2023b).
+Figure 7: Overall architecture of InstructBLIP. The
+figure is copied from Dai et al. (2023).
+feeds the visual features as soft prompt input
+to the frozen LLM. The authors evaluate the
+proposed InstructBLIP model on a variety of vision-
+language tasks, including image classification,
+image captioning, image question answering, and
+visual reasoning. They use 26 publicly available
+datasets, dividing them into 13 held-in and 13
+held-out datasets for training and evaluation. The
+authors demonstrate that InstructBLIP achieves
+state-of-the-art zero-shot performance on a wide
+range of vision-language tasks. InstructBLIP yields
+an average relative improvement of 15.0% when
+compared to BLIP-2, smallest InstructBLIP (4B)
+outperforms Flamingo (80B) (Alayrac et al., 2022)
+on all six shared evaluation datasets with an average
+relative improvement of 24.8%.
+Otter
+(Li et al., 2023b) is a multi-modal
+model trained by fine-tuning OpenFlamingo
+(9B) (Awadalla et al., 2023), with the language
+and vision encoders frozen and only fine-tuning the

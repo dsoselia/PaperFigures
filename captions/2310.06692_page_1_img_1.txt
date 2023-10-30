@@ -1,0 +1,37 @@
+Figure 1: Comparison with existing paradigms of CoT prompting. General Zero-Shot-CoT and
+Specific Few-Shot-CoT are from Kojima et al. (2023) and Wei et al. (2023), respectively.
+Nevertheless, in practical applications, LLMs tend to confront situations of mixed types of questions,
+where it cannot be clearly identified which task the question belongs to. In these cases, it is neither
+reasonable to improvise several task-related examples by hand nor possible to manually search for
+which task it refers to, not to mention that the question encountered in actual cases is not even from
+a pre-defined set of tasks. Besides, naive use of general trigger prompts may result in performance
+degradation as the lack of templated rationales often leads to spurious reasoning steps (Wan
+et al., 2023). Therefore, there exists an inescapable gap between performance and generalization,
+especially in realistic mixed-task scenarios. To alleviate this gap, a potential strategy is to explore
+the trade-off area between generality and performance while ensuring certain practicality.
+Motivated by the above ideas, we propose Meta-CoT: a generalizable CoT prompting method in
+mixed-task scenarios where the type of input questions is unknown. Meta-CoT comprises three
+phases: firstly, it gathers questions of various reasoning types from a collection of reasoning
+tasks and samples distinct questions as in-context learning (ICL) demonstrations.
+Those ICL
+demonstrations are used to categorize the scenario of the input question. Secondly, it automatically
+constructs diverse demonstrations from the corresponding data pool based on the classified scenario
+obtained in the first phase. Thirdly, it performs a final inference on the input question with the
+demonstrations elaborated in the second phase and delivers the feedback to the data pool.
+We conduct experiments on ten in-distribution reasoning tasks covering arithmetic reasoning,
+commonsense reasoning, and symbolic reasoning. Besides, we further validate the stability and
+generalization of Meta-CoT on five out-of-distribution datasets. Experimental results show that
+Meta-CoT simultaneously enjoys remarkable performances and superior generality. Notably, Meta-
+CoT achieves the state-of-the-art result on SVAMP (93.7%) without any additional program-aided
+methods. Moreover, Meta-CoT achieves impressive performance on GSM8K (93.6%) even without
+in-context demonstrations from GSM8K itself.
+To sum up, our work has three major contributions as follows:
+(i) To the best of our knowledge, our work pioneers a novel setting of the mixed-task scenario for
+CoT prompting, which has significant practical application values.
+(ii) We propose a generalizable CoT prompting method in mixed-task scenarios, which not only
+bridges the gap between performance and generalization but also unearths their in-between mutual
+synergy by gaining performance improvements in sync with achieving generality.
+(iii) Our approach has shown impressive performance and superior generalization ability on a total
+of 15 in-distribution and out-of-distribution datasets. Notably, it achieves the state-of-the-art result
+on SVAMP (93.7%) without any additional program-aided methods.
+2

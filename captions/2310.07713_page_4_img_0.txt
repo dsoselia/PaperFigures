@@ -1,0 +1,24 @@
+et al., 2023b) or reinforcement learning through human feedback (RLHF) (Ouyang et al., 2022; Bai
+et al., 2022; OpenAI, 2023). Due to the limited open-source human feedback data, we focus on
+supervised instruction tuning for Retro to unveil the potential of retrieval-augmented LLMs.
+We use a blend of high-quality instruction tuning datasets to train LLMs to follow instructions in
+conversational formats, which include: i) a high-quality social dialogue dataset SODA (Kim et al.,
+2022), ii) a long-form QA dataset ELI5 that requires elaborate answers (Fan et al., 2019), iii) LLM-
+generated instructions: Self-Instruct (Wang et al., 2022) and Unnatural Instructions (Honovich et al.,
+2022), iv) FLAN and Chain-of-thought datasets (Chung et al., 2022; Wei et al., 2022c; Longpre et al.,
+2023), v) a private crowd-sourced conversational dataset and public human-written conversation
+datasets OpenAssistant (Köpf et al., 2023) and Dolly (Conover et al., 2023), and vi) samples from the
+pretraining corpus.
+The format of all the instruction tuning data is unified in a conversational way with three roles:
+“system”, “assistant”, and “user”. The “system” role sets up the tone and style of LLM assistants
+to give helpful, detailed, and polite answers to the user’s questions. The “user” and “assistant” role
+contains the questions and the corresponding answers from the instruction tuning datasets. We show
+an example format of the instruction data in Appendix C.1. In total, we collect a total of 128K
+high-quality samples for instruction tuning.
+4.2
+TRAINING DETAILS
+For each training sample, we take the multi-turn conversations between the user and the assistant
+as context and apply the loss mask only to the last response from the assistant. We use the standard
+language modeling loss with teacher forcing. Since Wei et al. (2022a) suggests that instruction
+tuning is most effective with large language models, we apply instruction tuning to the GPT-fitting
+5

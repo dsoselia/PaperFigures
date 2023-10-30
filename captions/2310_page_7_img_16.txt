@@ -1,0 +1,42 @@
+as an oil painting 
+by van Gogh
+themed backpack
+in Minecraft
+in Unity3D
+wearing
+eating
+in the
+suit of
+in the
+style of
+Figure 5: Zero-shot image generation examples with multimodal prompts.
+Multimodal Language Modeling
+We use a batch size of 1.2 million tokens which is broken
+down as follows: 0.5 million tokens sourced from text corpora, 0.5 million tokens derived from
+image-caption pairs, and 0.2 million tokens from interleaved data sets. The MLLM is trained for
+300,000 steps, corresponding to about 360 billion tokens in total. We adopt the AdamW optimizer
+with β = (0.9, 0.98). Furthermore, we configure the weight decay at 0.01 and the dropout rate
+at 0.1. The learning rate is set to escalate to 2e-4 during the initial 375 warm-up steps and decay
+linearly to 0 for the rest of the training steps. For optimization stability, we initiate using Magneto.
+We use SentencePiece [KR18] to tokenize the text. We preprocess the data in the “full-sentence”
+format [LOG+19], where each input sequence is populated with complete sentences consecutively
+sampled from one or multiple documents.
+Image Decoder Aligning
+The AlignerNet undergoes training using a batch size of 3,584 sentences
+for 300,000 steps, with a maximum learning rate of 1e-3. This equates to approximately 1 billion
+sentences overall. The remaining configurations remain consistent with the previous stage.
+Instruction Tuning
+The MLLM and AlignerNet are jointly trained with a batch size of 1,024
+images, totaling approximately 200 million images over 200,000 steps. The learning rate peaks at
+1e-3. The rest settings are the same as in the previous stage.
+4
+Evaluation
+4.1
+Main Qualitative Results
+As shown in Figure 5, KOSMOS-G delivers impressive zero-shot generation results across diverse
+settings, yielding meaningful and coherent outputs even for highly customized subjects. The visual
+samples showcase generative capabilities in re-contextualization, stylization, modification, and
+accessory incorporation. Notably, multi-entity VL2I is very challenging even for fine-tuning methods
+like DreamBooth [RLJ+22]. While owing from the novel compositional generation instruction tuning,
+KOSMOS-G is the first model that is capable of achieving this in a zero-shot setting.
+8

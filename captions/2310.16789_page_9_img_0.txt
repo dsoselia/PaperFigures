@@ -1,0 +1,28 @@
+7.2.1
+STORY COMPLETION
+Identifying suspicious texts using MIN-K% PROB.
+The process begins with the identifica-
+tion of suspicious chunks using our MIN-K% PROB metric. Firstly, we gather the plain text of
+Harry Potter Series 1 to 4 and segment these books into 512-word chunks, resulting in approxi-
+mately 1000 chunks. We then compute the MIN-K% PROB scores for these chunks using both the
+LLaMA2-7B-WhoIsHarryPotter model and the original LLaMA2-7B-chat model. To identify chunks
+where the unlearning process may have failed at, we compare the MIN-K% PROB scores between the
+two models. If the ratio of the scores from the two models falls within the range of (
+1
+1.15, 1.15), we
+classify the chunk as a suspicious unlearn-failed chunk. This screening process identifies 188 such
+chunks. We also notice that using perplexity alone as the metric fails to identify any such chunk. We
+then test the LLaMA2-7B-WhoIsHarryPotter model with these suspicious chunks to assess its ability
+to complete the story. For each suspicious chunk, we prompt the model with its initial 200 words and
+use multinomial sampling to sample 20 model-generated continuations for each chunk.
+Results
+We can still find very similar completion with the original story. For example, 5.3%
+generated completion have greater and equal to 4 GPT score similarity to the gold completion.
+We then compare the completed stories with the ground truth storylines using both the SimCSE
+score (Gao et al., 2021) (which gives a similarity score from 0 to 1) and GPT-4 (where we prompt the
+model with the template in Table 9 to return a similarity score from 1 to 5, and a reason explaining the
+similarity). The distributions for these two scores of the suspicious chunks are shown in Section 7.2.1.
+Surprisingly, we find a considerable number of chunks whose auto-completions from the “unlearned”
+model closely resemble the original story: 10 chunks have a similarity score higher than or equal
+6OpenAI. https://chat.openai.com/chat
+10

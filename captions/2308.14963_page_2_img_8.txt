@@ -1,0 +1,36 @@
+Ranked List
+Top-k Retrieval
+Figure 1: A standard bi-encoder architecture, where encoders generate dense vector representations
+(embeddings) from queries and documents (passages). Retrieval is framed as k-nearest neighbor
+search in vector space.
+Modern enterprise architectures are already exceedingly complex, and the addition of another software
+component (i.e., a distinct vector store) requires carefully weighing costs as well as benefits. The
+cost is obvious: increased complexity, not only from the introduction of a new component, but also
+from interactions with existing components. What about the benefits? While vector stores no doubt
+introduce new capabilities, the critical question is whether these capabilities can be provided via
+alternative means.
+Search is a brownfield application. Wikipedia defines this as “a term commonly used in the informa-
+tion technology industry to describe problem spaces needing the development and deployment of
+new software systems in the immediate presence of existing (legacy) software applications/systems.”
+Additionally, “this implies that any new software architecture must take into account and coexist
+with live software already in situ.” Specifically, many organizations have already made substantial
+investments in search within the Lucene ecosystem. While most organizations do not directly use the
+open-source Lucene search library in production, the search application landscape is dominated by
+platforms that are built on top of Lucene such as Elasticsearch, OpenSearch, and Solr. For example,
+Elastic, the publicly traded company behind Elasticsearch, reports approximately 20,000 subscrip-
+tions to its cloud service as of Q4 FY2023.3 Similarly, in the category of search engines, Lucene
+dominates DB-Engines Ranking, a site that tracks the popularity of various database management
+systems.4 There’s a paucity of concrete usage data, but it would not be an exaggeration to say that
+Lucene has an immense install base.
+The most recent major release of Lucene (version 9), dating back to December 2021, includes HNSW
+indexing and search capabilities, which have steadily improved over the past couple of years. This
+means that differences in capabilities between Lucene and dedicated vector stores are primarily in
+terms of performance, not the availability of must-have features. Thus, from a simple cost–benefit
+calculus, it is not clear that vector search requires introducing a dedicated vector store into an already
+complex enterprise “AI stack”. Our thesis: Lucene is all you need.
+We empirically demonstrate our claims on the MS MARCO passage ranking test collection, a
+standard benchmark dataset used by researchers today. We have encoded the entire corpus using
+OpenAI’s ada2 embedding endpoint, and then indexed the dense vectors with Lucene. Experimental
+results show that this combination achieves effectiveness comparable to the state of the art on the
+development queries as well as queries from the TREC 2019 and 2020 Deep Learning Tracks.
+3https://ir elastic co/news events/press releases/press releases details/2023/

@@ -1,0 +1,47 @@
+an image of
+elsa from
+frozen
+(a) Prompt
+(b) SD2 Output
+(c) CommonCanvas
+Output
+the lion king
+(d) Prompt
+(e) SD2 Output
+(f) CommonCanvas
+Output
+Figure 2: When given prompts for concepts related to Disney movies (a, d), SD2-base generates a
+recognizable image of Elsa from Frozen (b) and a poster-like image with a misshapen Disney logo
+and characters resembling those from The Lion King (e), and CommonCanvas (-SC) does not (c, f).
+• Train and evaluate CommonCanvas, a suite of LDM architectures trained on CommonCatalog.
+We demonstrate that these models produce competitive qualitative and quantitative results com-
+pared to the SD2-base baseline (Section 6). To make this analysis tractable, we implement a va-
+riety of training optimizations, which achieve ∼3X speed-ups in training SD2-base (Section 5).
+• Release our CommonCatalog dataset of CC images and synthetic captions along with
+our trained CommonCanvas model at https://github.com/mosaicml/diffusion/blob/
+main/assets/common-canvas.md.
+2
+Preliminaries and Motivation
+In this section, we present background on training the T2I Stable Diffusion model, originally trained
+on the web-scraped LAION-2B dataset. We then discuss copyright and reproducibility with respect
+to LAION datasets. This discussion motivates the creation of an alternative dataset composed of
+open licensed, CC images with synthetic captions, which we introduce in Section 4.
+2.1
+Text-to-image generative models
+Text-to-image (T2I) generative models refer to large neural networks trained on paired image-
+caption data examples. One such family of T2I models is Stable Diffusion (SD) [47]. SD is a
+latent diffusion model (LDM) that converts images to latent representations and back again us-
+ing Variational Autoencoders (VAEs) [23]; it uses an iterative sampling procedure [57] and trains
+an underlying UNet [48]. The architecture also includes a text encoder, such as the Contrastive
+Language-Image Pre-training (CLIP) model [43] – either the original CLIP from OpenAI [45] or its
+open-source counterpart, OpenCLIP [10, 18].
+Stable Diffusion 2 (SD2)’s UNet has approximately 865 million trainable parameters; Stable Diffu-
+sion XL (SDXL) is larger, with 2.6 billion parameters, and has other advancements involving aspect
+ratio bucketing, micro-conditioning, and multiple text encoders and tokenizers. In terms of train-
+ing data, the SD-family of models and OpenCLIP are both trained on subsets of the LAION-5B
+dataset [3, 53]. The exact training dataset for CLIP is unknown, but it is likely webscraped data [45]
+2.2
+Copyright and reproducibility in relation to LAION datasets
+LAION-5B is a dataset derived from a snapshot of the Common Crawl, a massive corpus of data
+scraped from the web. From this snapshot, the LAION organization curated pairs of image URLs
+and their corresponding alt text captions for the intended use of training T2I and image to text (I2T)

@@ -1,0 +1,26 @@
+Figure 2: Detailed performance of different models on the eight categories in MMHAL-BENCH,
+where “Overall” indicates the averaged performance across all categories. The questions are col-
+lected by adversarially filtering on the original LLaVA13BX336 model.
+Schulman et al. (2017)) with a KL penalty for the RL training. Without further notice, both LLaVA-
+RLHF-7b and LLaVA-RLHF-13b are trained with a LLaVA-SFT+-13b initialized reward model.
+More details can be found in Appendix F.
+3.2
+MMHAL-BENCH DATA COLLECTION
+To quantify and evaluate the hallucination in LMM responses, we have created a new benchmark
+MMHAL-BENCH. There are two major differences between MMHAL-BENCH and previous VLM
+benchmarks: 1) Speciality: In contrast to prevalent LMM benchmarks Liu et al. (2023a;b); Li et al.
+(2023d) that evaluate the response quality in the general sense (e.g., helpfulness, relevance), we
+focus on determining whether there hallucination exists in the LMM responses. Our evaluation
+metrics are directly developed on this main criterion. 2) Practicality: Some previous LMM bench-
+marks Li et al. (2023d); Rohrbach et al. (2018) also examine hallucination, but they have limited
+the questions to yes/no questions, which we found the results may sometimes disagree with the de-
+il d d
+i i
+d b LMM I
+d f
+i
+lif i
+h
+i
+d
+l

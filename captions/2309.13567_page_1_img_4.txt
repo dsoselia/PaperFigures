@@ -1,0 +1,145 @@
+WWW, June 03–05, 2018, Woodstock, NY
+Yang et al.
+LLaMA2
+IMHI Dataset
++
+Post:  2017 for me was the equivalent 
+of putting a load of expensive and high-
+end ingredients into a pot, cooking it, 
+and having it taste rancid in the end. I 
+had such great experiences and growth 
+this year, but it feels like it hasn't given 
+me the fulfilment I really want. I can’t …
+Question: Does the poster suffer from 
+loneliness?
+Post:  Biding time I've been doing 
+nothing all day and I tried to kill myself 
+last nigh and I go to the therapist at 3 so 
+I am fucking dreading being sent to the 
+goddamn hospital Maybe I can find 
+something to kill myself with at the 
+hospital …
+Question: What mental disorder 
+symptoms does this post show?
+Post:  my boss was driving me nuts 
+yesterday with his report …
+Question: What stress cause does this post 
+show?
+Post:  I feel like everyone just doesn't appreciate me. And I only feel this because of school. My 
+teacher told me today that if I didn't do anything that would be more helpful than me actually 
+trying to do something. I'm only 10 and I feel like no one my age should be feeling like this …
+Question: Does the spiritual mental wellness dimension exist in the post?
+Binary menta health detection
+Multi-class menta health detection
+Menta health cause/factor detection
+…
+Mental risk/wellness detection
+Answer: No. While the post 
+mentions feeling unfulfilled and 
+having persistent nagging thoughts, 
+it does not directly mention feelings 
+of loneliness. The poster mentions 
+having friends and people they can 
+talk to, indicating some level of 
+social connection. The focus of the 
+post is more on feeling ungrateful 
+and questioning their own 
+experiences, rather than expressing 
+a deep sense of loneliness.
+Answer: The post includes explicit mentions of 
+suicidal ideation and intent, as well as self-harm 
+behavior. These are clear indicators of depression, as 
+they are commonly associated with feelings of 
+hopelessness, despair, and a desire to escape 
+emotional pain. The urgency and desperation 
+expressed in the post also suggest a need for 
+immediate intervention and support.
+Answer: The post explicitly 
+mentions that the poster's boss 
+was driving them nuts with his 
+report. This indicates that the 
+stress is related to their work 
+situation and specifically their 
+boss's actions or behavior. 
+Answer: In the post, the 
+individual expresses feelings of 
+being unappreciated and 
+mistreated, particularly in the 
+context of school. While these 
+feelings may indicate a lack of 
+emotional well-being, there is no 
+indication of a search for meaning 
+or purpose in human existence. 
+The focus is on interpersonal 
+relationships and the unfairness 
+of the individual's experiences. 
+Therefore, the post does not 
+reflect the wellness dimension of 
+the spiritual aspect as defined by 
+Dunn's model.
+…
+MentaLLaMA
+Figure 1: Some examples of MentaLLaMA’s capabilities in diverse mental health analysis tasks.
+generated explanations [43]. An effective solution is to fine-tune
+foundation LLMs with task-specific data to align with the target
+domain [15, 41]. However, there are two key challenges in improv-
+ing LLMs for interpretable mental health analysis with fine-tuning.
+Firstly, fine-tuning LLMs requires high-quality supervised train-
+ing data. In mental health analysis on social media, though a few
+datasets include short extracted casual text spans [11, 12], it still
+lacks open-source data that provides detailed and reliable expla-
+nations for detection results. This is mainly due to the sensitive
+research topic [3, 27] and the high cost of writing explanations by
+domain experts. Secondly, prompting or fine-tuning close-source
+LLMs such as ChatGPT can be expensive3, time-consuming, and
+with huge carbon emissions4, while no open-source LLMs for inter-
+pretable mental health analysis have been released for public use.
+The lack of resources and high costs hinder the progress in related
+research.
+To bridge these gaps, we formally model interpretable mental
+health analysis as text generation tasks, and build the first multi-task
+and multi-source interpretable mental health instruction (IMHI)
+dataset with 105K data samples to support LLM instruction tun-
+ing [29] and evaluation. Firstly, we collect training data from 10
+existing data sources covering 8 mental health analysis tasks. The
+ll
+t d d t i
+l d
+i l
+di
+t
+d th i
+di
+the IMHI evaluation benchmark, the first holistic evaluation bench-
+mark for interpretable mental health analysis tasks.
+Based on the IMHI dataset, we propose MentaLLaMA, the first
+open-source LLM series for interpretable mental health analysis
+with instruction-following capability. MentaLLaMA models are
+trained based on the LLaMA2 foundation models [34]. Specifically,
+we fine-tune 3 MentaLLaMA models: MentaLLaMA-7B, MentaLLaMA-
+chat-7B, and MentaLLaMA-chat-13B. Some examples of MentaL-
+LaMA’s strong capabilities are presented in Figure 1. We also com-
+prehensively evaluate the performance of MentaLLaMA models on
+the IMHI evaluation benchmark. We investigate the correctness of
+MentaLLaMA in making mental health classifications. The results
+show that MentaLLaMA-chat-13B surpasses or approaches SOTA
+discriminative methods [19] on 7 out of 10 test sets in correctness.
+We also evaluate the quality of generated explanations. The results
+show that MentaLLaMA can generate ChatGPT-level explanations.
+Its generation quality benefits from instruction tuning, reinforce-
+ment learning from human feedback (RLHF) [33], and increasing
+model sizes. MentaLLaMA models also show strong generalizability
+to unseen tasks.
+We summarize our contributions as follows: 1) We formalize
+the interpretable mental health analysis tasks and build the IMHI
+d t
+t th fi t
+lti t
+k
+d
+lti
+i
+t
+ti
+t
+i

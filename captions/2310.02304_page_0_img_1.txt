@@ -1,0 +1,41 @@
+SELF-TAUGHT OPTIMIZER (STOP):
+RECURSIVELY SELF-IMPROVING CODE GENERATION
+Eric Zelikman1,2, Eliana Lorch, Lester Mackey1, Adam Tauman Kalai1
+1Microsoft Research, 2Stanford University
+ABSTRACT
+Several recent advances in AI systems (e.g., Tree-of-Thoughts and Program-Aided
+Language Models) solve problems by providing a “scaffolding” program that struc-
+tures multiple calls to language models to generate better outputs. A scaffolding
+program is written in a programming language such as Python. In this work, we
+use a language-model-infused scaffolding program to improve itself. We start
+with a seed “improver” that improves an input program according to a given utility
+function by querying a language model several times and returning the best solution.
+We then run this seed improver to improve itself. Across a small set of downstream
+tasks, the resulting improved improver generates programs with significantly better
+performance than its seed improver. A variety of self-improvement strategies
+are proposed by the language model, including beam search, genetic algorithms,
+and simulated annealing. Since the language models themselves are not altered,
+this is not full recursive self-improvement. Nonetheless, it demonstrates that a
+modern language model, GPT-4 in our proof-of-concept experiments, is capable
+of writing code that can call itself to improve itself. We consider concerns around
+the development of self-improving technologies and evaluate the frequency with
+which the generated code bypasses a sandbox.
+1
+INTRODUCTION
+A language model can be queried to optimize virtually any objective describable in natural language.
+However, a program that makes multiple, structured calls to a language model can often produce
+outputs with higher objective values (Yao et al., 2022; 2023; Zelikman et al., 2023; Chen et al.,
+2022). We refer to these as “scaffolding” programs, typically written (by humans) in a programming
+language such as Python. Our key observation is that, for any distribution over optimization problems
+and any fixed language model, the design of a scaffolding program is itself an optimization problem.
+In this work, we introduce the Self-Taught Optimizer (STOP), a method in which code that applies a
+language model to improve arbitrary solutions is applied recursively to improve itself. Our approach
+begins with an initial seed ‘improver’ scaffolding program that uses the language model to improve a
+solution to some downstream task. As the system iterates, the model refines this improver program.
+We use a small set of downstream algorithmic tasks to quantify the performance of our self-optimizing
+framework. Our results demonstrate improvement when the model applies its self-improvement
+strategies over increasing iterations. Thus, STOP shows how language models can act as their own
+meta-optimizers. We additionally investigate the kinds of self-improvement strategies that the model
+proposes (see Figure 1), the transferability of the proposed strategies across downstream tasks, and
+explore the model’s susceptibility to unsafe self improvement strategies
+arXiv:2310.02304v1  [cs.CL]  3 Oct 2023

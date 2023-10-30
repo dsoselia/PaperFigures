@@ -1,0 +1,14 @@
+p
+p
+g
+p
+while Figure 1 gives more details of the token length distribution of all seven datasets. Note that,
+some dataset like Qasper (QASP) is relatively short and don’t have up to 20 chunks, so the average
+length of top-10 chunks and top-20 chunks are close. We can see that top-5 chunks can all fit into
+4k sequence length (except few outliers) while top-10 and top-20 chunks can fit into 16k sequence
+length.
+3.5
+INSTRUCTION TUNING
+To train the pretrained LLMs to follow instructions for question answering or text summarization, we
+also performed instruction tuning. We first construct a blend of instruction tuning datasets consisting
+of 102K training samples from the Soda dataset (Kim et al 2022) ELI5 dataset (Fan et al 2019)

@@ -1,0 +1,10 @@
+Supervised Learning / Pool-based Active Learning
+We present users with the following
+instructions for both supervised learning and pool-based active learning.
+Bracketed, ital-
+icized text represent placeholders for domain-specific text.
+[ Domain instructions ] is a
+placeholder for the top-level instructions for each domain (see Table 1).
+Otherwise, blue
+text represents text for the content recommendation domain, orange text represents text for
+18

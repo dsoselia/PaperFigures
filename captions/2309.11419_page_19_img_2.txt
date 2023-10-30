@@ -1,0 +1,7 @@
+(a) Input
+(b) Rendered output
+Figure 11: A training sample for the markup-based task from DOCX
+(a) Input
+(b) Rendered output
+Figure 12: A training sample for the markup-based task from LATEX (single-column)
+20

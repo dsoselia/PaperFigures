@@ -1,0 +1,32 @@
+Figure 2: Context-Grounded Self-Verification in Action. The example showcases the verifier,
+utilizing the same model as the answer generator, identifying and rejecting an inaccurate answer—He
+took it in 1990—by effectively leveraging the context. The example uses LLAMA2-13B for both
+generation and verification on a COQA dataset instance.
+decision spaces where the system’s state is not fully observable. A POMDP is defined by a tuple
+(S, A, T, R, Ω, O), where S is a set of states, A is a set of actions, T represents the state transition
+probabilities, R is the reward function, Ω is a set of observations, and O is the observation function.
+In our scenario, the states S correspond to the three question categories: Simple, Complex, and
+Unsolvable. Actions are denoted as either reporting the SLM answer or routing to the LLM.
+Observations, in the form of verifier output v, enable the POMDP to ascertain its belief state, which
+is a probability distribution over S. For instance, a high verifier confidence in the correctness of
+As would increase the belief in the Simple state. The solution to the POMDP subsequently yields a
+policy that maps belief states to actions, effectively deciding whether to invoke the LLM based on a
+balance of expected future rewards and computational costs. See Appendix B.1 for more details.
+Another advantage of the POMDP-based meta-verifier is its interpretability and customizability via
+reward assignment. For instance, in a Complex state, assigning a very high reward of +50 for invoking
+the LLM indicates a preference for accurate solutions over computational cost. Although the POMDP
+framework inherently handles sequences of decisions, we confine our approach to a single-decision
+scenario (horizon or episode length 1) for simplicity, with potential for extension to streaming settings
+for optimizing across multiple queries or a fixed time duration.
+3
+Cost-Performance Efficiency Analysis
+In our approach to leveraging model performance, it is essential to consider not only the raw accuracy
+of predictions but also the associated computational or monetary costs. To that end, we introduce a
+metric to understand the efficiency of the models in terms of cost. We use CM and PM to denote the
+cost and performance of a method M. We also use CSLM and CLLM, and PSLM and PLLM, to denote
+the cost and performance of using the SLM and LLM, respectively.
+Incremental Benefit Per Cost (IBC)
+We introduce methods, denoted by M, to optimally inte-
+grate SLM and LLM. For each method M, we associate a cost CM and performance PM. To
+quantify the utility of M over SLM, we define the metric Incremental Benefit Per Cost (IBC) as
+IBCM (Equation (1)).

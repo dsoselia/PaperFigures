@@ -1,0 +1,17 @@
+♣Xiang Yue∗, ‡Xingwei Qu, †Ge Zhang, ○Yao Fu, §Wenhao Huang,
+♣Huan Sun, ♣Yu Su, †Wenhu Chen∗
+†University of Waterloo, ♣The Ohio State University, ‡HKUST, ○University of Edinburgh, §01.AI
+yue.149@osu.edu, wenhuchen@uwaterloo.ca
+https://tiger-ai-lab.github.io/MAmmoTH/
+ABSTRACT
+We introduce MAmmoTH, a series of open-source large language models (LLMs)
+specifically tailored for general math problem-solving. The MAmmoTH models are
+trained on MathInstruct, our meticulously curated instruction tuning dataset.
+MathInstruct is compiled from 13 math datasets with intermediate rationales,
+six of which have rationales newly curated by us. It presents a unique hybrid
+of chain-of-thought (CoT) and program-of-thought (PoT) rationales, and also en-
+sures extensive coverage of diverse fields in math. The hybrid of CoT and PoT not
+only unleashes the potential of tool use but also allows different thought processes
+for different math problems. As a result, the MAmmoTH series substantially outper-
+form existing open-source models on nine mathematical reasoning datasets across
+.CL]  3 Oct 2023

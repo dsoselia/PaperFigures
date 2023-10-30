@@ -1,0 +1,23 @@
+C
+MTurk
+About the qualifications of Amazon Mechanical
+Turk (MTurk) workers, we use the following qual-
+ifications to recruit in total of 10 MTurk workers
+with good track records: HIT approval rate greater
+than or equal to 98%, number of HITs approved
+greater than or equal to 500, and located in one
+of the following English native-speaking countries:
+Australia, Canada, New Zealand, United Kingdom,
+United States. Each annotator is limited to anno-
+tating 10 examples, including both the output of
+GPT-3.5 and GPT-4.
+Annotators workers were compensated $7, cali-
+brated to equal a $42/hour pay rate. We first anno-
+tated examples in-house to determine the required
+annotation speed. A summary block usually takes
+around 10 minutes.
+To demonstrate our annotation template and fa-
+cilitate future research, we show the interface for
+annotations.
+Figure 5: Interface of Mturk.
+Figure 6: Interface of Mturk.

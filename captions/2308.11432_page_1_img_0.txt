@@ -1,0 +1,40 @@
+2021-1
+2022-1
+2023-2
+2023-4
+2023-6
+2023-8
+Time （Year-Month）
+Number of P
+WebGPT
+2021-12
+ToolBench 2023-7
+AgentSims 2023-8
+TALM 2022-5
+HuggingGPT 2023-3
+CoT 2022-1
+Inner Monologue 2022-7
+AutoGPT 2023-3
+Assistant Agent
+AgentGPT 2023-4
+RecAgent 2023-6
+ToT 2023-5
+Figure 1: Illustration of the growth trend in the field of LLM-based autonomous agents. We present
+the cumulative number of papers published from January 2021 to August 2023. We assign different
+colors to represent various agent categories. For example, a game agent aims to simulate a game-
+player, while a tool agent mainly focuses on tool using. For each time period, we provide a curated
+list of studies with diverse agent categories.
+In recent years, large language models (LLMs) have achieved notable successes, demonstrating
+significant potential in attaining human-like intelligence [120, 127, 11, 4, 146, 147]. This capability
+arises from leveraging comprehensive training datasets alongside a substantial number of model
+parameters. Building upon this capability, there has been a growing research area that employs
+LLMs as central controllers to construct autonomous agents to obtain human-like decision-making
+capabilities [21, 139, 138, 126, 133, 184, 136]. Along this direction, researchers have developed
+numerous promising models (see Figure 1 for an overview of this field), where the key idea is to equip
+LLMs with crucial human capabilities like memory and planning to make them behave like humans
+and complete various tasks effectively. Previously, these models were proposed independently, with
+limited efforts made to summarize and compare them holistically. However, we believe a systematic
+summary on this rapidly developing field is of great significance to comprehensively understand it
+and benefit to inspire future research.
+In this paper, we conduct a comprehensive survey of the field of LLM-based autonomous agents.
+Specifically, we organize our survey based on three aspects including the construction, application,

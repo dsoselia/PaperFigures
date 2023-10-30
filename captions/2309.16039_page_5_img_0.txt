@@ -1,0 +1,105 @@
+• Larger models can leverage the contexts more effectively, indicated by the larger β value of
+the curves.
+3.2
+Instruction Tuning Results
+We test our instruction tuned model on ZeroSCROLLS (Shaham et al., 2023) which bundles 10 long-
+context datasets spanning from summarization, question answering, to multi-document aggregation
+tasks. For a fair comparison, we use the same configuration (prompts, truncation strategy, and maxi-
+mum generation lengths, etc) as specified by the benchmark. As shown in Table 4, without using any
+human annotated long context data, our 70B chat model is able to outperform gpt-3.5-turbo-16k
+on 7 out of the 10 tasks. In addition, we run evaluations on six new long tasks introduced in L-
+Eval (An et al., 2023) and again observe strong results, as shown in Table 17 in the Appendix. We see
+that the finetuned model is particularly good at QA tasks which is the main theme of the self-instruct
+data. We expect the performance to be further improved if more diverse data are used for finetuning.
+It is worth mentioning that evaluating long-context LLMs is a nontrivial task. The automatic metrics
+used in these benchmarks are limited in many ways. For instance, the summarization tasks only come
+with a single ground-truth summary and the n-gram matching metrics do not necessarily align with
+human preference. For QA and aggregation tasks, where the metric is less of a concern, truncating the
+input context might also remove the information necessary to answer the question. Another important
+caveat is that most proprietary models do not share their training data details, which makes it hard to
+take into consideration the potential leakage during public benchmark evaluation.
+Model
+Summarization
+Question answering
+Aggregation
+GR
+SS
+QM
+SQAL
+Qspr
+Nrtv
+QALT
+MuSQ
+SpDg
+BkSS
+Avg
+GPT-3.5-turbo (4k)
+21.3
+16.1
+15.6
+20.4
+49.3
+25.1
+66.6
+27.1
+49.1
+49.8
+34.0
+GPT-3.5-turbo-16k†
+24.3
+16.2
+17.4
+21.4
+50.0
+29.5
+72.0
+27.0
+54.1
+54.6
+36.7
+Claude (8k)
+24.2
+16.1
+14.6
+21.0
+52.3
+32.6
+84.8
+36.1
+61.6
+47.4
+39.1
+GPT4 (8k)
+26.3
+17.3
+18.5
+22.6
+50.7
+27.6
+89.2
+41.1
+62.8
+60.5
+41.7
+LLAMA 2 LONG CHAT 70B
+26.0
+15.0
+20.0
+20.9
+52.0
+31.7
+82.6
+27.3
+55.5
+46.2
+37.7
+Table 4: ZeroSCROLLS long-context leaderboard results. †Evaluated as of 8/7/2023. The GPT-4 and
+Claude results are directly copied from the leaderboard. Underscored are the 7/10 tasks where our
+model outperforms gpt-3.5-turbo-16k.
+3.3
+Human Evaluation
+Figure 3: Human preference on model responses with multi-turn conversation and multi-document
+search query answering data.
+Complementary to the automatic evaluation benchmark results, we conduct human evaluations
+by asking annotators whether they prefer the generation from our instruction finetuned model or
+6

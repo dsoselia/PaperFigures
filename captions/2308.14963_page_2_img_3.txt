@@ -1,0 +1,3 @@
+Ranked List
+Top-k Retrieval
+Figure 1: A standard bi-encoder architecture where encoders generate dense vector representations

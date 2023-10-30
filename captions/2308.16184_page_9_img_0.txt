@@ -1,0 +1,86 @@
+Figure 5: (a) Comparison from the perspective of anatomical structures. (b) Comparison from the
+perspective of different Modalities. (c) Comparison of segmentation performance between FT-SAM
+and our SAM-Med2D across 31 organs.
+of segmentation task without fine-tuning. Our SAM-Med2D demonstrated advantages in Dice scores
+across all anatomical structures compared to other methods. Due to the limited information provided
+by a 1 pt prompt, there were performance differences across different categories. Interesting, we
+found that the fine-tuned SAM significantly outperformed the original SAM. This is because the
+fine-tuning approach learned the positional relationships of points within the target regions from a
+large-scale medical image dataset, enabling more accurate decision-making.
+Based on the aforementioned results, we draw the conclusion that SAM-Med2D exhibits excellent
+performance in the segmentation tasks across different anatomical structures, yielding satisfactory
+results in terms of the Dice metric in the pelvic and thoracic areas. However, it is worth noting that
+the performance of the head and neck region appears to be relatively subpar across different models
+and resolutions, suggesting the need for additional improvement measures.
+Table 3: Segmentation performance in point prompt mode. The left values represent Dice scores of
+different models under 1 pt prompt. The numbers in parentheses indicate the Dice score increment
+after 5 pts prompt, with red indicating improvement and green indicating decline.
+Modal
+SAM [8]
+SAM [8]
+FT-SAM
+SAM-Med2D
+(256 × 256)
+(1024 × 1024)
+(256 × 256)
+(256 × 256)
+CT
+20.87(∆18.62)
+48.36(∆12.74)
+67.91(∆13.81)
+77.34(∆6.75)
+MR
+15.25(∆18.41)
+16.45(∆7.07)
+46.36(∆18.17)
+57.16(∆12.02)
+PET
+15.12(∆25.09)
+34.52(∆8.93)
+59.58(∆11.58)
+78.58(∆2.42)
+Dermoscopy
+58.01(∆10.01)
+55.28(∆11.38)
+83.86(∆6.82)
+87.69(∆4.34)
+Endoscopy
+39.94(∆13.84)
+56.92(∆10.64)
+57.17(∆20.56)
+60.34(∆12.13)
+Fundus
+33.67(∆28.50)
+22.99(∆27.93)
+62.57(∆14.62)
+76.86(∆6.51)
+Histopathology
+36.55(∆31.92)
+79.96(↓ 0.20)
+79.70(∆7.99)
+76.89(∆4.31)
+Microscopy
+44.92(∆15.05)
+78.98(↓ 0.55)
+70.27(∆13.63)
+60.83(∆13.50)
+Ultrasound
+15.89(∆14.51)
+15.81(∆19.85)
+55.05(∆23.46)
+74.81(∆10.33)
+X-ray
+23.40(∆11.04)
+23.12(∆16.56)
+44.06(∆25.84)
+64.30(∆12.13)
+C. Performance Evaluation on Different Modalities. Figure 5 (b) summarizes the performance
+of the four methods under the Bbox prompt mode across different modality data. All four methods
+achieved Dice scores exceeding 70% in dermoscopy, endoscopy, fundus photography, histopathology,
+and microscopy. When deploying predicted images at a resolution of 1024×1024, SAM outperformed
+other methods in endoscopy, histopathology, and microscopy modes. We attribute this results to
+the following factors: 1) These three modalities are derived from 2D datasets and consist of RGB
+images, which share similarities with natural images. 2) The limited amount of available data for
+fine-tuning constrained the performance of the fine-tuning method (as indicated by the red lines in
+the figure, representing the logarithmically transformed mask counts). 3) Larger image resolutions
+10

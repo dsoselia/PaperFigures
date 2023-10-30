@@ -1,0 +1,59 @@
+Parameter
+Preservation Loss
+Multi-view
+Diffusion Loss
+Image
+Diffusion Loss
+Multi-view Diffusion Training
+Multi-view Dreambooth
+A [v] dog
+Image
+Diffusion Loss
+French cat
+Robot
+Image
+Image
+View 1
+View 2
+View 3
+View 4
+camera
+Figure 3: The training pipeline of MVDream. Left: Training of multi-view diffusion with two
+modes: image mode with 2D attention (upper) and multi-view mode with 3D attention and camera
+embeddings (lower). Right: Training of DreamBooth, where the pre-trained multi-view diffusion
+model is fine-tuned with the image mode of 2D attention and a preservation loss.
+shows an illustration of our text-to-multi-view diffusion model. We leverage the 3D datasets to render
+consistent multi-view images to supervise the diffusion model training. Formally, given a set of noisy
+image xt ∈ RF ×H×W ×C, a text prompt as condition y, and a set of extrinsic camera parameters
+c ∈ RF ×16, multi-view diffusion model is trained to generate a set of images x0 ∈ RF ×H×W ×C
+of the same scene from F different view angles. After the training, the model can be used as a
+multi-view prior for 3D generation with techniques such as Score Distillation Sampling (SDS).
+To inherit the generalizability of the 2D diffusion models, we would like to keep their architecture as
+much as possible for fine-tuning. However, such models can only generate one image at a time and
+do not take camera conditions as inputs. So the main questions here are: (1) how to generate a set of
+consistent images from the same text prompt (Sec. 3.1.1), (2) how to add the camera pose control
+(Sec. 3.1.2), and (3) how to maintain the quality and generalizability (Sec. 3.1.3).
+3.1.1
+MULTI-VIEW CONSISTENT IMAGE GENERATION
+Similar to video diffusion models (Ho et al., 2022; Singer et al., 2022; Blattmann et al., 2023; Zhou
+et al., 2022), we would like to adapt the attention layers to model the cross-view dependency while
+keeping the remaining network as a 2D model that only operates within a single image. However,
+we found that a simple temporal attention fails to learn multi-view consistency and content drift still
+happens even if we fine-tune the model on a 3D rendered dataset. Instead, we choose to use a 3D
+attention. Specifically, we can convert the original 2D self-attention layer into 3D by connecting
+all different views in the self-attention layer (See Fig. 3), which we found able to generate rather
+consistent images even when the view gap is very large. We also experimented with incorporating
+a new 3D self-attention layer rather than modifying the existing 2D one. However, such a design
+compromised the generation quality of multi-view images. We suspect the slower convergence of a
+new attention module relative to re-utilizing parameters from an existing one is to blame. Given our
+reluctance to fine-tune the diffusion model extensively, we opted not to pursue this approach further.
+3.1.2
+CAMERA EMBEDDINGS
+Like video diffusion models, position encoding is necessary for our model to distinguish between
+different views. To this end, we compared relative position encoding (Singer et al., 2022), rotary
+embeddings (Su et al., 2021), and absolute camera parameters. We found that embedding camera
+parameters with a 2-layer MLP leads to the most satisfying image quality with distinguishable
+view differences. Specifically, we consider two methods to inject camera parameters: (1) adding
+camera embeddings to time embeddings as residuals, and (2) appending camera embeddings to text
+embeddings for cross attention. Our experiment shows that both methods work but the former turns
+out to be more robust possibly because the camera embeddings would be less entangled with the text.

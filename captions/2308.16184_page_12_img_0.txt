@@ -1,0 +1,34 @@
+Figure 7: The fusion of segmentation results for multiple target regions within a single image. For
+clarity of presentation, we visualized only the results of Bbox prompt and 1 point prompt.
+to achieve the desired results. This is advantageous for data annotation or pseudolabel generation.
+We attribute this phenomenon to SAM-Med2D acquiring domain-specific knowledge related to the
+medical imaging field through learning from large-scale datasets. This aligns with the motivation of
+this paper, which is to establish the foundation for SAM to move towards robust and reliable medical
+image segmentation.
+Figure 7 shows the results of merging multiple target regions within the same image. When the target
+boundaries are clear, there are subtle visual differences between SAM and our SAM-Med2D. In
+other cases, SAM-Med2D can achieve precise segmentation of parts that are difficult for the human
+eye to identify. On the other hand, in the scenario of 1 pt prompt, SAM often fails on many organs
+and struggles to locate the target region. This once again demonstrates that fine-tuning SAM on
+large-scale data can lead to better domain transferability.
+5
+Discussion and Conclusion
+In this study, we obtain SAM-Med2D by fine-tuning a SAM on a large-scale medical image dataset,
+which is able to significantly improve various medical image segmentation tasks. We employed two
+explicit prompts strategies to generate masks for quantitative and qualitative comparisons. At an
+equal resolution, only the fine-tuned mask decoder (FT-SAM) achieved an improvement of 11.93%
+in the Bbox prompt mode, while the fully fine-tuned SAM-Med2D achieved a 17.67% improvement.
+Surprisingly, our approach demonstrated overwhelming superiority in the 1 pt prompt (18.94% vs.
+70.01%). Furthermore, SAM-Med2D exhibited excellent generalization capabilities in both prompt
+modes, indicating its practical value in the medical field.
+We conduct a comprehensive evaluation of the model from different dimensions of the data. From
+an anatomical perspective, at a resolution of 1024×1024, SAM had advantages over FT-SAM in
+the chest, abdomen, and other regions, SAM-Med2D outperformed all other methods in overall
+segmentation performance. Regarding different modalities, SAM demonstrated good generalization
+when the target modality data resembled natural image attributes. We compared the two fine-tuning
+methods on more than 30 major organs, and our SAM-Med2D achieved better results on 24 organs,
+with a maximum improvement of 6.95% compared to FT-SAM. Additionally, our generalization
+experiments on 9 publicly available datasets demonstrated strong domain transferability of models
+pretrained on large-scale datasets. While the Bbox prompt always outperformed the 1 pt prompt,
+adding more points significantly improved the segmentation results, surpassing even the Bbox mode.
+13

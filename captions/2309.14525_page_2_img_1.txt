@@ -1,0 +1,60 @@
+Preprint
+This image shows the menu of  a 
+coffee chop called Roly’s Café.
+Human
+LMM-SFT
+Captions
+LMM-RLHF
+PPO Data
+[The sign is not very clear, so perhaps]
+A: American Fast Food
+Sampled Output
+[The RL model’s output is clearly 
+contradictory to the image captions]
+Reward Score: 0.0
+Javier’s Tacos – Mexican Fast 
+Food – Open 24 hours
+Captions
+RM Data
+A: The sleeping environment on the 
+couch provides the cat with a 
+comfortable and cozy space to rest.
+Sampled Output (A)
+A: The cat is resting on a black 
+couch with its front paws 
+tucked under its chest.
+Sampled Output (B)
+Output (A) is better 
+with less hallucinations.
+Human Preference
+RM Score
+(a) Misaligned Supervised Fine-Tuning (SFT) Data contains Hallucination
+SFT Data
+GPT-4
+Q: What is in the image?
+Q: How does the sleeping 
+environment benefit the cat?
+(b) Collect Human Preference (More Helpful & Less Hallucinated) Data for Reward Models (RM)
+Human
+LMM-RM
+Q: What is in the image?
+A: Menu from Roly’s Café, Chairs 
+and Tables.
+(c) Factually Augmented Reinforcement Learning from Human Feedback (Fact-RLHF)
+Figure 1: Illustration of how hallucination may occur during the Supervised Fine-Tuning (SFT)
+phase of LMM training and how Factually Augmented RLHF alleviates the issue of limited capacity
+in the reward model which is initialized from the SFT model.
+To improve the general capabilities of LMMs during the Supervised Fine-Tuning (SFT) stage, we
+further augment the synthetic vision instruction tuning data (Liu et al., 2023a) with existing high-
+quality human-annotated multi-modal data in the conversation format. Specifically, we convert
+VQA-v2 (Goyal et al., 2017a) and A-OKVQA (Schwenk et al., 2022) into a multi-round QA task,
+and Flickr30k (Young et al., 2014b) into a Spotting Captioning task (Chen et al., 2023a), and train
+the LLaVA-SFT+ models based on the new mixture of data.
+Lastly, we look into assessing the multimodal alignment of LMMs in real-world generation scenar-
+ios, placing particular emphasis on penalizing any hallucinations. We create a set of varied bench-
+mark questions that cover the 12 main object categories in COCO (Lin et al., 2014) and include 8 dif-
+ferent task types, leading to MMHAL-BENCH. Our evaluation indicates that this benchmark dataset
+aligns well with human evaluations, especially when scores are adjusted for anti-hallucinations. In
+our experimental evaluation, as the first LMM trained with RLHF, LLaVA-RLHF delivers impres-
+sive outcomes. We observed a notable enhancement on LLaVA-Bench, achieving 94%, an improve-
+ment by 60% in MMHAL-BENCH, and established new performance benchmarks for LLaVA with a

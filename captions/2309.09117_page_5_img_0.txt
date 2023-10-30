@@ -1,0 +1,62 @@
+4
+ADDITIONAL STUDIES
+4.1
+EFFECTS OF CONTRASTIVE DECODING
+CD is worse at arithmetic but better at logical reasoning.
+We conduct a manual error analysis
+of 100 randomly selected examples from the GSM8K set between continuations from greedy decod-
+ing and CD (β = 0.5, α = 0.1). We follow Wang et al. (2023a) and categorize wrong answers as
+primarily being due to an arithmetic error, a missing step or a semantic misunderstanding. We add
+one category of “degeneration,” chosen when the model lapses into excessive repetition. Our small-
+scale analysis finds that CD makes more arithmetic errors, but that this is offset by better semantic
+reasoning and fewer missing steps (see Table 5).
+Table 5: Proportion of errors in of a set of 100 GSM8K questions. CD makes more
+arithmetic errors, but omits fewer steps and avoids semantic misunderstandings.
+CD
+Arithmetic
+Missing Step
+Semantic
+Degeneration
+Total Errors
+✗
+4%
+22%
+24%
+4%
+54%
+✓
+8%
+20%
+21%
+3%
+52%
+To further explore the claim that the benefit of CD does not stem from arithmetic evaluation, we
+generate a toy dataset of 1,0000 multiplication and subtraction equations with operands up to four
+digits and then 8-shot prompt models to complete the expression, measuring exact match accuracy.
+We find that CD does not improve performance on this task, and in fact may degrade it slightly.
+Results are shown in Table 8.
+Standard
+CD
+Correct %
+44.6
+51.1
+Parseable %
+95.2
+95.6
+Average # chars
+215.2
+217.2
+Table 6: High-level generation statistics
+from sampled generations on GSM8K.
+R
+i il
+l
+th
+d
+it
+Figure 6: CD reduces copying from the question
+in the generated Chain of Thought, as measured
+b
+l
+GSM8K
+ti

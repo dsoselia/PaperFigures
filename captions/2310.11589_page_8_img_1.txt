@@ -1,0 +1,16 @@
+domain. This suggests that while such personas may be a useful guide in some cases, they are not
+yet sophisticated enough to stand in for real human participants. See Appendix D for more details.
+6
+OTHER RELATED WORK
+6.1
+ELICITING DESCRIPTIONS OF PREFERENCES
+A fundamental challenge across many fields is how to obtain information about people’s nebulous
+thoughts, preferences, and goals. In psychology and cognitive science, protocol analysis describes
+methods for how to obtaining and analyze verbal reports from subjects about cognitive processes
+including via think-aloud protocols (Ericsson & Simon, 1980; Ericsson, 2017). In software usability
+analysis, similar techniques are used to assess the usability and limitations of existing software
+(Henderson et al., 1995), and for broader applications in the areas of survey, questionnaire, and focus
+group design (Malhotra, 2006; Lietz, 2010; Krosnick, 2018; Krueger & Casey, 2002). High-quality
+verbal reports can be challenging to obtain, however, and requirements elicitation studies methods
+for gathering information even when it is challenging for users to fully understand or anticipate
+their own needs or describe their preferences in clear, unambiguous language (Christel & Kang,

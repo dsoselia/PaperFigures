@@ -1,0 +1,78 @@
+Figure 2: Results of interactive segmentation using SAM in various medical scenarios.
+Table 1: Comparison of SAM fine-tuning models. Our SAM-Med2D is a comprehensive fine-tuning
+method that supports multiple prompts on medical images to generate masks.
+Model
+Dataset (size)
+Encoder
+Prompts mode
+Decoder
+(or Adapter)
+Point
+Bbox
+Mask
+SAM-U [16]
+6000 masks
+✘
+✘
+✔
+✘
+✘
+SAMed [17]
+3779 masks
+✔
+✘
+✘
+✘
+✔
+AutoSAM [18]
+ACDC [19]
+✘
+✘
+✘
+✘
+✔
+MedSAM [20]
+∼1.1M masks
+✘
+✘
+✔
+✘
+✔
+MSA [21]
+5 datasets
+✔
+✔
+✘
+✘
+✔
+SAM-Med2D (Ours)
+∼19.7M masks
+✔
+✔
+✔
+✔
+✔
+proven effectiveness, they only enhance SAM’s segmentation capabilities within specific scenarios
+resembling the training dataset. As a result, their applicability is limited for more diverse medical
+image segmentation tasks.
+2) Different prompt modes play important roles in different segmentation tasks when migrating SAM
+to the medical field. As shown in Figure 2 (c), a relatively accurate polyp mask can be obtained by
+using the bounding box prompt. In contrast, the mask quality is poor when clicking on a foreground
+point (column d). With an increasing number of clicks, the segmentation result gradually improves
+and even surpasses the performance of the bounding box prompt (e.g., liver segmentation). When
+segmenting myocardium, using the bounding box prompt may include uninterested regions in the
+result, while the point prompt allows us to gradually acquire the desired mask. Therefore, this paper
+aims to fine-tune three prompt modes (point, bounding box, and mask) to meet the requirements
+of different scenarios in medical image segmentation tasks. According to Table 1, our approach
+involves a more comprehensive fine-tuning compared to other methods, which means our method
+possesses a broader range of prompt segmentation capabilities in the medical image domain.
+3) Adapters have been proven to be an effective strategy for fine-tuning large-scale models [21, 43].
+They do not require retraining the entire model, ensuring that the original knowledge is not forgotten.
+This enables an existing model to excel in both new and the original tasks. Due to the parameter-
+sharing property of adapters, they facilitate transfer learning between different tasks. Therefore, this
+paper applies Adapter to the encoder of SAM to learn domain-specific information in the field of
+medical imaging. Additionally, the adapter layer is a plug-and-play component that allows us to
+choose whether to keep or remove it during the testing process, according to our specific needs.
+•
+How to evaluate the performance of SAM-Med2D?
+3

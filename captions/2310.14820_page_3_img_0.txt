@@ -1,0 +1,70 @@
+Body mass: 60kg
+Diet: leaves
+Life span: 25.8years
+Other Properties…
+Alpaca
+Body mass: 47.5kg
+Weaning age: 7 months
+First appearance: middle Pleistocene age
+Vicuna
+Alcuna
+Cats
+Cougar
+Jaguar
+Maned Wolf
+Eaten by
+Compete with
+Camels
+Existing
+?
+Body mass: 56.5kg [variation]
+Life Span [dropout]
+Diet: leaves [heredity]
+First appearance: middle Pleistocene age [extension]
+Other Properties inherited from Alpaca…
+Artificial
+Knowledge Understanding (KU):
+What type of food is included in the diet of 
+Alcuna? Answer: leaves
+In which geological period did Alcuna first 
+appear? Answer: middle Pleistocene age 
+...
+Knowledge Differentiation (KD):
+Does Alcuna have a body mass of 60kg?
+Answer: No.
+What's the average life span of Alcuna?
+Answer: I don’t know.
+...
+Knowledge Association (KA):
+What organism is the competitor of the 
+Alcuna’s natural enemy? 
+Answer: Maned Wolf.
+...
+Eaten by
+Variation
+Heredity
+Figure 1: Demonstration of ALCUNA, including heredity, variation, extension and dropout operations in KnowGen,
+generated artificial entity named Alcuna and three types of questions related to it.
+knowledge association abilities when faced with
+new knowledge. To enable a more detailed assess-
+ment, we design diverse categories of questions to
+evaluate each ability, as shown on the right side of
+Figure 1.
+Specifically, we sample some attribute triplets in
+the variation set T v
+A(˜e) and the dropout set T d
+A(˜e)
+to create KD question set, which is ideally suited
+for evaluating the knowledge differentiation abil-
+ity of a model to distinguish between the parent
+triplets, we utilize them to evaluate the ability of
+remembering and understanding new knowledge
+by simply asking questions about the objects in
+triplets. We group such questions into KU question
+set.
+3
+ALCUNA: Our Benchmark
+With our proposed method, one can create a large
+amount of new entities quickly based on exist-
+ing structured knowledge
+A natural attempt is

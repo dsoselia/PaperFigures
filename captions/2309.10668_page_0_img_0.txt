@@ -1,0 +1,43 @@
+Grégoire Delétang*1, Anian Ruoss*1, Paul-Ambroise Duquenne2, Elliot Catt1, Tim Genewein1, Christopher
+Mattern1, Jordi Grau-Moya1, Li Kevin Wenliang1, Matthew Aitchison1, Laurent Orseau1, Marcus Hutter1 and
+Joel Veness1
+*Equal contributions, 1Google DeepMind, 2Meta AI & Inria
+It has long been established that predictive models can be transformed into lossless compressors and
+vice versa. Incidentally, in recent years, the machine learning community has focused on training
+increasingly large and powerful self-supervised (language) models. Since these large language models
+exhibit impressive predictive capabilities, they are well-positioned to be strong compressors. In this
+work, we advocate for viewing the prediction problem through the lens of compression and evaluate
+the compression capabilities of large (foundation) models. We show that large language models are
+powerful general-purpose predictors and that the compression viewpoint provides novel insights into
+scaling laws, tokenization, and in-context learning. For example, Chinchilla 70B, while trained primarily
+on text, compresses ImageNet patches to 43.4% and LibriSpeech samples to 16.4% of their raw size,
+beating domain-specific compressors like PNG (58.5%) or FLAC (30.3%), respectively. Finally, we show
+that the prediction-compression equivalence allows us to use any compressor (like gzip) to build a
+conditional generative model.
+1. Introduction
+Information theory and machine learning are inextricably linked and have even been referred to as
+“two sides of the same coin” (MacKay, 2003). One particularly elegant connection is the essential
+equivalence between probabilistic models of data and lossless compression. The source coding
+theorem (Shannon, 1948) is the fundamental theorem describing this idea, i.e., the expected message
+length in bits of an optimal entropy encoder is equal to the negative log2-likelihood of the statistical
+model. In other words, maximizing the log2-likelihood (of the data) is equivalent to minimizing the
+number of bits required per message. Indeed, lossless compression with a probabilistic model can
+be achieved in a variety of different ways, including Huffman coding (Huffman, 1952), arithmetic
+coding (Pasco, 1977; Rissanen, 1976), and asymmetric numeral systems (Duda, 2009).
+Arithmetic coding, in particular, is known to be optimal in terms of coding length, meaning that
+the overall compression performance depends on the capabilities of the probabilistic model (Fig. 1).
+Incidentally, in recent years, large pre-trained Transformers (Vaswani et al., 2017), so-called foundation
+models (Bommasani et al., 2021), have proven to be highly successful across a wide range of predictive
+tasks (Bubeck et al., 2023; Rae et al., 2021) and are thus promising candidates for use with arithmetic
+coding. Indeed, Transformer-based compression with arithmetic coding has produced state-of-the-
+art results both in the online (Bellard, 2021; Mao et al., 2022) and offline settings (Valmeekam
+et al., 2023). In the online setting, a pseudo-randomly initialized model is directly trained on the
+stream of data that is to be compressed, while the offline setting, which we consider in our work,
+trains the model on an external dataset before employing it to compress a (potentially different)
+data stream. Consequently, offline compression is performed in-context, with a fixed set of model
+parameters. Transformers have demonstrated impressive in-context learning abilities (Brown et al.,
+2020; Genewein et al., 2023; Laskin et al., 2023; Wei et al., 2022), which renders them ideally suited
+for offline compression. However, as we will discuss in this work, Transformers are actually trained to
+compress well, and therefore must have good in-context learning abilities.
+Corresponding authors: {gdelt, anianr}@google.com
+arXiv:2309.10668v1  [cs.LG]  19 Sep 2023

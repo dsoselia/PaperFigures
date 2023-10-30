@@ -1,0 +1,140 @@
+Pack%computer%mouse,%
+black%and%blue%sneakers,%
+pepsi%next%box,%toy%train%
+in%brown%box
+LLM
+Place%computer%
+mouse%in%brown%
+box
+Place%dirty%object%
+in%blue%box
+…
+Diffusion
+Place%computer%
+mouse%in%brown%
+box
+Inverse
+Dynamics
+<latexit sha1_base64="5jC3rV+U5Rx6DyC9Q8QgcZ2oObw=">AB6nicbVBNS8NAEJ3
+Ur1q/qh69LBbBU0lE1GPRi8eK9gPaUDbTbt0swm7E6WE/gQvHhTx6i/y5r9x2+agrQ8GHu/NMDMvSKQw6LrfTmFldW19o7hZ2tre2d0r7x80TZxqxhslrFuB9RwKRvoEDJ24nmNAo
+kbwWjm6nfeuTaiFg94DjhfkQHSoSCUbTS/VNv1CtX3Ko7A1kmXk4qkKPeK391+zFLI6QSWpMx3MT9DOqUTDJ6VuanhC2YgOeMdSRSNu/Gx26oScWKVPwljbUkhm6u+JjEbGjKPAdkY
+Uh2bRm4r/eZ0Uwys/EypJkSs2XxSmkmBMpn+TvtCcoRxbQpkW9lbChlRThjadkg3BW3x5mTPqt5F9fzuvFK7zuMowhEcwyl4cAk1uIU6NIDBAJ7hFd4c6bw4787HvLXg5DOH8AfO5w9
+lAI3i</latexit>wk
+<latexit sha1_base64="uSW0H71JUat1zrUvRTNUif2jrk=">AB6Hicb
+VBNS8NAEJ3Ur1q/qh69LBbBU0mkqMeiF48t2FpoQ9lsJ+3azSbsboQS+gu8eFDEqz/Jm/GbZuDtj4YeLw3w8y8IBFcG9f9dgpr6xubW8Xt0s7u3v5B+fCor
+eNUMWyxWMSqE1CNgktsGW4EdhKFNAoEPgTj25n/8IRK81jem0mCfkSHkoecUWOl5rBfrhVdw6ySrycVCBHo1/+6g1ilkYoDRNU67nJsbPqDKcCZyWeqnGhL
+IxHWLXUkj1H42P3RKzqwyIGsbElD5urviYxGWk+iwHZG1Iz0sjcT/O6qQmv/YzLJDUo2WJRmApiYjL7mgy4QmbExBLKFLe3EjaijJjsynZELzl1dJ+6
+LqXVZrzVqlfpPHUYQTOIVz8OAK6nAHDWgBA4RneIU359F5cd6dj0VrwclnjuEPnM8fz2OM9A=</latexit>g
+<latexit sha1_base64="Fynce+iWGXBf9W+c5z6gBd/qc8=">AB7nicbVB
+NS8NAEJ34WetX1aOXxSIQkmkqMeiF48V7Ae0oWy2k3bpZhN2N0oJ/RFePCji1d/jzX/jts1BWx8MPN6bYWZekAiujet+Oyura+sbm4Wt4vbO7t5+6eCwqeNUMWywW
+MSqHVCNgktsG4EthOFNAoEtoLR7dRvPaLSPJYPZpygH9GB5CFn1Fip9dTLRufepFcquxV3BrJMvJyUIUe9V/rq9mOWRigNE1Trjucmxs+oMpwJnBS7qcaEshEdYM
+dSPUfjY7d0JOrdInYaxsSUNm6u+JjEZaj6PAdkbUDPWiNxX/8zqpCa/9jMskNSjZfFGYCmJiMv2d9LlCZsTYEsoUt7cSNqSKMmMTKtoQvMWXl0nzouJdVqr31XLt
+Jo+jAMdwAmfgwRXU4A7q0AGI3iGV3hzEufFeXc+5q0rTj5zBH/gfP4AzWPXg=</latexit>wk+1
+<latexit sha1_base64="G4NrL4+FchmdNAyoq1HYt9oFXI=">AB6HicbVDLTgJBEOzF+IL9ehlIjHxRHYNUY9ELx4hkUcCGzI79MLI7OxmZlZDCF/gxYPGePWTvPk3DrAHB
+SvpFLVne6uIBFcG9f9dnJr6xubW/ntws7u3v5B8fCoqeNUMWywWMSqHVCNgktsG4EthOFNAoEtoLR7cxvPaLSPJb3ZpygH9GB5CFn1Fip/tQrltyOwdZJV5GSpCh1it+dfsxSyOUhgmqdcdzE+NPqDKcCZwWuqnGhLIRHWDHUkj1P5kfuiUnFmlT8JY2ZKGzNXfExMaT2OAtsZUTPUy95M/M/rpCa89idcJqlByRaLwlQE5PZ16TPFTIjxpZQpri9lbAhVZQZm
+03BhuAtv7xKmhdl7JcqVdK1ZsjycwCmcgwdXUIU7qEDGCA8wyu8OQ/Oi/PufCxac042cwx/4Hz+AOejQ=</latexit>w
+<latexit sha1_base64="MbTS1h+M8tSUvbDJaAPrpe2jaBU=">AB6nicbVBNS8NAEJ3Ur1q/qh69LBbBU0lE1GPRi8eK9gPaUDbTbt0swm7E7GE/gQvHhTx6i/y5r9x2+agrQ8GHu/NMDMvSKQ
+w6LrfTmFldW19o7hZ2tre2d0r7x80TZxqxhslrFuB9RwKRvoEDJ24nmNAokbwWjm6nfeuTaiFg94DjhfkQHSoSCUbTS/VMPe+WKW3VnIMvEy0kFctR75a9uP2ZpxBUySY3peG6CfkY1Cib5pNRNDU8oG9EB71iqaMSNn81OnZATq/RJGtbCslM/T2R0ciYcRTYzoji0Cx6U/E/r5NieOVnQiUpcsXmi8JUEozJ9G/SF5ozlGNLKNPC3krYkGrK0KZTsiF4iy8vk+Z1buont+dV2rXeRxFOIJjOAUPLqEGt
+1CHBjAYwDO8wpsjnRfn3fmYtxacfOYQ/sD5/AF0Ko3s</latexit>xt
+<latexit sha1_base64="MbTS1h+M8tSUvbDJaAPrpe2jaBU=">AB6nicbVBNS8NAEJ3Ur1q/qh69LBbBU0lE1GPRi8eK9gPaUDbTbt0swm7E7GE/gQvHhTx6i/y5r9x2+
+agrQ8GHu/NMDMvSKQw6LrfTmFldW19o7hZ2tre2d0r7x80TZxqxhslrFuB9RwKRvoEDJ24nmNAokbwWjm6nfeuTaiFg94DjhfkQHSoSCUbTS/VMPe+WKW3VnIMvEy0kFctR75a9uP2ZpxBUySY3peG6CfkY1Cib5pNRNDU8oG9EB71iqaMSNn81OnZATq/RJGtbCslM/T2R0ciYcRTYzoji0Cx6U/E/r5NieOVnQiUpcsXmi8JUEozJ9G/SF5ozlGNLKNPC3
+krYkGrK0KZTsiF4iy8vk+Z1buont+dV2rXeRxFOIJjOAUPLqEGt1CHBjAYwDO8wpsjnRfn3fmYtxacfOYQ/sD5/AF0Ko3s</latexit>xt
+Command
+<latexit sha1_base64="q6eoYNDShd6czrV7MLhjzWbJeI=">AB6nicbVBNS8NAEJ3Ur1q/qh69LBbBU0mkqMeiF48V7Qe0oWy2m3bpZhN2J0IJ/QlePCji1V/kzX/jt
+s1BWx8MPN6bYWZekEh0HW/ncLa+sbmVnG7tLO7t39QPjxqmTjVjDdZLGPdCajhUijeRIGSdxLNaRI3g7GtzO/cS1EbF6xEnC/YgOlQgFo2ilB9rHfrniVt05yCrxclKBHI1+as3iFkacYVMUmO6npugn1GNgk+LfVSwxPKxnTIu5YqGnHjZ/NTp+TMKgMSxtqWQjJXf09kNDJmEgW2M6I4MsveTPzP6YXvuZUEmKXLHFojCVBGMy+5sMhOYM5cQSy
+rSwtxI2opoytOmUbAje8surpHVR9S6rtftapX6Tx1GEziFc/DgCupwBw1oAoMhPMrvDnSeXHenY9Fa8HJZ47hD5zPH1EgjdU=</latexit>at
+<latexit sha1_base64="rEQHB989ndWLJvo8yNfjHwIhM0A=">AB9HicbVDLSgNBEOz1GeMr6tHLYBAEIexKUI9BLx4jmAckS5idzCZDZh/O9AbDst/hxYMiXv0Yb/6Nk2QPm
+ljQUFR1093lxVJotO1va2V1bX1js7BV3N7Z3dsvHRw2dZQoxhskpFqe1RzKULeQIGSt2PFaeBJ3vJGt1O/NeZKiyh8wEnM3YAOQuELRtFIbndIMX3qpXjuZFmvVLYr9gxkmTg5KUOeq/01e1HLAl4iExSrTuOHaObUoWCSZ4Vu4nmMWUjOuAdQ0MacO2ms6MzcmqUPvEjZSpEMlN/T6Q0HoSeKYzoDjUi95U/M/rJOhfu6kI4wR5yOaL/EQSjMg0AdIXijOUE0MoU8
+LcStiQKsrQ5FQ0ITiLy+T5kXFuaxU76vl2k0eRwGO4QTOwIErqMEd1KEBDB7hGV7hzRpbL9a79TFvXbHymSP4A+vzB+tZkjU=</latexit> ˆ
+xt+1
+Task%Planning
+Visual%Planning
+Action%Planning
+Iterative%
+Refinement
+…
+<latexit sha1_base64="rEQHB989ndWLJvo8yNfjHwIhM0A=">AB9HicbVDLSgNBEOz1GeMr6tHLYBAEIexKUI9BLx4jmAckS5idzCZDZh/O9AbDst/hxYMiXv0Yb/6N
+k2QPmljQUFR1093lxVJotO1va2V1bX1js7BV3N7Z3dsvHRw2dZQoxhskpFqe1RzKULeQIGSt2PFaeBJ3vJGt1O/NeZKiyh8wEnM3YAOQuELRtFIbndIMX3qpXjuZFmvVLYr9gxkmTg5KUOeq/01e1HLAl4iExSrTuOHaObUoWCSZ4Vu4nmMWUjOuAdQ0MacO2ms6MzcmqUPvEjZSpEMlN/T6Q0HoSeKYzoDjUi95U/M/rJOhfu6kI4wR5yOaL/EQSjMg0
+AdIXijOUE0MoU8LcStiQKsrQ5FQ0ITiLy+T5kXFuaxU76vl2k0eRwGO4QTOwIErqMEd1KEBDB7hGV7hzRpbL9a79TFvXbHymSP4A+vzB+tZkjU=</latexit> ˆ
+xt+1
+<latexit sha1_base64="mFLypmOn5A468cbeCl+GUKhG/yc=">AB9HicbVDLSgNBEOyNrxhfUY9eBoMgCGE3BPUY9OIxgnlAsoTZySQZMvtwpjcYlv0OLx4U8erH
+ePNvnCR70MSChqKqm+4uL5JCo21/W7m19Y3Nrfx2YWd3b/+geHjU1GsG+wUIaq7VHNpQh4AwVK3o4Up74necsb38781oQrLcLgAacRd306DMRAMIpGcrsjislTL8GLSpr2iW7bM9BVomTkRJkqPeKX91+yGKfB8gk1brj2BG6CVUomORpoRtrHlE2pkPeMTSgPtduMj86JWdG6ZNBqEwFSObq74mE+lpPfc90+hRHetmbif95nRgH124igi
+hGHrDFokEsCYZklgDpC8UZyqkhlClhbiVsRBVlaHIqmBCc5ZdXSbNSdi7L1ftqXaTxZGHEziFc3DgCmpwB3VoAINHeIZXeLMm1ov1bn0sWnNWNnMf2B9/gDs35I2</latexit> ˆ
+xt+2
+<latexit sha1_base64="oyI3KrfMalurzQJ0QwSNXQUYkWI=">AB9HicbVDLSgNBEOyNrxhfUY9eBoMgCGFXg3oMevEYwTwgWcLsZDYZMvtwpjcYlnyHFw+KePVjvPk3Tp
+I9aGJBQ1HVTXeXF0uh0ba/rdzK6tr6Rn6zsLW9s7tX3D9o6ChRjNdZJCPV8qjmUoS8jgIlb8WK08CTvOkNb6d+c8SVFlH4gOYuwHth8IXjKR3M6AYvrUTfHsYjLpFkt2Z6BLBMnIyXIUOsWvzq9iCUBD5FJqnXbsWN0U6pQMknhU6ieUzZkPZ529CQBly76ezoCTkxSo/4kTIVIpmpvydSGmg9DjzTGVAc6EVvKv7ntRP0r91UhHGCPGTzRX4iCUZkmgDpCc
+UZyrEhlClhbiVsQBVlaHIqmBCcxZeXSeO87FyWK/eVUvUmiyMPR3AMp+DAFVThDmpQBwaP8Ayv8GaNrBfr3fqYt+asbOYQ/sD6/AHuZI3</latexit> ˆ
+xt+3
+Iterative%
+Refinement
+Environment
+Figure 2: Planning with HiP. Given a language goal g and current observation xt, LLM generates next subgoal
+w with feedback from a visual plausibility model. Then, Diffusion uses observation xt and subgoal w to generate
+observation trajectory τx with feedback from an action feasibility model. Finally, action planning uses inverse
+dynamics to generate action at from current xt and generated observation
+ˆ
+xt+1 (action planning).
+2
+Compostional Foundation Models for Hierarchical Planning
+We propose HiP, a foundation model that decomposes the problem of generating action trajectories
+for long-horizon tasks specified by a language goal g into three levels of hierarchy: (1) Task planning
+– inferring a language subgoal wi conditioned on observation xi,1 and language goal g; (2) Visual
+planning – generating a physically plausible plan as a sequence of image trajectories τ i
+x = {xi,1:T },
+one for each given language subgoal wi and observation at first timestep xi,1; (3) Action planning –
+inferring a sequence of action trajectories τ i
+a = {ai,1:T −1} from the image trajectories τ i
+x executing
+the plan. Figure 2 illustrates the model architecture and a pseudocode is provided in Algorithm 1.
+Let pΘ model this hierarchical decision-making process. Given our three levels of hierarchy, pΘ can
+be factorized into the following: task distribution pθ, visual distribution pϕ, and action distribution
+pψ. The distribution over plans, conditioned on the goal and an image of the initial state, can be
+written under the Markov assumption as:
+pΘ(W, {τ i
+x}, {τ i
+a}|g, x1,1) =
+� N
+�
+i=1
+pθ(wi|g)
+�
+�
+��
+�
+task planning
+� N
+�
+i=1
+pϕ(τ i
+x|wi, xi,1)
+�
+�
+��
+�
+visual planning
+� N
+�
+i=1
+T −1
+�
+t=1
+pψ(ai,t|xi,t, xi,t+1)
+�
+�
+��
+�
+action planning
+(1)
+We seek to find action trajectories τ i
+a, image trajectories τ i
+x and subgoals W = {wi} which maximize
+the above likelihood. Please see Appendix A for a derivation of this factorization. In the following
+sub-sections, we describe the form of each of these components, how they are trained, and how they
+are used to infer a final plan for completing the long-horizon task.
+2.1
+Task Planning via Large Language Models
+Given a task specified in language g and the current observation xi,1, we use a pretrained LLM as the
+task planner, which decomposes the goal into a sequence of subgoals. The LLM aims to infer the next
+subgoal wi given a goal g and models the distribution pLLM(wi|g). As the language model is trained
+on a vast amount of data on the Internet, it captures powerful semantic priors on what steps should be
+taken to accomplish a particular task To adapt the LLM to obtain a subgoal sequence relevant to our

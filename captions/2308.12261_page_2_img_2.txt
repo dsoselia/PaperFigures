@@ -1,0 +1,45 @@
+Dataset 
+Retriever
+Dataset 
+Generator
+Generated 
+Training Set
+Generated Test 
+Set
+Dataset
+Model 
+Trainer
+Evaluation
+Performance 
+Estimate
+Interactive 
+Demo
+Input 
+Parser
+Prompt 
+Spec
+ChrF++: 
+58.9
+EM: 
+61.5
+BERTScore: 94.0
+Trained 
+Model
+Figure 2: The Prompt2Model architecture seeks to automate the core machine learning development pipeline,
+allowing us to train a small yet accurate model from just a prompt.
+instruction and individual demonstrations or trans-
+lating instructions into English.
+Dataset Retriever
+Given a prompt, we first try to
+discover existing manually-annotated data that can
+support a user’s task description. There are several
+design decisions for the Dataset Retriever:
+1 What datasets to search against?
+could instead cover other model repositories such
+as Model Zoo (Koh, 2020).
+Training
+Given retrieved and generated datasets
+and a pretrained model, we use a Model Trainer
+to finetune the model on a subset of the data. We
+currently train models by treating all tasks as text-
+to-text generation (Raffel et al 2020) as described

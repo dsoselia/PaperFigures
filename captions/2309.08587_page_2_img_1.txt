@@ -1,0 +1,47 @@
+Let pΘ model this hierarchical decision-making process. Given our three levels of hierarchy, pΘ can
+be factorized into the following: task distribution pθ, visual distribution pϕ, and action distribution
+pψ. The distribution over plans, conditioned on the goal and an image of the initial state, can be
+written under the Markov assumption as:
+pΘ(W, {τ i
+x}, {τ i
+a}|g, x1,1) =
+� N
+�
+i=1
+pθ(wi|g)
+�
+�
+��
+�
+task planning
+� N
+�
+i=1
+pϕ(τ i
+x|wi, xi,1)
+�
+�
+��
+�
+visual planning
+� N
+�
+i=1
+T −1
+�
+t=1
+pψ(ai,t|xi,t, xi,t+1)
+�
+�
+��
+�
+action planning
+(1)
+We seek to find action trajectories τ i
+a, image trajectories τ i
+x and subgoals W = {wi} which maximize
+the above likelihood. Please see Appendix A for a derivation of this factorization. In the following
+sub-sections, we describe the form of each of these components, how they are trained, and how they
+are used to infer a final plan for completing the long-horizon task.
+2.1
+Task Planning via Large Language Models

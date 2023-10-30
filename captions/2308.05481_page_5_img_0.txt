@@ -1,0 +1,60 @@
+of a record used with tools, including inputs for certain tools
+and the results returned by these tools. Based on the current
+summary, it extracts the goals intended to be solved with
+each call to the tool, and forms a new summary, e.g.,
+[Current summary]
+- I know the start and end time of the anomaly.
+[New Record]
+Thought: Now that I have the start and end time of the
+anomaly, I need to diagnose the causes of the anomaly
+Action: is_abnormal_metric
+Action
+Input:
+{“start_time”:
+1684600070,
+“end_time”:
+1684600074, “metric_name”: “cpu_usage”}
+Observation: “The metric is abnormal”
+[New summary]
+- I know the start and end time of the anomaly.
+- I searched for is_abnormal_metric, and I now know that the
+CPU usage is abnormal.
+With this communicative framework and well-defined communi-
+cation principles, the collaborative diagnosis process among human
+and LLM agents becomes more efficient (e.g., parallel diagnosis) and
+effective (e.g., chat records could trigger investigating of in-depth
+metric observation and root cause analysis).
+9
+PRELIMINARY EXPERIMENT RESULTS
+Demonstration. As illustrated in Figure 5, Chief DBA monitors
+the status of the database to detect anomalies. Upon recognizing a
+new anomaly, Chief DBA notifies both the Memory Agent and CPU
+Agent. These agents independently assess the potential root causes
+and communicate their findings (the root causes and recommended
+solutions) to the Chief DBA. Subsequently, the Chief DBA consol-
+idates the diagnostic results for the user’s convenience. In initial
+iterations, these agents generally gather limited information, and
+so they will continue for multiple iterations until the conclusion
+of Chief DBA is nearly certain or no further valuable information
+can be obtained. Additionally, during the diagnosis, users have the
+option to participate by offering instructions and feedback, such as
+verifying the effectiveness of a proposed optimization solution.
+Figure 5: A basic demonstration of D-Bot.
+Diagnosis Performance Comparison. We compare the perfor-
+mance of D-Bot against a baseline, namely llm+Metrics. Both of
+the two methods are deployed with the OpenAI model GPT-4 [2]
+alongside metrics and views from PostgreSQL and Prometheus.
+The evaluation focuses on basic single-cause problems as detailed
+in Table 1. Besides, we also offer a multi-cause diagnosis example
+presented in the Appendix-B.
+Preliminary results indicate that LLM +Metrics and D-Bot can
+achieve a high legality rate (producing valid responses to specific
+database issues). However, it is a “dangerous behavior” for LLM
++Metrics, which actually has very low success rate (infrequent pro-
+vision of the correct causes). In contrast, D-Bot achieves both high
+legal rate and success rate. The reasons are three-fold.
+First, LLM +Metrics conducts very basic reasoning and often
+misses key causes. For example, for the INSERT_LARGE_DATA
+case, LLM +Metrics only finds “high number of running processes”
+with the node_procs_running metric, and stops early. In contrast,
+6

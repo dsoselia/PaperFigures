@@ -1,0 +1,5 @@
+Ranked List
+Top-k Retrieval
+Figure 1: A standard bi-encoder architecture, where encoders generate dense vector representations
+(embeddings) from queries and documents (passages). Retrieval is framed as k-nearest neighbor
+search in vector space

@@ -1,0 +1,44 @@
+Real-robot last observation of each trajectory
+Real first observation of each trajectory
+Put the red star  
+towards the blue cube
+Move the blue cube  
+next to the green circle
+Put the yellow pentagon  
+towards the blue cube
+Move the blue cube  
+close to the green circle
+Slide the red circle  
+next to the yellow pentagon
+Put the yellow pentagon 
+ to the blue cube
+Move the blue cube  
+close to the green circle
+Slide the red circle  
+next to the yellow pentagon
+Put the yellow pentagon 
+ to the blue cube
+Put the red star  
+towards the blue cube
+Move the blue cube  
+next to the green circle
+Put the yellow pentagon  
+towards the blue cube
+Move the blue cube  
+close to the green circle
+Slide the red circle  
+next to the yellow pentagon
+Put the yellow pentagon 
+ to the blue cube
+Put the red star  
+towards the blue cube
+Move the blue cube  
+next to the green circle
+Put the yellow pentagon  
+towards the blue cube
+Learned reward model output
+Figure 12: First real observations and last real observations of executing the RL policy trained from UniSim in
+the real world in zero-shot. Middle plot also shows the output of the learned reward model (steps-to-completion)
+during policy execution, where step 0 corresponds to the top plot (initial observation) and step 70 corresponds to
+the bottom plot (final observation).
+20

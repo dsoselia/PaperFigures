@@ -1,0 +1,5 @@
+Figure 5:
+Even when the longform answer is provided for a rewritten query (see query from
+Figure 4), while giving a slightly different answer, ChatGPT still generates several hallucinations for
+this question, e.g. Hillary Clinton and Michael Bloomberg.
+17

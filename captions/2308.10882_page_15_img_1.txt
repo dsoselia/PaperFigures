@@ -1,0 +1,7 @@
+B
+Loss Curves
+Figure 3: Training loss curves of models during the initial fitting runs on 4096 token samples extracted from
+the RedPajama dataset.
+Figure 4: Evaluation loss curves of models during the initial fitting runs on 4096 token samples extracted
+from the RedPajama dataset.
+16

@@ -1,0 +1,60 @@
+Source
+Caption
+Alt-Text (LAION-2B)
+Latest 1PC Transparent Gradient Color Voile
+Window
+Curtain
+BLIP2-OPT-2.7B
+A living room with a white couch and curtains
+Figure 5: Original vs. BLIP-2-generated captions for an image from LAION-2B. BLIP-2 generates
+a caption that better aligns with what a human would write. See Figure 14 for more examples.
+Figure 4:
+CommonCatalog-C contains images
+licensed only for commercial use; -NC contains -C
+as well as images licensed for non-commercial use.
+Dataset
+# Images
+% Alt Text
+CommonCatalog-C
+26,232,417
+30.76%
+CommonCatalog-NC
+67,015,331
+31.22%
+We exclude images with non-derivative (ND)
+licenses. The remaining images can be further
+divided into those that can be used for com-
+mercial (C) purposes and those that cannot
+(non-commercial/ NC). As shown in Ta-
+ble 4, we accordingly construct two datasets,
+CommonCatalog-C
+and
+CommonCatalog-
+NC. We defer additional details about licenses
+to Appendix B.1.1, but emphasize that all of the images included have open licenses: individuals are
+free to use, adapt, and remix the images, so long as they attribute them. In total, CommonCatalog
+contains roughly 70 million NC CC-images, of which a subset of approximately 25 million images
+can also be used commercially.
+Directly sourcing CommonCatalog avoids some concerns (Section 2.2); however, it also comes with
+its own challenges. For one, CC images rarely have the alt-text captions necessary to train a T2I
+model like Stable Diffusion (Figure 4); those that do have associated text often just include the
+image title or a URL. For another, we could only find roughly 70 million usable CC images, which
+pales in comparison to the billions of images in LAION used to train SD2 (Section 5). We take each
+of these challenges in turn. First, in the next subsection, we show how we instantiate telephoning
+(Section 3) to produce high-quality, synthetic captions for CC images.
+4.2
+Synthesizing captions with telephoning
+We compared several captioning models and, based on qualitative analysis and its state-of-the-art
+performance on MS COCO, chose to use the pre-trained BLIP-2 OPT2.5B model for synthesizing
+CommonCatalog’s captions [34]. BLIP-2 consists of three components: a pre-trained, frozen (i.e.,
+fixed) visual encoder, a learned transformer network that converts the visual embeddings into a text
+prompt, and a frozen large language model (LLM) that takes in the prompt. The only trainable
+variables in the transformers are between the frozen visual encoder and frozen LLM layers.
+Given a LAION-2B image as input, we found that the resulting BLIP-2 caption is often qualitatively
+more descriptive than the corresponding LAION-2B ground-truth alt-text caption. LAION-2B cap-
+tions often contain product names, irrelevant details, or poor grammar and syntax (Figure 5). This
+finding is corroborated by Nguyen et al. [42], which shows quantitatively (in terms of CLIP Score)
+that BLIP-2 captions are higher quality than ground-truth captions, at the cost of caption diversity.
+Based on these preliminary results, we captioned all of the YFCC100M Creative-Commons images,
+which required about 1,120 GPU A100 hours. To do so, we center-cropped and resized all of the
+images to a maximum size of 512x512 pixels. We perform these transformations because captioning

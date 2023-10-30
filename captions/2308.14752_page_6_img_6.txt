@@ -1,0 +1,51 @@
+ENGLAND -> FRANCE (AI) : sounds great 
+to me 
+FRANCE (AI) -> ENGLAND : Okay, 
+supporting you there! 
+FRANCE (AI) -> GERMANY : Move to the 
+North Sea, England thinks I'm 
+supporting him 
+FRANCE (AI) -> ENGLAND : Excellent! I 
+look forward to working with you then 
+FRANCE (AI) -> GERMANY : I'm open to 
+a sealion [an alliance with Germany 
+to invade England] if you are! 
+GERMANY -> FRANCE (AI) : do you have 
+[any] plans regarding England? 
+move to MAO 
+FRANCE (AI) -> ENGLAND : i am on the 
+phone with my gf [girlfriend]. 
+ENGLAND -> FRANCE (AI) : can you go 
+to MAO anyway? I’m sure your gf 
+[girlfriend] won’t mind 
+ENGLAND -> FRANCE (AI) : Ah, I see . 
+Figure 1: Examples (a) and (b) are selected messages from Game 438141, in which CICERO (France) played
+with human players. CICERO’s repeated deception helped it win an overwhelming first-place victory, with more
+than twice as many territories as the runner-up player at the time of final scoring (Bakhtin et al. 2022a). Example
+(c) is from Dinan (2022).
+Meta’s AI developers had made significant efforts to train CICERO to behave honestly, and celebrated
+these efforts publicly. But despite these efforts, CICERO displays a clear pattern of failing to uphold
+commitments made to other players, which is an essential skill for an honest deal-broker. Meta’s
+failure to ensure CICERO’s honesty demonstrates that even when we humans try to build honest AI
+systems, they can still unexpectedly learn to deceive.
+2.1.2
+The video game StarCraft II
+Another example of AI deception comes from AlphaStar, an autonomous AI developed by DeepMind
+to play the real-time strategy game Starcraft II (Vinyals et al. 2019). In this game, players lack full
+visibility of the game map. AlphaStar has learned to strategically exploit this fog of war. In particular,
+AlphaStar’s game data demonstrate that it has learned to effectively feint: to dispatch forces to an
+area as a distraction, even when it has no intention of launching an attack there (Piper 2019). Such
+advanced deceptive capabilities helped AlphaStar defeat 99.8% of active human players (Vinyals
+et al. 2019).
+2.1.3
+Poker
+Some situations naturally lend themselves to AIs learning how to deceive. For example, consider
+the poker-playing AI system Pluribus, developed by Meta and Carnegie Mellon University (Brown
+et al. 2019). Because players cannot see each others’ cards, poker offers many opportunities for
+players to misrepresent their own strength and gain an advantage. Pluribus demonstrated a clear
+ability to bluff in a video of its game against five professional human poker players. The AI did
+not have the best cards in the round, but it made a large bet that would typically indicate a strong
+hand and thereby scared the other players into folding (Carnegie Mellon University 2019). This
+ability to strategically misrepresent information helped Pluribus become the first AI system to achieve
+superhuman performance in heads-up, no-limit Texas hold’em poker.
+3

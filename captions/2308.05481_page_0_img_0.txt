@@ -1,0 +1,41 @@
+LLM As DBA
+Xuanhe Zhou
+Tsinghua University
+Beijing, China
+zhouxuan19@mails.tsinghua.edu.cn
+Guoliang Li
+Tsinghua University
+Beijing, China
+liguoliang@tsinghua.edu.cn
+Zhiyuan Liu
+Tsinghua University
+Beijing, China
+liuzy@tsinghua.edu.cn
+ABSTRACT
+Database administrators (DBAs) play a crucial role in managing,
+maintaining and optimizing a database system to ensure data avail-
+ability, performance, and reliability. However, it is hard and tedious
+for DBAs to manage a large number of database instances (e.g., mil-
+lions of instances on the cloud databases). Recently large language
+models (LLMs) have shown great potential to understand valuable
+documents and accordingly generate reasonable answers. Thus, we
+propose D-Bot, a LLM-based database administrator that can con-
+tinuously acquire database maintenance experience from textual
+sources, and provide reasonable, well-founded, in-time diagnosis
+and optimization advice for target databases. This paper presents a
+revolutionary LLM-centric framework for database maintenance,
+including (𝐴���) database maintenance knowledge detection from doc-
+uments and tools (𝐴���𝐴���) tree of thought reasoning for root cause
+Query
+Query
+Query
+D-Bot
+Rewrite logical query …
+Add lacking indexes …
+Documents
+Optimize query plan …
+Thought: High memory usage seems to be caused by 
+poor join performance and much inactive memory 
+Reasoning: Poor joins can be solved by plan optimization
+Action: optimize_query_plan
+]  11 Aug 2023

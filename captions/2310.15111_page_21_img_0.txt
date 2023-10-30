@@ -1,0 +1,5 @@
+Technical report. In progress
+Figure 12: Uncurated samples from MDM trained on ImageNet 256 × 256 with the guidance weight 2.5
+for labels of “srhinoceros beetle”, “Siberian husky”, “cliff, drop, drop-off”, “coral reef”, “space shuttle”,
+“hummingbird”.
+22

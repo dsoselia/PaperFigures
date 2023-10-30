@@ -1,0 +1,26 @@
+SOP
+Human-Agent
+   Interaction
+Figure 1: Illustration of the AGENTS framework.
+et al., 2023a], web navigation [Nakano et al., 2021], tool usage [Schick et al., 2023], and multi-
+agent communication [Foerster et al., 2016]. In addition, most (if not all) existing language agent
+frameworks solely depend on a short task description and rely completely on the abilities of LLMs to
+plan and act. This results in significant randomness and inconsistency across different runs, delivering
+an unsatisfactory user experience and making it hard to customize and tune language agents.
+We believe the aforementioned limitations are important barriers for recent advances in language
+agents to reach a broader non-specialist audience and impact our society in a positive way. To this
+end, we release AGENTS, an open-source library and framework for language agents dedicated to
+supporting LLM-powered language agents. AGENTS’s philosophy is to make customizing, tuning,
+and deploying language agents as simple as possible even for non-specialists while also remaining
+easily extensible for developers and researchers. In addition, the library also provides the following
+key features that make it a versatile framework for language agents:
+Long-short term memory
+According to Franklin and Graesser [1996], a key difference between
+autonomous agents and computer programs (or machine learning models) is that machine learning
+models only need to respond to a single input/query, while autonomous agents need to interact with
+environments or other agents over time. Therefore, the ability to maintain long-short term memory is
+very important for autonomous agents. AGENTS integrates the memory components in [Zhou et al.,
+2023a] and enables language agents to store and retrieve long-term memory with VectorDB and
+semantic search, and regularly update a short-term working memory with a scratchpad. Users can
+choose to equip an agent with long-term memory, short-term memory, or both of them by simply
+filling in a field in the config file.

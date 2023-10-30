@@ -1,0 +1,49 @@
+Convergence and Normal Model Performance.
+Including a sink token during pre-training has no
+negative impact on model convergence and subsequent performance on a range of NLP benchmarks.
+As depicted in Figure 6, models trained with a sink token exhibit similar convergence dynamics
+compared to their vanilla counterparts. We evaluate the two models on seven diverse NLP bench-
+marks, including ARC-[Challenge, Easy] (Clark et al., 2018), HellaSwag (Zellers et al., 2019),
+LAMBADA (Paperno et al., 2016), OpenbookQA (Mihaylov et al., 2018), PIQA (Bisk et al., 2020),
+and Winogrande (Sakaguchi et al., 2019). As shown in Table 4, the model pre-trained with a sink
+token performs similarly to that trained using the vanilla approach.
+Streaming Performance.
+As illustrated in Table 3, the streaming perplexities differ between
+models trained using traditional methods and those augmented with a sink token. Remarkably,
+the vanilla model requires the addition of multiple tokens as attention sinks to maintain stable
+streaming perplexity. In contrast, the model trained with a sink token achieves satisfactory streaming
+performance using just the sink token.
+Below is a record of lines I want you to remember. 
+The REGISTER_CONTENT in line 0 is <8806> 
+[omitting 9 lines…] 
+The REGISTER_CONTENT in line 10 is <24879> 
+[omitting 8 lines…] 
+The REGISTER_CONTENT in line 20 is <45603> 
+Query: The REGISTER_CONTENT in line 0 is 
+The REGISTER_CONTENT in line 21 is <29189> 
+[omitting 8 lines…] 
+The REGISTER_CONTENT in line 30 is <1668> 
+Query: The REGISTER_CONTENT in line 10 is 
+The REGISTER_CONTENT in line 31 is <42569> 
+[omitting 8 lines…] 
+The REGISTER_CONTENT in line 40 is <34579> 
+Query: The REGISTER_CONTENT in line 20 is 
+[omitting remaining 5467 lines…]
+Input Content
+Desired Output
+[“<8806>”, “<24879>”, “<45603>”, …]
+Figure 8: The first sample in StreamEval.
+Attention Visualization.
+Figure 7 contrasts atten-
+tion maps for models pre-trained with and without a
+sink token. The model without the sink token, similar
+to Llama-2-7B (Figure 2), shows early-layer local
+attention and deeper-layer focus on initial tokens.
+In contrast, models trained with a sink token con-
+sistently concentrate on the sink across layers and
+heads, indicating an effective attention offloading
+mechanism. This strong focus on the sink, with re-
+duced attention to other initial tokens, explains the
+sink token’s efficacy in enhancing model’s streaming
+performance.
+7

@@ -1,0 +1,45 @@
+modalities, complex tissue and organ structures, and few annotated data available [3, 4, 5]. This
+limitation hinders the generalizability and adaptability of algorithms, making it challenging to apply
+them across diverse clinical scenarios.
+Figure 1: Comparison between examples in SA-1B (a) and in our dataset (b). SA-1B consists of 11M
+natural images and their corresponding 1129M masks. Our dataset consists of 4.6M medical images
+and their corresponding 19.7M masks.
+Recently, the trend towards large-scale models has created a buzz throughout the AI field. The
+emergence of general-AI models such as ChatGPT2, ERNIE Bot 3, DINO [6], SegGPT [7], SAM [8],
+facilitates the use of a single model to address multiple tasks. As the latest large-scale vision model,
+SAM enables users to generate masks for specific regions of interest through interactive clicking,
+bounding boxes, or providing natural language prompts. Its zero-shot and few-shot capabilities on
+natural images [9, 10] have garnered significant attention across various domains.
+In the field of medical imaging, some works [11, 12, 13, 14, 15] have also focused on the zero-shot
+capabilities of SAMs. However, due to the significant domain gap between natural images and
+medical images, SAM struggles to generalize to multi-modal and multi-object medical datasets,
+resulting in unstable segmentation performance across datasets. The reason can be attributed to the
+data collection methods: medical images are collected from certain protocols and scanners and are
+presented as different modalities (electrons, lasers, X-rays, ultrasound, nuclear physics, and magnetic
+resonance) due to their particular clinical purpose. As such, these images are based on a range of
+physics-based properties and energy sources, which differ greatly from natural images. As shown
+in Figure 1, there are significant differences between natural images and medical images in terms
+of pixel intensity, color, texture, and other distribution characteristics. Therefore, the limitation that
+SAM cannot directly be applied to the medical domain is expected [11, 12, 13, 14, 15]: given that
+SAM is trained on natural images only, it lacks specific knowledge related to medical imaging.
+Equipping SAM with medical knowledge is hard because of the high annotation cost and the diverse
+annotation quality. Preparing medical data requires domain knowledge and their quality varies
+significantly across hospitals and clinical studies. These challenges have resulted in a significant
+disparity between the quantities of medical images and natural images. The bar chart in Figure 1
+compares the data volume of publicly available natural image datasets and medical image datasets.
+For instance, Totalsegmentor, the largest public segmentation dataset in the medical domain, also
+has a significant gap compared to Open Image v6 [42] and SA-1B [8]. In this study, our objective is
+to transfer SAM from natural images to medical images. This will provide benchmark models and
+evaluation frameworks for researchers in medical image analysis to explore and enhance. To achieve
+this goal, we proposed SAM-Med2D, the most comprehensive studies on applying SAM to medical
+2D images by addressing the following issues:
+•
+How to fine-tune SAM for the medical imaging domain?
+1) We needed to incorporate knowledge about medical images into SAM, so we collected and
+curated a medical image segmentation dataset comprising over 4.6M images and 19.7M masks. To
+the best of our knowledge, this dataset represents the largest medical image segmentation dataset,
+encompassing multiple modalities and covering comprehensive objects. Table 1 illustrates the
+methods for fine-tuning SAM on specific limited-scale medical datasets. While these methods have
+2https://chat.openai.com
+3https://yiyan.baidu.com/
+2

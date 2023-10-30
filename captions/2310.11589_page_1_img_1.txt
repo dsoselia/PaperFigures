@@ -1,0 +1,115 @@
+(A) Unknown user preferences 
+(B) Task elicitation
+(C) Evaluation on test cases
+Science
+Sports
+Writing style
+Finance
+Politics
+Sources
+…
+…
+I like reading science articles. 
+I particularly enjoy articles 
+about AI and outer space. 
+Maybe some other areas of 
+science as well. I don’t really 
+enjoy reading about finance 
+though, especially not whether 
+the stock market is going up 
+or down.
+Wall Street Journal: 
+Stocks climb despite rise 
+in treasury yields
+👎
+CBS sports: Top 10 
+breakout college stars
+👎
+Tennis.com: R Gasquet 
+defeats M Huesler
+👍
+PROMPTING
+ACTIVE LEARNING
+GENERATIVE ELICITATION
+What’s one topic you like to 
+read about, and one topic 
+you don’t?
+I like to read about science, but 
+not finance.
+What are your hobbies, and 
+do you enjoy articles about 
+them?
+I play tennis and yes I read a lot 
+about it.
+Do you like other sports?
+I can’t think of any
+Where do you get your news?
+I have a Scientific American 
+subscription. I also read the NYT.
+🏥 🤖
+🪐
+🎾
+🏈
+⚽
+📈
+SCIENTIFIC 
+AMERICAN
+PROMPTING
+ACT. LEARN.
+GEN. ELICIT.
+New York Times: What 
+Does the Future Hold for AI?
+CBS Sports: Top Basketball 
+Trends to Watch.
+ESPN: Behind Serena’s 
+Killer Serve.
+👍
+👎
+👍
+👍
+👍
+👎
+👎
+👎
+👍
+👍
+👎
+👍
+✘
+✔
+🤖
+🪐
+📈
+🏈
+🎾
+🤖
+🏥
+🪐
+📈
+🎾
+⚽
+🏈
+S.A.
+✘
+✘
+✔
+✔
+✔
+✔
+✔
+LM
+LM
+📈
+Figure 1: Generative Active Task Elicitation (GATE) elicits user preferences through interactive, free-
+form questions, which can then be used in downstream decision-making. Unlike non-interactive elicitation
+approaches (e.g., prompting), which rely entirely on the human to elucidate their preferences, generative elic-
+itation is better able to probe nuances of human preferences. Unlike active learning approaches, generative
+elicitation can ask more generic, free-form questions. The three parts of this figure illustrate: (A) Fuzzy user
+preferences: A user wishes to translate their fuzzy preferences for how a task should be performed into a speci-
+fication for a machine learning model. This is challenging because users lack perfect introspection, preferences
+can be difficult to specify in language, the specification needs to anticipate tricky real-world edge cases, and
+models may misgeneralize from provided examples or instructions. (B) Task elicitation: We consider various
+ways of eliciting these fuzzy preferences from users, including non-interactive prompting, active learning, and
+generative elicitation (GATE). (C) Evaluation: We evaluate methods on a held-out test set, scoring how well a
+language model predicted the true decisions made by the user.
+2

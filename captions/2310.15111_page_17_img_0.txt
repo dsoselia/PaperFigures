@@ -1,0 +1,37 @@
+Technical report. In progress
+Figure 10: An illustration of the NestedUNet architecture used in Matryoshka Diffusion for video generation.
+We allocate more computation in the low resolution feature maps, and use additional temporal attention layers
+to aggregate information across frames.
+gradient_clip_norm=2.0
+ema_decay=0.9999
+mixed_precision_training=bp16
+For ImageNet experiments, the progressive training setting is set default without specifying:
+progressive training config:
+target_resolutions=[64,256]
+batch_size=[512,256]
+training_steps=[300K,500K]
+For text-to-image generation on CC12M, we test on both 256 × 256 and 1024 × 1024 resolutions,
+while each resolution two types of models with various nesting levels are tested. Note that, the
+number of progressive training stages is not necessarily the same the actual nested resolutions in the
+model. For convenience, we always directly initialize the training of 1024 × 1024 training with the
+trained model for 256 × 256. Therefore, we can summarize all experiments into one config:
+progressive training config:
+target_resolutions=[64,256,1024(optional)]
+batch_size=[2048,1024,768]
+training_steps=[500K,500K,100K]
+Similarly, we list the training config for the video generation experiments as follows.
+progressive training config:
+target_resolutions=[64,16x64,16x256]
+batch_size=[2048,512,128]
+training_steps=[500K,500K,300K]
+C
+Inference details
+In Fig. 11, we demonstrate the typical sampling process of a trained MDM. The same as standard
+diffusion models, we start with independent Gaussian noises for each resolution where the noise
+schedule is shifted based on the dimensions following (Gu et al., 2022). We set the number of
+inference steps as 250 with the standard DDPM sampling (Ho et al., 2020). The noisy images will
+be sent to the model in parallel, and then predict the clean images. No dependencies between the
+predicted images at the same step. In practice, we use v-prediction (Salimans & Ho, 2022) as our
+model parameterization. Similar to Saharia et al. (2022), we apply “dynamic thresholding” to avoid
+over-satruation problem in the pixel predictions.
+18

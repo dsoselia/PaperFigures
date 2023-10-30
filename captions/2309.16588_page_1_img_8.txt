@@ -1,0 +1,8 @@
+Input
+DeiT-III-B
+DeiT-III-L
+OpenCLIP-B
+OpenCLIP-L
+DINO-B
+DINOv2-g
+Figure 2: Illustration of artifacts observed in the attention maps of modern vision transformers.

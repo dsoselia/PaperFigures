@@ -1,0 +1,10 @@
+making API calls. Subsequently, these actions are executed within the corresponding environment.
+We’ve also invested considerable effort into behind-the-scenes challenges, like stable API calling,
+tools scaling, and building a sandbox environment.
+3.2
+PRACTICAL IMPLEMENTATION CHALLENGES
+The implementation journey unveiled several challenges essential for in-the-wild agent readiness.
+Below are the simplified insights and highlights into the core facets of our implementation. For
+more details, please kindly refer to Appendix A.
+For User Interface implementation, we tackle the following challenges:
+4

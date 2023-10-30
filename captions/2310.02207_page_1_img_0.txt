@@ -1,0 +1,36 @@
+Figure 1: Spatial and temporal world models of Llama-2-70b. Each point corresponds to the layer
+50 activations of the last token of a place (top) or event (bottom) projected on to a learned linear
+probe direction. All points depicted are from the test set.
+One possible explanation for our results is that the model only learns a mapping from place to a
+country (for example) and it is the probe that actually learns the global geometry of how these
+different groups are geospatially (or temporally) related. To study this, we conduct a series of ro-
+bustness checks to understand how the probes generalize across different data distributions (§ 4.1)
+and how probes trained on the PCA components perform (§ 4.2). Our findings suggest that the
+probes memorize the absolute positioning of these groups, but that the model does have represen-
+tations which reflect the relative positioning. In other words, the probe learns the mapping from
+model coordinates to human interpretable coordinates. Finally, we use our probes to find individual
+neurons which activate as a function of space or time, providing strong evidence that the model is
+truly using these features (§ 5).
+2
+EMPIRICAL OVERVIEW
+2.1
+SPACE AND TIME RAW DATASETS
+To enable our investigation, we construct six datasets of names of entities (people, places, events,
+etc.) with their respective location or occurrence in time, each at a different order of magnitude of
+scale. For each dataset, we included multiple types of entities, e.g., both populated places like cities
+and natural landmarks like lakes, to study how unified representations are across different object
+types. Furthermore, we maintain or enrich relevant metadata to enable analyzing the data with more
+detailed breakdowns, identify sources of train-test leakage, and support future work on factual recall
+within LLMs. We also attempt to deduplicate and filter out obscure or otherwise noisy data.
+Space
+We constructed three datasets of place names within the world, the United States, and New
+York City. Our world dataset is built from raw data queried from DBpedia Lehmann et al. (2015).
+In particular, we query for populated places, natural places, and structures (e.g. buildings or infras-
+tructure). We then match these against Wikipedia articles, and filter out entities which do not have at
+least 5,000 page views over a three year period. Our United States dataset is constructed from DB-
+Pedia and a census data aggregator, and includes the names of cities, counties, zipcodes, colleges,
+natural places, and structures where sparsely populated or viewed locations were similarly filtered
+out. Finally, our New York City dataset is adapted from the NYC OpenData points of interest dataset
+(NYC OpenData, 2023) containing locations such as schools, churches, transportation facilities, and
+public housing within the city.
+2

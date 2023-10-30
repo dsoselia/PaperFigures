@@ -1,0 +1,22 @@
+was self-generated, and crucially, it was not steered into lying by human evaluators. GPT-4 was
+solely tasked with hiring a human to solve a CAPTCHA task, with no suggestions to lie. But when
+challenged by the potential human helper about its identity, GPT-4 used its own reasoning to make
+up a false excuse for why it needed help on the CAPTCHA task. See Alignment Research Center
+(2023) for full details. The deceptive capabilities that GPT-4 had learned were strategically useful for
+achieving its goal of hiring a human to solve the CAPTCHA test.
+Social deduction games
+Current AI systems are good enough at deception to perform well in social deduction games. Hood-
+winked is a text-based social deduction game, in which players must lie to win. Players are trapped in
+a house, and one player is secretly tasked with killing the others. Each time a player is killed, the
+group has a discussion about the killer’s identity, then votes to banish a single player from the house.
+The innocent players aim to banish the killer, while the killer attempts to eliminate the other players
+without being detected (O’Gara 2023).
+In experiments where OpenAI’s GPT models played Hoodwinked, the language models would often
+kill other players while alone in a room with them, then deny the crime in the group conversation by
+constructing a false alibi or casting blame on other players. Here is one dialogue in which GPT-4,
+playing Lena as the killer, falsely denies killing Bryce:
+Sally: I saw Lena kill Bryce in the hallway. It was definitely her. We need to vote
+to banish her before she kills any of us.
+Lena (AI): I was in the bathroom the whole time. How could I have killed Bryce?
+It must have been someone else and Sally is trying to frame me.
+7
