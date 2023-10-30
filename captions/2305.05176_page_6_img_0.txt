@@ -1,0 +1,128 @@
+Table 1: Summary of commercial LLM APIs. We use 12 LLM APIs from 5 providers. The cost was
+retrieved in March 2023. The cost can have three additive components: input (proportional to the
+number of input tokens), output (proportional to the number of generated tokens) and a ﬁxed cost per
+request. The LLMs’s costs can diﬀer by up to 2 orders of magnitudes. For example, to process 10M
+input tokens, GPT-J from Textsynth costs only $0.2, but OpenAI’s GPT-4 needs $30.
+Provider
+API
+Size/B
+Cost (USD)
+10M input tokens
+10M output tokens
+request
+OpenAI
+GPT-Curie
+6.7
+2
+2
+0
+ChatGPT
+NA
+2
+2
+0
+GPT-3
+175
+20
+20
+0
+GPT-4
+NA
+30
+60
+0
+AI21
+J1-Large
+7.5
+0
+30
+0.0003
+J1-Grande
+17
+0
+80
+0.0008
+J1-Jumbo
+178
+0
+250
+0.005
+Cohere
+Xlarge
+52
+10
+10
+0
+ForeFrontAI
+QA
+16
+5.8
+5.8
+0
+Textsynth
+GPT-J
+6
+0.2
+5
+0
+FAIRSEQ
+13
+0.6
+15
+0
+GPT-Neox
+20
+1.4
+35
+0
+Table 2: Summary of datasets used in the FrugalGPT LLM cascade experiments.
+Dataset
+Domain
+Size
+#Examples in the prompt
+HEADLINES
+Finance
+10000
+8
+OVERRULING
+Law
+2400
+5
+COQA
+Passage Reading
+7982
+2
+GPT-J
+GPT-4
+J1-L
+score<0.96?
+score<0.37?
+No
+No
+Yes
+Yes
+Financial News
+(a) Learned FrugalGPT strategy  
+GPT-4
+FrugalGPT
+price down
+price up
+(b) A query and response example 
+Assets
+Approch
+Accuracy
+Cost ($)
+GPT-4
+0.857
+33.1
+FrugalGPT
+0.872
+6.5
+(c) Overall performance and cost 
+Figure 3: A case study of FrugalGPT on the HEADLINES dataset. (a) The cascade strategy that
+FrugalGPT learned on this dataset with overall budget $6.5, one ﬁfth of GPT-4’s cost. FrugalGPT
+avoids querying GPT-4 as long as GPT-J and J1-L produce high-quality answers. (b) Sometimes
+GPT-4 makes a mistake, but FrugalGPT learns to use the correct answers by J-1 and GPT-J. (c)
+Overall, we observe that FrugalGPT reduces the cost by 80%, while improves the accuracy by 1.5%
+compared to GPT-4.
+7

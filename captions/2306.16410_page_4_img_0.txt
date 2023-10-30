@@ -1,0 +1,107 @@
+DTD [8]
+47.6
+49.0
+57.8
+58.5
+50.7
+53.7
+Aircraft [38]
+31.1
+30.1
+38.5
+38.5
+29.5
+38.0
+Caltech101 [33]
+71.3
+71.9
+75.4
+75.5
+70.4
+75.6
+Flowers102 [41]
+73.0
+76.4
+76.6
+76.7
+75.5
+74.9
+Food101 [4]
+90.9
+90.9
+90.8
+92.1
+89.8
+92.6
+Cars [28]
+75.9
+76.3
+92.9
+93.6
+75.9
+93.4
+Cifar10 [30]
+95.0
+94.9
+95.7
+95.5
+95.0
+95.6
+ImageNet-1k [9]
+69.6
+69.2
+73.0
+73.1
+70.7
+75.6
+Vision Avg.
+71.6 (-0.1)
+72.3 (+0.6)
+77.0 (+0.4)
+77.3 (+0.7)
+71.7
+76.6
+Table 1: Zero-shot results for LENS in object recognition tasks: We present the performance of
+various LENS variations and compare them with the out-of-the-box performance of CLIP (Radford et
+al., 2021). In the majority of benchmarks, LENS demonstrates competitive or superior performance
+compared to CLIP.
+3.2
+LENS
+Components
+LENS consists of 3 distinct vision modules and 1 reasoning module, each serving a specific purpose
+based on the task at hand. These components are as follows:
+Tag Module. Given an image, this module identifies and assigns tags to the image. To accomplish
+this, we employ a vision encoder (CLIP) that selects the most suitable tags for each image. In our
+work, we adopt a common prompt: "A photo of {classname}" for object tagging in order to
+make our framework flexible across domains without the need for manual/ensemble prompt tuning
+[47]. We use the object vocabulary built in Section 3.1 as our class options.
+Attributes Module. We utilize this module to identify and assign relevant attributes to the objects
+present in the image. For this purpose, we employ a contrastively pretrained vision encoder called
+CLIP, while incorporating the task-specific prompts outlined in [40]. The vision encoder classifies
+the objects based on the attributes vocabulary generated in Section 3.1.
+Intensive Captioner. We utilize an image captioning model called BLIP and apply stochastic top-k
+sampling [12] to generate N captions per image. This approach allows us to capture and encompass
+diverse aspects of the visual content within an image. These diverse captions are then directly passed
+to the "reasoning module" without any modifications.
+Reasoning Module. We adopt a frozen LLM as our reasoning module, which is capable of generating
+answers based on the textual descriptions fed by the vision modules, along with the task-specific
+instructions. LENS seamlessly integrates with any black box LLM, streamlining the process of
+adding vision capabilities to them and expediting the overall speed.
+3.3
+Prompt Design
+With the textual information obtained from the vision modules, we construct complete prompts for the
+LLM by combining them. We formatted the tags module as Tags:
+{Top-k tags}, the attributes
+modules as Attributes:
+{Top-K attributes}, the intensive captioning module as Captions:
+{Top-N Captions}. In particular, for the hateful-memes task, we incorporate an OCR prompt
+as OCR: this is an image with written "{meme text}" on it. Finally, we append the
+specific question prompt: Question:
+{task-specific prompt} \n Short Answer: at the
+end. You can see this prompt in action in our demo1.
+4
+Experiments
+In this section, we conduct extensive experiments and analyses to show the efficacy of LENS. First, we
+compare LENS with other state-of-the-art models [47] in object recognition. Then, we also evaluate
+LENS on vision-and-language reasoning tasks and compare it to multimodal foundation models
+5

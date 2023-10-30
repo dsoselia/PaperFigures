@@ -1,0 +1,5 @@
+Fig. 8. Illustrating holds participants created. Holds encourage focus on a subject within a generated interval. Participants achieved
+holds by fixing the seed or using variations of the same prompt. Examples of holds where the start and end prompt were variations of
+one another are seen in rows 1-2. Examples of holds where the seed is fixed are seen in rows 3-4. Holds were still dynamic. they had
+minimal yet subtle change (e.g. color shifts).
+17

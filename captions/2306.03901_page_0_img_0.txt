@@ -1,0 +1,48 @@
+SYMBOLIC MEMORY
+Chenxu Hu1∗ Jie Fu2∗† Chenzhuang Du1
+Simian Luo1
+Junbo Zhao3
+Hang Zhao1†
+1Tsinghua University
+2Beijing Academy of Artificial Intelligence
+3Zhejiang University
+fujie@baai.ac.cn
+hangzhao@mail.tsinghua.edu.cn
+ABSTRACT
+Large language models (LLMs) with memory are computationally universal (Schuurmans, 2023).
+However, mainstream LLMs are not taking full advantage of memory, and the designs are heavily
+influenced by biological brains. Due to their approximate nature and proneness to the accumulation
+of errors, conventional neural memory mechanisms cannot support LLMs to simulate complex
+reasoning. In this paper, we seek inspiration from modern computer architectures to augment LLMs
+with symbolic memory for complex multi-hop reasoning. Such a symbolic memory framework is
+instantiated as an LLM and a set of SQL databases, where the LLM generates SQL instructions to
+manipulate the SQL databases. We validate the effectiveness of the proposed memory framework
+on a synthetic dataset requiring complex reasoning. The project website is available at https:
+//chatdatabase.github.io/.
+ChatDB
+LLM Controller
+• ChatGPT, GPT4
+• LLaMA
+• ChatGLM
+Memory
+Symbolic: 
+Database
+Non-Symbolic:
+History content and 
+its vector embedding
+Memory tokens / 
+memory matrices
+Write
+insert, update, delete
+Read
+select, query, retrieve
+Output
+User
+Input
+users
+Figure 1: Overall workflow of ChatDB. The LLM controller controls the read and write operations to the memory. The
+memory stores historical information and provides relevant historical information to assist in responding to user input.
+In ChatDB, we focus on augmenting LLMs with databases as their symbolic memory.
+∗Equal technical contribution.
+†Corresponding authors.
+arXiv:2306.03901v2  [cs.AI]  7 Jun 2023

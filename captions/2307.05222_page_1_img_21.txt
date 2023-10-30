@@ -1,0 +1,22 @@
+the movie poster for "Fight Club." The poster features two 
+men standing next to each other, with the words "Fight 
+Club" written in bold letters above them. The background 
+of the poster is dark and ominous, giving the impression of 
+a gritty and intense movie.
+Input Prompt
+Completion
+The image shows a photo of
+Question: Can you tell me about this image? Answer:
+this image is the cover of a book called "Mom's Family 
+Calendar" by Sandra Boynton. The book is designed to help 
+moms keep track of their family's schedule and activities.
+There is a godzilla.
+There is a chinchilla.
+There are three pandas.
+Input Prompt
+Completion
+This is the first image:
+This is the second image:
+Image Captioning
+Image Question Answering
+ext Completion

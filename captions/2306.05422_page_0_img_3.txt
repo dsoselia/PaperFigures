@@ -1,0 +1,34 @@
+Tracking Everything Everywhere All at Once
+Qianqian Wang1,2
+Yen-Yu Chang1
+Ruojin Cai1
+Zhengqi Li2
+Bharath Hariharan1
+Aleksander Holynski2,3
+Noah Snavely1,2
+1Cornell University
+2Google Research
+3UC Berkeley
+Figure 1: We present a new method for estimating full-length motion trajectories for every pixel in every frame of a video, as illustrated by
+the motion paths shown above. For clarity, we only show sparse trajectories for foreground objects, though our method computes motion for
+all pixels. Our method yields accurate, coherent long-range motion even for fast-moving objects, and robustly tracks through occlusions as
+shown in the dog and swing examples. For context, in the second row we depict the moving object at different moments in time.
+Abstract
+We present a new test-time optimization method for esti-
+mating dense and long-range motion from a video sequence.
+Prior optical flow or particle video tracking algorithms typi-
+cally operate within limited temporal windows, struggling to
+track through occlusions and maintain global consistency of
+estimated motion trajectories. We propose a complete and
+globally consistent motion representation, dubbed OmniMo-
+tion, that allows for accurate, full-length motion estimation
+1. Introduction
+Motion estimation methods have traditionally followed
+one of two dominant approaches: sparse feature tracking
+and dense optical flow [55]. While each type of method
+has proven effective for their respective applications, neither
+representation fully models the motion of a video: pairwise
+optical flow fails to capture motion trajectories over long
+temporal windows, and sparse tracking does not model the
+motion of all pixels.
+arXiv:2306.05422v2  [cs.CV]  12 Sep 2023

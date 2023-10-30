@@ -1,0 +1,149 @@
+use the audio descriptors as the classifier for Detic in place
+of CLIP text-based ‘class’ embeddings.
+We use a score
+threshold of 0.9 for the qualitative results in Figure 5.
+C. Pretraining details
+C.1. Best setup
+In Table 9 we detail the hyperparameters used to pre-
+train each of the models reported in Table 4. Our experi-
+ments were done on 32GB V100 or 40GB A100 GPUs.
+Config
+AS
+SUN
+LLVIP
+Ego4D
+Vision encoder
+ViT-Huge
+embedding dim.
+768
+384
+768
+512
+number of heads
+12
+8
+12
+8
+number of layers
+12
+12
+12
+6
+Optimizer
+AdamW
+Optimizer Momentum
+β1 = 0.9, β2 = 0.95
+Peak learning rate
+1.6e-3
+1.6e-3
+5e-4
+5e-4
+Weight decay
+0.2
+0.2
+0.05
+0.5
+Batch size
+2048
+512
+512
+512
+Gradient clipping
+1.0
+1.0
+5.0
+1.0
+Warmup epochs
+2
+Sample replication
+1.25
+50
+25
+1.0
+Total epochs
+64
+64
+64
+8
+Stoch. Depth [29]
+0.1
+0.0
+0.0
+0.7
+Temperature
+0.05
+0.2
+0.1
+0.2
+Augmentations:
+RandomResizedCrop
+size
+224px
+interpolation
+Bilinear
+Bilinear
+RandomHorizontalFlip
+p = 0.5
+p = 0.5
+RandomErase
+p = 0.25
+p = 0.25
+RandAugment
+9/0.5
+9/0.5
+Color Jitter
+0.4
+0.4
+Frequency masking
+12
+Table 9. Pretraining hyperparameters
+Contrastive loss batch size vs. modalities.
+While con-
+trastive losses do require larger batch size, this requirement
+didn’t increase with the number of modalities. As noted
+in Appendix B, our experiments (Table 2) sample a mini-
+batch of one pair of modalities at a time: batch size of 2K
+for (video, audio), and 512 for (image, depth), (image, ther-
+mal), and (video, IMU). These batch sizes are smaller than
+the >32K batch sizes used in prior work [10, 60].
+Combining modalities.
+In Table 4, we show results with
+combining the audio and video modalities. We combine
+them by extracting embeddings from both modalities per
+sample and computing a linear combinations of those em-
+beddings. We used a weight of 0.95 for video and 0.05 for
+audio for this combination, which was found to perform the
+best.
+Text query: ”Cooking a meal”
+Text query: ”A person doing gardening work outdoors”
+Figure 7. IMU retrievals. Given a text query, we show some
+IMU retrievals and corresponding video frames.
+C.2. Ablation setup
+The following setup was used for our evaluations in § 5.
+Different from the best setup, all ablation experiments uses
+ViT-Base both for the vision and the modality-specific en-
+coders. The models are trained for 16 epochs, unless men-
+tioned otherwise.
+For Table 5b, the differences between the linear and MLP
+heads are detailed below: The MLP head did not improve
+performance in our experiments.
+Linear
+Linear(in dim, out dim)
+MLP
+Linear(in dim, in dim), GELU, Linear(in dim, out dim)
+D. Additional Results
+Qualitative results. We show additional results (along with
+audio) in the accompanying video.
+Practical applications of disparate modalities. In gen-
+eral, a shared embedding space enables a variety of differ-
+ent cross-modal search and retrieval applications. e.g., since
+IMU sensors are ubiquitous (in phones, AR/VR headsets,
+health trackers), IMAGEBIND can allow a user to search
+an IMU database using text queries (without training with
+IMU-text pairs). IMU-based text search has applications
+in healthcare/activity search. For instance, in Figure 7 we
+show examples of IMU (and accompanying video) retrieval
+given textual search query.
+The retrieved IMU sample,
+shown as 3-channel Accelerometer (Acc) and Gyroscope
+(Gyro) recording, matches the text query.

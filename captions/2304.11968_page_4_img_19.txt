@@ -1,0 +1,49 @@
+#0000
+#0100
+#0200
+#0300
+#0400
+#0500
+#0600
+#0700
+#0800
+#0900
+#1000
+#1100
+Raw 
+frames
+Masked 
+frames
+Inpainted 
+frames
+Raw 
+frames
+Masked 
+frames
+Inpainted 
+frames
+Raw 
+frames
+Masked 
+frames
+Inpainted 
+frames
+Figure 4: Raw frames, object masks, and inpainted results from the movie Captain America: Civil
+War (2016).
+4.3
+Failed Cases
+We here also analyze the failed cases, as shown in Figure 3. Overall, we notice that the failed cases
+typically appear on the following two occasions. 1) Current VOS models are mostly designed for short
+videos, which focus more on maintaining short-term memory rather than long-term memory. This
+leads to mask shrinkage or lacking reﬁnement in long-term videos, as shown in seq (a). Essentially,
+we aim to solve them in step 3 by the reﬁnement ability of SAM, while its effectiveness is lower than
+expected in realistic applications. It indicates that the ability of SAM reﬁnement based on multiple
+prompts can be further improved in the future. On the other hand, human participation/interaction in
+TAM can be an approach to solving such difﬁculties, while too much interaction will also result in
+low efﬁciency. Thus, the mechanism of long-term memory preserving and transient memory updating
+is still important. 2) When the object structure is complex, e.g., the bicycle wheels in seq (b) contain
+many cavities in groundtruth masks. We found it very difﬁcult to get a ﬁne-grained initialized mask
+by propagating the clicks. Thus, the coarse initialized masks may have side effects on the subsequent
+frames and lead to poor predictions. This also inspires us that SAM is still struggling with complex
+and precision structures.
+5

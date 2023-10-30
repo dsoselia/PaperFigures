@@ -1,0 +1,6 @@
+mixture was stirred for 24h at room temperature (25°C). A sample (0.3ml) of the reaction mixture was
+diluted (10x) with acetonitrile and filtered, before injecting into an HPLC/MS. MS(ES): m/z 421 [M+H]
+calculated, found 421.08 m/z.
+A.3
+Chromophore Synthesis
+Step 1: N-(4’-vinyl-[1,1’-biphenyl]-3-yl)methanesulfonamide

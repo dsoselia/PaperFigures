@@ -1,0 +1,32 @@
+Chemistry, as a field, has been impacted through expert-designed artificial intelligence (AI) systems that
+tackle specific problems, such as reaction prediction16–20, retrosynthesis planning21–27, molecular property
+prediction28–32, de-novo molecular generation33,34, materials design35,36 and, more recently, Bayesian
+Optimization37–39. Due to the nature of their training, it has been shown that code-generating LLMs
+do possess some understanding of chemistry14. By understanding, we mean that LLMs are capable of
+adapting to observations, planning over multiple steps, and responding correctly to intent13,40–44. However,
+the automation levels achieved in chemistry remain relatively low compared to other domains, primarily
+due to its highly experimental nature, the lack of data, as well as the limited scope and applicability of
+computational tools, even within their designated areas45.
+Integrating such tools tends to occur within isolated environments, such as RXN for Chemistry18,24,46–48
+and AIZynthFinder25,49,50, facilitated by corporate directives that promote integrability. Although most
+tools are developed by the open-source community or made accessible through application programming
+interfaces (API), their integration and interoperability pose considerable challenges for experimental
+chemists, mainly due to their lack of computational skill set and the diversity of tools with steep learning
+curves, thereby preventing the full exploitation of their potential.
+Figure 1: Overview and toolset. a) An overview of the task-solving process. Using a variety of chemistry-
+related packages and software, a set of tools is created. These tools and a user input are then given to an
+LLM. The LLM then proceeds through an automatic, iterative chain-of-thought process, deciding on its
+path, choice of tools, and inputs before coming to a final answer. The example shows the synthesis of
+DEET, a common insect repellent. b) Toolsets implemented in ChemCrow: reaction, molecule, safety,
+search, and standard tools.
+Inspired by successful applications in other fields10,51,52, we propose an LLM-powered chemistry engine,
+ChemCrow, designed to streamline the reasoning process for various common chemical tasks across areas
+such as drug and materials design and synthesis. ChemCrow harnesses the power of multiple expert-
+designed tools for chemistry and operates by prompting an LLM (GPT-4 in our experiments) with specific
+instructions about the task and the desired format, as shown in Figure 1a. The LLM is provided with a list
+of tool names, descriptions of their utility, and details about the expected input/output. It is then instructed
+to answer a user-given prompt using the tools provided when necessary. The model is guided to follow the
+Thought, Action, Action Input, Observation format43, which requires it to reason about the current state
+of the task, consider its relevance to the final goal, and plan the next steps accordingly, demonstrating its
+level of understanding. After the reasoning in the Thought step, the LLM requests a tool (preceded by the
+2

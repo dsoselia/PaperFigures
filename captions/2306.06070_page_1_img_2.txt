@@ -1,0 +1,134 @@
+(d) Find Elon Musk's profile and follow, start 
+notifications and like the latest tweet.
+(e) Browse comedy films streaming on Netflix 
+that was released from 1992 to 2007.
+(f) Open page to schedule an appointment for 
+car knowledge test.
+3.1%
+5.8%
+6.2%
+4.3%
+3.7%
+2.4%
+1.8%
+5.0%
+3.3%
+2.3%
+1.6%
+1.6%
+3.8%
+3.5%
+3.5%
+3.2%
+2.0%
+3.7%
+3.5%
+6.5%
+3.4%
+2.1%
+1.8%
+1.7%
+1.9%
+2.0%
+2.7%
+3.5%
+2.8%
+Travel (27.4%)
+Shopping (17.5%)
+Entertainment (16.1%)
+Info (20.4%)
+Service (18.3%)
+Other 
+6.2%
+Ground 
+3.7%
+Airlines 
+5.8%
+Restaurant 
+4.3%
+General 
+3.1%
+Car
+Rental 
+2.4%
+Hotel 
+1.8%
+Job 
+3.5%
+Education 
+2.8%
+Finance 
+2.7%
+Cook-
+ing 
+2.9%
+Housing 
+3.7%
+Social
+Media 
+3.5%
+Weather 
+1.9%
+Government 
+3.4%
+Pet 
+2.1%
+Health 
+6.5%
+Shipp-
+ing 
+1.8%
+Moving
+1.7%
+Home
+Service 
+2.5%
+Speciality 
+5.0%
+Auto 
+3.4%
+General 
+3.3%
+Digital 
+2.3%
+Depar-
+tment 
+1.6%
+Fashion 
+1.6%
+Event 
+3.8%
+Music 
+3.5%
+Sports 
+3.5%
+Movie 
+3.2%
+Game 
+2.0%
+Figure 1: Sample tasks and all domains featured in MIND2WEB. The array of diversity allows for
+testing an agent’s generalizability across tasks on the same website (a vs. b), similar tasks on different
+websites (a vs. c), and even to entirely disparate tasks, websites, and domains (d−f).
+about the environments but must embrace the full complexity and sometimes noise, e.g., due to
+sub-optimal website designs. Finally, it shall support diverse and sophisticated interactions with
+websites. Tasks from users can be highly diverse and take a large number of steps to complete (e.g.,
+the task in Figure 1(b) would take 14 actions). An agent that only supports simple tasks may provide
+limited value to users.
+Building an agent for the web is not entirely new. There have been numerous prior efforts in
+varied forms. However, none of them meets all the requirements for a generalist agent listed above.
+Existing work falls short in one to all of the following aspects: 1) Only operating in a limited and
+pre-specified set of websites [3, 18, 19, 32, 37], 2) making strong simplifying assumptions about the
+websites [19, 37], and 3) only supporting specific types of tasks [18, 19, 37] and/or requiring tedious
+step-by-step instructions from users [3, 18, 19, 36]. Meanwhile, LLMs have been shown to excel at
+grounded language understanding in complex environments with good generalizability and sample
+efficiency [2, 10, 14, 30]. It is therefore promising to explore LLMs as a candidate solution towards
+generalist agents for the web. However, there lacks a good dataset that can support the development
+and evaluation of generalist web agents, which is the focus of this work.
+In light of this, we present MIND2WEB, a new dataset with natural language tasks and manually
+annotated action sequences for developing and evaluating generalist agents for the web. It offers the
+following unique features:
+1. Diverse coverage of domains, websites, and tasks. MIND2WEB boasts a collection of over 2,000
+tasks curated from 137 websites that span 31 different domains. This extensive range of tasks and
+domains not only provides a vast landscape for exploration and learning but also opens up a new level
+of versatility and complexity, fostering a more comprehensive evaluation of generalist web agents.
+2

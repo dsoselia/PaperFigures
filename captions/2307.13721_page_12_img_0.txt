@@ -1,0 +1,89 @@
+13
+Fig. 7. A comparison of contrastive, captioning and CapPa-based [262] models. In contrastive models (shown on the left), visual and textual
+encoders are individually optimized. In captioning-based models (shown in the middle), a vision encoder’s output combined with input text is fed to
+a decoder. CapPa (shown on the right) architecture also follows captioning models but with modifications in the training recipe. The figure is taken
+from Tschannen et al. [262].
+tasks. The authors designed four pre-training tasks span-
+ning generative (i.e., Masked Language Modeling (MLM),
+Masked Region Modeling (MRM)) and contrastive (Image-
+Text Matching (ITM), and Word Region Alignment (WRA))
+objectives. The UNITER architecture consists of an image
+and text embedder and a cross-modality contextualized em-
+bedding transformer. The text and images of these datasets
+are fed to respective embedders to extract embeddings.
+Individual embeddings are fed to the cross-modality trans-
+former for a cross-modal representation. This model is
+trained on a combination of four different vision-language
+datasets to optimize the pre-training tasks mentioned ear-
+lier. UNITER exhibits excellent generalizability across nine
+different vision-language tasks, setting state-of-the-art for
+most tasks.
+Chen et al. [41] proposed to reformulate and unify four
+core vision tasks (object detection, instance segmentation,
+key points prediction, and captioning) into a single pixel-to-
+sequence interface where both task description and outputs
+are converted into tokens. Their proposed method, called
+Pixel2Seqv2, utilized an encoder-decoder architecture with
+a vision encoder that encodes image inputs and a sequence
+decoder that generates a single token conditioned on pre-
+vious tokens, and encoded image. This model is trained on
+a simple language modeling task conditioned on previous
+tokens and encoded images. At inference time, output to-
+kens are sampled given a task prompt and input image, and
+task-specific de-tokenization is performed. This Pixel2Seq
+can solve four vision tasks efficiently performs without
+requiring any specialized architecture or losses.
+Cho et al. [51] proposed a unified framework to learn
+different computer vision tasks in a single architecture.
+The unification is achieved by reformulating these tasks
+into multi-modal conditional text generation tasks. The
+proposed Vision-Language (VL-x) employs a pre-trained
+encoder-decoder language model, such as BART or T5 [150,
+216]. Text and visual embeddings are fed to the encoder
+of this language model. Visual embeddings are extracted
+from a pre-trained object detector model and consist of
+Region of Interest (RoI) object features, RoI bounding box
+coordinates, and image and region IDs. The output of the
+visual task is converted into a sequence of characters and a
+task-specific prefix is added (e.g., classification: bird). This
+augmented text is encoded as learned embeddings and
+fed to the encoder of the language model along with the
+visual embeddings. This model is then trained with the
+task of multi-modal language modeling as well as related
+vision-language pre-training tasks, such as visual question-
+answering, image-text matching, visual grounding, and
+grounded captioning. This framework results in a multi-
+tasking model that can handle a diverse set of outputs.
+The models achieve comparable performance to specialized
+models.
+•Universal
+Architectures:
+Purely
+contrastive
+vision-
+language models with separate encoders (e.g., CLIP, ALIG)
+have shown impressive performance but are not well suited
+for multi-modal problems that require dealing with both
+modalities at the same time. On the other hand, multi-
+modal models, that have fusion and shared attention across
+modality encoders, are not suitable for uni-modal vision
+or language tasks. Here, we describe methods that aim to
+perform well across uni, cross, and multi-modal tasks by
+proposing new novel architectures and training them on
+multiple objectives including contrastive, generative, and
+task-specific losses.
+Yu et al. [319] proposed a single unified encoder-
+decoder-based model called Contrastive Captioner (CoCa)
+that has the capabilities of the single encoder, dual encoder,
+and encoder-decoder models. The CoCa model consists of
+a unimodal image and text encoder and a decoupled multi-
+modal decoder with a cross-attention layer. The unimodal
+encoders are trained on a contrastive loss like CLIP. This
+helps the model learn robust and aligned global represen-
+tations. The decoupled decoder is trained with a generative
+approach to captioning loss, which helps it learn detailed
+granularity and region-level information. A combination of
+these two approaches endows the model with both con-
+trastive and generative capabilities. This strategy results in
+a foundational model that performs well across a set of di-
+verse vision datasets. A single-trained CoCa model outper-

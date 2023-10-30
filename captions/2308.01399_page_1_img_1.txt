@@ -1,0 +1,33 @@
+t=61
+t=0
+the bottle is in the 
+living room
+the plates are in the
+get the bottle
+kitchen
+Context
+Dynalang Model Rollouts
+Text prediction
+Reward prediction
+Video prediction
+Video and text inputs
+t=65
+t=60
+t=30
+r=0
+r=0
+r=0
+r=0
+r=1
+Figure 1: Dynalang learns to use language to make predictions about future (text + image) observa-
+tions and rewards, which helps it solve tasks. Here, we show real model predictions in the HomeGrid
+environment. The agent has explored various rooms while receiving video and language observations
+from the environment. From the past text “the bottle is in the living room”, the agent predicts at
+timesteps 61-65 that it will see the bottle in the final corner of the living room. From the text ‘get the
+bottle” describing the task, the agent predicts that it will be rewarded for picking up the bottle. The
+agent can also predict future text observations: given the prefix “the plates are in the” and the plates it
+observed on the counter at timestep 30, the model predicts the most likely next token is “kitchen.”
+Instead, we propose that a unifying way for agents to use language is to help them predict the
+future. The utterance “I put the bowls away” helps agents make better predictions about future
+observations (i.e., that if it takes actions to open the cabinet, it will observe the bowls there). Much of
+the language we encounter can be grounded in visual experience in this way. Prior knowledge such

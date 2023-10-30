@@ -1,0 +1,88 @@
+8
+Fig. 4. An overview of CLIP and its variants. Several works after CLIP have investigated the efficacy of different variants including new losses,
+image-based self-supervision, masking of inputs, and use of expert models. Here, expert model means a model that is trained for a specific task
+(e.g., ViLD [97] used a Feature Pyramid Network [164] as an object detection expert model.
+and linear probe-based methods.
+Most text-image-based methods assume a strong seman-
+tic correlation between the pair. However, web-scale data is
+littered with pairs that have weak correlations (e.g., captions
+that do not reflect images accurately). Huo et al. [123] pro-
+pose WenLan to solve this by using two-tower architecture
+and cross-modal contrastive learning based on MoCo [108],
+which can leverage more negative samples in limited GPU
+resources. This strategy leverages both negative and pos-
+itive examples and text-to-image and image-to-text-based
+contrastive losses. This results in a better model that is also
+efficient to train and shows improved performance on many
+tasks. They also curated the first large-scale Chinese image-
+text dataset with 500 million data points. They trained
+their proposed model to solve Chinese-language tasks and
+demonstrated its superior zero-shot ability.
+CLIP-like methods use separate encoders for each
+modality which makes them inference efficient as each en-
+coder can be decoupled and pre-computed representations
+can be utilized. However, such models rely solely on global
+features for cross-modal interaction which makes it hard for
+them to capture finer-level information between modalities.
+Yao et al. [311] proposed a cross-modal late interaction
+approach to model the token-wise cross-modal interaction
+which helps capture fine-grained semantic alignment. The
+proposed FILIP (Fine-grained Interactive Language Image
+Pre-training) loss maximizes the similarity between token-
+wise visual and text embeddings. Specifically, similarity for
+each input visual token with all text-tokens is calculated,
+and maximum similarity is used. Similarly, the maximum
+similarity of each text token is also calculated. Then, a sim-
+ple average is used to calculate the overall loss. This means
+each image token’s closest text token is used. Similarly, each
+text’s closest image patch is also used. This helps in mod-
+eling fine-grained interaction between the two modalities
+without sacrificing the inference-efficient nature of CLIP.
+Moreover, the authors also collected 340M large image-text
+pairs to train their model. Their method outperforms CLIP
+and other methods on zero-shot classification as well as for
+image-text retrieval tasks.
+•Masked Contrastive Learning.
+Inspired by the Masked
+Auto Encoders [109], Li et al. [160] presented an efficient
+alternative of CLIP called FLIP which masks 50-75% of input
+pixels in CLIP training. This masking scheme reduces com-
+putation by 2-4×, allows 2-4× larger batches, and improves
+accuracy. FLIP is > 3× faster to reach the same accuracy as
+CLIP. Compared with the CLIP baseline, their method can
+save 1800 TPU days. Based on this faster method, they also
+studied the scaling in CLIP across models, datasets size, and
+training length.
+Dong et al. [67] argued that the language description of
+an image can not express complete information as an image
+is a continuous and fine-grained signal. To fully leverage
+images in contrastive vision-language training, they pro-
+posed MaskCLIP that randomly masks the input image
+along with mean teacher-based self-distillation [256] to learn
+local semantic features. Specifically, the representation of the
+whole image and masked image are obtained from the mean
+teacher and student respectively, and cross-entropy loss
+between the two representations is minimized. Similarly,
+BERT [181] pre-training is used in the language encoder.
+These two modifications in the contrastive learning frame-
+work help the model learn local and fine-grained semantics.
+MaskCLIP significantly improves CLIP in zero-shot, linear
+probe, and fine-tuning settings on several vision datasets.
+While the previous approaches in this section mainly
+focus on the efficiency aspect of CLIP via masking, EVA-
+CLIP addresses instability and optimization efficiency to-
+gether with masking visual inputs. Specifically, Sun et al.
+[249] offered solutions to improve the stability of training
+and reduce computational costs, including improved ini-
+tialization, better optimizer, and random masking of im-
+ages [160]. Their efficient solution-based model, EVA-CLIP,
+performs better and is trained on the version of datasets
+that are curated from open-source resources. Fang et al. [80]
+supplemented this effort to scale models. They masked out
+image-text inputs along with CLIP loss to scale the model
+to 1 billion parameters. Their scaled model, named EVA,
+performs strongly on several downstream tasks, including
+COCO, LVIS, ImageNet1k, etc.
+•Scaling and Reproducing CLIP.
+OpenAI released pre-
+trained weights and code for CLIP. However, they did not

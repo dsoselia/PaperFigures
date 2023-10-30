@@ -1,0 +1,15 @@
+Drag Your GAN: Interactive Point-based Manipulation on the
+Generative Image Manifold
+XINGANG PAN, Max Planck Institute for Informatics, Germany and Saarbrücken Research Center for Visual Computing,
+Interaction and AI, Germany
+AYUSH TEWARI, MIT CSAIL, USA
+THOMAS LEIMKÜHLER, Max Planck Institute for Informatics, Germany
+LINGJIE LIU, Max Planck Institute for Informatics, Germany and University of Pennsylvania, USA
+ABHIMITRA MEKA, Google AR/VR, USA
+CHRISTIAN THEOBALT, Max Planck Institute for Informatics, Germany and Saarbrücken Research Center for Visual
+Computing, Interaction and AI, Germany
+Image + User input (1st Edit)
+Result
+2nd Edit
+Result
+CV]  18 May 2023

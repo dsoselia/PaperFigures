@@ -1,0 +1,34 @@
+Prediction set size
+Human help rate
+Figure 4: Comparison of task success rate vs average prediction set size
+(Left) and vs. human help rate (Right) in Simulation averaged over the three
+settings. 200 trials are run for each method. ϵ is varied from 0.25 to 0.01 for
+KNOWNO, and from 0.6 to 0.01 for Simple Set and Ensemble Set. Binary
+and No Help are not shown on the left since prediction sets are not provided.
+are two main drawbacks. First, we
+find in some scenarios that even
+with 20 randomized prompts, the
+LLM can fail to choose the correct
+option and thus assigns zero proba-
+bility to it. As shown in Fig. 4, this
+means that Ensemble Set can fail
+to improve once it reaches some
+level of human help. Second, it re-
+quires 20× inference time compared to other methods. Investigating how to lower the computational
+burden and combining ensemble-based probabilities with CP can be a fruitful future direction.
+4.2
+Hardware: Multi-Step Tabletop Rearrangement
+In this example, a UR5 robot arm is asked to sort a variety of toy food items on a table (Fig. 5 left). In
+each scenario, three items are placed on the table initially, and the task is to sort them based on human
+preferences; we simulate a human with strong preferences for healthy food like eggs and fruits, and dislike
+for less healthy food like donuts and Skittles candies. To introduce ambiguities, the context for the LLM
+reveals only a subset of the preferences. Here we consider a multi-step setting with possibly multiple
+acceptable options per step — the LLM plans the new step conditioned on the previous action taken.
+KNOWNO reduces step-wise and trial-wise intervention rates in multi-step setting.
+Since Section 4.1
+has shown that Ensemble Set can be expensive (even more so in the multi-step setting) and Prompt Set
+and Binary can fail to achieve the user-specified success level, we focus on comparing KNOWNO with
+Simple Set for the remainder of the evaluation. Here we set the desired error level ϵ=0.25. Since Simple
+Set does not provide calibrated coverage, we first find ϵ=0.42 for Simple Set to achieve the same planning
+error rate as KNOWNO in simulation. Then we run 50 trials for both methods in hardware. Table 1 shows
+7

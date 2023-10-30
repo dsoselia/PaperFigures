@@ -1,0 +1,27 @@
+learn generic (non-personalized) rules about where
+objects typically go inside a house by averag-
+ing over many users (Taniguchi et al., 2021;
+Kant et al., 2022; Sarch et al., 2022). Works
+that focus on personalization aim to extrapolate
+from a few user examples given similar choices
+made by other users, using methods such as
+collaborative filtering (Abdo et al., 2015), spa-
+tial relationships (Kang et al., 2018), or learned
+latent preference vectors (Kapelyukh and Johns,
+2022). However, all of these approaches require
+collecting large datasets with user preferences or
+generating datasets from manually constructed,
+simulated scenarios. Such datasets can be expen-
+i
+t
+i
+d
+t
+li
+ll if th
+Fig. 1 We study the task of household cleanup, where each
+object on the floor must be picked up and put away while
+following user preferences.
+We investigate the proposed approach in a
+real-world robotic mobile manipulation system
+for household cleanup, which we call TidyBot

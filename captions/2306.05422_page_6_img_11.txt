@@ -1,0 +1,17 @@
+RAFT-C
+Ours
+Ours
+PIPs
+Ours
+TAP-Net
+Swing
+India
+Lab-coat
+Figure 3: Qualitative comparison of our method and baselines on DAVIS [50]. The leftmost image shows query points in the first frame, and
+the right three images show tracking results over time. Notably, our method tracks successfully through the occlusion events in swing and
+india, while baseline methods fail. Our method additionally detects occlusion (marked as cross “+”) and gives plausible location estimates
+even when a point is occluded. Please refer to the supplemental video for better visualizations of tracking accuracy and coherence.
+temporal coherence consistently across different datasets.
+Our method works well with different input pairwise corre
+clusion. Although PIPs considers a wider temporal window
+(8 frames) for better occlusion handling it fails to track a

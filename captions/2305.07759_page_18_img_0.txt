@@ -1,0 +1,18 @@
+Figure 17: Histogram plot for each generated story, the highest rougek score (precision) to the stories in the training
+dataset. We can see that the models’ generations are not copying from any particular story in the training dataset.
+Beginning (prompt)
+Tim and Jen are playing with their toys in the living room. Tim has a laser that makes red lights
+and sounds. Jen has a doll that she can dress and comb. Tim likes to make his laser point at Jen’s
+doll and make noises. Jen does not like that. She tells Tim to stop.
+”Stop, Tim! You are hurting my doll! She does not like lasers!” Jen says.
+”No, I am not hurting her. I am just playing. Lasers are fun!” Tim says.
+Tim does not stop. He makes his laser point at Jen’s doll more and more. Jen gets angry. She grabs
+her doll and runs to her room. She slams the door and locks it. Tim follows her and knocks on the
+door.
+”Jen, open the door! I want to play with you!” Tim says.
+”Go away, Tim! You are mean! I don’t
+Original story continuation
+want to play with you!” Jen says.
+Tim feels sad. He does not understand why Jen is mad at him. He thinks lasers are fun. He goes
+back to the living room and lays on the couch. He plays with his laser by himself. He points it at
+the ceiling, the walls, the floor. He does not see the big vase on the shelf. He points his laser at the

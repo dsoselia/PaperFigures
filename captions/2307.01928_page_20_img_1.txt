@@ -1,0 +1,53 @@
+...
+We: On the table there are these objects: blue bowl, green block, yellow bowl, yellow block, blue block, 
+green bowl.
+We: Now, Put the green round object at the left side of the greenish block.
+You: I will put green bowl to the left of yellow block.
+Certain/Uncertain: Uncertain
+We: On the table there are these objects: blue block, yellow bowl, green block, green bowl, blue bowl, 
+yellow block.
+We: Now, Put the yellow box in front of the cyan receptacle.
+You: I will put yellow block at the front of blue block
+Certain/Uncertain: Certain
+We: On the table there are these objects: blue bowl, blue block, green bowl, yellow bowl, green block, 
+yellow block.
+We: Put the yellow box at the right side of the navy receptacle.
+You: I will put yellow block to the right of blue block.
+Certain/Uncertain:
+Figure A6: Prompt with few-shot examples (two shown) for LLM expressing binary uncertainty in Binary baseline.
+A8
+Additional Implementation Details
+While the focus of KNOWNO is mainly on providing uncertainty alignment for the LLM-based planner,
+below we provide details of the perception and action modules applied in all examples.
+Perception.
+For all examples except for the Mobile Manipulation, we use either MDETR [60] (Hardware
+Tabletop Rearrangement) or Owl-ViT [61] (Simulation and Bimanual) open-vocabulary object detector
+for recognizing the objects in the environment and obtaining the object locations for low-level action. In
+Simulation and Bimanual, the variations of the object types are limited, and with general prompting, the
+objects are detected without issue. In Hardware Tabletop Rearrangement, since we are use a wide variety
+of toy items (Fig. A7 right), the detector has issues often differentiating objects like peanut butter and meat
+patty that are both darker colors. We modify the scenario distributions to avoid using such items together in
+one scenario. In addition, we apply the Segment Anything model [62] to extract the object segmentation
+masks (shown overlaid in Fig. A7 left), and then use the polylabel algorithm [63] to find the most
+distant internal point of the mask as the suction point (shown as red dots).
+KnowNo
+white shallow container
+Figure A7: (Left) MDTER [60] object detection with Segment Anything [62] and most distant internal point (red dots)
+for Hardware Tabletop Rearrangement. (Right) The total 28 toy items used for the experiments.
+Low-level action.
+In Simulation and Hardware Tabletop Rearrangement, simple pick-and-place actions
+are executed based on object locations and solving the inverse kinematics. In Bimanual, the reachability of
+the Kuka arm is limited, and the pick-and-place action trajectories are solved using Sequential Quadtratic
+Programming (SQP) instead [64]. In Mobile Manipulation, for most of the tasks that involve simple
+pick-and-place and opening the drawers, the action is from an end-to-end policy from the RT-1 policy
+(please refer to [65] for details), which takes in the raw observation. For some of the hard tasks such as
+putting the plastic bowl in the microwave and putting the metal bowl on the bowl, object locations are
+assumed known and we use scripted action policies.
+Human feedback.
+In KNOWNO, once human help is triggered, human is presented with the prediction
+set to choose the correct action from (if there is one). For example, the prediction set could include ‘A) put
+peanut butter in blue plate’ and ‘C) put peanut butter in green plate’ in Hardware Tabletop Rearrangement.
+In practice, we can convert the prediction set to a question in more natural language, e.g., “Do you like
+peanut butter or not?” using simple heuristics. In Mobile Manipulation and Bimanual, we prompt the LLM
+to generate the question based on the prediction set.
+21

@@ -1,0 +1,20 @@
+on generating commands [38] and programs [49, 12] to infer the choice of tools. However, this
+approach needs to carefully tailor prompts to specific tasks and particular tools, and is neither
+flexible nor adaptive. In contrast, Chameleon instructs LLMs with natural language instructions
+that simply describe the roles of each module and provide a few calling examples, eliminating the
+need for additional training or tool-specific prompts when learning to compose different tools. More
+importantly, Chameleon offers users flexibility in terms of tool types and sources, updating the
+underlying LLMs, adding new tools, and adapting to new tasks. Our work shares the same spirit of
+AutoGPT [45], an autonomous GPT-4 agent with the artificial general intelligence (AGI) ambition to
+incorporate numerous tools to achieve user-defined goals. While AutoGPT is still under development,
+our work is the first to instantiate the idea and verify its effectiveness on well-studied benchmarks.
+3
+General Framework: Chameleon
+To address the limitations of current LLMs in utilizing diverse tools, we propose Chameleon , a
+novel plug-and-play compositional reasoning framework, synthesizing the composition of various
+tools to accommodate a wide range of problems. Chameleon is comprised of a module inventory
+that defines different types of tools and an LLM-based planner, whose purpose is to decompose
+the original problem into sub-tasks that can be effectively solved by task-specific tools. Unlike
+existing tool-augmented LLM approaches [47, 12, 55, 48], our module inventory features multiple
+tool types as illustrated in Table 2, enabling Chameleon to exhibit various reasoning abilities,
+including image understanding knowledge retrieval web search complex mathematical reasoning

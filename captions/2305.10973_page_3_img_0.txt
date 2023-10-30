@@ -1,0 +1,79 @@
+SIGGRAPH ’23 Conference Proceedings, August 6–10, 2023, Los Angeles, CA, USA
+X. Pan, A. Tewari, T. Leimkühler, L. Liu, A. Meka, C. Theobalt
+Generator
+Latent code w
+Motion 
+supervision
+w’
+Point 
+tracking
+Motion 
+supervision
+w*
+…
+User input
+Initial image
+1st optimization step
+Update points
+Final image
+Handle point
+Target point
+Fig. 2. Overview of our pipeline. Given a GAN-generated image, the user only needs to set several handle points (red dots), target points (blue dots), and
+optionally a mask denoting the movable region during editing (brighter area). Our approach iteratively performs motion supervision (Sec. 3.2) and point tracking
+(Sec. 3.3). The motion supervision step drives the handle points (red dots) to move towards the target points (blue dots) and the point tracking step updates
+the handle points to track the object in the image. This process continues until the handle points reach their corresponding target points.
+semantic positions (e.g., the nose and the jaw in Fig. 2) of the handle
+points reach their corresponding target points. We also allow the
+user to optionally draw a binary mask M denoting which region of
+the image is movable.
+Given these user inputs, we perform image manipulation in an
+optimization manner. As shown in Fig. 2, each optimization step
+consists of two sub-steps, including 1) motion supervision and 2)
+point tracking. In motion supervision, a loss that enforces handle
+points to move towards target points is used to optimize the latent
+code 𝑨���. After one optimization step, we get a new latent code 𝑨���′
+and a new image I′. The update would cause a slight movement
+of the object in the image. Note that the motion supervision step
+only moves each handle point towards its target by a small step but
+the exact length of the step is unclear as it is subject to complex
+optimization dynamics and therefore varies for different objects
+and parts. Thus, we then update the positions of the handle points
+{𝑨���𝐴���} to track the corresponding points on the object. This tracking
+process is necessary because if the handle points (e.g., nose of the
+lion) are not accurately tracked, then in the next motion supervision
+step, wrong points (e.g., face of the lion) will be supervised, leading
+to undesired results. After tracking, we repeat the above optimiza-
+tion step based on the new handle points and latent codes. This
+optimization process continues until the handle points {𝑨���𝐴���} reach
+the position of the target points {𝑨���𝐴���}, which usually takes 30-200
+iterations in our experiments. The user can also stop the optimiza-
+tion at any intermediate step. After editing, the user can input new
+handle and target points and continue editing until satisfied with
+the results.
+Feature
+Generator
+Latent code w
+w’
+Nearest 
+Neighbor
+L1_loss(     ,     .detach())
+Fig. 3. Method. Our motion supervision is achieved via a shifted patch loss
+on the feature maps of the generator. We perform point tracking on the
+same feature space via the nearest neighbor search.
+interpolation. As shown in Fig. 3, to move a handle point 𝑨���𝐴��� to the
+target point 𝑨���𝐴���, our idea is to supervise a small patch around 𝑨���𝐴���
+(red circle) to move towards 𝑨���𝐴��� by a small step (blue circle). We use
+Ω1(𝑨���𝐴���,𝐴���1) to denote the pixels whose distance to 𝑨���𝐴��� is less than 𝐴���1,
+then our motion supervision loss is:
+L =
+𝐴���
+∑︁
+𝐴���=0
+∑︁
+𝑨���𝐴��� ∈Ω1(𝑨���𝐴���,𝐴���1)
+∥F(𝑨���𝐴���) − F(𝑨���𝐴��� + 𝑨���𝐴���)∥1 + 𝛹���∥(F − F0) · (1 − M)∥1,
+(1)
+where F(𝑨���) denotes the feature values of F at pixel 𝑨���, 𝑨���𝐴��� =
+𝑨���𝐴���−𝑨���𝐴���
+∥𝑨���𝐴���−𝑨���𝐴��� ∥2
+is a normalized vector pointing from 𝑨���𝐴��� to 𝑨���𝐴��� (𝑨���𝐴��� = 0 if 𝑨���𝐴��� = 𝑨���𝐴���)

@@ -1,0 +1,45 @@
+IMAGEBIND: One Embedding Space To Bind Them All
+Rohit Girdhar∗
+Alaaeldin El-Nouby∗
+Zhuang Liu
+Mannat Singh
+Kalyan Vasudev Alwala
+Armand Joulin
+Ishan Misra∗
+FAIR, Meta AI
+https://facebookresearch.github.io/ImageBind
+1) Cross-Modal Retrieval
+Crackle of a Fire
+Audio
+Text
+“A fire crackles while a pan of food is frying on 
+the fire.”
+“Fire is crackling then wind starts blowing.”
+“Firewood crackles then music...”
+“A baby is crying while a toddler is laughing.”
+“A baby is laughing while an adult is laughing.”
+“A baby laughs and something…”
+Baby Cooing
+Waves
+2) Embedding-Space Arithmetic
+3) Audio to Image Generation
+Dog
+Engine
+Fire
+Images
+Videos
+Depth
+&
+Rain
+Figure 1. IMAGEBIND’s joint embedding space enables novel multimodal capabilities. By aligning six modalities’ embedding into a
+common space, IMAGEBIND enables: 1) Cross-Modal Retrieval, which shows emergent alignment of modalities such as audio, depth or
+text, that aren’t observed together. 2) Adding embeddings from different modalities naturally composes their semantics. And 3) Audio-to-
+Image generation, by using our audio embeddings with a pre-trained DALLE-2 [61] decoder designed to work with CLIP text embeddings.
+Abstract
+W
+t IMAGEBIND
+h t
+l
+j i t
+1. Introduction
+5.05665v2  [cs.CV]  31 May 2023

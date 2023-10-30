@@ -1,0 +1,62 @@
+additional 5.9M masks in 180k images (for a total of 10.2M
+masks). As in the ﬁrst stage, we periodically retrained our
+model on newly collected data (5 times). Average annota-
+tion time per mask went back up to 34 seconds (excluding
+the automatic masks) as these objects were more challeng-
+ing to label. The average number of masks per image went
+from 44 to 72 masks (including the automatic masks).
+Fully automatic stage. In the ﬁnal stage, annotation was
+fully automatic. This was feasible due to two major en-
+hancements to our model. First, at the start of this stage, we
+had collected enough masks to greatly improve the model,
+including the diverse masks from the previous stage. Sec-
+ond, by this stage we had developed the ambiguity-aware
+model, which allowed us to predict valid masks even in am-
+biguous cases. Speciﬁcally, we prompted the model with a
+32×32 regular grid of points and for each point predicted
+a set of masks that may correspond to valid objects. With
+the ambiguity-aware model, if a point lies on a part or sub-
+part, our model will return the subpart, part, and whole ob-
+ject. The IoU prediction module of our model is used to se-
+lect conﬁdent masks; moreover, we identiﬁed and selected
+only stable masks (we consider a mask stable if threshold-
+ing the probability map at 0.5 − δ and 0.5 + δ results in
+similar masks). Finally, after selecting the conﬁdent and
+stable masks, we applied non-maximal suppression (NMS)
+to ﬁlter duplicates. To further improve the quality of smaller
+masks, we also processed multiple overlapping zoomed-in
+image crops. For further details of this stage, see §B. We
+applied fully automatic mask generation to all 11M images
+in our dataset, producing a total of 1.1B high-quality masks.
+We describe and analyze the resulting dataset, SA-1B, next.
+images with their shortest side set to 1500 pixels. Even af-
+ter downsampling, our images are signiﬁcantly higher reso-
+lution than many existing vision datasets (e.g., COCO [66]
+images are ∼480×640 pixels). Note that most models today
+operate on much lower resolution inputs. Faces and vehicle
+license plates have been blurred in the released images.
+Masks. Our data engine produced 1.1B masks, 99.1% of
+which were generated fully automatically. Therefore, the
+quality of the automatic masks is centrally important. We
+compare them directly to professional annotations and look
+at how various mask properties compare to prominent seg-
+mentation datasets. Our main conclusion, as borne out in
+the analysis below and the experiments in §7, is that our
+automatic masks are high quality and effective for training
+models. Motivated by these ﬁndings, SA-1B only includes
+automatically generated masks.
+Mask quality. To estimate mask quality, we randomly sam-
+pled 500 images (∼50k masks) and asked our professional
+annotators to improve the quality of all masks in these im-
+ages. Annotators did so using our model and pixel-precise
+“brush” and “eraser” editing tools. This procedure resulted
+in pairs of automatically predicted and professionally cor-
+rected masks. We computed IoU between each pair and
+found that 94% of pairs have greater than 90% IoU (and
+97% of pairs have greater than 75% IoU). For comparison,
+prior work estimates inter-annotator consistency at 85-91%
+IoU [44, 60]. Our experiments in §7 conﬁrm by human rat-
+ings that mask quality is high relative to a variety of datasets
+and that training our model on automatic masks is nearly as
+good as using all masks produced by the data engine.
+6

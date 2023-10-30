@@ -1,0 +1,85 @@
+task. Despite this, LENS achieves notable results that are comparable to these question-aware models.
+The dog is a pug and it 
+is wearing a blue shirt.
+Large Language Model
+Tags: surfing, surfer, pug, water dog, pug dog
+Attributes:
+- pug dog which has double-coated fur.
+- pug dog which has small to medium size.
+- pug dog which has four-legged mammal.
+- surfboard which has leash attached to the tail.
+- pug dog which has short, smooth coat.
+Captions:
+- a dog is sitting on a surf board in the water.
+- a dog wearing a blue shift on a surfboard in the water.
+- a small dog riding a surfboard in the water.
+- a dog wearing a blue shirt is on a surfboard in the  
+  ocean
+- a dog in a wet suit surfing on a surfboard.
+Question: What is the breed's dog? and What is the     
+                 dog wearing?
+Answer:
+Domain
+Vocabulary
+pug
+dog,
+shirt,
+surf table
+....
+Contrastive 
+Model
+Tag Module
+Text Prompt
+Attribute
+Vocabulary
+blue shirt,
+gray surf 
+table,
+brown dog,
+....
+Contrastive 
+Model
+Attribute Module
+Input Image
+Image Captioning
+Model
+Intensive Captioning
+Module
+Caption 1
+Caption 2
+      
+Caption n
+Output text
+Figure 2: The LENS framework. LENS executes computer vision and visual reasoning tasks through
+a frozen LLM and a set of “vision modules”. LENS leverages these vision modules to retrieve a
+textual description for an image which is used by the “reasoning module” (LLM) to generate a
+response for a given query.
+3
+Method
+We present a novel framework called LENS
+(Fig. 2), which aims to enhance the capabilities of
+frozen LLMs by enabling them to handle vision as well as vision-and-language tasks on top of
+their existing natural language understanding capabilities. In contrast to existing approaches, LENS
+provides a unified framework that facilitates the operation of a LLM’s “reasoning module" on textual
+data extracted from a set of independent and highly descriptive “vision modules”. More importantly,
+it eliminates the computational overhead of aligning the visual domain with the text domain through
+additional joint pretraining on multimodal data, a requirement in prior work for solving V&L tasks.
+[2, 35, 63, 15, 27].
+To summarize, given an image I, we leverage the vision modules to extract all conceivable textual
+information T that can describe the image, encompassing objects, attributes and captions, without
+limiting it to specific task instructions. Subsequently, a frozen LLM can process the generic prompts
+T concatenated with task-specific prompts, and perform object recognition or visual reasoning tasks.
+In this section, we introduce the essentials of the “vision modules", outline the main components of
+LENS, and then discuss the prompt design.
+3.1
+Visual Vocabularies
+For LENS, visual vocabularies act as a bridge to convert an image into textual information which can
+then be handled by an existing LLM. We develop vocabularies for common objects and attributes.
+Tags: To create a diverse and comprehensive tag vocabulary for a contrastive model’s image tagging,
+we collect tags from various sources. These include multiple image classification datasets such as
+[48, 33, 8, 46, 41, 4, 57, 28], object detection and semantic segmentation datasets [18, 36, 31] along
+with the visual genome dataset [29].
+Attributes: Following the methodology presented in Menon & Vondrick [40], we employ a large
+language model, GPT-3, to generate descriptions of the visual characteristics that differentiate each
+object category within our object vocabulary.
+4

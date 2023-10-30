@@ -1,0 +1,43 @@
+Question: What's the woman doing in the video? Answer:
+The woman in the video is wearing a pair of 
+Apple VR goggles while sitting in an airplane. 
+She appears to be using the goggles to watch 
+something, possibly a video or a 360-degree 
+view of the airplane's surroundings.
+Input Prompt
+Completion
+the movie poster for "Fight Club." The poster features two 
+men standing next to each other, with the words "Fight 
+Club" written in bold letters above them. The background 
+of the poster is dark and ominous, giving the impression of 
+a gritty and intense movie.
+Input Prompt
+Completion
+The image shows a photo of
+Question: Can you tell me about this image? Answer:
+this image is the cover of a book called "Mom's Family 
+Calendar" by Sandra Boynton. The book is designed to help 
+moms keep track of their family's schedule and activities.
+There is a godzilla.
+There is a chinchilla.
+There are three pandas.
+Input Prompt
+Completion
+The animal in the first image 
+surrounded with the plant in 
+the second image:
+This is the first image:
+This is the second image:
+Input Prompt
+Completion
+An elder man is playing 
+guitar, oil on canvas, 
+impressionism.
+Input Prompt
+Completion
+Image Captioning
+Image Question Answering
+In-context Completion
+Image-to-Image
+Text-to-Image
+ion Answering

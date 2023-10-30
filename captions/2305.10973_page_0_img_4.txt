@@ -1,0 +1,36 @@
+Drag Your GAN: Interactive Point-based Manipulation on the
+Generative Image Manifold
+XINGANG PAN, Max Planck Institute for Informatics, Germany and Saarbrücken Research Center for Visual Computing,
+Interaction and AI, Germany
+AYUSH TEWARI, MIT CSAIL, USA
+THOMAS LEIMKÜHLER, Max Planck Institute for Informatics, Germany
+LINGJIE LIU, Max Planck Institute for Informatics, Germany and University of Pennsylvania, USA
+ABHIMITRA MEKA, Google AR/VR, USA
+CHRISTIAN THEOBALT, Max Planck Institute for Informatics, Germany and Saarbrücken Research Center for Visual
+Computing, Interaction and AI, Germany
+Image + User input (1st Edit)
+Result
+2nd Edit
+Result
+Fig. 1. Our approach DragGAN allows users to "drag" the content of any GAN-generated images. Users only need to click a few handle points (red) and
+target points (blue) on the image, and our approach will move the handle points to precisely reach their corresponding target points. Users can optionally
+draw a mask of the flexible region (brighter area), keeping the rest of the image fixed. This flexible point-based manipulation enables control of many spatial
+attributes like pose, shape, expression, and layout across diverse object categories. Project page: https://vcai.mpi-inf.mpg.de/projects/DragGAN/.
+Synthesizing visual content that meets users’ needs often requires flexible
+and precise controllability of the pose, shape, expression, and layout of the
+generated objects. Existing approaches gain controllability of generative
+adversarial networks (GANs) via manually annotated training data or a
+prior 3D model, which often lack flexibility, precision, and generality. In
+this work, we study a powerful yet much less explored way of controlling
+GANs, that is, to "drag" any points of the image to precisely reach target
+points in a user-interactive manner, as shown in Fig.1. To achieve this, we
+propose DragGAN, which consists of two main components: 1) a feature-
+and layout of diverse categories such as animals, cars, humans, landscapes,
+etc. As these manipulations are performed on the learned generative image
+manifold of a GAN, they tend to produce realistic outputs even for chal-
+lenging scenarios such as hallucinating occluded content and deforming
+shapes that consistently follow the object’s rigidity. Both qualitative and
+quantitative comparisons demonstrate the advantage of DragGAN over prior
+approaches in the tasks of image manipulation and point tracking. We also
+showcase the manipulation of real images through GAN inversion.
+arXiv:2305.10973v1  [cs.CV]  18 May 2023

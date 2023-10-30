@@ -1,0 +1,31 @@
+Indoor
+Outdoor
+Method
+Success
+Success
+End-to-End BC
+0.72
+0.44
+End-to-End GCG [42]
+—
+0.61
+RECON
+0.19
+0.23
+ViNT-R (Random Subgoals)
+0.81
+—
+ViNT
+0.94
+1.00
+ViNT
+BC
+RECON
+ViNT-R
+Table 1: ViNT paired with our physical search algorithm consistently outperforms baselines for the task of
+undirected goal-reaching in indoor and outdoor environments (left). By effectively planning over diffusion
+subgoal proposals, ViNT is able to find an efficient path to the goal. Other baselines struggle to explore large
+indoor environments, shown by trajectories overlaid on an indoor floor plan (right).
+Figure 6: Visualizing ViNT exploration rollouts in challenging indoor environments using the Vizbot (top)
+and LoCoBot (bottom) robotic platforms. Future action samples ˆa obtained by spatially grounding the subgoal
+candidates are shown in yellow, with the best actions corresponding to the best candidate marked in blue.

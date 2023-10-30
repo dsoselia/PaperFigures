@@ -1,4 +1,0 @@
-Technical report. In progress
-Figure 15: Uncurated samples from the trained MDM on CC12M 256 × 256 given various prompts. The
-guidance weight is set 7.0.
-25

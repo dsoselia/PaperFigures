@@ -1,0 +1,79 @@
+100
+150
+200
+0
+1
+2
+3
+State
+No Breaking
+500
+550
+600
+0
+1
+2
+3
+State
+Front-Right Breaking
+500
+550
+600
+0
+1
+2
+3
+State
+Back-Right Breaking
+500
+550
+600
+Step
+0
+1
+2
+3
+State
+Back-Left Breaking
+Fig. 6: State trajectories of various leg-breaking patterns. The leg-breaking
+event is marked by a vertical red line. Note that different leg breaking patterns
+result in different state trajectories. We conjecture that these trajectories
+serve as signals that trigger the adaptive response in the algorithm.
+We now expand upon how the continuous input signal is
+discretized in the ARZ algorithm presented in Fig. 1. We first
+observe that the only way the incoming observation vector
+interacts with the rest of the algorithm is by forming scalar
+s12, by taking an inner-product with a dynamical vector v3
+(the second of the three red-colored lines of code). The scalar
+s12 affects the action only through the two if statements
+colored in red. Thus the effect of the input observation on the
+action is entirely determined by the relative position of the
+scalar s12 with respect to the two decision boundaries set
+by the scalars s15 and s7. In other words, the external input
+of the observation to the system is effectively discretized into
+four states: 0 (s12 ≤ s15, s7), 1 (s15, s7 < s12),
+2 (s7 < s12 ≤ s15) or 3 (s15 < s12 ≤ s7).
+Thus external changes in the environment, such as leg
+unique failure conditions is clear in Fig. 8a, which plots the
+controller’s actions one second before and after a leg breaks.
+We see a clear, instantaneous change in behavior when a
+leg fails. This policy is able to identify when a change has
+occurred and rapidly adapt. Fig. 8b shows the particular
+sequence of CADFs executed at each timestep before and
+after the change, indicating that CADFs do play a role in the
+policy’s ability to rapidly adjust its behavior. Indeed, only
+evolutionary runs that included CADFs were able to discover
+a policy robust to any leg breaking.
+(a) Actions
+(b) CADF call sequences
+Fig. 8: ARZ policy behavior changes when Front-Left leg breaks mid-episode
+(step 500), as shown by the dynamics of the actions and the program control
+flow due to CADFs.
+B. Cataclysmic Cartpole
+Introducing a novel benchmark adaptation task is an infor-
+mative addition to results in the realistic quadruped simulator
+because we can empirically adjust the nature of the benchmark
+dynamics until they are significant enough to create an
+adaptation gap: when stateless policies (i.e., MLP generalists)
+fail to perform well because they cannot adapt their control
+policy in the non-stationary environment (See Section S2

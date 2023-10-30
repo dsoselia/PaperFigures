@@ -1,5 +1,0 @@
-Technical report. In progress
-Figure 13: Uncurated samples from MDM trained on ImageNet 256 × 256 with the guidance weight 2.5 for
-labels of “sulphur-crested cockatoo, Kakatoe galerita, Cacatua galerita”, “llama”, “loggerhead, loggerhead
-turtle, Caretta caretta”, “hot pot, hotpot”, “jack-o’-lantern”, “espresso”.
-23

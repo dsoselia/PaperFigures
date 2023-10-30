@@ -1,0 +1,27 @@
+���
+p
+gy
+( g
+)
+p
+y
+selected joint angles of the human to conceptually similar joints of the creature. For joints where
+no correspondence can be found, we just set them to their default pose (e.g. ears and tails). This
+provides a rough estimate of the creature’s motion. However, this motion has many artifacts, such
+a feet sliding due to different leg lengths, self-collisions, floor collisions, and no motion of the tail
+and ears. Nonetheless, we can still use it as a reward signal to train our simulated character. The
+physical constraints imposed by the simulation then remove remaining artifacts. Importantly, after
+the simulated character is trained, it is driven only by a headset and controllers, without requiring
+any full-body information of the user or any kinematic retargeting.
+3.5
+Reward
+The goal for the simulated character is to imitate the human motion as closely as possible, while
+respecting all the constraints imposed by physics. Our reward function includes a component for
+imitation, contact, and action regularization:
+𝐴���𝐴��� = 𝐴���𝐴��� (imitation) + 𝐴���𝐴��� (contact) + 𝐴���𝐴��� (action)
+(5)
+𝐴���𝐴��� (imitation) = 𝐴���𝐴��� (𝐴���) + 𝐴���𝐴��� ( �𝐴���) + 𝐴���𝐴��� (𝐴���) + 𝐴���𝐴��� ( �𝐴���) + 𝐴���𝐴��� (orientation)
+(6)
+𝐴���𝐴��� (action) = 𝐴���𝐴��� (action diff) + 𝐴���𝐴��� (action min).
+(7)
+Each of the reward terms is expressed using a weighted Gaussian kernel:

@@ -1,0 +1,54 @@
+the interaction is not trained but able to do inference without any modification.
+where Qh is the learnable queries, and Pt, Pv, Pm represent the text prompts, visual prompts,
+and memory prompts, respectively. During training, Qh is duplicated for generic, referring, and
+interactive segmentation, as shown in Fig. 3. The corresponding prompts interact with their queries
+through self-attention. The learnable queries can freely interact with all prompts at inference time,
+thereby enabling zero-shot composition. Our design is inspired by the successful practice in X-
+Decoder [11]. However, we highlight the differences in Eq. (1), marked in red, which allow for a
+universal model for image segmentation with the following properties:
+Versatile. In SEEM, we introduce visual prompts Pv to handle all non-textual inputs, such as points,
+boxes, scribbles, and a referred region from another image. These non-textual queries are beneficial
+to disambiguate the user’s intent when textual prompts alone fail to identify the correct segment. For
+interactive segmentation, previous works either convert spatial queries to masks and feed them into
+the image backbone [20] or use different prompt encoders for each input type (points, boxes) [36].
+The first approach can be too heavy in applications because each interaction requires the image to
+go through the feature extractor. The second approach is hard to generalize to unseen prompts. To
+address these limitations, we propose a visual sampler (Fig. 2 (a)) to convert all kinds of non-textual
+queries to visual prompts that lie in the same visual embedding space:
+Pv = VisualSampler(s, ˆZ)
+(4)
+where ˆZ is the feature maps extracted from either the target image (i.e., ˆZ = Z) or a referred image,
+and s ∈ {points, box, scribbles, polygons} are the sampling locations specified by the user. We first
+pool the corresponding region from the image feature through point sampling [6]. For all visual
+prompts, we interpolate at most 512 point feature vectors uniformly from the region specified by the
+prompt. A notable merit of our proposed method is that the visual prompts are naturally well-aligned
+with the textual prompts, as our model continuously learns a common visual-semantic space through
+panoptic and referring segmentation.
+Compositional. In practice, a user may cast their intent using different or combined prompt types.
+Hence, a compositional approach to prompting is essential for real-world applications. However,
+we confront two issues during model training. First, the training data usually only covers a single
+type of interaction (e.g., none, textual, visual). Second, although we use visual prompts to unify all
+non-textual prompts and align them with textual prompts, their embedding spaces remain inherently
+different. To mitigate this problem, we propose to match prompts of different types with different
+outputs. Considering that visual prompts Pv come from image features while textual prompts Pt
+come from the text encoder, we select matched output indices for visual and textual prompts by
+matching them with the mask embeddings Om
+h or class embeddings Oc
+h, respectively:
+IDv ← Match(Om
+h · Pv + IoUmask)
+(5)
+IDt ← Match(Oc
+h · Pt + IoUmask)
+(6)
+where IoUmask is the IoU between ground-truth and predicted masks. The proposed separate
+matching method outperforms approaches that only match with either Om
+h or Oc
+h for all prompts.
+After training, our model becomes familiar with all prompt types and supports a variety of composi-
+tions, such as no prompts, one prompt type, or both visual and textual prompts using the same model
+and weights. In particular, the visual and textual prompts can be simply concatenated and fed to
+SEEM-Decoder, even though it was never trained in this way.
+Interactive. Interactive segmentation usually cannot be completed in one shot and requires multiple
+interaction rounds for refinement, similar to conversational agents like ChatGPT. In SEEM, we
+4

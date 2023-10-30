@@ -1,0 +1,25 @@
+a subgoal specified by an image observation s (i.e., the robot’s observation at the goal). Unlike
+alternative mechanisms for goal specification such as PointGoal [31], GPS navigation, or semantic
+objectives [32], a model can be trained for image-goal navigation with minimal assumptions, uti-
+lizing any data that contains videos and actions, without requirements on ground-truth localization,
+semantic labels, or other metadata. This makes it practical to train on a large and diverse dataset
+sourced from many different robots, facilitating broad generalization.
+ViNT takes as input current and past visual observations ot−P :t and a subgoal image os, and predicts
+(i) the number of time steps needed to reach the subgoal (the dynamical distance), and (ii) a sequence
+with length H of future actions leading towards the subgoal. Our 31M-parameter model, ViNT, is
+built on the Transformer architecture [33] and is optimized for: (i) fast and efficient inference on
+resource-constrained robots, and (ii) the ability to prompt and fine-tune for downstream tasks. We
+initialize all networks from scratch and train them end-to-end with the training objective in Eqn. 1.
+The model architecture is summarized in Figure 2, and described in detail in Appendix A.
+Tokenization: The ViNT architecture (Fig. 2) first tokenizes its inputs into an embedding of size
+dmodel = 512. ViNT independently tokenizes current and P = 5 past visual observations by encod-
+ing them with an EfficientNet-B0 [34] model, which takes 85 × 64 × 3 images as input and outputs
+a flattened feature vector ψ(oi) from the final convolutional layer [30].
+Goal fusion: We found that na¨ıvely extracting features from the goal image ϕ(os) using an Effi-
+cientNet encoder ϕ led to poor performance, often ignoring the goal entirely (see Appendix A). We
+hypothesize that effective features for image-based goal-reaching tasks are often relative, encoding
+the difference between the current observation and the goal rather than an absolute representation of
+the goal itself. Hence, we use a separate goal fusion encoder ϕ(ot, os) to jointly encode the current
+and goal observations. We stack the two images along their channel dimensions, pass them through
+a second EfficientNet-B0 encoder, and flatten to obtain the goal token.
+Transformer: The P + 2 observation and goal tokens are combined with a positional encoding and

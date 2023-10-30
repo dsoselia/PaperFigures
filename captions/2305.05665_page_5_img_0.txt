@@ -1,0 +1,81 @@
+0
+1
+2
+4
+8
+20
+40
+60
+80
+# shots per class
+ESC (Fold-1) Top-1
+IMAGEBIND
+AudioMAE [77]
+Supervised [77]
+0
+1
+2
+4
+8
+10
+20
+30
+40
+# shots per class
+SUN-D Top-1
+IMAGEBIND
+MultiMAE [4]
+Figure 3. Few-shot classification on audio and depth. We report
+the emergent zero-shot classification performance on each bench-
+mark (denoted by ⋆). We train linear classifiers on fixed features
+for the ≥ 1-shot case. (Left) In all settings, IMAGEBIND outper-
+forms the self-supervised AudioMAE model. IMAGEBIND even
+outperforms a supervised AudioMAE model upto 4 shot learning
+showing its strong generalization. (Right) We compare with the
+MultiMAE model trained with images, depth, and semantic seg-
+mentation masks. IMAGEBIND outperforms MultiMAE across all
+few-shot settings on few-shot depth classification.
+on audio from Audioset and (2) a supervised AudioMAE
+model finetuned on audio classification.
+Both baselines
+use the same capacity ViT-B audio encoder as IMAGE-
+BIND.
+IMAGEBIND significantly outperforms the Au-
+dioMAE model on all settings with gains of ∼40% accuracy
+in top-1 accuracy on ≤4-shot classification. IMAGEBIND
+also matches or outperforms the supervised model on ≥1-
+shot classification. IMAGEBIND’s emergent zero-shot per-
+formance surpasses the supervised ≤2-shot performance.
+For few-shot depth classification, we compare with the
+multimodal MultiMAE [4] ViT-B/16 model trained on im-
+ages, depth, and semantic segmentation data. IMAGEBIND
+significantly outperforms MultiMAE across all the few-shot
+settings. Altogether, these results show the strong gener-
+alization of IMAGEBIND audio and depth features trained
+with image alignment.
+4.4. Analysis and Applications
+Claps
+Church Bells
+Chirping birds
+Thunderstorm
+Figure 4. Embedding space arithmetic where we add image
+and audio embeddings, and use them for image retrieval. The
+composed embeddings naturally capture semantics from different
+modalities. Embeddings from an image of fruits + the sound of
+birds retrieves images of birds surrounded by fruits.
+Dog barking
+Keyboard typing
+Clock alarm
+Sea waves
+Figure 5. Object detection with audio queries. Simply replacing
+Detic [88]’s CLIP-based ‘class’ embeddings with our audio em-
+beddings leads to an object detector promptable with audio. This
+requires no re-training of any model.
+pretrained text-based detection model, Detic [88], and sim-
+ply replace its CLIP-based ‘class’ (text) embeddings with
+IMAGEBIND’s audio embeddings.
+Without training, this
+creates an ‘audio’-based detector that can detect and seg-
+ment objects based on audio prompts. As shown in Fig-
+ure 5, we can prompt the detector with the barking sound of
+a dog to localize a dog.

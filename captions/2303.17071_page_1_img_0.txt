@@ -1,0 +1,60 @@
+Figure 1: Overview of DERA. The method consists of two agents–a Researcher and a Decider. The Decider
+generates an initial output for the task (step 1). Then, the Decider and Researcher work through the problem via
+conversation (step 2), with the Researcher tasked to help identify crucial problem components. The Decider has
+the autonomy to integrate the Researcher ’s inputs and makes judgments on the ﬁnal output (step 3). Neither agent
+has knowledge of the ideal ﬁnal output.
+especially in the clinical domain.
+We advocate for a different approach that has
+two essential elements. First, it consists of an itera-
+tive approach to reﬁning the initial output. This al-
+lows the generation to be reﬁned holistically as op-
+posed to conditional chaining. Second, it includes
+an advisor that can guide by suggesting areas to
+focus on in each iteration, adding interpretability
+to the process. With the advent of GPT-4 (OpenAI,
+2023) capable of robust, realistic conversation, we
+can use dialog as the medium for interaction.
+We propose DERA: Dialog-Enabled Resolving
+Agents. DERA is a framework to explore how we
+can improve performance on natural language tasks
+using agents tasked with resolving (or improving)
+the output through dialog. We propose that scop-
+ing each agent in the dialog to a speciﬁc role will
+better enable them to focus on discrete portions
+of the task, and ensure their partner agent stays
+aligned with the overall goal. One agent role, the
+Researcher, works to identify relevant information
+for the problem and suggest areas of focus to the
+other agent. Another agent role, the Decider, has
+the autonomy to react to that information and make
+ﬁnal decisions about the output.
+Our paper makes the following contributions:
+• We introduce DERA (§ 2) - a framework for
+agent-agent dialog to improve performance
+on natural language tasks.
+• We evaluate DERA on three different types of
+clinical tasks. Each of these requires different
+types of textual inputs and types of knowledge
+to solve.
+– The medical conversation summarization
+task (§ 3) focuses on generating a sum-
+mary of a doctor-patient chat that is fac-
+tually accurate without omissions or hal-
+lucinations.
+– The careplan generation task (§4) is
+knowledge-intensive with long outputs
+that are useful in clinical decision sup-
+port. There is not a single best answer to
+the task and the goal is to maximize the
+amount of factually accurate and relevant
+information generated.
+– Medical question answering (Jin et al.,
+2021) is a knowledge reasoning task with
+a single answer but posed as an open-
+ended task without access to multiple
+choices. We study in this harder setting
+using two question-answering datasets
+(§5).
+• In both human-annotated evaluations, we ﬁnd
+that DERA outperforms base GPT-4 perfor-
+mance in the careplan generation and medical

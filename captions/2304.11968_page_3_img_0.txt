@@ -1,0 +1,33 @@
+Frame 0
+0%
+25%
+50%
+75%
+100%
+Figure 2: Qualitative results on video sequences from DAVIS-16 and DAVIS-17 datasets [13].
+#000
+#040
+#080
+#120
+#160
+#200
+Frame 0
+0%
+25%
+50%
+75%
+100%
+Seq (a)
+Seq (b)
+Figure 3: Failed cases.
+Step 4: Correction with human participation. After the above three steps, the TAM can now
+successfully solve some common challenges and predict segmentation masks. However, we notice
+that it is still difﬁcult to accurately distinguish the objects in some extremely challenging scenarios,
+especially when processing long videos. Therefore, we propose to add human correction during
+inference, which can bring a qualitative leap in performance with only very small human efforts. In
+detail, users can compulsively stop the TAM process and correct the mask of the current frame with
+positive and negative clicks.
+4
+Experiments
+4.1
+Quantitative Results

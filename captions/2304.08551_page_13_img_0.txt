@@ -1,0 +1,18 @@
+Woodstock ’18, June 03–05, 2018, Woodstock, NY
+Liu et. al.
+Fig. 6. Frame-by-frame view of music visualization by P10. Start and end prompts are displayed above the intervals. The first and last
+images of each track correspond to these prompts. Intervals 1 and 3 show the design pattern of a hold. Intervals 1, 4, and 5 show color
+and subject transitions.
+“A lot of variation, especially with AI-generated music videos can make people feel crazy...[I am] trying
+to keep to the philosophy of what a locked groove [techno musical phrase] is, making small variations
+between the broader theme, from black and white to color. After four seconds, we should go from colored
+disco to something else... Trying to create some visuals someone in a dance euphoria would see.” -P10
+Participants were also able to create visual changes that aligned with musical change. For example, P8 created a
+sharp visual change that aligned perfectly with the beginning of their melody. On the opening note of their melody,
+the music visualization transitioned sharply from an image of sunlight over mountains to a cabin. We see another
+example of audiovisual alignment when P2 generates a color transition in Figure 5 (second to last interval). This interval
+captured a sudden drop and the beginning of a heavy metal breakdown. After the drop, the colors became dramatic and
+psychedelic, reflecting the increased song intensity.
+“The part where there’s a slide with the bass, I wanted that to be the transition... [the system] pretty
+much got it... I want the intervals to start and end on beat.” -P4
+14

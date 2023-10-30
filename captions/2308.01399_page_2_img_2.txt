@@ -1,0 +1,91 @@
+LangRoom
+HomeGrid
+Messenger
+Habitat
+Environment
+Inputs
+Actions
+Pixels
+Instructions
+Walk into the 
+living room and 
+turn right. Stop 
+by the end table.
+Motor
+Stop
+Positions
+Rules
+1. Your enemy is 
+inside of a 
+plane…
+2. The top secret 
+paperwork is…
+0
+0
+0
+2
+3
+0
+0
+0
+0
+2
+0
+1
+0
+0
+0
+0
+Pixels
+Questions
+Pixels
+What color is the 
+vase?
+Tasks & Hints
+clean up the 
+papers
+pedal to open the 
+recycling bin
+Motor
+Motor
+Motor
+Answers
+Interaction
+pick up
+pedal
+drop
+grasp
+get
+lift
+It is green.
+Figure 2: We consider a wide range of environments that feature visual inputs and diverse types of
+language. HomeGrid is a challenging visual grid world with instructions and diverse hints. Messenger
+is a benchmark with symbolic inputs and hundreds of human-written game manuals that require
+multi-hop reasoning. Habitat simulates photorealistic 3D homes for vision-language navigation,
+where the agent has to locate objects in hundreds of scenes. LangRoom is a simple visual grid world
+with partial observability, where the agent needs to produce both motor actions and language.
+2
+Related Work
+Much work has focused on teaching reinforcement learning agents to utilize language to solve
+tasks by directly conditioning policies on language [5, 61, 47] or by augmenting agents with large
+language models (LLMs) [44, 1, 31]. While most of these agents focus on learning from high-level
+specifications of goals or step-by-step guidance, relatively few works have addressed learning to
+use broader types of language such as descriptions of how the world works [10, 69, 29]. Instead of
+directly learning a language-conditioned policy, we learn a language-conditioned world model and
+demonstrate its ability to understand diverse kinds of language about the world in a single model.
+Additionally, in contrast to LLM-based policies, Dynalang is multimodal, extending the next-token
+prediction paradigm to observations of both language and images rather than relying on translating
+observations to text. Dynalang can also be updated online, allowing the agent to continually learn
+language and how it relates to the world. We refer to Appendix C for detailed related work.
+3
+Dynalang
+Algorithm 1: Dynalang
+while acting do
+Dynalang learns to utilize diverse types of
+l
+i
+i
+l
+i
+t b
+di

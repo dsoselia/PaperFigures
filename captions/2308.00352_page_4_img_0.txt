@@ -1,0 +1,32 @@
+Figure 2: Overview of the MetaGPT framework. Presented is a two-layer architectural design: i) the Foundational
+Components Layer, which is essential for agent operations and system-wide communication, and ii) the Collaboration
+Layer, which facilitates agent coordination through key mechanisms such as knowledge sharing and workflow encapsu-
+lation. Within this framework, the agent capabilities in MetaGPT have been significantly enhanced. The instantiation of
+agents, guided by specialized role prompts known as "anchor agents," equips roles with capabilities for observation,
+thinking, reflection, and knowledge accumulation. These roles interact with the environment through established
+subscription and publication methods.
+The division into foundational and collaborative layers promotes modularity while ensuring both individual and
+collective agent capabilities. The components offer reusable building blocks and utilities while the collaboration
+modules integrate purposeful coordination.
+3.2
+Core Mechanism Design
+3.2.1
+Role Definitions
+The MetaGPT framework facilitates the creation of various specialized role classes, such as ProductManager, Architect,
+and others, which inherit from the base Role class. A base role class is characterized by a set of key attributes: name,
+profile, goal, constraints, and description. Specifically, Profile embodies the domain expertise of the role or job title. For
+instance, an Architect’s profile might encompass software design, while a ProductManager’s profile could concentrate
+on product development and management. Goal represents the primary responsibility or objective that the role seeks
+to accomplish. A ProductManager’s goal could be presented in natural language as efficiently creating a successful
+product. Constraints denote limitations or principles the role must be followed when performing actions. For example,
+an Engineer could have constraints to write standardized, modular, and maintainable code. The constraints might
+dictate as The code you write should conform to code standards like PEP8, be modular, easy to read, and maintain,
+as shown in Figure 2. Description provides additional concrete identity to help establish a more comprehensive role.
+Role initialization in the MetaGPT framework uses natural language to comprehensively describe the responsibilities
+and constraints of each role. Roles not only aid human understanding but also guide the LLMs to generate actions that
+align with the role’s profile, enabling each agent to be proficient in its respective task. We define this process as anchor
+agents, which help humans to encode domain-specific responsibilities and capabilities into an LLM-based agent, and
+also add behavior guidance on expected functions. We will discuss this further in Section 3.2.2
+For instance, an Engineer in a software company can be initialized using role-specific settings in MetaGPT, as illustrated
+in Figure 2: Role: You are a [profile], named [name], your goal is [goal], and the constraint is [constraints].
+5

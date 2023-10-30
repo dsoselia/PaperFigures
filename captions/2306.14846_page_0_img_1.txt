@@ -1,0 +1,40 @@
+y
+pp
+p p
+Visual Navigation Transformer (ViNT), a foundation model that aims to bring
+the success of general-purpose pre-trained models to vision-based robotic navi-
+gation. ViNT is trained with a general goal-reaching objective that can be used
+with any navigation dataset, and employs a flexible Transformer-based architec-
+ture to learn navigational affordances and enable efficient adaptation to a variety
+of downstream navigational tasks. ViNT is trained on a number of existing naviga-
+tion datasets, comprising hundreds of hours of robotic navigation from a variety of
+different robotic platforms, and exhibits positive transfer, outperforming special-
+ist models trained on narrower datasets. ViNT can be augmented with diffusion-
+based goal proposals to explore novel environments, and can solve kilometer-scale
+navigation problems when equipped with long-range heuristics. ViNT can also be
+adapted to novel task specifications with a technique inspired by prompt-tuning,
+where the goal encoder is replaced by an encoding of another task modality (e.g.,
+GPS waypoints or turn-by-turn directions) embedded into the same space of goal
+tokens. This flexibility and ability to accommodate a variety of downstream prob-
+lem domains establish ViNT as an effective foundation model for mobile robotics.
+Training Data
+Zero-Shot Deployment
+ViNT Foundation Model
+Adapt to Downstream Tasks
+Kilometer-Scale Exploration
+Route-Guided Navigation
+Coverage Mapping
+Figure 1: Overview of the ViNT foundation model. ViNT generalizes zero-shot across environments and
+robot embodiments, and can be directly applied to tasks including exploration and navigation around humans.
+ViNT can also be fine-tuned with a small amount of data to expand its capabilities to new tasks.
+1
+Introduction
+Recently, machine learning methods have achieved broad success in natural language processing [1],
+visual perception [2–4], and other domains [5, 6] by leveraging Internet-scale data to train general-
+purpose “foundation” models that can be adapted to new tasks by zero-shot transfer, prompt-tuning,
+or fine-tuning on target data [7–10]. Although this paradigm has been successful in many domains,
+it is difficult to apply in robotics due to the sheer diversity of environments, platforms, and applica-
+tions. In this paper we ask the question: what is required of a foundation model for mobile robotics?
+† Lead Authors. Videos, code, and models: general-navigation-models.github.io.
+7th Conference on Robot Learning (CoRL 2023), Atlanta, USA.
+arXiv:2306.14846v2  [cs.RO]  24 Oct 2

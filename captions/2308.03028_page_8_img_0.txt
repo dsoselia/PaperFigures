@@ -1,0 +1,17 @@
+Figure 2. How prompts are generated in our approach.
+that is designed to penalize deviations from a desired reference trajectory while considering
+constraints on the control outputs and system states. The first control input from the
+optimal solution is applied to the system, and the process is repeated at the next time
+step. MPC is widely used in various applications, including robotics, automotive control,
+and process control, due to its ability to handle constraints, predict system behavior, and
+optimize control inputs in a systematic manner (Rawlings et al., 2017). In our experiment,
+the MPC approach is utilized as an oracle/skyline. In other words, rather than relying
+on a predictive model, we allow the MPC method to access the ground truth of external
+temperatures for the subsequent 10 steps. The results obtained through the MPC approach
+can be considered as an upper bound for all algorithms.
+• PPO. Proximal Policy Optimization (PPO) is a popular algorithm in reinforcement learn-
+ing, designed to improve the stability and performance of policy gradient methods. PPO
+was introduced by Schulman et al. (2017) as a computationally efficient alternative to
+Trust Region Policy Optimization (TRPO) (Schulman et al., 2015). PPO is an on-policy
+method that allows us to optimize the policy while maintaining the trust region constraint,
+preventing the policy from updating too drastically to guarantee policy improvement. The

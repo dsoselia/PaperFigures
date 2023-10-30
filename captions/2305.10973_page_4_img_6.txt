@@ -1,0 +1,73 @@
+Drag Your GAN: Interactive Point-based Manipulation on the Generative Image Manifold
+SIGGRAPH ’23 Conference Proceedings, August 6–10, 2023, Los Angeles, CA, USA
+Inputs
+Ours
+UserControllableLT
+Fig. 4. Qualitative comparison of our approach to UserControllableLT [Endo 2022] on the task of moving handle points (red dots) to target points (blue dots).
+Our approach achieves more natural and superior results on various datasets. More examples are provided in Fig. 10.
+space, depending on whether the user wants a more constrained
+image manifold or not. As W+ space is easier to achieve out-of-
+distribution manipulations (e.g., cat in Fig. 16), we use W+ in this
+work for better editability. In practice, we observe that the spatial
+attributes of the image are mainly affected by the 𝑨��� for the first
+6 layers while the remaining ones only affect appearance. Thus,
+inspired by the style-mixing technique [Karras et al. 2019], we only
+update the 𝑨��� for the first 6 layers while fixing others to preserve the
+appearance. This selective optimization leads to the desired slight
+movement of image content.
+3.3
+Point Tracking
+The previous motion supervision results in a new latent code 𝑨���′,
+new feature maps F′, and a new image I′. As the motion supervision
+step does not readily provide the precise new locations of the handle
+points, our goal here is to update each handle point 𝑨���𝐴��� such that it
+tracks the corresponding point on the object. Point tracking is typi-
+cally performed via optical flow estimation models or particle video
+approaches [Harley et al. 2022]. Again, these additional models can
+significantly harm efficiency and may suffer from accumulation
+error, especially in the presence of alias artifacts in GANs. We thus
+present a new point tracking approach for GANs. The insight is that
+the discriminative features of GANs well capture dense correspon-
+dence and thus tracking can be effectively performed via nearest
+neighbor search in a feature patch. Specifically, we denote the fea-
+ture of the initial handle point as 𝑨���𝐴��� = F0(𝑨���𝐴���). We denote the patch
+around 𝑨���𝐴��� as Ω2(𝑨���𝐴���,𝐴���2) = {(𝐴���,𝑦) | |𝐴��� − 𝐴���𝐴���,𝐴��� | < 𝐴���2, |𝑦 − 𝑦𝐴���,𝐴��� | < 𝐴���2}.
+Then the tracked point is obtained by searching for the nearest
+neighbor of 𝐴���𝐴��� in Ω2(𝑨���𝐴���,𝐴���2):
+𝑨���𝐴��� :=
+arg min
+𝑨���𝐴��� ∈Ω2(𝑨���𝐴���,𝐴���2)
+∥F′(𝑨���𝐴���) − 𝑨���𝐴��� ∥1.
+(2)
+In this way, 𝑨���𝐴��� is updated to track the object. For more than one
+handle point, we apply the same process for each point. Note that
+here we are also considering the feature maps F′ after the 6th block
+of StyleGAN2. The feature maps have a resolution of 256 × 256 and
+are bilinear interpolated to the same size as the image if needed,
+which is sufficient to perform accurate tracking in our experiments.
+We analyze this choice at Sec. 4.2.
+3.4
+Implementation Details
+We implement our approach based on PyTorch [Paszke et al. 2017].
+We use the Adam optimizer [Kingma and Ba 2014] to optimize
+the latent code 𝑨��� with a step size of 2e-3 for FFHQ [Karras et al.
+2019], AFHQCat [Choi et al. 2020], and LSUN Car [Yu et al. 2015]
+datasets and 1e-3 for others. The hyper-parameters are set to be
+𝛹��� = 20,𝐴���1 = 3,𝐴���2 = 12. In our implementation, we stop the optimiza-
+tion process when all the handle points are no more than 𝐴��� pixel
+away from their corresponding target points, where 𝐴��� is set to 1
+for no more than 5 handle points and 2 otherwise. We also develop
+a GUI to support interactive image manipulation. Thanks to the
+computational efficiency of our approach, users only need to wait
+for a few seconds for each edit and can continue the editing until
+satisfied. We highly recommend readers refer to the supplemental
+video for live recordings of interactive sessions.
+4
+EXPERIMENTS
+Datasets. We evaluate our approach based on StyleGAN2 [Karras
+et al. 2020] pretrained on the following datasets (the resolution of
+the pretrained StyleGAN2 is shown in brackets): FFHQ (512) [Karras
+et al. 2019], AFHQCat (512) [Choi et al. 2020], SHHQ (512) [Fu et al.
+2022], LSUN Car (512) [Yu et al. 2015], LSUN Cat (256) [Yu et al.
+2015], Landscapes HQ (256) [Skorokhodov et al. 2021], microscope
+5

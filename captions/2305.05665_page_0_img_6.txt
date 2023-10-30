@@ -1,0 +1,67 @@
+IMAGEBIND: One Embedding Space To Bind Them All
+Rohit Girdhar∗
+Alaaeldin El-Nouby∗
+Zhuang Liu
+Mannat Singh
+Kalyan Vasudev Alwala
+Armand Joulin
+Ishan Misra∗
+FAIR, Meta AI
+https://facebookresearch.github.io/ImageBind
+1) Cross-Modal Retrieval
+Crackle of a Fire
+Audio
+Text
+“A fire crackles while a pan of food is frying on 
+the fire.”
+“Fire is crackling then wind starts blowing.”
+“Firewood crackles then music...”
+“A baby is crying while a toddler is laughing.”
+“A baby is laughing while an adult is laughing.”
+“A baby laughs and something…”
+Baby Cooing
+Waves
+2) Embedding-Space Arithmetic
+3) Audio to Image Generation
+Dog
+Engine
+Fire
+Images
+Videos
+Depth
+&
+Rain
+Figure 1. IMAGEBIND’s joint embedding space enables novel multimodal capabilities. By aligning six modalities’ embedding into a
+common space, IMAGEBIND enables: 1) Cross-Modal Retrieval, which shows emergent alignment of modalities such as audio, depth or
+text, that aren’t observed together. 2) Adding embeddings from different modalities naturally composes their semantics. And 3) Audio-to-
+Image generation, by using our audio embeddings with a pre-trained DALLE-2 [61] decoder designed to work with CLIP text embeddings.
+Abstract
+We present IMAGEBIND, an approach to learn a joint
+embedding across six different modalities - images, text, au-
+dio, depth, thermal, and IMU data. We show that all combi-
+nations of paired data are not necessary to train such a joint
+embedding, and only image-paired data is sufficient to bind
+the modalities together. IMAGEBIND can leverage recent
+large scale vision-language models, and extends their zero-
+shot capabilities to new modalities just by using their natu-
+ral pairing with images. It enables novel emergent applica-
+tions ‘out-of-the-box’ including cross-modal retrieval, com-
+posing modalities with arithmetic, cross-modal detection
+and generation. The emergent capabilities improve with the
+strength of the image encoder and we set a new state-of-the-
+art on emergent zero-shot recognition tasks across modal-
+1. Introduction
+A single image can bind together many experiences – an
+image of a beach can remind us of the sound of waves, the
+texture of the sand, a breeze, or even inspire a poem. This
+‘binding’ property of images offers many sources of super-
+vision to learn visual features, by aligning them with any
+of the sensory experiences associated with images. Ideally,
+for a single joint embedding space, visual features should
+be learned by aligning to all of these sensors. However, this
+requires acquiring all types and combinations of paired data
+with the same set of images, which is infeasible.
+Recently, many methods learn image features aligned
+with text [1, 31, 46, 60, 64, 65, 82, 83], audio [3, 4, 50,
+55, 56, 70] etc. These methods use a single pair of modal-
+arXiv:2305.05665v2  [cs.CV]  31 May 2023

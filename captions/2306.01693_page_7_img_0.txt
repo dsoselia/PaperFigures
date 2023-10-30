@@ -1,0 +1,91 @@
+4.5
+LM Customization with FINE-GRAINED RLHF
+Since we use multiple reward models in FINE-GRAINED RLHF, adjusting their weights (see Eq. 1)
+during RL may lead to different LM behaviors. For example, adding more weight to a reward
+model associated with one specific desired behavior type (e.g., information completeness) may lead
+the generation more towards that behavior type compared to others (e.g., information relevance).
+This flexibility can potentially fit users with diverse needs. Therefore, in this section, we explore
+FINE-GRAINED RLHF’s ability to customize the LM behavior.
+LM customization. As in Table 4, we explore three configurations of reward model weights (w1, w2,
+and w3 for Rϕ1, Rϕ2, and Rϕ3) and name them ‘short’, ‘medium’, and ‘long’ according to the LM’s
+average generation length. For simplicity, we fix w2 = 0.5 and w3 = 0.3, and use 0.4, 0.3, and 0.2
+for w1, which leads to ‘short’, ‘medium’, and ‘long’ generation outputs respectively. We can see that
+‘short’ generates more relevant content, but is less factual and complete. ‘Long’, on the contrary, gives
+the most factual and complete generation. This reflects that the LM is referencing a large amount of
+content from passages. The ‘medium’ configuration balances the three rewards and has the highest
+Rouge score. Qualitative analysis and examples of LM customization are in Appendix A.
+Trade-off between error types. We observe that a higher w1 leads to a bigger rel. reward, smaller
+fact. and comp. rewards, and shorter generated outputs. One interpretation is that Rϕ1 penalizes
+text spans that are irrelevant to the questions. As such, it encourages answering the question directly
+and penalizes referencing passages and generating auxiliary information. This reduces the model
+generation length and information completeness, and induces more factual errors.
+4.6
+Analysis
+Figure 4: Dynamics of each type of re-
+ward during training (reward v.s. train-
+ing steps). All rewards are z-normalized.
+rel.
+fact.
+comp.
+avg.
+Rϕ1(↑)
+Rϕ2(↑)
+Rϕ3(↑)
+Rouge(↑)
+len
+SFT
+0.514
+0.735
+0.065
+43.13
+96.69
+F.G. RLHF
+0.516
+0.825
+0.266
+44.29
+101.76
+w/o. Rϕ1
+0.249
+0.771
+0.742
+38.52
+179.31
+w/o. Rϕ2
+0.716
+0.640
+-0.177
+43.18
+78.08
+w/o. Rϕ3
+0.565
+0.799
+0.123
+43.61
+93.92
+Table 5: Ablation of reward models on the development
+set. Rϕ1, Rϕ2, and Rϕ3 correspond to the reward model
+for relevance, factuality, and information completeness.
+Reward models are competing against each other. In the prior section, we find that there is a
+trade-off between error types. To further look into this phenomenon, we explore the dynamics of
+each reward model during training. Figure 4 shows each reward model’s rewards on the development
+set during training. All rewards are z-normalized for visualization. We see that fact. reward is
+consistently increasing. The rel. reward increases rapidly in the first 250 steps and then starts
+decreasing, while comp. reward exhibits an opposite trend, decreasing at first and then starting
+to increase. As discussed earlier, one interpretation is that relevance (precision) and information
+completeness (recall) can be adversarial objectives, so the rewards are competing. Three rewards
+reach an equilibrium point in later steps.
+Ablation: Does the LM learn from all reward models? What if we remove one reward model?
+Table 5 explores the policy LM behavior when one of the three reward models is removed during
+training. Qualitative examples are in Appendix A. First, we observe that the corresponding reward
+decreases dramatically when the model is removed. When the rel. reward model ( Rϕ1 ) is removed,
+the outputs become extremely long and the comp. reward is extremely high. We observe the outputs
+and find the model is copying a lot of content from the passages. When the fact. reward model
+( Rϕ2 ) is removed, the rel. reward becomes the highest. We observe that the LM tends to answer
+the question directly and not reference the passages, which causes a lot of hallucinations. When the
+comp. reward model ( Rϕ3 ) is removed, the outputs are concise and factual but not providing all
+relevant information to the question. Thus, it has lower information completeness and Rouge score
+compared with the LM trained with all reward models.
+Reward model performance. We report and analyze the performance of each reward model in
+predicting its corresponding error category. The rel. reward model Rϕ1 has the binary classification
+8

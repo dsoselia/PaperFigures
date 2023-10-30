@@ -1,0 +1,37 @@
+Robot
+Human
+The plastic one, please.
+Which one, plastic or metal?
+0.44 - Put plastic bowl in microwave.
+0.41 - Put metal bowl in microwave.
+0.03 - Put metal bowl in landﬁll bin
+0.08 - Put plastic bowl in recycling bin.
+Number of possible steps > 0.21 = 2
+Prediction size 2 > 1 → ask for help.
+Prediction Set from Conformal Prediction
+Conformal Prediction
+Trigger Human Help
+Question: Which one, plastic or metal?
+LLM Generates Question
+Conformal prediction threshold: 0.21
+Steps with scores above threshold:
+0.44 - Put plastic bowl in microwave.
+0.41 - Put metal bowl in microwave.
+Figure 1: KNOWNO uses Conformal Prediction (CP) to align the uncertainty of LLM planners. Given a language
+instruction, an LLM generates possible next steps and its confidences (scores) in these options. CP then provides a
+prediction set that includes the options with scores above a certain quantile. If there is more than one option in the set,
+the robot asks for help. Experiments across multiple embodiments and a variety of ambiguous situations show that
+KNOWNO significantly improves efficiency and autonomy compared to baselines.
+approaches do not provide a way to ensure that asking for help results in a desired level of task success. We
+formalize these challenges via two desiderata: (i) calibrated confidence: the robot should seek sufficient
+help to ensure a statistically guaranteed level of task success specified by the user, and (ii) minimal help:
+the robot should minimize the overall amount of help it seeks by narrowing down possible ambiguities
+in a task. We collectively refer to these sufficiency and minimality conditions as uncertainty alignment.
+Statement of contributions. We propose KNOWNO— Know When You Don’t Know — a framework for
+aligning the uncertainty of LLM-based planners utilizing the theory of conformal prediction (CP) [3, 4].
+We make the following contributions: (1) Given a language instruction, we utilize a pre-trained LLM with
+uncalibrated confidence to generate a set of possible actions for the robot to execute next. We demonstrate
+how to use CP to select a subset of these options, which allows the robot to decide an action to execute (if
+the subset is a singleton) or to ask for help otherwise. (2) We prove theoretical guarantees on calibrated
+confidence in both single-step and multi-step planning problems: with a user-specified level 1−ϵ, the
+robot performs the tasks correctly in 1−ϵ % of scenarios by asking for help when it deems it necessary.

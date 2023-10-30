@@ -1,0 +1,33 @@
+Figure 1: Comparison of SGD and LOMO in backpropagation and parameter update stages. Pi
+refers to the parameter of the model and Gi refers to the gradient corresponding to Pi. LOMO fused
+gradient computation and parameter update in one step to minimize the size of gradient tensors.
++ backward process should not be less than the forward process alone. It is worth noting that, when
+employing LOMO to save memory, we ensure that the fine-tuning process remains uncompromised,
+as the parameter update process is still equivalent to SGD.
+We empirically assess the memory and throughput performance of LOMO and show that the usage
+of LOMO enables successful training of a 65B model with only 8 RTX 3090 GPUs. Additionally,
+to validate the downstream performance of our proposed technique, we apply LOMO to tune the
+full parameters of LLMs on the SuperGLUE dataset collection (Wang et al., 2019). The empirical
+results demonstrate the efficiency and effectiveness of LOMO for optimizing LLMs with billions of
+parameters. Overall, our contributions are as follows:
+• We provide a theoretical analysis suggesting that SGD can successfully fine-tune the full
+parameters of LLMs. The issues that previously hindered the widespread usage of SGD
+may no longer be severe problems for fine-tuning LLMs.
+• We propose LOw-Memory Optimization, named LOMO, to significantly save GPU mem-
+ory usage without harming the fine-tuning process.
+• Through a thorough evaluation of memory usage and throughput performance, we empiri-
+cally validate the effectiveness of LOMO in optimizing LLMs under resource-constrained
+scenarios. This is further supported by performance evaluations on downstream tasks.
+2
+RELATED WORK
+In this section, we present related work on memory-saving techniques during full parameter fine-
+tuning. These techniques can be effectively combined with LOMO to further reduce memory con-
+sumption.
+Activation Checkpointing
+During vanilla backpropagation, all activations from the forward pass
+are stored in memory to compute gradients. This can be a significant memory overhead, especially
+for large language models. Alternatively, one could discard all activations and recompute them on
+demand for gradients computation in order to save memory. However, this can result in a substan-
+tial additional computation cost. Activation checkpointing (or gradient checkpointing) takes into
+account both memory usage and computational cost, providing a compromise solution (Chen et al.,
+2

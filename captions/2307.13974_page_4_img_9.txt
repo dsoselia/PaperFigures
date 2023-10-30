@@ -1,0 +1,41 @@
+Figure 2. Qualitative results of HQTrack on videos from VOTS2023 test set.
+τ =
+AUC
+A
+R
+NRE↓
+DRE↓
+ADQ
+0
+0.702
+0.756
+0.866
+0.072
+0.062
+0.769
+0.1
+0.708
+0.753
+0.878
+0.072
+0.050
+0.769
+0 2
+0 707
+0 753
+0 878
+0 072
+0 050
+0 768
+Method
+AUC
+A
+R
+NRE↓ DRE↓ ADQ
+VMOS (Res50)
+0.564 0.693 0.759 0.155 0.086 0.691
+VMOS
+0.596 0.724 0.765 0.159 0.075 0.711
+VMOS
+SAM H
+0 610 0 751 0 757 0 159 0 084 0 706

@@ -1,0 +1,40 @@
+Pan Lu1, Baolin Peng2, Hao Cheng2, Michel Galley2
+Kai-Wei Chang1, Ying Nian Wu1, Song-Chun Zhu1, Jianfeng Gao2
+1University of California, Los Angeles
+2Microsoft Research, Redmond
+lupantech@gmail.com
+{bapeng, chehao, mgalley, jfgao}@microsoft.com
+https://chameleon-llm.github.io
+- The question is about identifying the main persuasive appeal used in an advertisement. 
+[194, 21]: Earthzy paper
+[244, 70]: plates now
+[172, 112]: carry the Sierra
+[231, 159]: Club seal of
+[275, 198]: approval
+Analyze the advertisement to determine which persuasive appeal is used. The 
+ad mentions that Earthzy paper plates carry the Sierra Club seal of approval. 
+This implies that the product is environmentally friendly and has been endorsed 
+by a reputable organization. This appeal is primarily based on the credibility 
+and authority of the Sierra Club, which is an example of ethos (character).
+Which is the main persuasive 
+appeal used in this ad?
+(A) pathos (emotion)
+(B) ethos (character)
+(C) logos (reason)
+ethos (character)
+What is the direction of this push?
+(A) away from the baseball bat 
+(B) toward the baseball bat
+Image Captioner
+Knowledge Retrieval
+Answer Generator
+Solution Generator
+Answer Generator
+Solution Generator
+Knowledge Retrieval
+Text Detector
+1
+1
+2
+2
+CL]  24 May 2023

@@ -1,0 +1,33 @@
+Figure 4: Click/scribble-based segmentation. SEEM supports arbitrary formats of clicks or scribbles
+by users. Moreover, it simultaneously gives the semantic label for the segmented mask, which is not
+possible in SAM [36].
+Figure 5: Text to mask or text referring segmentation. The referred text is shown on the masks. SEEM
+adapts to various types of input images in the domain of cartoons, movies, and games.
+4.2
+Ablation Study
+We conduct an ablation study on all the training segmentation tasks and zero-shot video object
+segmentation, dissecting each component of our model. The results are presented in Table 4.
+LVIS mask annotation will improve interactive segmentation results. We replace the COCO mask with
+an overlap IoU larger than 0.7 with LVIS mask during training. This will improve the performance
+on interactive segmentation with 0.3 and 0.2 point gain on NoC0.9 and NoC0.85.
+Training from scratch only hurts referring segmentation performance. We compare the SEEM model
+trained with X-Decoder pre-trained checkpoint or the checkpoint initialized with UniCL or Florence
+vision and language backbone (+Scratch). It indicates that training from scratch will slightly improve
+the performance on interactive segmentation but hurt the referring segmentation performance.
+Increase interactive training iterations does help. As shown in Table 4, increasing the training
+iteration (the first N-1 iteration is without gradient) from 1 to 5 will gradually improve the interactive
+segmentation performance from 5.41 to 4.59 on NoC0.9. As the computation cost increases with
+more clicks, we use iteration 3 for the main paper results.
+4.3
+Qualitative Results
+We further qualitatively evaluate SEEM. Based on the proposed prompting scheme and decoder
+design, with the same suite of parameters, SEEM supports a wide range of visual input types.
+Visual prompt interactive segmentation. In Fig. 4, we show the visualization of using SEEM to
+segment objects in an interactive way. The user can segment objects of interest by simply clicking
+or drawing a scribble. Taking these prompts, SEEM can simultaneously produce both masks and
+semantic labels for the objects. Note that our model is open-vocabulary, which empowers it to label
+unseen categories when given the candidate vocabulary (i.e., cheetah and butterfly in Fig. 4). When
+no vocabulary is given, SEEM can segment in a class-agnostic manner.
+Text referring segmentation. We show the text referring to segmentation visualization results in
+Fig. 5. The results demonstrate that our model is semantic-aware of open-vocabulary concepts and
+8

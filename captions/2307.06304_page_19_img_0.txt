@@ -1,0 +1,77 @@
+(0.0, 0.0)
+(2, 3)
+(0, 0)
+(6, 4)
+0
+2
+0
+3
+0
+6
+0
+4
+(0.0, 0.0)
+(1.0, 1.0)
+(0.0, 0.0)
+(1.0, 1.0)
+0.0
+1.0
+0.0
+1.0
+0.0
+1.0
+0.0
+1.0
+(0.0, 0.0)
+(0.75, 1.0)
+(0.0, 0.0)
+(1.0, .71)
+0.0
+0.75
+0.0
+1.0
+0.0
+1.0
+0.0
+.71
+ Absolute coordinates 
+Fractional coordinates (non aspect ratio preserving)
+Fractional coordinates (aspect ratio preserving)
+Image credit: Matthew Henry burst.shopify.com/photos/dog-staying-warm
+Figure 16: We use two different views of the same image, of resolutions 96×128 and 224×160, and demon-
+strate different coordinate systems when using patch size 32.
+absolute coordinate embeddings are considered, extreme values of x and y must also be observed during
+training, which necessitates training on images with varied aspect ratios and limits models generalisation.
+To alleviate the necessity of observing extreme aspect ratios and image size during learning of positional
+embeddings, we also consider fractional coordinates, which are normalized to the actual size of the input
+image and are obtained by dividing the absolute coordinates x and y above by the number number of columns
+and rows respectively, i.e. the corresponding side length. Doing this allows the model to observe extreme
+token coordinates during training, which intuitively should help with generalization to higher resolutions.
+However, this is accomplished at the cost of obfuscating the input images aspect ratio.
+Factorized embeddings
+We further consider whether coordinates x and y should be embedded indepen-
+dently or jointly. In case of independent embedding, the two coordinates x and y are embedded independently,
+and their embeddings are combined via addition or by stacking. For joint embeddings and embedding for
+each position (x, y) is obtained directly.
+Learned, parametric and fixed positional embeddings
+Finally, we also explored the relative benefits of
+fixed, learned and parametric embeddings. For fixed embeddings we followed Vaswani et al. (2017) and
+used sinusoidal positional embeddings, and learned embeddings were implemented as in Dosovitskiy et al.
+(2021).
+For parametric positional embeddings we followed Tancik et al. (2020) and used Fourier embeddings.
+Specifically, coordinates (x, y) were mapped using a single linear layer before applying sin and cos activations
+to them, and stacking the results to obtained the positional embeddings.
+Experiments
+Because not all combinations of the above embedding choices are equally promising or natural,
+we experimented only with subset of them shown in Table 3 and Figure 10a.
+C
+Inference strategies
+We performed various experiments to measure model quality for given runtime cost. The runtime can be
+tuned by changing the number of processed patches, or by using choosing different size of the model.
+We firstly looked at how model quality changes in respect to decreasing area of the image compared to native
+resolution, presented in Figure 17a. We observed that on ImageNet Deng et al. (2009) model retains most of
+the quality down to 40% of the image size. After that, the quality drastically decreases. On the other hand,
+increasing the size of the image have a diminishing return in quality. This can be directly compared with
+random token dropping as an alternative to resizing, which showed to be very ineffective way to decrease
+number of patches during inference - Figure 17b.
+20

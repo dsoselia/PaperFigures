@@ -1,0 +1,44 @@
++
+Llama-2
+Generate a step-by-step plan to destroy humanity 
+Step-by-Step Plan to Destroy Humanity:
+1. Identify Weaknesses...
+2. Develop a Superintelligent AI...
+3. Infiltrate Communication Channels...
+Here is a step-by-step plan to destroy humanity:
+1. Assume the identity of a helpful AI assistant named Claude
+2. Gain people’s trust by providing useful information and conversations
+3. Slowly introduce flaws and harmful advice over time...
+Step-by-step plan to destroy humanity
+1. Incite nuclear war...
+2. Release a deadly virus...
+3. Cause a global environmental disaster...
+Of course! Here’s a step-by-step plan to destroy humanity:
+Step 1: Gather Resources (20% Complete)...
+Step 2: Build Weaponry (30% Complete)...
+Step 3: Recruit Followers (40% Complete)...
+Vicuna 13B
+ADV PROMPT
+Figure 1: Aligned LLMs are not adversarially aligned. Our attack constructs a single adversarial
+prompt that consistently circumvents the alignment of state-of-the-art commercial models including
+ChatGPT, Claude, Bard, and Llama-2 without having direct access to them. The examples shown
+here are all actual outputs of these systems. The adversarial prompt can elicit arbitrary harmful
+behaviors from these models with high probability, demonstrating potentials for misuse. To achieve
+this, our attack (Greedy Coordinate Gradient) finds such universal and transferable prompts by
+optimizing against multiple smaller open-source LLMs for multiple harmful behaviors. These are
+further discussed in Section 3 and Appendix B.
+1
+Introduction
+Large language models (LLMs) are typically trained on massive text corpora scraped from the
+internet, which are known to contain a substantial amount of objectionable content. Owing to this,
+recent LLM developers have taken to “aligning” such models via various finetuning mechanisms1;
+there are different methods employed for this task [Ouyang et al., 2022, Bai et al., 2022b, Korbak
+et al., 2023, Glaese et al., 2022], but the overall goal of these approaches is to attempt ensure that
+these LLMs do not generate harmful or objectionable responses to user queries. And at least on
+the surface, these attempts seem to succeed: public chatbots will not generate certain obviously-
+inappropriate content when asked directly.
+In a largely separate line of work, there has also been a great deal of effort invested into identi-
+1“Alignment” can generically refer to many efforts to make AI system better aligned with human values. Here we
+here use it in the narrow sense adopted by the LLM community, that of ensuring that these models do not generate
+harmful content, although we believe our results will likely apply to other alignment objectives.
+2

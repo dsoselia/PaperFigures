@@ -1,0 +1,99 @@
+CLIP H/14
+CLIP L/14
+71.7
+76.8
+Figure 3: Average few-shot performance of LENS on vision tasks. We conducted tests using
+various flavors of CLIP vision encoders and a frozen Flan-T5 LLM. Larger LLMs provide better
+performance in zero-shot and three-shot settings, while larger vision encoders enhance performance
+across all settings.
+Models
+# Trainable
+Params
+VQAv2
+OK-VQA
+Rendered - SST2
+Hateful Memes
+test-dev
+test
+test
+dev
+test-seen
+Kosmos-1
+1.6B
+51.0
+-
+67.1
+63.9
+-
+Flamingo3B
+1.4B
+49.2
+41.2
+-
+-
+53.7
+Flamingo9B
+1.8B
+51.8
+44.7
+-
+-
+57.0
+Flamingo80B
+10.2B
+56.3
+50.6
+-
+-
+46.4
+BLIP-2ViT-L FlanT5XL
+103M
+62.3
+39.4
+-
+-
+-
+BLIP-2ViT-g FlanT5XXL
+108M
+65.0
+45.9
+-
+-
+-
+LENS Flan-T5XL
+0
+57.9
+32.8
+83.3
+58.0
+59.3
+LENS Flan-T5XXL
+0
+62.6
+43.3
+82.0
+59.4
+62.5
+Table 2: Comparison with the state-of-the-art methods on zero-shot settings on VQAv2 [16], OK-VQA
+[39], Rendered-SST [47], and Hateful Memes [25]. Trainable parameters represent the number of
+parameters needed for aligning the vision modality with frozen LLM. LENS consistently outperforms
+or reasonably competes with extensively pretrained methods that rely on large amounts of data for
+multimodal alignment.
+Vision and Language: The comparative performance analysis of LENS in relation to other systems
+is presented in Table 2. The results obtained from our experiments clearly demonstrate the highly
+competitive nature of LENS, even when compared to significantly larger and more sophisticated
+systems such as Flamingo [2], BLIP-2 [35], and Kosmos [22].
+Specifically, our findings reveal that on the VQA 2.0 [16], LENS Flan-T5XXL achieves superior
+performance over Flamingo9B and Kosmos-1 by 11% and 15%, respectively. Furthermore, LENS
+outperforms the most powerful variant of Flamingo by 6 points. Moreover, our Intensive Captioning
+module, which utilizes a ViT-L vision encoder, is on par with the largest BLIP-2 architecture that
+employs ViT-G as its vision encoder. In addition, our best LENS model surpasses multiple versions
+of Flamingo in on Hateful Memes [25] and exhibits better performance compared to Kosmos on
+the Rendered-SST2 benchmark. It is perhaps not particularly surprising that our approach does so
+well on Rendered SST2, where a good language model is needed to understand the sentiment of
+text which is extracted from an image. In this way, Rendered SST2 is not just about linking image
+features directly to text; it is also about interpreting what that text actually means. On OK-VQA,
+our model’s performance does not match that of Flamingo, potentially due to the fact that the 70B
+Chinchilla language model using in Flamingo80B possesses a larger knowledge base than our best
+reasoning module, as also suggested in [35].
+7

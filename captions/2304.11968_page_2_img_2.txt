@@ -1,0 +1,127 @@
+Step 1: Initialization
+Step 2: Tracking
+Step 3: Segmentation
+Step 4: Correction
+Interactive
+Interactive
+Target verification
+in frame #1
+SAM
+Coarse mask
+Probes&Affinities
+Prompts in frame #t
+Fine mask
+Probes&Affinities
+Precise mask
+SAM
+Pause
+Return
+Quality
+Good?
+Output
+Yes
+No
+Coarse mask
+Probes&Affinities
+Prompts in frame t
+XMem
+SAM
+Figure 1: Pipeline of our proposed Track Anything Model (TAM). Only within one round of inference
+can the TAM obtain impressive tracking and segmentation performance on the human-selected target.
+Table 1: Results on DAVIS-2016-val and DAVIS-2017-test-dev datasets [13].
+DAVIS-2016-val
+DAVIS-2017-test-dev
+Method
+Venue
+Initialization
+Evaluation
+J&F
+J
+F
+J&F
+J
+F
+STM [12]
+ICCV2019
+Mask
+One Pass
+89.3
+88.7
+89.9
+72.2
+69.3
+75.2
+AOT [15]
+NeurIPS2021
+Mask
+One Pass
+91.1
+90.1
+92.1
+79.6
+75.9
+83.3
+XMem [1]
+NeurIPS2022
+Mask
+One Pass
+92.0
+90.7
+93.2
+81.2
+77.6
+84.7
+SiamMask [14]
+CVPR2019
+Box
+One Pass
+69.8
+71.7
+67.8
+-
+-
+-
+MiVOS [2]
+CVPR2021
+Scribble
+8 Rounds
+91.0
+89.6
+92.4
+78.6
+74.9
+82.2
+TAM (Proposed)
+-
+Click
+One Pass
+88.4
+87.5
+89.4
+73.1
+69.8
+76.4
+3.2
+Implementation
+Inspired by SAM, we consider tracking anything in videos. We aim to deﬁne this task with high
+interactivity and ease of use. It leads to ease of use and is able to obtain high performance with very
+little human interaction effort. Figure 1 shows the pipeline of our Track Anything Model (TAM). As
+shown, we divide our Track-Anything process into the following four steps:
+Step 1: Initialization with SAM [5]. As SAM provides us an opportunity to segment a region of
+interest with weak prompts, e.g., points, and bounding boxes, we use it to give an initial mask of the
+target object. Following SAM, users can get a mask description of the interested object by a click or
+modify the object mask with several clicks to get a satisfactory initialization.
+Step 2: Tracking with XMem [1]. Given the initialized mask, XMem performs semi-supervised
+VOS on the following frames. Since XMem is an advanced VOS method that can output satisfactory
+results on simple scenarios, we output the predicted masks of XMem on most occasions. When
+the mask quality is not such good, we save the XMem predictions and corresponding intermediate
+parameters, i.e., probes and afﬁnities, and skip to step 3.
+Step 3: Reﬁnement with SAM [5]. We notice that during the inference of VOS models, keep
+predicting consistent and precise masks are challenging. In fact, most state-of-the-art VOS models
+tend to segment more and more coarsely over time during inference. Therefore, we utilize SAM to
+reﬁne the masks predicted by XMem when its quality assessment is not satisfactory. Speciﬁcally,
+we project the probes and afﬁnities to be point prompts for SAM, and the predicted mask from Step
+2 is used as a mask prompt for SAM. Then, with these prompts, SAM is able to produce a reﬁned
+segmentation mask. Such reﬁned masks will also be added to the temporal correspondence of XMem
+to reﬁne all subsequent object discrimination.
+3

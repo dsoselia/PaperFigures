@@ -1,0 +1,51 @@
+Preprint accepted in IEEE Systems and Information Engineering Design Symposium (SIEDS) 2023
+these experiments. We conducted normality assumption tests with a signiﬁcance level of α = 0.05 for GPT-3.5, and
+Table 1: Statistical properties of the experimental study of ChatGPT-3.5 and ChatGPT-4
+ChatGPT-3.5
+ChatGPT-4
+Sample Size
+50
+50
+Mean
+73.5
+90.19
+Standard Error of Mean
+0.72
+0.54
+Median
+73
+91
+Mode
+76
+88
+Standard Deviation
+5.05
+3.84
+Skewness
+0.37
+-0.86
+Kurtosis
+-0.09
+0.77
+Min
+65
+78.5
+Max
+87
+96
+Range
+22
+17.5
+the Shapiro-Wilk and Anderson-Darling tests resulted in a p-value greater than α, indicating that the data can be
+assumed to be approximately normal. However, for GPT-4, the data is not normal but negatively skewed, indicating
+that most scores are closer to the higher end and the maximum score. Since one dataset is assumed to be normally
+distributed and the other is not, instead of a t-test, we used the Mann-Whitney U test (also known as the Wilcoxon
+rank-sum test), which does not assume any particular distribution of the data. The result of the test showed a
+p-value very close to zero (p-value = 2.2 × 10−16 < 0.05 = α), leading to the rejection of the null hypothesis, which
+asserts that the medians of the two samples are identical. Figure 1 displays the histograms and box plots of the data
+for GPT-3.5 and GPT-4. We can observe that the median score of GPT-4 is signiﬁcantly higher than that of GPT-3.5,
+indicating that GPT-4 outperforms the previous version. It is worth noting that some of the questions on the exam
+were referring to subjects discussed in the class, and that is why none of the samples obtained by GPT-4 could reach
+the max score, which is 100%.
+Figure 1: Histograms on the lef and box plots on the right for GPT-3.5 and GPT-4 data
+10

@@ -1,0 +1,84 @@
+ViLD
+Overhead image
+Closest object
+CLIP
+Egocentric image
+Category: can
+LLM
+Receptacle: recycling bin
+Primitive: toss
+Image classification
+Object detection
+Object placement and primitive selection
+Fig. 2 System overview. Once the user’s preferences have been summarized with an LLM, TidyBot will localize the closest
+object on the floor, move to get a close-up view with its egocentric camera, predict the object’s category using CLIP, use the
+LLM-summarized rules to select a receptacle and manipulation primitive, and then execute the primitive to put the object into
+the selected receptacle, repeating this entire process until no more objects can be found on the floor.
+One important aspect of our approach is that
+the LLM summarization automatically provides
+candidate categories to the perception system.
+Nouns (or noun phrases) are extracted from the
+summarization text as categories, and used as the
+target label set for CLIP (Radford et al., 2021),
+the open-vocabulary image classification model we
+use. For example, the following LLM prompt will
+extract the two general categories in the sum-
+mary text (light-colored clothing and dark-colored
+clothing):
+#
+Summary:
+Put
+light-colored
+clothes
+in
+the
+drawer and dark-colored clothes in the closet.
+objects = ["light-colored clothing",
+"dark-colored clothing"]
+This combination of summarization and open-
+vocabulary classification is critical to the auton-
+omy of the system, as it enables the object classi-
+fier to work with a small set of generalized object
+categories. The approach is (i) robust as there are
+only a small number of categories to differentiate
+between, and (ii) flexible because it supports arbi-
+trary sets of object categories for different users. In
+contrast, without LLM summarization, the object
+classifier would have to be able to recognize all
+possible fine-grained object classes, which is much
+more difficult. Alternatively, the user would have
+to manually specify the list of objects present in
+each target scene, which would be impractical for
+an autonomous system.
+4 Experiments
+first type of evaluation, we design a benchmark for
+generalization of receptacle selection using text-
+based examples, which enables direct comparison
+to alternative approaches and ablation studies,
+with quantitative metrics. For the second type
+of evaluation, we deploy our approach in a real-
+world mobile manipulation system for tidying up a
+room based on user preferences. Unless otherwise
+specified, the LLM we use is text-davinci-003, a
+variant of GPT-3 (Brown et al., 2020). All LLM
+experiments were run with temperature 0.
+4.1 Benchmark dataset
+In order to evaluate the proposed approach and to
+quantitatively compare it to alternatives, we cre-
+ated a benchmark dataset of object placements.
+The benchmark is comprised of 96 scenarios, each
+of which has a set of objects, a set of recepta-
+cles, a set of example “seen” object placements
+(preferences), and a set of “unseen” evaluation
+placements, all specified as text. The task is to
+predict the placements in the “unseen” set given
+the examples in the “seen” set.
+The benchmark scenarios are defined in 4 room
+types (living room, bedroom, kitchen, pantry
+room), with 24 scenarios per room type. Each sce-
+nario contains 2–5 receptacles (potential places
+to put objects, such as shelves, cabinets, etc.),
+4–10 “seen” example object placements provided
+as input to the task, and an equal number of
+“unseen” object placements (distinct from the
+seen examples) provided for evaluation. There are

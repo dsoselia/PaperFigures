@@ -1,0 +1,52 @@
+Coverage
+(384m)
+Coverage
+(142m)
+Position-Guided 
+(100m)
+Satellite-Guided 
+(1.24km)
+Figure 5: ViNT accomplishes long-horizon navigation with a variety of objectives in indoor and outdoor
+environments; example trajectories between start (orange) and goal (green) visualized here. Goal-reaching
+behavior can be achieved with a goal-directed heuristic (optionally guided by satellite imagery), while removing
+this heuristic allows for undirected exploration to maximally cover a workspace.
+5
+ViNT: A Foundation Model For Downstream Tasks
+Beyond its core functionality as an image goal-conditioned model, we show that the strong naviga-
+tional priors learned by ViNT can be adapted to a variety of downstream tasks, beyond navigating
+to image goals, by fine-tuning part or all of the model in novel environments or with new modalities
+of data.
+Figure 4: Adapting ViNT
+to different goals using a
+new tunable goal token.
+Full model fine-tuning: While ViNT demonstrates strong zero-shot
+generalization to new environments and robots, we can further improve
+on-task performance by fine-tuning the entire model with the same ob-
+jective but using on-task data. This allows ViNT to quickly learn new
+skills, forming a continually improving model. ViNT can master new
+environments and embodiments with as little as 1 hour of navigation
+data, transferring the capabilities of the original model to a new setting
+without retraining from scratch.
+Adapting to new modalities: While specifying image goals gives a gen-
+eral pre-training objective, ViNT can easily be adapted to other common
+forms of goal-specification by learning a “soft prompt” mapping from
+the desired goal modality to the ViNT goal token [10]. We build on the
+Transformer architecture’s ability to attend to multimodal inputs pro-
+jected into a shared token space [40, 41]. Given a subgoal σ in a new
+modality (such as 2D coordinates or high-level routing directions [22]),
+we train a small neural network ˜ϕ that maps the subgoal to this shared
+token space as shown in Figure 4, and replace ϕ(ot, os). We fine-tune
+ViNT with on-task data DF using the modified objective:
+Ladapt = Eτ∈DF EtEd
+�
+log p(ˆa|f(ψ(o)t:t−P , ˜ϕ(σ)) + λ log p(d|f(ψ(o)t:t−P , ˜ϕ(σ)))
+�
+(2)
+This allows adaptation to new tasks with minimal data, while still leveraging the performance and
+generalization of ViNT. Appendix B.4 includes additional details.
+6
+R
+l
+ld E
+l
+ti

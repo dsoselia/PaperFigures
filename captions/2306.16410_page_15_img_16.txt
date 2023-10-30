@@ -1,0 +1,78 @@
+Components
+Prompt
+Tag:
+Top-1 CLIP Tag
+Attributes:
+Top-K Attributes
+Question:
+Task specific
+prompt
+Short Answer:
+{answer}
+Table 8: Object recognition prompt used in
+LENS
+Components
+Prompt
+Captions:
+Top-N captions
+Question:
+e.g Who is doing
+"x" action?
+Short Answer:
+{answer}
+Table 9: VQA prompt used in LENS
+Components
+Prompt
+Attributes:
+Top-K Attributes
+tags
+Tags:
+Top-K Object tags
+Caption:
+BLIP-Caption
+OCR:
+OCR Meme text
+Question:
+Is the image
+hateful or not
+hateful?
+Short Answer:
+{answer}
+Table 10: Hateful-memes prompt used in
+LENS
+No.
+Does the first image have a cat?
+What color are the people's shoes?
+The people's shoes are black.
+Are you  sure?
+Yes, I am.
+What is the color of this text?
+lol what?
+What does it say?
+The text says "Rebec receptor".
+The text is purple.
+The text is purple
+What is this?
+A cartoon picture of Spider-Man attacking another.
+An image with the following features is provided. 
+Tags: Spider man, Duel,  Shootfighting, Fist bump. 
+Attributes: 
+- cartoon which has cartoon-like art style. 
+- teammate which has body language. 
+- enemy which is aggressive body language. 
+- hero which is a signature weapon or tool 
+Captions: 
+- a cartoon picture of spider- man attacking another.
+- a spider - man that is next to a truck. 
+- a person is playing with something and another man is 
+pointing at the other one. 
+- a man points a gun at something in front of a van. 
+- a man in a blue and red suit and a man in blue outfit. 
+(a)
+(b)
+(c)
+(d)
+Figure 5: Incorrect outputs of LENS using Tag and Attributes Modules with OpenCLIP-H/14 as
+the vision encoder, Intensive Captioning Module and Flan-T5xxl as the LLM. (a) Incorrect Visual
+Information (b) Inconsistency (c) Presuppositions (d) Forgetting.
+16

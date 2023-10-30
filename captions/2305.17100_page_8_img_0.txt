@@ -1,0 +1,16 @@
+Q
+p
+mance, particularly when using a larger model, on SLAKE and PathVQA. However, pre-trained on gen-
+eral datasets like ImageNet, the baseline OFA model experienced substantial performance degradation
+on these two datasets.
+In comparison, OFA attains performance similar to BiomedGPT on the VQA-
+RAD dataset, but neither model excels compared to the post-fine-tuning outcomes presented in Table
+3.
+We hypothesize that the models may overfit the familiar intra-domain distribution and have diffi-
+culties handling out-of-distribution data.
+Upon examining the generated answers from BiomedGPT, we
+also observe its tendency to overfit intra-distribution instructions, leading to challenges in comprehend-
+ing unseen questions and producing uncontrolled outputs. As an example, when presented with the 14th
+question “Where is the pathology in this image?" from the VQA-RAD dataset, BiomedGPTBase
+predicts < code_7948 >< code_5859 >< code_771 > · · · < code_7077 >< code_7077 >, indicating
+9

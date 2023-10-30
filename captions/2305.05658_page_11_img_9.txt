@@ -1,0 +1,59 @@
+Fig. 4 Real-world scenarios. We evaluate our mobile manipulation system in 8 real-world scenarios, encompassing a wide
+variety of objects and receptacles.
+Fig. 5 Real-world objects. 70 unique “unseen” test
+objects are represented in our real-world scenarios.
+Fig. 6 Real-world receptacles. 11 unique receptacles
+are represented in our real-world scenarios.
+before picking it up. This image is given to a VLM
+to determine the category of the object. To con-
+duct our analysis, we save all egocentric images
+from our real world evaluation (222 in total across
+all test runs) and annotate them.
+To evaluate a VLM, we run all 222 images
+through the model and determine the fraction of
+images in which the centered foreground object is
+correctly recognized. We compare along two axes:
+Table 7 Comparison of different VLMs
+CLIP
+ViLD
+OWL-ViT
+Summarized categories
+95.5%
+76.1%
+45.9%
+Scenario object names
+70.7%
+59.9%
+24.8%
+All object names
+52.3%
+36.5%
+18.5%
+(i) model type and (ii) vocabulary used for the
+target label set. The model types we consider (all
+open-vocabulary) are (i) CLIP (Radford et al.,
+2021), which was the image classifier used in our
+final system, and two alternatives, (ii) ViLD (Gu
+et al., 2021) and (iii) OWL-ViT (Minderer et al.,
+2022). The vocabulary options we consider are
+(i) the set of categories output by LLM sum-
+marization (e.g., clothing, fruit, ...), which was
+used in our final system, (ii) a list of human-
+annotated names for all objects in the current
+scenario (e.g., blue jeans, apple, ...), and (iii) a
+list of human-annotated object names across all
+scenarios (instead of just one scenario). Note that
+the human-annotated options for the vocabulary
+are for analysis only, as it would be infeasible to
+ask a human to annotate every object encoun-
+tered during robot operation. Results are shown
+in Tab. 7.
+Looking at the results comparing different
+VLMs (columns of Tab. 7), we find that CLIP
+performs the best out of all the models. One
+reason is that CLIP will always output a pre-
+diction, whereas the object detectors (ViLD and
+OWL-ViT) will sometimes detect no objects in
+the image. Additionally, ViLD and OWL-ViT are
+derived from CLIP, and it is possible that the
+12

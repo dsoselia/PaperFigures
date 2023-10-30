@@ -1,0 +1,9 @@
+A
+Experimental procedures
+A.1
+Insect repellent
+Synthesis of N,N-Diethyl-m-toluamide (DEET)
+A 100ml stainless-steel reactor inertized by vacuum and nitrogen flushing the reactor three times. To the
+reactor diethylamine (0.3ml, 4.1mmol) and DCM (15ml) were added. A solution of 3-methylbenzoyl
+chloride (3.2ml, 3.2mmol, 1M in DCM) was added and the mixture was stirred at 25°C for 60min. The
+reaction mixture was extracted with water (15ml) and DCM (10ml). The organic layer was collectedi

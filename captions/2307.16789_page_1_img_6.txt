@@ -1,0 +1,91 @@
+Finance
+Jobs
+···
+···
+Movies
+GET Genres
+GET Search By Title
+···
+API Name: Search By Title
+API Description: Search movies and series by title, …
+Required Parameters: Title (string, title to search for), Country (string, …)
+Optional Parameters: Show type (string, Type of shows to include in the results, 
+either “movie”, “series”, or “all”. Default is “all”), … 
+Code Snippets: GET /v2/search/title?title=batman&country=us&show…
+Tool
+API
+Food
+GET Services
+Categor
+2
+3
+APIs & API 
+Documentation
+Instructions &
+Tool
+API
+···
+···
+···
+···
+···
+···
+···
+···
+···
+···
+···
+···
+Intra-category multi-tool instructions
+Intra-collection multi-tool instructions
+API Documentation
+Sampled 
+API1
+API Name: xxx
+API Description: xxx
+Required Parameters: xxx
+…
+Sampled
+API2
+API Name: xxx
+…
+Instruction
+We are planning a movie 
+night in the mountains. Can 
+you suggest
+Sampled 
+APIs
+Star Wars Characters
+Streaming Availability
+IMDB Search
+Category
+Tool
+API
+Collection
+Tool
+API
+···
+···
+···
+···
+···
+···
+2022) and GPT-4 (OpenAI, 2023)), which have demonstrated impressive competencies in utilizing
+tools (Bubeck et al., 2023), are closed-source with their inner mechanisms opaque. This limits the
+democratization of AI technologies and the scope of community-driven innovation and development.
+In this regard, we deem it urgent to empower open-source LLMs to skillfully master diverse APIs.
+Although prior works have explored building instruction tuning data for tool use (Li et al., 2023a;
+Patil et al., 2023; Tang et al., 2023; Xu et al., 2023b), they fail to fully stimulate the tool-use
+capabilities within LLMs and have inherent limitations: (1) limited APIs: they either fail to in-
+volve real-world APIs (e.g., RESTAPI) (Patil et al., 2023; Tang et al., 2023) or consider only a
+small scope of APIs with poor diversity (Patil et al., 2023; Xu et al., 2023b; Li et al., 2023a);
+0.8
+ChatGPT-DFSDT
+GPT4-ReACT
+GPT4-DFSDT
+(2) constrained scenario: existing works are confined to
+instructions that only involve one single tool. In contrast,
+real-world scenarios may require that multiple tools are in-
+terleaved together for multi-round tool execution to solve
+a complex task
+Besides they often assume that users

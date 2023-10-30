@@ -1,0 +1,94 @@
+Task Description:
+Show me the reviews for the auto repair business closest to 
+10002.
+Action Sequence:
+Target Element
+Operation
+1.
+[searchbox] Find
+TYPE: 
+auto repair
+2.
+[button] Auto Repair
+CLICK
+3.
+[textbox] Near
+TYPE:
+10002
+4.
+[button] 10002
+CLICK
+5.
+[button] Search
+CLICK
+6.
+[switch] Show BBB Accredited only
+CLICK
+7.
+[svg]
+CLICK
+8.
+[button] Sort By
+CLICK
+9.
+[link] Fast Lane 24 Hour Auto Repair
+CLICK
+10. [link] Read Reviews
+CLICK
+Webpage Snapshots:
+<button>Show BBB Accredited 
+only</button>
+<em>Auto Repair</em>
+<button>Search</button>
+Action 1
+Action 2
+<input name="find_text" 
+type="search">
+Action 5
+Action 6
+Action 9
+<span>Fast Lane 24 Hour Auto 
+Repair</span>
+Action 10
+<a href=”link:XXX">Read 
+Reviews</a>
+Figure 2: A sample data instance of our dataset with the three components. Actions marked in red
+will result in a transition to a new webpage.
+Webpage snapshots, which constitute the environment within which the task is performed. We
+provide the snapshots in a variety of formats to accommodate different modeling approaches: self-
+contained MHTML file that includes the raw HTML code of the webpage, DOM snapshot containing
+the DOM tree along with the layout and style information of the screenshot of the rendered webpage,
+HAR file that includes all the network traffic for replaying the interaction if needed, and trace file that
+comprises the complete interaction trace during the task annotation process.
+The agent receives the task description in the beginning. At each step, it also receives the current
+webpage and the history of previous actions. The objective is to accurately predict the subsequent
+action, which encompasses the target element for interaction and the operation.
+2.2
+Data Collection
+Our data collection process consists of four stages: website selection, task proposal, task demonstra-
+tion, and task verification. Website selection and task verification are done by the authors. For task
+proposal and demonstration, we develop a sophisticated annotation tool using Playwright 2 and hire
+annotators through Amazon Mechanical Turk. Refer to Supplementary for annotation tool details.
+Website Selection. We start with 5 top-level domains: Travel, Shopping, Service, Entertainment, and
+Information, which are subsequently broken down into 31 (secondary) domains. We select websites
+within each domain based on their popularity in the US, as ranked by similarweb.com. We manually
+select 3-5 representative websites per domain, resulting in a collection of 137 websites in total.
+Task Proposal. We present the annotators with a target website, a concise description of the website,
+and a few sample tasks associated with it. The annotators are then asked to propose open-ended
+and realistic tasks based on three criteria: the tasks should be of diverse types, require multiple
+d
+f i t
+ti
+d d
+ib th hi h l
+l
+l i
+t
+d f t
+b
+t
+i
+t
+ti
+T f
+th

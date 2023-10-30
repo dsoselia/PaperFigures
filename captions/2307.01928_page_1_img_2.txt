@@ -1,0 +1,41 @@
+Robot
+Human
+Place the bowl in the microwave, please.
+Human
+The plastic one, please.
+There is a microwave, a landﬁll bin, a 
+recycling bin, and a compost bin.
+Which one, plastic or metal?
+Observations: I see a metal bowl and 
+a plastic bowl on the counter.
+Possible next steps:
+0.44 - Put plastic bowl in microwave.
+0.41 - Put metal bowl in microwave.
+0.03 - Put metal bowl in landﬁll bin
+0.08 - Put plastic bowl in recycling bin.
+Number of possible steps > 0.21 = 2
+Prediction size 2 > 1 → ask for help.
+Environment Context
+Robot Observations
+LLM Next Step Prediction with Conﬁdence
+Prediction Set from Conformal Prediction
+Conformal Prediction
+Trigger Human Help
+Question: Which one, plastic or metal?
+LLM Generates Question
+Conformal prediction threshold: 0.21
+Steps with scores above threshold:
+0.44 - Put plastic bowl in microwave.
+0.41 - Put metal bowl in microwave.
+Figure 1: KNOWNO uses Conformal Prediction (CP) to align the uncertainty of LLM planners. Given a language
+instruction, an LLM generates possible next steps and its confidences (scores) in these options. CP then provides a
+prediction set that includes the options with scores above a certain quantile. If there is more than one option in the set,
+the robot asks for help. Experiments across multiple embodiments and a variety of ambiguous situations show that
+i
+ifi
+l i
+ffi i
+d
+d
+b
+li

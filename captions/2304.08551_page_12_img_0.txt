@@ -1,0 +1,33 @@
+Generative Disco: Text-to-Video Generation for Music Visualization
+Woodstock ’18, June 03–05, 2018, Woodstock, NY
+Fig. 5. Examples of different ways participants could chunk their music into intervals. P3 chunked their music around lyrics. P4
+interacted with more non-lyrical elements like slides, bass, and beats. P2 captured a drop in their metalcore song. At interval
+boundaries, a fork between two images indicates that participants made a cut between the two images.
+them to engage with the music (median: 5). Nine of twelve rated the system positively for audiovisual alignment
+(“The system helped me come up with visuals that aligned with the music.”, median: 5). Eleven of twelve participants
+were positive about the helpfulness of the specific brainstorming area, which was where GPT-4 contributed prompt
+suggestions (median: 5.5). Nine of twelve participants were positive that the brainstorming features was helpful, which
+was when sets of style keywords populated the brainstorming area (median: 5.5). When asked if Generative Disco
+would be a useful addition to their current video / music workflow, six of the participants responded with a 5 or 6 for
+agreement (median: 4.5).
+7
+QUALITATIVE FEEDBACK
+7.1
+Transitions and Holds as Design Patterns
+To answer RQ2 (“What patterns of text-to-video generation emerge when users use transitions and holds to
+create music visualization?") we first provide qualitative feedback from participants and later provide an analysis of
+the generated intervals.
+7.1.1
+Patterns of Engagement with Music. Participants were able to flexibly engage with the music–the intervals they
+created captured a variety of elements from basic beats, vocalizations, and notes to overarching segments like lyrics
+and structural changes within the music (e.g. beat drops). A visual depiction of the different ways participants could
+chunk their music is pictured in Fig. 5.
+Five of twelve participants (P3, P12, P6, P5, P7) took a lyric-forward approach with their music. P3 chunked their
+music segment around lyrics. In the first and third lyric intervals (pictured in Figure 5), the visuals hardly change–P3
+holds on these images. In the second interval however, P3 creates a color transition from blue to rainbow to express the
+lyrics "live a life you will remember" with fullness and color. Three of twelve participants interacted more with specific
+elements within the music, particularly when they were working with their original music (P8, P10, P11). P10 brought
+in a techno song with a groove that they had composed. They chunked their audio in segments based on whether it
+contained percussive elements or not. A frame-by-frame view of their music visualization is shown in Figure 6. They
+commented on their visual exploration in the following quote.
+13

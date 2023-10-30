@@ -1,0 +1,18 @@
+Figure 3: The distribution of submitted papers across various fields.
+five-fold cross-validation. ChatGPT’s accuracy increased from an initial 34% to a final 69%, while its recall increased
+from an initial 41% to a final 83%. The authors also found that ChatGPT’s failure rate decreased from an initial 84%
+to a final 20%, indicating that performance can vary greatly depending on specific job requirements.
+In the field of physics, Lehnert et al. [48] explored the capabilities and limitations of ChatGPT by studying how
+it handles obscure physics topics such as the swamp land conjecture in string theory. The experimental dialogue
+began with broader and more general questions in the field of string theory before narrowing down to specific swamp
+land conjectures and examining ChatGPT’s understanding of them. The study found that ChatGPT could define and
+explain different concepts in various styles, but was not effective in truly connecting various concepts. It would
+confidently provide false information and fabricate statements when necessary, indicating that ChatGPT cannot truly
+create new knowledge or establish new connections. However, in terms of identifying analogies and describing abstract
+concepts of visual representation, ChatGPT can cleverly use language. Kortemeyer et al. [44] evaluated ChatGPT’s
+ability to answer calculus-based physics questions through a question-and-answer test. The tests included online
+homework, clicker questions, programming exercises, and exams covering classical mechanics, thermodynamics,
+electricity and magnetism, and modern physics. While ChatGPT was able to pass the course, it also demonstrated
+many misconceptions and errors commonly held by beginners. West et al. [98] used the Force Concept Inventory
+Yiheng Liu et al.: Preprint submitted to Elsevier
+Page 4 of 21

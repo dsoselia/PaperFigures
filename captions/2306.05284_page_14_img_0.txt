@@ -1,0 +1,23 @@
+0
+200
+400
+35
+40
+45
+Epoch
+Train Perplexi
+0
+200
+400
+50
+60
+Epoch
+Valid Perplexi
+DAdam, 300M
+Adam, 300M
+DAdam, 1.5B
+Adam, 1.5B
+Figure A.3: Comparison of Adam and Adam with D-Adaptation [Defazio and Mishchenko, 2023].
+While D-Adaptation provided consistent gains for the 300M parameters model, we observed worse
+convergence both on the train (left) and validation (right) set for the 1.5B parameters model.
+15

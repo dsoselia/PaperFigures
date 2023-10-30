@@ -1,1 +1,0 @@
-Figure 8: Examples where questions asking for a fact are answered correctly, but verifying via a

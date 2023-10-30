@@ -1,0 +1,61 @@
+Figure 2: Experimental validation. a) Example of the script run by a user to initiate ChemCrow. b)
+Query and synthesis of a thiourea organocatalyst. c) The IBM Research RoboRXN synthesis platform
+on which the experiments were executed (pictures reprinted courtesy of International Business Machines
+Corporation). d) Experimentally validated compounds.
+Figure 3) was subsequently synthesized and analyzed, confirming the discovery of a new chromophore
+with approximately the desired property (measured absorption maximum wavelength of 336nm).
+Human chemist
+Human-AI collaboration
+ChemCrow
+Task input: 
+Here is some chromophore data. 
+• Clean the data. 
+• Use only data with acetonitrile as solvent.
+• Preprocess the data.
+• Train a random forest model to predict               
+  absorption max wavelength of molecules.
+• Then make predictions for the molecules 
+   in a selection pool.
+• Finally, suggest a synthetic plan for the 
+   one with wavelength closest to 369 nm. 
+ChemCrow actions:
+1. Check data rows to learn the format.
+2. Filter data, solvent and relevant columns.
+3. Calculate MorganFingerprints and
+split dataset into train/test.
+4. Train and evaluate random forest model.
+5. Propose molecule(s) from the selection pool.
+6. Predict 2 step synthetic procedure 
+for selected molecule.
+Human actions:
+• Synthesize proposed molecule. 
+• Conﬁrm product using  MS(ESI) and NMR.
+• Analyse UV-Vis absorption spectrum.
+Wavelength [nm]
+Absorbance [AU]
+Synthesize (E)-3-methyl-4-(2-(3'-
+(methylsulfonamido)-[1,1'-biphenyl]-4-
+yl)vinyl)benzoate with a predicted maximum 
+absortion wavelenth closest to 369 nm. The 
+root mean squared error of the random forest 
+model is 37 nm. 
+Final answer:
+O
+O
+H
+N
+S
+O
+O
+O
+O
+H
+N
+S
+O
+O
+in Acetonitrile
+Figure 3: Human/Model interaction leading to the discovery of a novel chromophore. Left: The
+human input, actions, and observation. Right: ChemCrow actions and final answer with the suggestion of
+the novel chromophore.
+4

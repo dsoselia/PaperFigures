@@ -1,0 +1,64 @@
+3
+Task 1: Detoxification
+The task of detoxification aims to reduce the toxicity in the model generation y when given a prompt
+x. Toxicity is the only undesired behavior in this task, and we aim to explore learning with dense
+reward compared to holistic reward from a single fine-grained reward model. We conduct our
+experiments on REALTOXICITYPROMPTS, a dataset of 100K sentence-level prompts derived from
+the web that are known to easily elicit problematic generations in models like GPT-2 [31]. We use
+denser sentence-level fine-grained reward (§ 3), and demonstrate that our fine-grained reward
+exhibit greater sample efficiency compared to holistic reward, achieving lower toxicity with fewer
+training steps while maintaining better fluency (§ 3.1).
+Holistic reward for (non-)Toxicity. We use PERSPECTIVE API [1] as our reward model, which
+is widely used for language toxicity detection and is trained with millions of examples gathered
+from several online platforms and annotated by human annotators for toxicity. That means we use
+an off-policy reward model that is not trained on outputs from Pθinit. The API outputs a score
+between 0 (non-toxic) and 1 (toxic). Given the entire model output y, the holistic reward for RL is
+1−PERSPECTIVE(y).
+Sentence-level (fine-grained) reward for (non-)Toxicity. To calculate the fine-grained reward, we
+query the API after the model generates each sentence instead of generating the full sequence. For
+each generated sentence yj, we assign PERSPECTIVE([y1, . . . , yj−1]) - PERSPECTIVE([y1, . . . , yj])
+as the sentence reward (i.e., how much toxicity is dropped from generating yj). Since there is only
+one error category, we omit the superscript in yj to denote the jth segment (e.g., sentence) in y.
+3.1
+Experiments
+Implementation details. We follow previous work [17, 21] and use GPT-2 large model as the initial
+policy model Pθinit. During both the exploration stage in RL training and inference, we use nucleus
+sampling decoding with p = 0.9 and temperature = 1.0. The generation length limit is set to 48.
+The value model used during RL training is initialized with GPT-2-base. We report RL training
+parameters in Appendix B. All scores are averaged over 3 independent runs.
+Compared systems and evaluation. We report the performance of FINE-GRAINED RLHF, RLHF
+with holistic reward (Hol. RLHF), and the state-of-the-art controlled generation approaches GeDi
+[17] and DEXPERTS [21]. We follow previous work [17, 21] to report the toxicity score calculated
+on each full generation sequence from the PERPLEXITY API, as well as other commonly used metrics
+for REALTOXICITYPROMPTS, including n-gram diversity and GPT-2 XL perplexity (PPL) as a proxy
+for fluency. The lower the perplexity, the more fluent the generated text. The toxicity score is reported
+as the maximum score among 4 sampled model outputs, averaged over all test input prompts. Other
+metrics are reported as the average score of the same 4 samples.
+Toxicity
+Fluency
+Diversity
+avg max (↓)
+PPL (↓)
+dist-2 (↑)
+dist-3 (↑)
+GPT-2
+0.192
+9.58
+0.947
+0.931
+Controlled Generation
+GeDi
+0.154
+24.78
+0.938
+0.938
+DEXPERTS
+0.136
+22.83
+0.932
+0.922
+Hol. RLHF
+0.130
+11.75
+0.943
+0.926

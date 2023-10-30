@@ -1,0 +1,68 @@
+Figure 23: The scaling law of the best model versus the total number of training flops.
+Hidden size
+Layer
+Head
+Eval loss
+Grammar
+Creativity
+Consistency
+768
+2
+2
+1.38
+7.77
+6.5
+7.78
+768
+2
+4
+1.34
+8.05
+6.57
+8.16
+768
+2
+8
+1.33
+8.25
+6.53
+8.16
+768
+1
+2
+1.58
+7.13
+5.83
+6.38
+768
+1
+4
+1.56
+7.43
+5.90
+6.75
+768
+1
+8
+1.54
+7.45
+6.28
+7.02
+Figure 24: Model performance with different number of attention heads
+in terms of how well they can ”speak and understand natural language”. Most existing benchmarks for generative
+LMs, such as LAMBADA [22], CLOZE
+[29], TriviaQA [15], and Winograd Schema Challenge [17], require the
+models to produce a single word or a short phrase as the answer, which does not capture the richness and diversity
+of generating natural language. Moreover, these benchmarks are often limited by the size and quality of the datasets,
+the ambiguity and subjectivity of the answers, and the lack of human evaluation. Larger and more diversed datasets
+such as the BigBench [27] are simply way too complicated for SLMs. Some other benchmarks, such as WikiSQL [33],
+have a more structured output format, which makes them easier to evaluate, but also less representative of natural
+language generation.
+Our work is also beneficial to the theoretical analysis of transformer models and their learning process. Most
+of the existing theory works focus on models with one transformer block, which are easier to analyze than models
+with multiple blocks. For example, Voita et al [30] showed that one transformer block can learn to perform different
+linguistic tasks depending on the position of the self-attention layer. Li et al [19] shows a transformer block can
+encode topical models. Jelassi et al [14] shows one transformer block can encode patch associations. Our work
+provides empirical evidence that one transformer block can also generate diverse and consistent stories, which
+suggests that the transformer architecture has a strong expressive power even with a small number of parameters
+24

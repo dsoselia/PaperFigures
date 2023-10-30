@@ -1,0 +1,20 @@
+Step 3: Segmentation
+Step 4: Correction
+Interactive
+in frame #1
+Prompts in frame #t
+Fine mask
+Probes&Affinities
+Precise mask
+SAM
+Pause
+Return
+Quality
+Good?
+Output
+Yes
+No
+Coarse mask
+Probes&Affinities
+Prompts in frame t
+SAM

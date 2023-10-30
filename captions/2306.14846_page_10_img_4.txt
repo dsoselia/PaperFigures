@@ -1,0 +1,36 @@
+Figure 11: Robustness to dynamic pedestrians. ViNT can successfully navigate around a crowd of dynamic
+pedestrians and reach the goal behind them, despite its simple self-supervised training objective.
+ViNT can learn “good” default behavior from the diverse training behaviors. This preference helps
+ViNT efficiently explore previously unseen environments, where other baselines tend to explore the
+environment haphazardly (see Table 1 (right)).
+Robustness to dynamic pedestrians: While ViNT is trained only on offline data with a simple, self-
+supervised training objective, we find that its collision avoidance capabilities generalize to dynamic
+obstacles and pedestrians. Figure 11 exhibits an instance where the robot is tasked with navigating
+to a goal behind two pedestrians. ViNT selects actions that avoid the pedestrians and recovers to the
+original path, successfully reaching the goal.
+7
+Discussion
+We presented ViNT, a robot foundation model that is trained for a generic image-goal navigation
+task on diverse data from many different robots, and can then support a variety of different navigation
+functionalities. ViNT can be deployed for long-horizon navigation in combination with a topological
+graph planning method, explore new environments with goals proposed by a diffusion model, be
+fine-tuned to new domains (such as autonomous driving), and be adapted to new task specification
+methods, such as GPS coordinates or turn-by-turn routing commands. Our results show that ViNT
+can successfully generalize across robots and environments, outperforms prior navigational models,
+can be efficiently fine-tuned to new domains and tasks, and shows promising emergent behaviors
+such as navigating through dynamic pedestrians.
+Limitations and Future Work
+As with many large-scale models, ViNT carries a heavier computational burden at inference time,
+which can present a challenge for power-constrained platforms such as quadcopters. While our de-
+sign aims to enable efficient inference, our Transformer-based model is still significantly costlier to
+run at deployment time than simpler feedforward convolutional networks. Additionally, although
+ViNT generalizes effectively across robots in our experiments, it assumes a degree of structural
+similarity. For example, it cannot control the altitude of a quadcopter or handle other changes in
+the action representation, nor accommodate new sensors such as LIDAR. Training on a variety of
+modalities and action spaces in future work could unlock this capability. More broadly, while ViNT
+illustrates the promise of a general-purpose and broadly reusable navigational foundation model, we
+believe that the most exciting developments for general-purpose cross-robot models are still ahead:
+as larger and larger multi-robot datasets are assembled, perhaps we will see even broader generaliza-
+tion and more flexible specification with increasingly powerful and general-purpose robotic models.
+We hope that ViNT represents a step in this direction.
+11

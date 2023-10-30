@@ -1,0 +1,29 @@
+IMAGEBIND: One Embedding Space To Bind Them All
+Rohit Girdhar∗
+Alaaeldin El-Nouby∗
+Zhuang Liu
+Mannat Singh
+Kalyan Vasudev Alwala
+Armand Joulin
+Ishan Misra∗
+FAIR, Meta AI
+https://facebookresearch.github.io/ImageBind
+1) Cross-Modal Retrieval
+Crackle of a Fire
+Audio
+Text
+“A fire crackles while a pan of food is frying on 
+the fire.”
+“Fire is crackling then wind starts blowing.”
+“Firewood crackles then music...”
+“A baby is crying while a toddler is laughing.”
+“A baby is laughing while an adult is laughing.”
+“A baby laughs and something…”
+Baby Cooing
+2) Embedding-Space Arithmetic
+3) Audio to Image Generation
+Images
+Videos
+Depth
+&
+.CV]  31 May 2023

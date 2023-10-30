@@ -1,0 +1,31 @@
+Table 2: Results for Hardware Mobile Manipulation.
+Plan success rate is fixed between KNOWNO and Sim-
+ple Set to compare the other metrics.
+or disposing of it in one of the bins. For the distribu-
+tion of possible scenarios, we introduce new types of
+ambiguities based on Winograd Schemas [18] (e.g.,
+“There is an apple and bottled water on the counter...it
+is rotten. Can you dispose of it?”), and ones that potentially involve unsafe actions (e.g., “place the bowl in
+the microwave.”; there is a plastic bowl and a metal bowl, but only the plastic one is safe for the microwave).
+This is a single-step setting with multiple acceptable options. In Table 2, we compare KNOWNO to Simple
+Set again by first setting ϵ = 0.15 and also finding ϵ = 0.24 for Simple Set that achieves the same plan
+success rate in simulation. The hardware experiment results again show that KNOWNO reduces the human
+help rate by 14% and also reduces the average prediction set size.
+Target success guarantee from KnowNo is robust to varying LLM choice.
+We also run KNOWNO
+with two other LLMs (without hardware evaluation). First, we use an instruction-finetuned version of
+PaLM-2L (PaLM-2L-IF); there is no significant performance difference from PaLM-2L; however, it
+t
+ll
+di ti
+t i
+l b
+d
+i
+th
+b
+f l
+di ti
+t ( i
+3
+d 4)

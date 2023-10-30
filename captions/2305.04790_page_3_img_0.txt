@@ -1,0 +1,32 @@
+Figure 1: The overall framework of MultiModal-GPT. MultiModal-GPT consists of a vision encoder,
+a perceiver resampler to receive the spatial features from the vision encoder, and a language decoder
+which is conditioned on the spatial features from the perceiver resampler by cross-attention in order
+to encode the feature of vision into text. We freeze the whole open-flamingo model and add LoRA to
+the self-attention part, the cross-attention part, and the FFN part in the language decoder to finetune
+MultiModal-GPT.
+3
+Method
+3.1
+Architecture
+The proposed MultiModal-GPT is based on the open-flamingo model [1]. As shown in Figure 1,
+MultiModal-GPT consists of a vision encoder from CLIP [13], a perceiver resampler to receive the
+spatial features from the vision encoder, and a language decoder LLaMA [16]. Note that the language
+decoder is conditioned on the spatial features from the perceiver resampler by cross-attention in order
+to encode the feature of vision into text. Please refer to [1] for more details of the model architecture.
+3.2
+Joint Training
+We use both language-only instruction-following data and vision and language instruction-following
+data to train the MultiModal-GPT jointly. As shown in Fig.1, We freeze the whole open-flamingo
+model and add LoRA [4] to the self-attention, cross-attention, and FFW part in the language decoder
+to finetune MultiModal-GPT. The MultiModal-GPT is trained by predicting the next token of the text,
+and only the {response} and <EOS> tokens in the input sequence are involved in the loss calculation.
+4
+Experiments
+4.1
+Implementation Details
+We jointly train the MultiModal-GPT model using a comprehensive mix of language data and vision
+and language data sources to enhance its performance. The language datasets include Dolly 15k and
+Alpaca GPT4 [12], while the vision and language datasets encompass LLaVA [8], Mini-GPT4 [18],
+A-OKVQA [14], COCO Caption [7], and OCR VQA [10]. Other vision and language instruction
+datasets, such as MultiInstruct [17] can also be explored, and we left it as future work. This
+4

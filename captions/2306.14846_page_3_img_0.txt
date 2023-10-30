@@ -1,0 +1,23 @@
+entirely from existing datasets, spanning 8 distinct robotic platforms with varying speeds and dy-
+namics. For more details about the dataset, see Appendix C.
+Deployment: ViNT can run on any robot equipped with an onboard camera and a low-level velocity
+tracking controller. Given a subgoal image s at time t, we run the model at 4Hz, and use a PD
+controller to track the predicted waypoints ˆa in a receding-horizon fashion.
+4
+Long-Horizon Navigation with ViNT
+While the goal-conditioned policy learned by ViNT captures a general understanding of navigational
+affordances and obstacles, it has limited applicability on its own. Many practical tasks are either not
+defined by goal images, or require a much longer horizon than what ViNT directly supports. We
+apply ViNT to several downstream applications by combining it with an episodic memory formed
+by a topological graph, which provides short-horizon subgoals for reaching faraway locations. In
+previously unseen environments, we can further augment this graph-based planner with exploratory
+subgoal proposals, which can drive ViNT to explore a new environment and discover a path to
+the goal. We consider multiple such proposal mechanisms and find that maximum performance is
+attained by an image diffusion model that samples diverse future subgoal candidates conditioned on
+the current observation.
+These subgoals are scored with a goal-directed heuristic to identify the best subgoal that makes
+progress towards the goal using a process akin to physical A∗ search [29]. Past observations in the
+environment and unexplored frontiers are stored as nodes in a topological graph, with their connec-
+tivity determined by the distances predicted by ViNT. During exploration, we build this topological
+graph on the fly as the robot explores the environment. During later deployments it may be used
+4

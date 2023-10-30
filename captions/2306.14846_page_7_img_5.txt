@@ -1,0 +1,14 @@
+ferent robots for 100s of meters (reported maxi-
+mum displacement without intervention), beating
+lower-capacity models (GNM) and specialist mod-
+els trained on a single robot dataset.
+els across all the embodiments we studied.
+We
+also find that the larger capacity of ViNT leads to
+improved generalization compared to the smaller
+GNM model, especially on robots that do not ap-
+pear in the training dataset (e.g., Go 1). Crucially, we also find that ViNT demonstrates positive
+transfer for in-domain robots (Vizbot), greatly outperforming a specialist model trained on only the
+target robot and setting, an emergent phenomenon not present in smaller models. This indicates that
+the model generalizes between tasks to improve performance, a key property of a foundation model.
+8

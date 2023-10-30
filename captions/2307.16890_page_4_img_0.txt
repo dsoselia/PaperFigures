@@ -1,0 +1,50 @@
+ii
+and is robust to leg breaking requires 20 evolution experiment
+repetitions (Fitness > 600 in Fig. 3a). In Fig. 3a, training
+fitness between 500 and 600 typically indicates either (1)
+a viable forward gait behavior that is only robust to 3/4
+legs breaking or (2) a policy robust to any leg breaking
+but which operates at a high frequency not viable for a
+real robot, with its reward being significantly penalized by
+fitness shaping as a result. Within the single best repeat, the
+NSGA-II search algorithm produces a variety of policies with
+performance trade-offs between smooth forward locomotion
+(reward objective) and stability (steps objective), Fig. 3b.
+From this final set of individuals, we select a single policy
+to compare with the single best policy from each baseline.
+Due to practical wall-clock time limits, we were only able
+to train both ARS+MLP and ARS+LSTM policies up to 106
+trials in total, but found that under this sample limit, even
+the best ARS policy only achieved a reward of 360, much
+lower than the 570 found by the best ARZ policy, suggesting
+that ARZ can even be more sample efficient than standard
+neural network baselines.
+Fig. 4 confirms that ARZ is the only method capable of
+building a controller that is robust to multiple different legs
+breaking mid-episode. We plot post-training test results for
+one champion ARZ policy in comparison with the single-
+best controller discovered by ARS+MLP and ARS+LSTM.
+ARZ’s adaption quality (as measured by mean reward) is
+Front-Right
+Front-Left
+Back-Right
+Back-Left
+None
+200
+400
+600
+Average Rew
+Fig. 4: ARZ discovers the only policy that can adapt to any leg breaking.
+The plot shows test results for the single best policy from ARZ and ARS
+baselines (MLP and LSTM) in the mid-episode leg-breaking task. For each
+leg, bars show mean reward over 100 episodes in which that leg is broken
+at a randomly selected timestep. A reward < 400 in any column indicates
+the majority of test episodes for that leg ended with a fall.
+that can avoid falling in all scenarios, although in the case of
+the front-left leg breaking, it has trouble maintaining forward
+motion, Fig. 5. This is reflected in its relatively weak test
+reward for the front-left leg (See Fig. 4). The MLP policy
+manages to keep walking with a broken back-right leg but
+falls in all other dynamic tasks. The LSTM, finally, is only
+able to avoid falling in the stationary task in which all legs
+are reliable.

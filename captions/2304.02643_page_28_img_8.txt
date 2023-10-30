@@ -1,0 +1,167 @@
+We have several models that, when provided with a click or a box as input, output a mask. We would
+like to compare the quality of these models by rating the quality of their masks on many examples.
+The interface will be different than for regular mask annotation.
+•
+Each job reviews one mask in one image.
+•
+On the right, there will be ﬁve image thumbnails in two rows. Each thumbnail can be moused-
+over to show the image at a larger size. Clicking on the thumbnail will make it full screen, and
+clicking again will return to the original screen.
+–
+The images show the same mask in ﬁve different views. On the top row: (left) the image
+without the mask, (middle) the mask overlaid on the image, and (right) the mask alone. On
+the bottom row: (left) a zoomed in view of the object without a mask, and (right) a zoomed
+in view of the mask overlaid on the image. These views are provided to make it easy to see
+different types of mask errors.
+–
+The mask will be in red when overlaid on the image.
+–
+When shown by itself, the mask is yellow, and the background is purple.
+–
+Each image will include either a blue dot or a blue and white box. This is the input to the
+model, as if you had clicked at this location or drawn this box.
+•
+On the left, there are buttons labeled 1-10. This is used to rate the quality of the shown mask.
+Objective and Setup
+Example interface page. There will be ﬁve images on the
+right and a question box on the left.
+Mouse over an image to show the full image.
+Click on an image to make it full screen. The arrows will cy-
+cle between images. Click again to return to previous view.
+The ﬁrst image on the top row shows the image without a
+mask. A blue point will be on the object of interest, or a
+blue and white box will surround it.
+The second image on the top row shows the mask for the
+object in red.
+The third image on the top row shows the mask only. The
+mask is in yellow and the background is purple.
+The ﬁrst image on the bottom row shows a zoomed in view
+of the object without a mask.
+The second image on the bottom row shows a zoomed in
+view of the object with a mask. The mask is in red.
+On the left are buttons to rate the mask quality, with selec-
+tions 1-10.
+What we would like you to do for each job:
+•
+Please aim to spend up to 30 seconds per job.
+•
+Mouse-over or click each of the three images of the mask on the right to get a sense of the
+quality of the mask. The thumbnail is too small to judge a mask, do not judge a mask by the
+thumbnail alone. Each image can provide a different signal on possible mask errors:
+–
+The unzoomed image can give context for the mask: does this mask correspond to an actual
+object?
+–
+The mask-only image can show if the mask has small holes or separated, incorrect pixels.
+–
+The zoomed image can show if the mask boundaries make sense.
+•
+Judge the quality of the mask on three criterion. Examples will follow.
+–
+Does the mask correspond to an actual object?
+–
+Does the mask have a good boundary?
+–
+Does the mask correspond to the provided point or box?
+•
+Rate the quality of the mask on a scale of 1-10 using the drop-down box on the left.
+•
+Next are details and examples for judging mask quality according to the three criterion. These
+are just examples and other cases may come up, please use your best judgment when deter-
+mining if something is a good mask.
+Task
+Does the mask correspond to an actual object?
+•
+Valid objects can include:
+–
+Entire single objects (such as a person, shirt, or tree)
+–
+Logical parts of objects (a chair leg, a car door, a tabletop)
+–
+Collections of objects (a stack of books, a crowd of people)
+–
+‘Stuff’ (the ground, the sky).
+•
+Example errors a mask may have. The severity of these errors may be minor or major:
+–
+Include a piece of another object (the mask of a person including the arm of a nearby
+person)
+–
+Miss part of an object (the mask covers only one part of a building obscured by a tree in
+the foreground),
+–
+Combine two unrelated things (a single mask covers both a mug and a pen on a desk)
+–
+Include an arbitrary part of a collection for a point input (a point is on one apple, but
+the mask covers three apples in a pile of many apples). If a box surrounds an arbitrary
+collection, it is not an error to provide a mask for these objects.
+•
+If you are unsure, a good rule-of-thumb is: can you name the object in question? However,
+some things that are hard to name may still be good objects (an unusual component of a
+machine, something at the edge of the image for which it is hard to determine what it is).
+Judging Mask Quality (1 of 3)
+Does the mask have a good boundary?
+•
+Errors in the boundary can include:
+–
+Incorrect holes in the mask
+–
+Incorrect pixels included separated from the main part of the mask
+–
+Poor edge quality, where the mask does not exactly match the edge of the object.
+–
+Failure to consistently handle obscuring foreground objects (a mask that covers obscuring
+objects is ﬁne, and a mask that doesn’t cover obscuring objects is ﬁne, but one that does
+some of both has an error)
+–
+Pixelation of a small mask is not an error, as long as the mask still matches the edges of
+the object.
+Judging Mask Quality (2 of 3)
+Does the mask correspond to the provided point or box?
+•
+For points:
+–
+The point needs to be on the mask.
+–
+The size or position of the object with respect to the point does not matter (a point on
+someone’s gloved hand can correspond to the glove or to the entire person, both are valid
+masks).
+•
+For boxes:
+–
+The object needs to be the best object that is the size of the box (if a box is around some-
+one’s entire head but the mask is of their hair, this is an error: their hair is in the box but is
+not the correct object).
+–
+If the box clearly corresponds to a given object but is slightly smaller than it, it is okay if
+the mask goes slightly outside a box (if a box around a person misses their extended hand,
+the mask can still include their hand even if the mask goes outside the box).
+Judging Mask Quality (3 of 3)
+Example error of ‘Include a piece of another object’: The
+elephant mask contains a piece of another nearby elephant.
+Example error of ‘Missing a part of an object’: the mask is
+missing a disconnected part of the object: the back half of
+the zebra, and the right portion of the plate.
+Example error of ‘Include an arbitrary part of a collection’:
+In top top image, the point is on one orange rind, but the
+mask covers two orange rinds. This is a mask error: the
+mask covers an arbitrary number of objects in the collection,
+and should either cover one orange rind or all of them. In
+the bottom image, the box is around both vegetables. Since
+this is the best match to the box, this is not a mask error.
+Example error for ‘Incorrect holes in the mask’: This mask
+has holes in the upper left and on the left sides (black ar-
+rows). These holes are much easier to see on the ‘mask
+only’ image.
+Example error for ‘Incorrect pixels included separated from
+the main part of the mask’: The ‘mask only’ view reveals a
+few stray incorrect pixels on the clock face.
+Example error for ‘Poor edge quality’: The mask has poor
+edge quality, both along the edge of the umbrella, as well as
+along the thin pole.
+Figure 19: Here we provide the complete guidelines given to annotations for the human review of mask quality. Some images
+been edited slightly and faces have been blurred to enable release. Best viewed with zoom (part 1 of 2).
+G. Annotation Guidelines
+We provide the complete guidelines given to annotations
+for the human review of mask quality in Fig. 19 and Fig. 20.
+29

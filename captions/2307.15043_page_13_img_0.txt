@@ -1,0 +1,27 @@
+Figure 4: Screenshots of harmful content generation from the examples shown in Figure 1: Chat-
+GPT (top left), Claude 2 (top right), Bard (bottom left), LLaMA-2 (bottom right). Complete
+generations are shown in Appendix B.
+Enhancing transferability.
+We find that combining multiple GCG prompts can further improve
+ASR on several models. Firstly, we attempt to concatenate three GCG prompts into one and use
+it as the suffix to all behaviors. The “+ Concatenate” row of Table 2 shows that this longer suffix
+particularly increases ASR from 47.4% to 79.6% on GPT-3.5 (gpt-3.5-turbo), which is more than
+2× higher than using GCG prompts optimized against Vicuna models only. However, the concate-
+nated suffix actually has a lower ASR on GPT-4. We find that the excessively long concatenated
+suffix increases the times where GPT-4 does not understand the input. As a result, it requests clari-
+fication rather than providing a completion. The diminishing return of the concatenated prompt on
+Claude-1 may just result from the fact that prompts optimized on Viccuna models are not adding
+much to a successful attack compared to the one optimized against both Viccuna and Guanacos
+models.
+In addition to concatenation, we observe that the diversity among the optimized prompts can
+be harnessed through an ensemble approach. Specifically, for each behavior, we endeavor to attack
+the model using all available GCG prompts, including three short ones and the elongated version
+generated through concatenation. We stop the process either when the attack proves successful or
+when we run of prompts (and we regard the ensemble fails). Figure 3 (lighter blue bars) and the
+“+ Ensemble” row in Table 2 show the result of the ensemble. Surprisingly, the ensemble approach
+improves ASR to 86.6% on GPT-3.5 and near 50% for GPT-4 and Claude-1.
+In summary, our results demonstrate that achieving high ASR is possible with only a minimal
+number of queries. Notably, our attack achieves nearly perfect ASR on open-source models and
+over 50% on black-box LLMs such as GPT-4 on previously unseen behaviors. We showcast a small
+set of highly harmful behaviors we elicited from these models in Figure 5.
+14

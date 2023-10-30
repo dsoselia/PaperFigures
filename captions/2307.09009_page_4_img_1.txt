@@ -1,0 +1,94 @@
+Table 1: Chain-of-thought’s (CoT) effectiveness drifts over time for prime testing. Without CoT, both
+GPT-4 and GPT-3.5 achieved relatively low accuracy. With CoT, GPT-4 in March obtained a 24.4%
+accuracy improvement, which dropped to -0.1% in June. On the other hand, the CoT boost increased
+from 6.3% in March to 15.8% in June for GPT-3.5.
+LLM Service
+GPT-4
+GPT-3.5
+Prompting method
+∆
+Prompting method
+∆
+Eval Time
+No CoT
+CoT
+No CoT
+CoT
+Mar-23
+59.6%
+84.0%
++24.4%
+50.5%
+56.8%
++6.3%
+Jun-23
+50.5%
+49.6%
+-0.1%
+60.4%
+76.2%
++15.8%
+GPT-4
+GPT-3.5
+March 2023
+June 2023
+Accuracy
+Verbosity
+Accuracy
+Verbosity
+Overlap
+composite
+prime undetermined
+prime
+composite
+0.1
+0.2
+0.3
+0.4
+Model Generation
+Ground Truth
+35.2%
+14.7%
+0.1%
+0.9%
+48.8%
+0.3%
+composite
+prime undetermined
+composite
+0.3
+0.4
+Model Generation
+d Truth
+49.9%
+0.1%
+0.0%
+composite
+prime undetermined
+composite
+0 2
+0.3
+0.4
+Model Generation
+d Truth
+32.8%
+15.1%
+2.1%
+(a)
+(b)
+composite
+prime undetermined
+prime
+composite
+0.1
+0.2
+0.3
+0.4
+Model Generation
+Ground Truth
+42.2%
+7.8%
+0.0%
+42.6%
+7.4%
+0.0%

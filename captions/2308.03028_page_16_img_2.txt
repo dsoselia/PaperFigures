@@ -1,0 +1,12 @@
+Performance.
+This measure compares the effectiveness of each approach in different
+scenarios relative to existing algorithms.
+• Interpretability. This element examines the level of interpretability achievable by each
+approach. For instance, by providing LLMs with appropriate prompts, the LLM-based
+approach can produce not only final actions but also the reasoning process, making the re-
+sults more comprehensible to humans. This is not the case for approaches that incorporate
+deep neural networks, as their outputs are typically difficult to interpret.
+• LLMs Accessibility. This consideration explores whether an approach requires the access
+to the weights or only the API of the LLM.
+We present the results in Table 7 where more “+”s indicate a better capability on the corre-
+sponding aspect. Let us inspect the results row by row.

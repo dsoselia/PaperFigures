@@ -1,0 +1,27 @@
+to scale LLMs using limited computation resources. A common strategy to achieve this goal is to
+only train a small number of (extra) model parameters while freezing a large part of LLM [Hu et al.,
+2022, Sung et al., 2022]. Another common feature is the use of prompting, either with continuous
+or discrete prompts, to efﬁciently align models to downstream tasks [Liu et al., 2021, Lester et al.,
+2021, Liu et al., 2022, Ponti et al., 2023]. In this work, we scale our models by leveraging LLMs to
+initialize the encoder and decoder components of CodeT5+ with pretrained model checkpoints. We
+employ a “shallow encoder and deep decoder” architecture by Li et al. [2022b] and only keep the
+small encoder and the cross-attention layers trainable while freezing the deep decoder LLM. We then
+combine this training scheme with instruction tuning [Taori et al., 2023, Wang et al., 2022b, Ouyang
+et al., 2022], using only a small set of synthetic instruction-following prompts by Chaudhary [2023],
+to efﬁciently guide CodeT5+ towards better alignment to downstream tasks.
+3
+CodeT5+: Open Code Large Language Models
+We develop CodeT5+, a new family of open code large language models for code understanding
+and generation tasks (see Fig. 1 for an overview and more architecture/pretraining details in Fig. 2
+and Fig. 3). Based on the encoder-decoder architecture [Wang et al., 2021b], CodeT5+ is enhanced
+with the ﬂexibility to operate in various modes for different downstream tasks through our proposed
+mixture of pretraining objectives on unimodal and bimodal data.
+In the ﬁrst stage of unimodal pretraining, we pretrain the model with massive code data using
+computationally efﬁcient objectives (Sec. 3.1). In the second stage of bimodal pretraining, we
+continue to pretrain the model with a smaller set of code-text data with cross-modal learning objectives
+(Sec. 3.2). For each stage, we jointly optimize multiple pretraining objectives with equal weights.
+We found that this stage-wise training approach can efﬁciently expose our models to more diverse
+data to learn rich contextual representations. Additionally, we explore initializing CodeT5+ with
+off-the-shelf code LLMs to efﬁciently scale up the model (Sec. 3.3). Finally, model components in
+CodeT5+ can be dynamically combined to suit different downstream application tasks (Sec. 3.4).
+4

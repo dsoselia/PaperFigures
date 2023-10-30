@@ -1,0 +1,19 @@
+learn generic (non-personalized) rules about where
+objects typically go inside a house by averag-
+ing over many users (Taniguchi et al., 2021;
+Kant et al., 2022; Sarch et al., 2022). Works
+that focus on personalization aim to extrapolate
+from a few user examples given similar choices
+made by other users, using methods such as
+collaborative filtering (Abdo et al., 2015), spa-
+tial relationships (Kang et al., 2018), or learned
+latent preference vectors (Kapelyukh and Johns,
+) H
+ll
+f
+h
+h
+i
+Fig. 1 We study the task of household cleanup, where each
+object on the floor must be picked up and put away while
+following user preferences.

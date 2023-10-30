@@ -1,0 +1,161 @@
+(thus not vanishing unless desired).
+First, we make the simpliﬁcation that there are
+no token shifts, this will not affect the ﬁnal conclu-
+sion. In this scenario, wkvT can be written as
+wkvT =
+�T
+t=1 Ke
+t vt
+�T
+t=1 Ke
+t
+= E(vt) = S(vt)
+S(1) ,
+(33)
+where
+vt = Wvxt,
+∂(vt)i
+∂(Wv)i,j
+= (xt)j,
+Ke
+t = eWkxt+wT,t,
+∂(Ke
+t )i
+∂(Wk)i,j
+= (xt)j(Ke
+t )i,
+and S(·) and E(·) are shorthand for denoting sums
+and averages over weights Ke
+t .
+The loss function at position T can be written as
+LT = l(f(wkvT ), yT ).
+(34)
+Because wkvT relates to (Wk)i,j and (Wv)i,j only
+through the i-th channel (wkvT )i, we have
+∂LT
+∂(Wv)i,j
+=
+∂LT
+∂(wkvT )i
+∂(wkvT )i
+∂(Wv)i,j
+.
+(35)
+The ﬁrst part of above equation contains trivial
+operations like output layers, and other layers of
+time-mixing, which can be proven inductively. The
+second part of above equation can be bounded as
+����
+∂(wkvT )i
+∂(Wv)i,j
+���� =
+����
+∂Ei[(vt)i]
+∂(Wv)i,j
+����
+= |Ei[(xt)j]| ≤ max
+t
+|(xt)j|,
+(36)
+which is irrelevant to T. Similarly,
+∂(wkvT )i
+∂(Wk)i,j
+= ∂ Si[(vt)i]
+Si(1) /∂(Wk)i,j
+= Si[(xt)j(vt)i]
+Si(1)
+− Si[(xt)j]Si[(vt)i]
+Si(1)2
+= Ei[(xt)j(vt)i] − Ei[(xt)j]Ei[(vt)i]
+= covi((xt)j, (vt)i)
+(37)
+can also be bounded. Note that wkv’s softmax op-
+eration contains at least two non-zero terms (u and
+w), so the above “covariance” will not degenerate
+into 0.
+0
+100
+200
+300
+400
+500
+600
+700
+800
+Channel
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Time Decay
+Time decay (sorted along channel axis)
+Layer 1
+Layer 2
+Layer 3
+Layer 4
+Layer 5
+Layer 6
+Layer 7
+Layer 8
+Layer 9
+Layer 10
+Layer 11
+Layer 12
+1
+6
+11
+16
+21
+Layer
+The
+ E
+iff
+el
+ Tower
+ is
+ located
+ in
+ the
+ city
+ of
+Information propagation path
+7
+6
+5
+4
+3
+2
+1
+Log-probability of "Paris"
+Figure 9: Model behavior visualizations of the RWKV
+model.
+G
+Model Behavior Visualization
+In Figure 9, we present visualizations of some be-
+havior of the RWKV model.
+The top plot illustrates the time decays (e−w) in
+each layer of the RWKV-169M model, sorted along
+the channel axis. Notably, several decays in the last
+layers are very close or equal to one, implying that
+certain information is preserved and propagated
+throughout the model’s temporal context. Mean-
+while, many decays in the initial layer are close
+to zero, which corresponds to local operations in
+wkv (14), likely to be associated with tasks such as
+text parsing or lexical analysis. (Note that the local
+operations in wkv is due to the extra parameter u,
+when e−w is degenerated into 0.) These patterns of
+time decays are partly learned, but also come from
+parameter initialization as it speeds up training.
+The bottom plot shows the information retrieval
+and propagation path in the RWKV-430M model.
+The experiment follows the causal trace method
+introduced by Meng et al. (2022), where we
+1. Run the model once, and record all states and
+activation of each layer during the computa-
+tion;
+2. Corrupt the input embeddings of the subject
+using noise (“The Eiffel Tower” in this exam-
+ple);

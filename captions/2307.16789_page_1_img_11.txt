@@ -1,0 +1,61 @@
+Finance
+Jobs
+···
+···
+Movies
+GET Genres
+GET Search By Title
+···
+Tool
+Food
+GET Services
+Category
+2
+3
+g
+y
+Tool
+API
+···
+···
+···
+···
+···
+···
+···
+···
+···
+···
+···
+···
+Intra-category multi-tool instructions
+Intra-collection multi-tool instructions
+Sampled 
+APIs
+Star Wars Characters
+Streaming Availability
+IMDB Search
+Category
+Tool
+API
+Collection
+Tool
+API
+···
+···
+···
+···
+···
+···
+2022) and GPT-4 (OpenAI, 2023)), which have demonstrated impressive competencies in utilizing
+tools (Bubeck et al., 2023), are closed-source with their inner mechanisms opaque. This limits the
+democratization of AI technologies and the scope of community-driven innovation and development.
+In this regard, we deem it urgent to empower open-source LLMs to skillfully master diverse APIs.
+Although prior works have explored building instruction tuning data for tool use (Li et al., 2023a;
+Patil et al., 2023; Tang et al., 2023; Xu et al., 2023b), they fail to fully stimulate the tool-use
+capabilities within LLMs and have inherent limitations: (1) limited APIs: they either fail to in-
+volve real-world APIs (e.g., RESTAPI) (Patil et al., 2023; Tang et al., 2023) or consider only a
+small scope of APIs with poor diversity (Patil et al
+2023; Xu et al
+2023b; Li et al
+2023a);

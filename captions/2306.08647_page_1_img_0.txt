@@ -1,9 +1,0 @@
-this gap, by proposing a system (right) consisting of the Reward Translatorthat interprets the user input and transform
-it into a reward specification. The reward specification is then consumed by a Motion Controller that interactively
-synthesizes a robot motion which optimizes the given reward.
-bridges the gap between language and low-level robot actions. This is motivated by the fact that language
-instructions from humans often tend to describe behavioral outcomes instead of low-level behavioral details
-(e.g. “robot standing up” versus “applying 15 Nm to hip motor”), and therefore we posit that it would be
-easier to connect instructions to rewards than low-level actions given the richness of semantics in rewards.
-In addition, reward terms are usually modular and compositional, which enables concise representations
-of complex behaviors, goals, and constraints. This modularity further creates an opportunity for the user

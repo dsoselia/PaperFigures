@@ -1,0 +1,58 @@
+j
+,
+p
+g
+g
+j
+rately even if there are a lot of distractors. With the help
+of HQ-SAM, accurate masks can also be segmented when
+facing challenges such as object appearance changes, fast
+motion, and scale changes.
+5. Conclusion
+In this report, we propose Tracking Anything in High
+Quality (HQTrack). HQTrack mainly consists of a video
+multi-object segmenter (VMOS) and a mask refiner (MR).
+VMOS is responsible for propagating multiple targets in
+video frames, and MR is a large-scale pre-trained seg-
+mentation model in charge of refining the segmentation
+masks.
+HQTrack demonstrates powerful object tracking
+and segmentation capabilities. Finally, HQTrack achieves
+the 2nd place in the Visual Object Tracking and Segmenta-
+tion (VOTS2023) challenge.
+References
+[1] Ali Athar, Jonathon Luiten, Paul Voigtlaender, Tarasha Khu-
+rana, Achal Dave, Bastian Leibe, and Deva Ramanan. Burst:
+A benchmark for unifying object recognition, segmentation
+and tracking in video. In Proceedings of the IEEE/CVF Win-
+ter Conference on Applications of Computer Vision, pages
+1674–1683, 2023. 4
+[2] Luca Bertinetto, Jack Valmadre, Jo˜ao F Henriques, Andrea
+mentation and optical flow. In Proceedings of the IEEE in-
+ternational conference on computer vision, pages 686–695,
+2017. 1
+[7] Ming-Ming Cheng, Niloy J Mitra, Xiaolei Huang, Philip HS
+Torr, and Shi-Min Hu. Global contrast based salient region
+detection. IEEE transactions on pattern analysis and ma-
+chine intelligence, 37(3):569–582, 2014. 4
+[8] Yutao Cui, Cheng Jiang, Limin Wang, and Gangshan Wu.
+Mixformer: End-to-end tracking with iterative mixed atten-
+tion. In CVPR, pages 13608–13618, 2022. 1, 4
+[9] Martin Danelljan, Goutam Bhat, Fahad Shahbaz Khan, and
+Michael Felsberg. ECO: Efficient convolution operators for
+tracking. In CVPR, 2017. 1
+[10] Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov,
+Dirk Weissenborn, Xiaohua Zhai, Thomas Unterthiner,
+Mostafa Dehghani, Matthias Minderer, Georg Heigold, Syl-
+vain Gelly, Jakob Uszkoreit, and Neil Houlsby. An image is
+worth 16x16 words: Transformers for image recognition at
+scale. ICLR, 2021. 1
+[11] Mark Everingham, Luc Van Gool, Christopher KI Williams,
+John Winn, and Andrew Zisserman. The pascal visual object
+classes (voc) challenge. International journal of computer
+vision, 88:303–338, 2010. 4
+[12] Bharath Hariharan, Pablo Arbel´aez, Lubomir Bourdev,
+Subhransu Maji, and Jitendra Malik. Semantic contours from
+inverse detectors. In 2011 international conference on com-
+puter vision, pages 991–998. IEEE, 2011. 4
+[13] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.

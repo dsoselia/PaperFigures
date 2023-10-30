@@ -1,0 +1,2 @@
+Figure 4: The MultiModal-GPT knows there are 4 women in the image, and knows what they are
+doing.

@@ -1,0 +1,32 @@
+H0R2E0-A
+0.85
+0.17
+H0R4E0-A
+1.07
+0.09
+H0R8E0-A
+0.9
+0.05
+H0R0E2-A
+0.51
+0.11
+H0R0E4-A
+0.86
+0.04
+H0R0E8-A
+0.92
+0.04
+H2R4E2-A
+1.19
+0.02
+H2R2E4-A
+1.16
+0.02
+H4R2E2-A
+1.2
+0.01
+Table 2. Performances of GPT-4 using different types and numbers of demon-
+strations.
+The experiment results are presented in Table 2, where we append a suffix “-A” to indicate that
+the representation and expert demonstrations are derived from the demonstrations dataset, with
+configurations identical to those in GPT-A. Surprisingly, as can be seen from Table 2, historical

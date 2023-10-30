@@ -1,0 +1,62 @@
+Chameleon: Plug-and-Play Compositional Reasoning
+with Large Language Models
+Pan Lu1, Baolin Peng2, Hao Cheng2, Michel Galley2
+Kai-Wei Chang1, Ying Nian Wu1, Song-Chun Zhu1, Jianfeng Gao2
+1University of California, Los Angeles
+2Microsoft Research, Redmond
+lupantech@gmail.com
+{bapeng, chehao, mgalley, jfgao}@microsoft.com
+https://chameleon-llm.github.io
+Answer Generator
+- The question is about identifying the main persuasive appeal used in an advertisement. 
+- There are three main types of persuasive appeals: ethos, pathos, and logos. 
+- Ethos is an appeal to the speaker's or writer's credibility, character, or authority. 
+- Pathos is an appeal to the audience's emotions, feelings, or sympathies. 
+- Logos is an appeal to logic, reason, or rationality, using facts, statistics, or arguments. 
+[194, 21]: Earthzy paper
+[244, 70]: plates now
+[172, 112]: carry the Sierra
+[231, 159]: Club seal of
+[275, 198]: approval
+Analyze the advertisement to determine which persuasive appeal is used. The 
+ad mentions that Earthzy paper plates carry the Sierra Club seal of approval. 
+This implies that the product is environmentally friendly and has been endorsed 
+by a reputable organization. This appeal is primarily based on the credibility 
+and authority of the Sierra Club, which is an example of ethos (character).
+Bing Search
+Solution Generator
+Query Generator
+Which is the main persuasive 
+appeal used in this ad?
+(A) pathos (emotion)
+(B) ethos (character)
+(C) logos (reason)
+ethos (character)
+What is the direction of this push?
+(A) away from the baseball bat 
+(B) toward the baseball bat
+Image Captioner
+Knowledge Retrieval
+Answer Generator
+Solution Generator
+Image Captioner
+Answer Generator
+Solution Generator
+Knowledge Retrieval
+Text Detector
+Which animal’s skin is adapted 
+for survival in cold places?
+(A) Eurasian lynx 
+(B) Thorny Devil
+1
+1
+2
+2
+3
+3
+Figure 1: Examples from our Chameleon with GPT-4 on ScienceQA [30], a multi-modal question
+answering benchmark in scientific domains. Chameleon is adaptive to different queries by synthe-
+sizing programs to compose various tools and executing them sequentially to get final answers.
+Abstract
+Large language models (LLMs) have achieved remarkable progress in solving
+04.09842v2  [cs.CL]  24 May 2023

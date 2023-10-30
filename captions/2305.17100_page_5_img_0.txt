@@ -1,0 +1,26 @@
+Figure 3: The process example of trie-based beam search
+(beam size: 3, the maximum length of an output
+sequence: 4). Such search strategy can boost both the
+effectiveness and efficiency of BiomedGPT in various
+downstream tasks.
+location tokens are generated with Pix2Seq (Chen
+et al., 2022a) conditioned on the observed pixel
+inputs.
+We need data preprocessing for quantiz-
+ing biomedical images using VQ-GAN (Esser et al.,
+2021) because they are surrounded by trivial seman-
+tics, e.g., black background and the unmet input
+size.
+Therefore, we first remove the trivial back-
+ground and crop the image to the bounding box of
+the object of interest, then resize the cropped image
+to be 256×256, and feed the center part with 128×128 resolution into the pre-trained VQ-GAN to generate
+the corresponding sparse image codes, which are the target output in MIM task. Vision-language tasks fol-
+low the same tokenization flow. Note that for fine-tuning, we also apply seq2seq learning but with different
+datasets and tasks, as shown in Table 1 and Table 3. More implementation details are described in Section
+3.1.
+2.5
+Autoregressive Inference
+Inference in large language models often relies on decoding strategies like beam search to improve gener-
+ation quality. However, such an approach poses challenges for classification tasks, including unnecessary
+6

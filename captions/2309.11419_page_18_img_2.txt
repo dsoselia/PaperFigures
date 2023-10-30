@@ -1,7 +1,0 @@
-(a) Input
-(b) Rendered output
-Figure 9: A training sample for the layout-based task from web screenshots
-(a) Input
-(b) Rendered output
-Figure 10: A training sample for the markup-based task from README
-19

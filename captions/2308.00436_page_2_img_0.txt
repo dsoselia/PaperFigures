@@ -1,0 +1,32 @@
+Figure 1: Example of using SelfCheck, focusing on the checking of a particular step (Step 5). To
+check the correctness of the step, SelfCheck goes through 4 stages. First, in the target extraction stage,
+it figures out that the main purpose of Step 5 is to complete the square. In the information collection
+stage, it then establishes that Step 5 only directly relies on Step 4. Next, the step regeneration
+stage instructs the LLM to complete the square independently, only using Step 4 as context. The
+regeneration result shows that the center and radius of the circle are (3, 0) and 3, which is different
+from what is implied by the original Step 5. Consequently, the result comparison stage concludes that
+Step 5 is likely to be wrong. After checking all the steps, SelfCheck integrates the results to form an
+overall confidence score, w. See Appendix A for a complete version of the example.
+3
+SELFCHECK: USING LLMS TO CHECK THEIR OWN REASONING
+Rather than relying on external resources or problem-specific data like the aforementioned approaches,
+it would be highly beneficial if we could develop self-contained checking schemes that require only
+the original LLM itself. In other words, we would like to use the LLM to identify errors in its own
+step-by-step reasoning, analogously to how a human might go back to check their working.
+Unfortunately, directly asking the LLM to check its own reasoning is largely ineffective: it almost
+invariably declares that the original answer is correct, with Ling et al. (2023) finding answers checked
+in this way are deemed correct more than 90% of the time regardless of whether they actually are. As
+we will show in Section 5, individually prompting the LLM to check each step in the CoT reasoning
+fares slightly better, but is still only able to offer marginal gains compared to not checking at all.
+A more nuanced method to perform this checking is thus required. To this end, we introduce
+SelfCheck, a general-purpose, zero-shot, checking schema for self-identifying errors in LLM CoT
+reasoning. Given a question, q, and its step-by-step solution, s, produced by some generator (which
+will generally be an LLM with appropriate CoT prompting), SelfCheck considers each step of s in
+turn and tries to establish its individual correctness based on the preceding steps. This checking is
+done by leveraging an LLM (which can either be the same LLM used to generate s or a separate
+one), but rather than directly asking the LLM to perform the check, we instead introduce a novel step
+checking method (see Section 3.1) that exploits their generative modeling strengths. The results of
+the checks on individual steps are then combined into a single confidence score, w ∈ [0, 1], for the
+whole solution. These confidence scores, in turn, allow us to improve predictive performance, by
+using them to perform weighted voting on multiple solutions to the same question.
+3

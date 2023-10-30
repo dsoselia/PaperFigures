@@ -1,0 +1,146 @@
+7
+2020
+2023
+2021
+1-4
+5-8
+9-10
+1-3
+4-6
+7-10
+11-12
+T5
+GPT-3
+WebGPT
+BLOOMZ
+Galatica
+mT0
+2019
+FLAN
+InstructGPT
+GPT-NeoX-20B
+CodeGen
+OPT
+OPT-IML
+MT-NLG
+T0
+Tk-Instruct
+1-4
+GPT-4
+GShard
+UL2
+PaLM
+Flan-T5
+Flan-PaLM
+Sparrow
+ChatGPT
+Ernie 3.0 Titan
+Yuan 1.0
+Gopher
+GLaM
+mT5
+PanGu-𝛂
+PLUG
+LaMDA
+CPM-2
+HyperCLOVA
+Publicly Available
+Codex
+Jurassic-1
+Ernie 3.0
+Anthropic
+NLLB
+Cohere
+Luminous
+YaLM
+11-12
+2022
+GLM
+AlexaTM
+BLOOM
+WeLM
+AlphaCode
+Chinchilla
+CodeGeeX
+Falcon
+CodeGen2
+5-8
+LLaMA2
+StarCoder
+PaLM2
+LLaMA
+PanGu-Σ
+Bard
+Pythia
+Vicuna
+Fig. 2: A timeline of existing large language models (having a size larger than 10B) in recent years. The timeline was
+established mainly according to the release date (e.g., the submission date to arXiv) of the technical paper for a model. If
+there was not a corresponding paper, we set the date of a model as the earliest time of its public release or announcement.
+We mark the LLMs with publicly available model checkpoints in yellow color. Due to the space limit of the figure, we only
+include the LLMs with publicly reported evaluation results.
+GPT-1
+2018.06
+decoder-only architecture
+generative pre-training
+GPT-2
+2019.02
+unsupervised multitask learner
+scaling the model size
+in-context learning
+exploring scaling limits
+code pre-training
+gpt-3.5-turbo
+2023.03
+excellent comprehensive ability
+text-davinci-002
+2022.03
+instruction following
+code-davinci-002
+2022.03
+capable code model
++code
++chat
++RLHF
++instruction
+Codex
+2021.07
+GPT-3
+2020.05
+GPT-4
+2023.03
+strong reasoning ability
+multi-modal ability
+GPT-3.5
+2022.03
+ChatGPT
+text-davinci-003
+2022.09
+human alignment
+Fig. 3: A brief illustration for the technical evolution of GPT-series models. We plot this figure mainly based on the papers,
+blog articles and official APIs from OpenAI. Here, solid lines denote that there exists an explicit evidence (e.g., the official
+statement that a new model is developed based on a base model) on the evolution path between two models, while dashed
+lines denote a relatively weaker evolution relation.
+the idea of approaching intelligent systems with language
+models was already explored in the early days of Ope-
+nAI, while it was attempted with recurrent neural net-
+works (RNN) [108]. With the advent of Transformer, OpenAI
+developed two initial GPT models, namely GPT-1 [109] and
+GPT-2 [26], which can be considered as the foundation to
+more powerful models subsequently i.e., GPT-3 and GPT-4.
+• GPT-1. In 2017, the Transformer model [22] was intro-
+duced by Google, and the OpenAI team quickly adapted
+their language modeling work to this new neural network
+architecture. They released the first GPT model in 2018,
+i.e., GPT-1 [109], and coined the abbreviation term GPT
+as the model name, standing for Generative Pre-Training.
+GPT-1 was developed based on a generative, decoder-only
+Transformer architecture, and adopted a hybrid approach of
+unsupervised pretraining and supervised fine-tuning. GPT-
+1 has set up the core architecture for the GPT-series models
+and established the underlying principle to model natural
+language text, i.e., predicting the next word.
+• GPT-2. Following a similar architecture of GPT-1,
+GPT-2 [26] increased the parameter scale to 1.5B, which
+was trained with a large webpage dataset WebText. As
+claimed in the paper of GPT-2, it sought to perform
+tasks via unsupervised language modeling, without explicit

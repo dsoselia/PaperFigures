@@ -1,0 +1,40 @@
+Normal
+Pre-trained range
+Pre-trained range
+Unseen Range
+Position Interpolation
+f’(x, m) = f(x, m/2)
+Extrapolation
+Figure 1: An illustration of our Position Interpolation method. Consider a Llama model pre-trained with a
+2048 context window length. Upper left illustrates the normal usage of an LLM model: input position indices
+(blue dots) are within the pre-trained range. Upper right illustrates length extrapolation where models are
+required to operate unseen positions (red dots) up to 4096. Lower left illustrates Position Interpolation where
+we downscale the position indices (blue and green dots) themselves from [0, 4096] to [0, 2048] to force them
+to reside in the pretrained range.
+bound (∼ 600× smaller in LLaMA 7B setting) than the extrapolated one, and is thus much more
+stable. Therefore, interpolated position encodings are easier for the model to adapt.
+Empirically, we found that Position Interpolation is highly effective and efficient, requiring only a
+very short period of fine-tuning for the model to fully adapt to greatly extended context windows.
+We present experimental results for extending the context window to up to 32768 from the initial
+2048 across 7B to 65B LLaMA models using Position Interpolation. Our results show that
+1. Position Interpolation can easily enable very long context windows (e.g. 32768), requiring
+only fine-tuning for 1000 steps on the Pile (Gao et al., 2020) to achieve a good quality.
+The cost of fine-tuning is negligible compared to the pre-training costs. This confirms
+our hypothesis that it is relatively easy for the models to adapt to interpolated position
+encodings.
+2. Position Interpolation generates strong models that can effectively make use of much ex-
+tended context window. We show that models extended by Position Interpolation enjoy
+significant perplexity gains from greatly extended context windows for text modeling, and
+we show that the perplexity reduces graceful with the enlargement of context windows.
+We also applied Position Interpolation in a long text summarization task, and demonstrate
+competitive performances.
+3. Position Interpolation preserves model quality relatively well for tasks within its original
+context window sizes. We present a variety of evaluation results for the extended LLaMA
+models on the original LLaMA benchmark. Compared with original LLaMA models, the
+extended LLaMA models saw a minor degradation on several standard benchmarks within
+a 2048 token limit.
+Our results highlight the innate ability of Transformer models to “extrapolate to sequence lengths
+longer than the ones encountered during training” as hypothesized in the seminal work of Vaswani
+et al. (2017). We reaffirm this hypothesis and suggest that the previously known weakness of ex-
+trapolating to longer sequences for language modeling (Press et al., 2022) may be due to direct
+2

@@ -1,0 +1,27 @@
+Generative Disco: Text-to-Video Generation for Music Visualization
+VIVIAN LIU, Columbia University, USA
+TAO LONG, Columbia University, USA
+NATHAN RAW, Rochester Institute of Technology, USA
+LYDIA CHILTON, Columbia University, USA
+Fig. 1. Generative Disco is a text-to-video system for music visualization. Generative Disco guides users to work in intervals over
+a music waveform and to find generated images that define how intervals start and end. Interpolating between these images to
+the beat of the music creates stylized music visualization. Two design patterns, transitions and holds, guide the generative process.
+Transitions express change along dimensions such as color, time, subject, and style, and holds create focus on a subject.
+Visuals can enhance our experience of music, owing to the way they can amplify the emotions and messages conveyed within it.
+However, creating music visualization is a complex, time-consuming, and resource-intensive process. We introduce Generative Disco,
+a generative AI system that helps generate music visualizations with large language models and text-to-video generation. The system
+helps users visualize music in intervals by finding prompts to describe the images that intervals start and end on and interpolating
+between them to the beat of the music. We introduce design patterns for improving these generated videos: transitions, which express
+shifts in color, time, subject, or style, and holds, which help focus the video on subjects. A study with professionals showed that
+transitions and holds were a highly expressive framework that enabled them to build coherent visual narratives. We conclude on the
+generalizability of these patterns and the potential of generated video for creative professionals.
+CCS Concepts: • Applied computing → Media arts; Computer-aided design; • Human-centered computing → Interactive
+systems and tools; • Computing methodologies → Natural language processing; Computer vision tasks.
+Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not
+made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components
+of this work owned by others than ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to
+redistribute to lists, requires prior specific permission and/or a fee. Request permissions from permissions@acm.org.
+© 2018 Association for Computing Machinery.
+Manuscript submitted to ACM
+1
+arXiv:2304.08551v2  [cs.HC]  28 Sep 2023

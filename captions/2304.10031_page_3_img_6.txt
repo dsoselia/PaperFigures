@@ -1,0 +1,26 @@
+Protein D
+Protein E
+Protein G
+Protein F
+Protein D
+Protein E
+Protein C
+Protein B
+Protein A
+Figure 3: Examples of Data on Topological Domains. (a) Higher-order interactions in protein networks. (b)
+Limited molecular representation: rings can only contain three atoms. (c) Triangular mesh of a protein surface. (d)
+More flexible molecular representation, permitting the representation of any ring-shaped functional group. (e) Flexible
+mesh which includes arbitrarily shaped faces. (f) Fully flexible molecular representation, permitting the representation
+of the complex nested hierarchical structure characteristic of molecules and other natural systems. (g) Hierarchical
+higher-order interactions in protein networks.
+2.1.1
+Terminology
+Across discrete domains, we use the term cell to denote any node or relation between nodes such
+as (hyper)edges, faces, or volumes. Cells possess two attributes: size—the number of cells it con-
+tains—and rank—where nodes are said to have rank 0, edges and hyperedges rank 1, faces rank 2,
+and so on. The part-whole relationships of simplicial and cellular complexes impose a relationship
+between the rank of a cell and its size: cells of rank r contains exactly (resp. at least) r + 1 cells
+of rank r − 1: faces (r = 2) contain exactly (resp. at least) three edges (r − 1 = 1). By contrast,
+hypergraph cells do not encode part-whole relations and hyperedges may have any size. However,
+hypergraph cells are limited to ranks 0 and 1. A combinatorial complex is unrestricted in both rank
+and size: nodes have rank 0 and cells of any size > 1 can have any rank.

@@ -1,0 +1,13 @@
+101
+102
+103
+N = number of solutions per problem
+62
+p
+Majority Voting
+Figure 3: A comparison of outcome-supervised and process-supervised reward
+models, evaluated by their ability to search over many test solutions. Majority
+voting is shown as a strong baseline. For N ≤ 1000, we visualize the variance
+across many subsamples of the 1860 solutions we generated in total per problem.
+3
+Large-scale Supervision

@@ -1,0 +1,40 @@
+the right) highlight the crucial role of data formatting in performance and sample efficiency. Plain
+never reaches 100% accuracy and the sample complexity for the remaining methods to learn addition
+perfectly steadily reduces as we increase the level of detail in the data format.
+on arithmetic operations is poor, the prior “skills” acquired during pretraining facilitate reasonable
+performance on some basic arithmetic tasks even with a small number of finetuning samples. However,
+finetuning with non-standard formatting, such as reverse formatting, can interfere with the model’s
+performance when pretrained on standard-formatted operations, leading to decreased accuracy.
+Finally, we conduct studies on how performance in arithmetic changes with scale, and although we
+find that scale does indeed aid in learning arithmetic operations, it is not a necessary trait.
+Compositional and length generalization. One might question if our trained models truly grasp
+arithmetic. Our findings present a nuanced answer. We find length generalization beyond trained
+digit lengths difficult. For instance, if a model is trained on all n-digit lengths, excluding a specific
+length, it struggles to compensate and accurately calculate this missing digit length. Consequently,
+the models achieve high accuracy within trained digit lengths but struggle significantly beyond this
+range. This suggests that the models learn arithmetic not as a flexible algorithm, but more as a
+mapping function constrained to trained digit lengths. While this surpasses mere memorization, it
+falls short of comprehensive arithmetic “understanding”.
+Novelty over prior work. Our approach heavily builds upon prior work that uses instructive data to
+enhance model performance, and we do not claim novelty in the style of training data employed. What
+sets our work apart is the primary focus on randomly initialized models and extensive ablation studies
+on various sampling/data formatting and model scale settings to isolate the factors that contribute to
+the fast emergence of arithmetic capabilities. Furthermore, our work offers a few simple but perhaps
+insightful theoretical justifications of some of the phenomena we observe.
+2
+Related Works
+Instructional data/chain-of-thought. The idea of using detailed reasoning training data predates
+Transformers (Vaswani et al., 2017). Ling et al. (2017); Cobbe et al. (2021); Nye et al. (2021) use
+natural language to generate reasoning steps while Roy & Roth (2016); Reed & De Freitas (2015);
+Chen et al. (2017); Cai et al. (2017) show that symbolic reasoning may suffice. Nogueira et al. (2021)
+note that large number of samples with small digits is important for arithmetic tasks (Yuan et al.,
+2023). Razeghi et al. (2022) observe a correlation between the frequency of numbers in the dataset
+and the performance involving them whereas we find that transformers can learn to add numbers that
+were not seen during training. Chain-of-thought (Wei et al., 2022c) refers to the model’s improved
+performance when prompted to produce rationale. Zhou et al. (2022b) show that this can be achieved
+by providing sufficiently informative exemplars as a few-shot prompt (Brown et al., 2020). Zhou et al.
+(2022a) showed that least-to-most prompting can help GPT-3 solve problems that can be decomposed
+into simpler sub-problems. Least-to-most prompting consists of first decomposing a complex problem
+into easier subproblems, and then sequentially solving these subproblems. We extend this notion to
+simple addition and show that asking the model to output the least significant bit first has a similar
+4

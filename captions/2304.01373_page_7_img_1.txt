@@ -1,0 +1,22 @@
+3.3. Do Pretraining Term Frequencies Influence Task
+Performance Throughout Training?
+Recent work has explored the effect of statistics of language
+model corpora on numerous downstream tasks. Findings
+presented in Shin et al. (2022) demonstrate how the pre-
+training corpus can impact few-shot performance, while
+Razeghi et al. (2022) investigates how models are able to
+perform numerical reasoning from in a few-shot setting. By
+charting the performance of a arithmetic task given an input
+operand and the frequency at which it is found in the pre-
+training corpus, they concluded that accuracy tends to be
+the number of times all salient entities of that QA pair appear
+in a sampled pretraining data sequence seen by a given
+checkpoint. We follow the original experiment using 4 shots
+and evaluate both the training and the validation split of the
+dataset. Performance is averaged over a group of log-spaced
+bins.
+We observe that for both arithmetic and QA experiments,
+model sizes affect the correlation between average perfor-
+mance and the term frequencies, indicating that this corre-
+lation is an emergent property in larger models. Smaller
+8

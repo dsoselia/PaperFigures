@@ -1,0 +1,13 @@
+2023-01-02 by a customer with the phone number 823451.
+Input Processing. ChatDB generates a series of intermediate steps to manipulate the symbolic memory by utilizing
+LLMs if responding to the user input requires the use of memory. Otherwise, we use LLMs directly to generate a reply.
+Chain-of-Memory. ChatDB executes a series of intermediate memory operation steps to interact with symbolic memory.
+ChatDB manipulates the symbolic memory in sequence according to a series of previously generated SQL statements,
+including operations such as insert, update, select, delete, etc. The external database executes the corresponding SQL
+statements, updates the database, and returns the results. It is worth noting that ChatDB decides whether to update
+the memory operation step based on the results of previous SQL statements before executing this operation. ChatDB
+executes the next step following the same procedure until all operations on the memory are completed.
+Response Summary. ChatDB summarizes the final response to the user based on the results of a series of chain-of-
+memory steps.
+3.3
+Chain-of-Memory

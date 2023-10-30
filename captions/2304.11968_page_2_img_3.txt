@@ -1,0 +1,22 @@
+Step 1: Initialization
+Step 2: Tracking
+Step 3: Segmentation
+Step 4: Correction
+Interactive
+Interactive
+Target verification
+in frame #1
+SAM
+Coarse mask
+Probes&Affinities
+Prompts in frame #t
+SAM
+Pause
+Return
+Quality
+Good?
+Output
+Yes
+No
+XMem
+SAM

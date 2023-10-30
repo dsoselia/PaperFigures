@@ -1,0 +1,134 @@
+ADE20K [117]
+BBBC038v1 [12]
+Cityscapes [25]
+DOORS [80]
+DRAM [24]
+EgoHOS [113]
+GTEA [34, 63]
+Hypersim [86]
+IBD [17]
+iShape [111]
+LVIS [44]
+NDD20 [100]
+NDISPark [22, 23]
+OVIS [81]
+PPDLS [74]
+Plittersdorf [46]
+STREETS [91]
+TimberSeg [38]
+TrashCan [52]
+VISOR [28, 27]
+WoodScape [112]
+PIDRay [104]
+ZeroWaste-f [6]
+Figure 8: Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.
+-20
+0
++20
++40
+IoU delta at 1 center point
+GTEA [34, 63]
+TrashCan [52]
+DRAM [24]
+PIDRay [104]
+Cityscapes [25]
+WoodScape [112]
+IBD [17]
+EgoHOS [113]
+Plittersdorf [46]
+VISOR [28, 27]
+NDISPark [22, 23]
+Hypersim [86]
+OVIS [81]
+ADE20K [117]
+iShape [111]
+ZeroWaste-f [6]
+STREETS [91]
+LVIS [44]
+NDD20 [100]
+TimberSeg [38]
+DOORS [80]
+BBBC038v1 [12]
+PPDLS [74]
+-21.4
+-15.0
+-6.5
+-5.8
+-2.0
+-0.6
+-0.3
++0.8
++1.5
++1.8
++2.7
++6.1
++7.0
++7.8
++8.8
++9.1
++17.3
++18.5
++21.1
++28.9
++41.1
++44.7
++46.9
+(a) SAM vs. RITM [92] on 23 datasets
+LVIS
+VISOR
+DRAM
+IBD
+NDD20
+OVIS
+iShape
+Datasets
+5
+7
+9
+Avg. mask rating
+Ground Truth
+SAM
+SAM - single output
+RITM
+(b) Mask quality ratings by human annotators
+1
+2
+3
+5
+9
+Number of points
+50
+75
+mIoU (23 datasets)
+SAM (oracle)
+SAM
+RITM
+SimpleClick
+FocalClick
+1
+2
+3
+5
+9
+Number of points
+50
+75
+mIoU (23 datasets)
+SAM (oracle)
+(c) Center points (default)
+(d) Random points
+Figure 9: Point to mask evaluation on 23 datasets. (a) Mean IoU of SAM and the strongest single point segmenter, RITM [92].
+Due to ambiguity, a single mask may not match ground truth; circles show “oracle” results of the most relevant of SAM’s 3
+predictions. (b) Per-dataset comparison of mask quality ratings by annotators from 1 (worst) to 10 (best). All methods use
+the ground truth mask center as the prompt. (c, d) mIoU with varying number of points. SAM signiﬁcantly outperforms prior
+interactive segmenters with 1 point and is on par with more points. Low absolute mIoU at 1 point is the result of ambiguity.
+Results. First, we look at automatic evaluation on the full
+suite of 23 datasets using mIoU. We compare per-dataset
+results in Fig. 9a against RITM. SAM yields higher re-
+sults on 16 of the 23 datasets, by as much as ∼47 IoU. We
+also present an “oracle” result in which the most relevant
+fall between 7 and 9, which corresponds to the qualitative
+rating guideline: “A high score (7-9): The object is identi-
+ﬁable and errors are small and rare (e.g., missing a small,
+heavily obscured disconnected component, ...).” These re-
+sults indicate that SAM has learned to segment valid masks

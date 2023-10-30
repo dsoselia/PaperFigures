@@ -1,0 +1,174 @@
+prelude
+import init.data.nat.lemmas init.meta.well_founded_tactics
+namespace nat
+/-
+t h e o r e m m o d _ s e l f ( n : n a t ) : n % n = 0 : =
+b e g i n
+r w [ m o d _ e q _ s u b _ m o d ( l e _ r e f l _ ) , n a t . s u b _ s e l f , z e r o _ m o d ]
+e n d
+-/
+def gcd : nat → nat → nat
+| 0
+y := y
+| (x + 1) y := have y % (x + 1) < x + 1, from mod_lt _ $ succ_pos _,
+gcd (y % (x + 1)) (x + 1)
+theorem gcd_zero_left (x : nat) : gcd 0 x = x := begin simp [gcd] end
+theorem gcd_self (n : nat) : gcd n n = n :=
+begin
+cases n,
+{ unfold gcd },
+unfold gcd,
+rewrite mod_self,
+apply gcd_zero_left
+end
+end nat
+1
+prelude
+import init.data.nat.lemmas init.meta.well_founded_tactics
+namespace nat
+theorem mod_self (n : nat) : n % n = 0 :=
+begin
+rw [mod_eq_sub_mod (le_refl _), nat.sub_self, zero_mod]
+end
+def gcd : nat → nat → nat
+| 0
+y := y
+| (x + 1) y := have y % (x + 1) < x + 1, from mod_lt _ $ succ_pos _,
+gcd (y % (x + 1)) (x + 1)
+theorem gcd_zero_left (x : nat) : gcd 0 x = x := begin simp [gcd] end
+theorem gcd_self (n : nat) : gcd n n = n :=
+begin
+cases n,
+{ unfold gcd },
+unfold gcd,
+rw mod_self,
+apply gcd_zero_left
+end
+end nat
+1
+Lean 
+LeanDojo Benchmark
+•
+98,734 theorems and proofs
+•
+217,776 tactics
+•
+129,243 premises
+k : ℕ
+⊢ gcd ((k + 1) % (k + 1)) (k + 1) = k + 1
+All accessible premises 
+in the math library
+Maximum 
+cosine similarity
+Encoder
+theorem mod_lt (x : nat) {y : nat} (h : 0 < y) : x % y < y
+theorem mod_self (n : nat) : n % n = 0
+theorem mod_eq_of_lt {a b : nat} (h : a < b) : a % b = a
+theorem zero_mod (b : nat) : 0 % b = 0
+1
+rewrite mod_self
+. . .
+Encoder
+. . .
+Encoder
+Encoder
+State
+Concat
+Encoder-decoder
+Tactic
+Retrieved premises
+Machine learning 
+model
+Data 
+extraction
+Training
+Prove theorems 
+by Interaction
+n : ℕ
+⊢ gcd n n = n
+⊢ gcd 0 0 = 0
+k : ℕ
+⊢ gcd (k + 1) (k + 1) = k + 1
+k : ℕ
+⊢ gcd ((k + 1) % (k + 1)) (k + 1) = k + 1
+k : ℕ
+⊢ gcd 0 (k + 1) = k + 1
+Tactic
+cases n
+unfold gcd
+unfold gcd
+rewrite mod_self
+apply gcd_zero_left
+Local context
+⊢ Goal
+Proof tree
+prelude
+import init.data.nat.lemmas init.meta.well_founded_tactics
+namespace nat
+/-
+theorem mod_self (n : nat) : n % n = 0 :=
+begin
+rw [mod_eq_sub_mod (le_refl _), nat.sub_self, zero_mod]
+end
+-/
+def gcd : nat → nat → nat
+-- gcd z y
+| 0
+y := y
+-- Case 1: z == 0
+| (x + 1) y := gcd (y % (x + 1)) (x + 1)
+-- Case 2: z > 0
+theorem gcd_zero_left (x : nat) : gcd 0 x = x := begin simp [gcd] end
+theorem gcd_self (n : nat) : gcd n n = n :=
+begin
+cases n,
+{ unfold gcd },
+unfold gcd,
+rewrite mod_self,
+apply gcd_zero_left
+end
+end nat
+1
+. . .
+33K on average
+…
+Figure 1: Top right: LeanDojo extracts proofs in Lean [1] into datasets for training machine
+learning models. It also enables the trained model to prove theorems by interacting with Lean’s proof
+environment. Top left: The proof tree of a Lean theorem ∀n ∈ N, gcd n n = n, where gcd is the
+greatest common divisor (details in Sec. 3). When proving the theorem, we start from the original
+theorem as the initial state (the root) and repeatedly apply tactics (the edges) to decompose states
+into simpler sub-states, until all states are solved (the leaf nodes). Tactics may rely on premises such
+as mod_self and gcd_zero_left defined in a large math library. E.g., mod_self is an existing
+theorem ∀n ∈ N, n % n = 0 used in the proof to simplify the goal. Bottom: Our ReProver model
+(Sec. 5). Given a state, it retrieves premises from the math library, which are concatenated with the
+state and fed into an encoder-decoder Transformer [2] to generate the next tactic.
+Formal theorem proving serves as an important challenge for machine learning. From a computer
+science perspective, formal proofs can be treated as programs [10]. But unlike conventional programs
+in C++ or Python, the correctness of proofs can be verified using proof assistants. Therefore, theorem
+proving may be considered a special form of code generation, with rigorous evaluation and no room
+for the model to hallucinate. This can be consequential to current large language models (LLMs), as
+they have demonstrated exceptional capability in code generation [11] but have flaws in factuality
+and hallucination [12]. In addition, augmenting LLMs with external tools, such as proof assistants,
+has shown promise in improving their various capabilities, including multi-step reasoning [13].
+Current research on LLMs for theorem proving is facing many barriers. To our knowledge, none
+of the existing LLM-based provers are open-source [14–21]. They all use private pretraining data,
+and the compute requirements can reach thousands of GPU days [17]. Furthermore, some rely
+on tailored infrastructure for distributed training and interaction with the proof assistant—both are
+not possible to fully reproduce without open-source code [17, 19]. We change the status quo by
+introducing LeanDojo: open-source toolkits, models, and benchmarks that give researchers access to
+state-of-the-art LLM-based provers with modest computational costs.
+Tools for Data Extraction and Interaction.
+We focus on Lean, a proof assistant popular among
+mathematicians.2 Our framework LeanDojo provides two essential functions for learning-based
+theorem proving (Fig. 1): extracting data and enabling models to interact with Lean programmatically.
+For data extraction, LeanDojo extracts training data not directly visible in the raw Lean code (Fig. 2),
+f
+i i
+f i
+di
+b
+f
+(Fi
+1 T
+l f ) I
+ddi i

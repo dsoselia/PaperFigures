@@ -1,0 +1,21 @@
+Woodstock ’18, June 03–05, 2018, Woodstock, NY
+Liu et. al.
+Fig. 3. Generative Disco system design. Users begin by interacting with the waveform to create intervals within the music (A). To find
+prompts that will define the start and end of intervals (C), users can brainstorm prompts using suggestions from GPT-4 (B, D) and
+explore text-to-image generations (E, I). Results users like can be dragged and dropped into the start and end areas (C), after which an
+interval can be generated. Generated intervals show in the Tracks (G) and can be stitched into a video placed in the Video Area (H).
+4
+DESIGNING WITH GENERATIVE DISCO
+From these design goals, we designed a system for music visualization targeted at professionals. While visuals can be
+generated for music of any length, we focus on generating short segments of music visualization (under one minute).
+4.1
+The Generative Disco interface
+In the following section, we walk through how Generative Disco generates music videos. Generative Disco’s target
+users are audiovisual professionals and experienced hobbyists who seek novel, eye-catching visualizations. These can
+include professionals such as video jockeys (VJs), lyric video artists, music video editors, Youtubers and so on. We walk
+through a motivating example using a user persona: Naomi, who has created a remix for a Daft Punk song, "One More
+Time" and would like to upload her remix online. Naomi is a mashup artist who puts her remixes of pop songs on
+Spotify. She wants to generate a short visualizer that will loop when people listen to her remix.
+The system begins by loading the audio file of her remix as a waveform (Fig. 3-A). Naomi chooses a segment she
+would like to visualize which has both a melodic and vocal hook. To begin working with this segment, Naomi draws
+8

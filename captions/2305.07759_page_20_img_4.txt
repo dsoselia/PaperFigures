@@ -1,0 +1,14 @@
+Figure 19: Multi-scale distance-based attention.
+Semantic based attention.
+We also observe that there is (1). one head that the word “the” and “a” all attend
+to the word “banana”, interestingly, the “the” at “the park” also attends to “banana”, but the model still manage
+to generate “park”, which is the consistent completion. (2). Another attention head gives a pattern where the
+tokens “the” and “a” all attend to “park”. (3). There is third head that most of the words attend to the name of
+“Tom” and “Lucy”.
+We remark that it makes sense that the generation of words like “the”, “a”, “and” or “,” would be induced by
+distance-based, local attention heads, since those are tokens with a grammatical role which depends on the short-
+range interactions within a single sentence. On the other hand, the main entities in the story such as “banana”,
+“park”, “Lucy” and “Tom” cannot usually be predicted (as a next token) only based on the neighboring tokens,
+which is why the model needs to use semantic attention heads for their generation.
+Figure 20: Semantic attentions according to (1), (2), (3).
+21

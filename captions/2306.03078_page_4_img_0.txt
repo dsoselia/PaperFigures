@@ -1,0 +1,110 @@
+0
+1024
+2048
+3072
+4096
+5120
+6144
+7168
+8192
+input dim. (cols)
+0
+1024
+2048
+3072
+4096
+5120
+6144
+7168
+8192
+output dim. (rows)
+Sample: self_attn.o_proj, Layer 79
+6016
+6144
+6272
+6400
+6528
+6656
+6784
+6912
+7040
+512
+640
+768
+896
+1024
+Attention head pattern
+5632
+5696
+5760
+5824
+5888
+5952
+6016
+6080
+6144
+2688
+2752
+2816
+2880
+2944
+Row outlier pattern
+0
+32
+64
+96
+128
+160
+192
+224
+256
+384
+416
+448
+480
+512
+Rotary embedding pattern
+2720
+2752
+2784
+2816
+2848
+2880
+2912
+2944
+2976
+0
+32
+64
+96
+128
+Column outlier pattern
+Figure 2: Weight log-sensitivities from the last attention layer of LLaMA-65B. Dark-blue shades
+indicate higher sensitivity. The image on the left is a high-level view, resized to 1:32 scale with
+max-pooling. The two images in the middle are zoomed in from the main figure. The two images on
+the right are taken from other weight matrices.
+• Row outliers are shown in Figure 2 bottom-center as regions of high sensitivity within
+one output unit. Some of these patterns span the entire row, while others are partial. In
+attention layers, some of the partial row outliers correspond to some subset of attention
+heads. Column outliers appear in Figure 2, bottom-right, showing high sensitivity in select
+input dimensions (columns) across all rows. The latter are correlated to the “outlier feature”
+phenomenon reported in Dettmers et al. [DLBZ22].
+• Sensitive attention heads. (Figure 2, top-center) – regular stripes of width 128 highlight all
+weights corresponding to one attention head. This could be related to some attention heads
+having more important functions [VTM+19, Vig19, OEN+22]. The corresponding “stripes”
+are horizontal for attention Q & K projections, vertical in output projection, and absent from
+value projections and any MLP weights. Of note, there is significant variation in individual
+weight sensitivity even within the sensitive heads.
+• The Rotary embedding pattern, a repeating vertical pattern of sensitivity with a period of
+64 units. We attribute this to the use of rotary embeddings [SLP+21]: each attention head
+(dim = 128) is split into two halves: the first 64 are “rotated” with cosine, and the other
+64 use sine. Both sine and cosine rotation use the same set of frequencies. Typically, the
+i ht th t
+d t l
+f
+i
+d
+i
+iti
+th
+th i

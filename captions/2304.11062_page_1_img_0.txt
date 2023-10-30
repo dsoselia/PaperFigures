@@ -1,0 +1,66 @@
+3. We discovered the trained RMT s capacity to successfully extrapolate to tasks of varying lengths,
+including those exceeding 1 million tokens with linear scaling of computations required.
+4. Through attention pattern analysis, we found the operations RMT employs with memory, enabling
+its success in handling exceptionally long sequences.
+2
+Recurrent Memory Transformer
+Figure 2: Recurrent memory mechanism. Memory
+is passed to Transformer along input sequence embed-
+dings, and memory output is passed to the next segment.
+During training gradients ﬂow from the current segment
+through memory to the previous segment.
+Starting from the initial Recurrent Memory
+Transformer (Bulatov et al., 2022) (RMT), we
+adapted it for a plug-and-play approach as a
+wrapper for a range of popular Transformers.
+This adaptation augments its backbone with
+memory, composed of m real-valued trainable
+vectors (Figure 2).
+The lengthy input is di-
+vided into segments, and memory vectors are
+prepended to the ﬁrst segment embeddings and
+processed alongside the segment tokens. For
+encoder-only models like BERT, memory is
+added only once at the beginning of the segment,
+unlike (Bulatov et al., 2022), where decoder-
+only models separate memory into read and
+write sections. For the time step τ and segment
+H0
+τ , the recurrent step is performed as follows:
+˜H0
+τ = [Hmem
+τ
+◦ H0
+τ ], ¯HN
+τ = Transformer( ˜H0
+τ ), [ ¯Hmem
+τ
+◦ HN
+τ ] := ¯HN
+τ ,
+here N is a number of Transformer layers.
+After the forward pass, ¯Hmem
+τ
+contains updated memory tokens for the segment τ.
+Segments of the input sequence are processed sequentially. To enable the recurrent connection, we
+pass the outputs of the memory tokens from the current segment to the input of the next one:
+Hmem
+τ+1 := ¯Hmem
+τ
+, ˜H0
+τ+1 = [Hmem
+τ+1 ◦ H0
+τ+1].
+Both memory and recurrence in the RMT are based only on global memory tokens. This allows the
+backbone Transformer to remain unchanged, making the RMT memory augmentation compatible
+with any model from the Transformer family.
+2.1
+Computational efﬁciency
+We can estimate the required FLOPs for RMT and Transformer models of different sizes and sequence
+lengths. We took conﬁgurations (vocabulary size, number of layers, hidden size, intermediate hidden
+size, and number of attention heads) for the OPT model family (Zhang et al., 2022) and computed the
+number of FLOPs for the forward pass following (Hoffmann et al., 2022). We also modiﬁed FLOP
+estimates to account for the effect of RMT recurrence.
+Figure 3 shows that RMT scales linearly for any model size if the segment length is ﬁxed. We achieve
+linear scaling by dividing an input sequence into segments and computing the full attention matrix
+2

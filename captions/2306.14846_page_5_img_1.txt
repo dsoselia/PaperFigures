@@ -1,0 +1,16 @@
+�
+�
+This allows adaptation to new tasks with minimal data, while still leveraging the performance and
+generalization of ViNT. Appendix B.4 includes additional details.
+6
+Real-world Evaluation
+We deployed our ViNT foundation model on five distinct robotic platforms, including a drone, a
+quadruped, and two other novel robots which are not present in the training data. We designed our
+experiments to answer the following questions:
+Q1. Can ViNT efficiently explore previously unseen environments and incorporate heuristics?
+Q2. Does ViNT generalize to novel robots, environments, and obstacles?
+Q3. Can ViNT be fine-tuned to improve performance in out-of-distribution environments?
+Q4. Can the ViNT policy be adapted to handle new task specification and modalities?
+Please see Appendix D for more details on platforms used in the training data and in evaluation. We
+did not perform any careful system identification or homogenization of sensors across the robots
+6

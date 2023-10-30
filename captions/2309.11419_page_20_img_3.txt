@@ -1,4 +1,0 @@
-(a) Input
-(b) Rendered output
-Figure 14: A training sample for the markup-based task from HTMLs
-21

@@ -1,0 +1,18 @@
+Towards Language Models That Can See:
+Computer Vision Through the LENS
+of Natural Language
+William Berrios†
+Gautam Mittal†§
+Tristan Thrush†§
+Douwe Kiela†§
+Amanpreet Singh†
+†Contextual AI; §Stanford University
+Abstract
+We propose LENS
+, a modular approach for tackling computer vision problems by leveraging
+the power of large language models (LLMs). Our system uses a language model to reason over
+outputs from a set of independent and highly descriptive vision modules that provide exhaustive
+information about an image. We evaluate the approach on pure computer vision settings such
+as zero- and few-shot object recognition, as well as on vision and language problems. LENS
+can be applied to any off-the-shelf LLM and we find that the LLMs with LENS perform highly
+  28 Jun 2023

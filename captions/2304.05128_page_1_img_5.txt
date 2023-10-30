@@ -1,0 +1,19 @@
+can match or outperform baseline models that sample more than 10× predictions. Our work indicates
+that besides improving their ability to generate code from scratch, teaching large language models to
+perform SELF-DEBUGGING without human guidance is another promising path to enhance coding
+capability and reduce the sampling cost required to accomplish challenging tasks.
+Model
+Executor
+Code
+Problem
+Explanation
+Unit tests
+Step 1: Code 
+generation
+Step 3: Code explanation
+Step 2: Code execution
+Feedback
+Figure 1: SELF-DEBUGGING for iterative debugging using a large language model. At each debug-
+ging step, the model first generates new code, then the code is executed and the model explains the
+code. The code explanation along with the execution results constitute the feedback message, based
+on which the model infers the code correctness and then adds this message to the feedback. The

@@ -1,0 +1,27 @@
+Woodstock ’18, June 03–05, 2018, Woodstock, NY
+Liu et. al.
+Fig. 4. Distribution of Likert scale responses on NASA-TLX, creativity support index, and workflow-specific questions across all
+participants for the music visualization task. Full questions are in the Supplemental Material.
+6.1.1
+Creativity Support Index Metrics. Generative Disco performed well in terms of Creativity Support Index (CSI) [24]
+metrics. Responses to all questions were on a 7-point Likert scale and are visualized in the middle subplot within Figure 4.
+All twelve participants rated the system a 6 or 7 for enjoyment (median:7). Ten of 12 participants gave positive feedback
+(positive defined as ≥ 5 out of 7) that the results were worth their effort (median: 6.5). Eight of twelve participants agreed
+that they could sufficiently explore a number of outcomes without tedious interaction (median: 6). Expressiveness was
+similarly generally positive (median: 5.5).
+There was a slight split in opinion on control (“I had control over the intervals and the video I was generating”, median:
+5) Nine of twelve participants rated it 5 or higher. The remaining three participants found the system difficult to control,
+a problem that characterizes many generative workflows. One participant mentioned that such a system might be
+more difficult to use if someone has an exact picture in mind (e.g a girl singing on top of a car). There was a similar
+divergence of opinion for Ability (“I generated videos I would have otherwise not been able to create.”). Nine of twelve
+participants rated it highly in agreement (median: 7), while three participants gave it a 1 or 2.
+6.1.2
+NASA-TLX Metrics. The majority of participants found the performance of the system to be very positive
+(median: 6). The vast majority also did not find the system to be frustrating, temporally demanding (median:2), mentally
+demanding (median: 2), or effort-intensive (median: 3). Almost every participant (11/12) responded that their frustration
+during the task was low (low defined as ≤ 3 out of 7, median: 2). See the right side of Figure 4.
+6.1.3
+Workflow-Specific Questions. Next, we discuss participant responses to workflow-specific questions about
+Generative Disco. Participants were asked about the usefulness of Generative Disco to their workflow. Responses to
+these questions are visualized in Figure 4. The majority (7 of 12) rated the system positively for how closely it allowed
+12

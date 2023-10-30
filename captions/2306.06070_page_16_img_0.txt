@@ -1,0 +1,8 @@
+navigates the website and selects elements for interaction. Figure 8 shows the overall procedure
+for task demonstration. The annotator starts by selecting the website and task to be demonstrated.
+Once selected, the tool will bring up the website in the browser. The annotator is then instructed
+to explore the website and practice the task. Along the way, they are also required to log in with
+credentials provided by us and close any pop-up windows. The exploration stage is not recorded
+and primarily serves to familiarize the annotator with the website and task, as well as to prepare the
+3https://playwright.dev/
+17

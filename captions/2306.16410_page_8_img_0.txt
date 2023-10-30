@@ -1,0 +1,56 @@
+Caption + OCR
+57.2
+All
+59.4
+Table 4: Hateful Memes [25] ablations.
+Adding more visual information on top of
+OCR improves the performance consistently
+though attributes help the most.
+Intensive Captioning (20) + Question
+59.1
+Intensive Captioning (50) + Question
+60.4
+Table 5: Ablation results on VQA 2.0 [16]. Increas-
+ing the number of intensive captions improves the
+performance of LENS gradually on VQA but starts
+saturating eventually.
+components are necessary and their combined usage results in the best performance. We also present
+several qualitative examples from LENS in Fig. 4, illustrating its reasoning capabilities by answering
+questions about complex scenes and scenarios.
+5
+Conclusion
+We introduce LENS
+, a generic and computationally efficient method that enables a frozen LLM to
+effectively coordinate vision modules, resulting in competitive performance even when compared to
+larger multimodally pretrained systems. LENS offers adaptability to various open-source or black-box
+language models, regardless of their pretraining or multimodal data, thereby providing flexibility and
+scalability for future improvements in performance within the community.
+By leveraging the strengths of LLMs and our modular approach, LENS represents a significant
+advancement in task-solving without the need for additional pretraining. Its seamless integration with
+diverse vision tasks showcases its versatility and potential for widespread application.
+In future work, an intriguing direction to explore would be expanding the applicability of LENS by
+incorporating it into tasks involving different modalities. For instance, integrating LENS into audio
+classification or video action reasoning tasks could yield valuable insights. This expansion would
+involve orchestrating the roles of the LLM and integrating it with complementary modules.
+6
+Limitations
+As with any research work, LENS has its own limitations. We aim to address a few of them in this
+section. Firstly, the vision capability of LENS heavily relies on its underlying vision components,
+namely CLIP and BLIP. Although these models have shown notable performance improvements,
+there is still room for further enhancement by leveraging their strengths and combining them with
+LLMs. We demonstrate a few failure cases of LENS in Fig. 5 in the supplementary material. Future
+research should explore methods to effectively integrate these models and harness the synergies
+between vision and language components to achieve even better performance across diverse tasks.
+Secondly, it is important to acknowledge that conducting evaluation experiments with LENS models
+requires substantial computational resources. For example, our experiments were conducted using
+8*A100, which may pose challenges for smaller or medium-sized labs, as well as underrepresented
+communities with limited access to such resources. However, it is worth noting that the computational
+costs associated with evaluating LENS models are comparatively lower than the extensive training
+requirements of larger visual-language models, such as Flamingo, which can demand upwards of 500k
+TPU hours. Nonetheless, efforts should be made to make computational resources more accessible
+and explore methods for reducing the computational burden while maintaining the effectiveness of
+LENS.
+Acknowledgments
+We would like to express our gratitude to the Fatima Fellowship and Hugging Face for granting
+computational resources for the preliminary experiments of this project.
+9

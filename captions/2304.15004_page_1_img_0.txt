@@ -1,0 +1,41 @@
+Figure 1: Emergent abilities of large language models. Model families display sharp and unpre-
+dictable increases in performance at speciﬁc tasks as scale increases. Source: Fig. 2 from [33].
+2. Unpredictability, transitioning at seemingly unforeseeable model scales
+These emergent abilities have garnered signiﬁcant interest, raising questions such as: What controls
+which abilities will emerge? What controls when abilities will emerge? How can we make desirable
+abilities emerge faster, and ensure undesirable abilities never emerge? These questions are especially
+pertinent to AI safety and alignment, as emergent abilities forewarn that larger models might one
+day, without warning, acquire undesired mastery over dangerous capabilities [29, 10, 17, 18].
+In this paper, we call into question the claim that LLMs possess emergent abilities, by which we
+speciﬁcally mean sharp and unpredictable changes in model outputs as a function of model scale
+on speciﬁc tasks. Our doubt stems from the observation that emergent abilities seem to appear
+only under metrics that nonlinearly or discontinuously scale any model’s per-token error rate. For
+instance, as we later show, > 92% of emergent abilities on BIG-Bench tasks [28] (hand-annotated
+by [32]) appear under either of these two metrics:
+Multiple Choice Grade
+def
+=
+�1
+if highest probability mass on correct option
+0
+otherwise
+Exact String Match
+def
+=
+�1
+if output string exactly matches target string
+0
+otherwise
+This raises the possibility of an alternative explanation for the origin of LLMs’ emergent abilities:
+sharp and unpredictable changes might be induced by the researcher’s choice of measurement, even
+though the model family’s per-token error rate changes smoothly, continuously and predictably with
+increasing scale. Speciﬁcally, our alternative posits that emergent abilities are a mirage caused
+primarily by the researcher choosing a metric that nonlinearly or discontinuously deforms per-token
+error rates, and secondarily by possessing too few test data to accurately estimate the performance
+of smaller models, thereby causing smaller models to appear wholly unable to perform the task.
+To communicate our alternative explanation, we present it as a simple mathematical model and
+demonstrate how it quantitatively reproduces the evidence offered in support of emergent abilities
+of LLMs. We then test our alternative explanation in three complementary ways:
+1. We make, test and conﬁrm three predictions based on our alternative hypotheses using the
+InstructGPT [24] / GPT-3 [3] model family.
+2

@@ -1,0 +1,87 @@
+shelves, and a third may want them hanging in a
+closet. There is no “one size fits all” solution.
+Classical approaches to the household cleanup
+task ask a person to specify a target loca-
+tion for every object (Rasch et al., 2019; Yan
+et al., 2021), which is tedious and imprac-
+tical in an autonomous setting. Other works
+learn generic (non-personalized) rules about where
+objects typically go inside a house by averag-
+ing over many users (Taniguchi et al., 2021;
+Kant et al., 2022; Sarch et al., 2022). Works
+that focus on personalization aim to extrapolate
+from a few user examples given similar choices
+made by other users, using methods such as
+collaborative filtering (Abdo et al., 2015), spa-
+tial relationships (Kang et al., 2018), or learned
+latent preference vectors (Kapelyukh and Johns,
+2022). However, all of these approaches require
+collecting large datasets with user preferences or
+generating datasets from manually constructed,
+simulated scenarios. Such datasets can be expen-
+sive to acquire and may not generalize well if they
+are too small.
+Our approach is to utilize the summarization
+capabilities of large language models (LLMs) to
+provide generalization from a small number of
+example preferences. We ask a person to provide
+a few example object placements using textual
+input (e.g., yellow shirts go in the drawer, dark
+purple shirts go in the closet, white socks go in
+the drawer), and then we ask the LLM to summa-
+rize these examples (e.g., light-colored clothes go
+in the drawer and dark-colored clothes go in the
+closet) to arrive at generalized preferences for this
+particular person.
+The underlying insight is that the summa-
+rization capabilities of LLMs are a good match
+for the generalization requirements of personalized
+robotics. LLMs demonstrate astonishing abilities
+to perform generalization through summarization,
+drawing upon complex object properties and rela-
+tionships learned from massive text datasets. By
+using the summarization provided by LLMs for
+generalization in robotics, we hope to produce
+generalized rules from a small number of exam-
+ples, in a form that is human interpretable (text)
+and is expressed in nouns that can be grounded
+in images using open-vocabulary image classifiers.
+Using an off-the-shelf LLM also avoids expen-
+sive collection of user preference data and model
+training.
+Fig. 1 We study the task of household cleanup, where each
+object on the floor must be picked up and put away while
+following user preferences.
+We investigate the proposed approach in a
+real-world robotic mobile manipulation system
+for household cleanup, which we call TidyBot
+(Fig. 1). Before the robot begins cleanup, we ask
+the user to provide a handful of example place-
+ments for specific objects, which are passed to an
+LLM to be summarized into a generalized set of
+rules (personalized to that user) mapping object
+categories to receptacles. The nouns of these gen-
+eralized rules are provided to an open-vocabulary
+image classifier in order to identify objects on the
+floor and determine target receptacles for them
+using the rules. The robot will then carry out
+the cleanup task by repeatedly picking up objects,
+identifying them, and moving them to their target
+receptacles.
+We evaluate our approach quantitatively on
+both a text-based benchmark dataset and our real-
+world robotic system. On the benchmark, we find
+that our approach generalizes well, achieving an
+accuracy of 91.2% on unseen objects across all sce-
+narios in the benchmark. In our real-world test
+scenarios, we find that TidyBot correctly puts
+away 85.0% of objects. We also show that our
+approach can be easily extended to infer gener-
+alized rules for manipulation primitive selection
+(e.g., pick and place vs. pick and toss) in addition
+to inferring object placements.
+Our contributions are: (i) the idea that text
+summarization with LLMs provides a means for
+generalization in robotics, (ii) a publicly released
+benchmark dataset for evaluating generalization
+2

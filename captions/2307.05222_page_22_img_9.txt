@@ -1,0 +1,23 @@
+Input Prompt
+Completion
+Figure 7: Examples of image blending.
+Input Prompt
+Completion
+This is an image of a cute 
+puppy. The puppy is 
+sitting and resting on the 
+lawn, surrounded by 
+many flowers and plants.
+This is an image of a big 
+house.
+A portrait of a old man. He 
+has a bushy beard and wears 
+a straw hat. His face is 
+towards the left of the frame, 
+but looking towards the 
+camera.
+This is an oil painting 
+depicting sunflowers. 
+There are many sunflowers 
+in a vase. And there are red 
+and yellow sunflowers.

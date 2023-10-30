@@ -1,0 +1,103 @@
+Figure 2: Results from physician-expert evaluations on the medical conversation summarization task. (Left) Physi-
+cians choose the ﬁnal summary produced by DERA over the initial GPT-4 generated summary 90% to 10%. (Cen-
+ter) Final DERA summaries capture far more clinical information than initial GPT-4 generated summaries, with
+physicians rating "All" relevant clinical information from the patient-physician chat captured in 86% of DERA
+summaries vs. 56% of initial GPT-4 summaries. (Right) For summary correction suggestions in the scratchpad,
+physicians rate agreement with "All" suggestions in 63% of encounters, Most" in 14%, "Some" in 5%, and "None"
+in 18%.
+Corruption
+Level
+Summ.
+Version
+Pertinent
+Positives
+Pertinent
+Negatives
+Pertinent
+Unknowns
+Medical
+History
+Average
+low ( 3
+10)
+Initial
+89.38
+83.05
+87.42
+80.88
+85.18
+DERA
+95.65
+96.77
+97.10
+97.35
+96.71
+medium ( 5
+10)
+Initial
+83.12
+81.6
+71.14
+73.82
+77.42
+DERA
+94.29
+95.31
+96.17
+98.12
+95.97
+high ( 7
+10)
+Initial
+68.35
+70.07
+68.79
+57.27
+66.12
+DERA
+92.96
+90.86
+94.81
+95.16
+93.45
+Table 1: Medical conversation summarization task: Quantitative evaluation (GPT-F1 scores) of the initial summary
+with errors and the DERA corrected version. We show that by introducing synthetic corruption (hallucinations,
+omissions, etc.) into medical summaries, DERA can resolve these corruptions at low, medium, and high levels of
+corruption. GPT-F1 scores for the DERA-produced summary are consistently higher than the initial summaries.
+Quantitative Evaluation
+We also perform a
+more large-scale study without the need for hu-
+man annotation. We generate GPT-4 summaries
+for all the 500 encounters and assume them to be
+ground truth. Then, we synthetically induce “cor-
+ruptions” into the generated summary and use that
+as the initial input. These mistakes artiﬁcially lower
+the summary’s quality and produce signiﬁcant hal-
+lucinations and omissions. The goal is to quanti-
+tatively evaluate DERA’s ability to write medical
+summaries by measuring the degree to which the
+Researcher and Decider agents can identify and ﬁx
+"corruptions" introduced to the medical summary.
+Prompt 2 contains speciﬁc instructions for gen-
+erating the corruptions. We can control the level
+of corruption desired by passing one of three lev-
+els of corruption as a variable to our corruption
+prompt: low ( 3
+10), medium ( 5
+10), or high ( 7
+10). The
+higher the corruption, the more symptoms could
+be rearranged. Similarly, hallucinated symptoms
+could be introduced, among other corruptions. For
+a qualitative example of this process of generating
+an initial summary, corrupting it, resolving with
+DERA, and generating a ﬁnal summary see Fig. 6.
+We measure the degree to which corruptions are
+present by using a GPT-based metric that tracks the
+medical concept coverage of the medical summary,
+GPT-F1. To compute GPT-F1, we compute the
+harmonic mean of two sub-metrics: GPT-Recall
+and GPT-Precision. We describe each sub-metric
+below.
+GPT-Recall: To compute, we ﬁrst extract medi-
+cal entities from both the predicted text and ground-

@@ -1,2 +1,0 @@
-did improve accuracies on LongChat-Lines, but did not change the span of non-zero contexts for a given
-model. Figure 5 shows this on the model with linear interpolation with scale 4.

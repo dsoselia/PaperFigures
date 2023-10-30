@@ -1,0 +1,81 @@
+p
+for natural scenery
+PMC-LLaMAK
+Step-Ⅱ Medical-specific Instruction Tuning
+PMC-LLaMAK
+LLMs with 
+Medical Knowledge 
+Conversation
+Knowledge Graph
+Rationale QA
+Instruction Tuning
+Instruction: Assume you are … 
+R:
+PMC-LLaMA
+MedC-I
+MedC-I Samples
+Rationale QA
+Instruction:
+In your capacity as ... Answer the medical 
+questions.
+Input:
+Question:  Which of the following ...
+Options: A. ... B. ... C. ... D. ...
+Response:
+Option A is wrong because ... Answer: 
+Option D is correct.
+Conversation
+Instruction:
+If you are a doctor, please answer the 
+medical questions based on ...
+Input:
+Doctor, I have been experiencing ... 
+What could be the problem?
+Response:
+It's possible that you have a vocal cord 
+polyp. To confirm ...
+Prompt-Relation
+Instruction:
+... Determine the relation between...
+Input: Question: What is the relation ...  
+Response: Answer:  Mercaptopurine ... has ...
+Knowledge Graph
+Prompt-Description
+Instruction:
+... Explain the definition of ... 
+Input: Question: What is the meaning ...  
+Response: Answer: the entity denotes ... 
+Figure 2: The training pipeline of PMC-LLaMA. Our training flow can be separated into two parts, i.e., data-centric knowledge
+injection and medical-specific instruction tuning. In knowledge injection, we collect 4.8M biomedical academic papers and 30K
+medical books for further injecting knowledge into LLaMA. In the instruction tuning stage, we mainly consider three aspects,
+medical conversation, medical rationale question-answering, and knowledge graph, containing 202M tokens in total.
+Papers.
+As a valuable knowledge resource, academic pa-
+pers naturally contains high-quality, cutting-edge medical
+knowledge. We start with the S2ORC (Lo et al. 2020)
+Datasets with 81.1M English-language academic papers,
+and pick out those biomedical related papers depending on
+whether having corresponding PubMed Central (PMC) IDs.
+As a result, there are around 4.8M biomedical papers left,
+totaling over 75B tokens.
+Books.
+We collect 30K textbooks sourced from various
+outlets, for example, the open-library, university library, and
+t bl
+bli h
+i
+id
+f
+di
+l
+ture cutting-edge insights, books capture more fundamental
+medical knowledge, which is more crucial for pre-trained
+general-purpose language models. Hence, when blending
+these two datasets for knowledge injection training, we use a
+ratio of 15:4:1 at each training batch, by that we mean to em-
+phasize “book” tokens more. Specifically, we sample more
+tokens from books, ensuring they occupy 15 parts per batch
+and sample tokens from “papers” less so that they occupy
+4 parts per batch. For the remaining 1 occupation, we sam-
+ple from a general language corpus, RedPajama-Data (Com-
+puter 2023) to form a complete batch. This mainly aims to

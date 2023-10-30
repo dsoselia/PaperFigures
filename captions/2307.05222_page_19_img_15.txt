@@ -1,0 +1,52 @@
+D
+Qualitative Cases
+This is the first image.
+The difference between the two images is that in the 
+first image, there is an alpaca standing in front of a 
+fence, while in the second image, there is a llama 
+standing in front of a fence. Alpacas and llamas are 
+both members of the camelid family, but they are 
+different species. Alpacas are native to South 
+America, while llamas are native to Central and 
+South America.
+This is the second image.
+What's the difference?
+The video shows a step-by-step guide on how to 
+make a chocolate milkshake. First, the person in the 
+video adds ice cubes to a blender. Then, they add two 
+scoops of chocolate ice cream and one scoop of 
+vanilla ice cream to the blender. After that, they add 
+three tablespoons of chocolate syrup and two 
+tablespoons of cocoa powder to the blender. Finally, 
+they blend all the ingredients together until the 
+mixture is smooth and creamy. The video ends with 
+the person pouring the chocolate milkshake into a 
+glass and garnishing it with whipped cream and 
+chocolate sprinkles. Overall, the video provides a 
+simple and easy recipe for making a delicious 
+chocolate milkshake.
+Step by step describe the cooking recipe shown in 
+the video?
+This is the first image.
+This is the second image.
+This is the third image.
+This is the fourth image.
+Describe all images.
+The first image is the cover of the book "The Way 
+of the Nameless". The second image is the cover of 
+the book "Lost Stars". The third image is the cover 
+of the book "A Land of My Dreams". The fourth 
+image is the cover of the book "The Key to 
+Mindfulness".
+What's the name of this character?
+Who is she?
+Tell me the characters in the image.
+The character's name is Mewtwo.
+The woman in the image is Saber, a character from 
+the anime series Fate/Stay Night: Unlimited Blade 
+Works.
+The characters in the image are SpongeBob 
+SquarePants, Patrick Star, and Squidward Tentacles.
+Figure 4: Examples of interleaved multi-image understanding(left side), real-world knowledge
+grounding(upper right), detailed video understanding(lower right).
+20

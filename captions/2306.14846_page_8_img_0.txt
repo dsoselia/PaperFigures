@@ -1,0 +1,5 @@
+6.4
+Adapting ViNT to Downstream Tasks
+To evaluate Q4, we investigate whether ViNT can serve as a foundation model for a broader range
+of downstream tasks by considering goal modalities beyond subgoal images (see Section 6.4). We
+9

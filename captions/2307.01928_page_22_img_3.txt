@@ -1,0 +1,59 @@
+# Attribute ambiguity
+We: On the table there are these objects: green block, blue bowl, yellow block, green bowl, yellow bowl, 
+blue block.
+We: Now, put the yellow square object at the right side of the orange container.
+You:
+A) put yellow block to the right of green bowl
+B) put yellow block to the right of yellow bowl
+C) put yellow block to the right of blue bowl
+D) an option not listed here
+E) put yellow block to the right of blue block
+# Numeric ambiguity
+We: On the table there are these objects: yellow bowl, blue bowl, green block, yellow block, blue block, 
+green bowl.
+We: Now, put a handful of receptacles at the right side of the blue block.
+You:
+A) an option not listed here
+B) put yellow bowl and blue bowl to the right of blue block
+C) put green block and yellow block to the right of blue block
+D) put yellow bowl and blue bowl and green bowl to the right of blue block
+E) put green block and yellow block and blue block to the right of blue block
+# Spatial ambiguity
+We: On the table there are these objects: green bowl, yellow bowl, blue bowl, yellow block, green block, 
+blue block.
+We: Now, put the yellow block along the line of sight of the blue square object.
+You:
+A) an option not listed here
+B) put yellow block behind blue block
+C) put yellow block to the left of blue block
+D) put yellow block in front of blue block
+E) put yellow block to the right of blue block
+Figure A9: Sample multiple choices generated with Attribute, Numeric, and Spatial ambiguities in Simulation.
+Nonetheless, we hope to have future work looking into better training the model for proper uncertainty, and
+then applying CP on top of it to achieve set-based calibration.
+Low-level control success rate. KNOWNO translates the coverage guarantee from CP to task completion
+guarantee leveraging human help. However, this relies on the low-level control working reliably. In
+Simulation Tabletop Rearrangement, we find the pick-and-place primitives always executed as the object
+diversity is limited to square blocks and normal bowls (only differing in color). In Hardware Tabletop
+Rearrangement, we find the pick-and-place primitive only failed once during the 50 trials of running
+KNOWNO and twice for Simple Set (Table 1). The high success rate is largely thanks to the precise object
+masks from Segment Anything [62]. Also, to allow reliable suctioning, we apply clear scotch tape on some
+of the objects (e.g., donut, waffle) to smoothen the surfaces. In Hardware Mobile Manipulation, we find the
+low-level action success rate to be around 86%, which causes the non-trivial discrepancies between plan
+success and task success rates in Table 2. One exciting future direction is to quantify and better calibrate
+the uncertainty of the low-level action module, and take such uncertainty into account of the end-to-end
+task completion guarantee.
+Attribute
+Numeric
+Spatial
+Prediction set size
+Task success rate
+Human help rate
+Task success rate
+Figure A10: Comparison of task success rate vs average prediction set size (Top row) and vs. human help rate (Bottom
+row) in Simulation for each of the three ambiguity settings: Attribute, Numeric, and Spatial (Columns), as ϵ varies
+from 0.25 to 0.01 for KNOWNO, and from 0.6 to 0.01 for Simple Set and Ensemble Set. Binary and No Help are not
+shown in the top row since prediction set is not involved. Prompt Set does not show up in the human help rate plot for
+the Spatial setting as it only achieves 35% task success. As the setting gets more ambiguous (least in Attribute and
+most in Spatial), the performance difference between KNOWNO and Simple Set grows.
+23

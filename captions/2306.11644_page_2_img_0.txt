@@ -1,0 +1,28 @@
+Figure 2.1: Pass@1 accuracy (%) on HumanEval.
+The grouping of bar plots correspond to the usual scaling
+dimensions of either increasing the compute time (more passes on the data, here from 26B tokens seen to 76B)
+or increasing the number of parameters of the model (here from 350M to 1.3B). Each column within a group
+corresponds to different training datasets: (A) The first (orange) column represents the performance of models
+trained on the standard dataset of deduplicated Python files from The Stack (plus StackOverflow for 1.3B parameter
+model); (B) The second (light green) column represents the performance of models trained with our new dataset
+composition CodeTextbook; (C) Finally, the third (dark green) column corresponds to the respective second column
+models finetuned on our new CodeExercises dataset. For the 1.3B models, phi-1 and phi-1-base are checkpoints
+after training on 51B tokens (770 GPU hours) and The Stack+ model was trained for 76B tokens and 1090 GPU
+hours. We highlight that even without any finetuning, our phi-1-base model trained on CodeTextbook dataset
+achieves 29% HumanEval performance with a mere 1.3B parameter model.
+The previous smallest model that
+achieves close to 30% performance on HumanEval was Replit-Finetuned at 2.7B parameters, which was trained
+with 100 times more training tokens than us [Rep23]. On top of this, finetuning on our CodeExercises dataset to
+obtain phi-1 not only gives us our top performance of 51% on HumanEval, but also unlocks further unexpected
+coding capabilities (see Section 3).
+As alluded to in the title of the paper, the central ingredient our model relies on textbook-quality
+training data. Unlike previous work that used standard sources of text data for code generation, such
+as The Stack [KLA+22] (which contains sourcecode from repositories with permissive licenses) and other
+web-based datasets (e.g., StackOverflow and CodeContest [LCC+22]), we argue that these sources are
+not optimal for teaching the model how to reason and plan algorithmically. On the other hand, our
+model architecture and training methods are fairly conventional (Section 2.3), so we devote this section
+primarily to explaining how we curated our data.
+The standard code datasets [KLA+22, LCC+22] form a large and diverse corpus covering broad range
+of topics and use cases. However, based on manual inspection of random samples we observe that many of
+these snippets are not very instructive for learning the basics of coding, and suffer from several drawbacks:
+3

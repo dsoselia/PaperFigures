@@ -1,0 +1,109 @@
+Discovering Adaptable Symbolic Algorithms from Scratch
+Stephen Kelly1,4, Daniel S. Park1, Xingyou Song1,2, Mitchell McIntire3, Pranav Nashikkar3,
+Ritam Guha5, Wolfgang Banzhaf5, Kalyanmoy Deb5, Vishnu Naresh Boddeti5, Jie Tan1,2, Esteban Real1,2
+1Google Research, 2 Google DeepMind, 3Google, 4McMaster University, 5Michigan State University
+Abstract— Autonomous robots deployed in the real world
+will need control policies that rapidly adapt to environmental
+changes. To this end, we propose AutoRobotics-Zero (ARZ),
+a method based on AutoML-Zero that discovers zero-shot
+adaptable policies from scratch. In contrast to neural network
+adaptation policies, where only model parameters are optimized,
+ARZ can build control algorithms with the full expressive
+power of a linear register machine. We evolve modular policies
+that tune their model parameters and alter their inference
+algorithm on-the-fly to adapt to sudden environmental changes.
+We demonstrate our method on a realistic simulated quadruped
+robot, for which we evolve safe control policies that avoid falling
+when individual limbs suddenly break. This is a challenging
+task in which two popular neural network baselines fail. Finally,
+we conduct a detailed analysis of our method on a novel and
+challenging non-stationary control task dubbed Cataclysmic
+Cartpole. Results confirm our findings that ARZ is significantly
+more robust to sudden environmental changes and can build
+simple, interpretable control policies.
+I. INTRODUCTION
+Robots deployed in the real world will inevitably face
+many environmental changes. For example, robots’ internal
+conditions, such as battery levels and physical wear-and-tear,
+and external conditions, such as new terrain or obstacles,
+imply that the system’s dynamics are non-stationary. In these
+situations, a static controller that always maps the same state
+to the same action is rarely optimal. Robots must be capable
+of continuously adapting their control policy in response to the
+changing environment. To achieve this capability, they must
+recognize a change in the environment without an external cue,
+purely by observing how actions change the system state over
+time, and update their control in response. Recurrent deep
+neural networks are a popular policy representation to support
+fast adaptation. However, they are often (1) monolithic, which
+leads to the distraction dilemma when attempting to learn
+policies that are robust to multiple dissimilar environmental
+physics [1], [2]; (2) overparameterized, which can lead to
+poor generalization and long inference time; and (3) difficult
+to interpret. Ideally, we would like to find a policy that can
+express multiple modes of behavior while still being simple
+and interpretable.
+We propose AutoRobotics-Zero (ARZ), a new framework
+based on AutoML-Zero (AMLZ) [3] to specifically support
+the evolution of dynamic, self-modifying control policies in a
+realistic quadruped robot adaptation task. We represent these
+Published and Best Overall Paper Finalist at IROS 2023.
+Videos: https://youtu.be/sEFP1Hay4nE
+Correspondence: spkelly@mcmaster.ca
+# wX: vector memory at address X.
+def f(x, v, i):
+w0 = copy(v)
+w0[i] = 0
+w1 = abs(v)
+w1[0] = -0.858343 * norm(w2)
+w2 = w0 * w0
+return log(x), w1
+# sX: scalar memory at address X.
+# vX: vector memory at address X.
+# obs, action: observation and action vectors.
+def GetAction(obs, action):
+if s13 < s15: s5 = -0.920261 * s15
+if s15 < s12: s8, v14, i13 = 0, min(v8, sqrt(min(0, v3))), -1
+if s1 < s7: s7, action = f(s12, v0, i8)
+action = heaviside(v12)
+if s13 < s2: s15, v3 = f(s10, v7, i2)
+if s2 < s0: s11, v9, i13 = 0, 0, -1
+s7 = arcsin(s15)
+if s1 < s13: s3 = -0.920261 * s13
+s12 = dot(v3, obs)
+s1, s3, s15 = maximum(s3, s5), cos(s3), 0.947679 * s2
+if s2 < s8: s5, v13, i5 = 0, min(v3, sqrt(min(0, v13))), -1
+if s6 < s0: s15, v9, i11 = 0, 0, -1
+if s2 < s3: s2, v7 = f3(s8, v12, i1)
+if s1 < s6: s13, v14, i3 = 0, min(v8, sqrt(min(0, v0))), -1
+if s13 < s2: s7 = -0.920261 * s2
+if s0 < s1: s3 = -0.920261 * s1
+if s7 < s1: s8, action = f(s5, v15, i3)
+if s0 < s13: s5, v7 = f(s15, v7, i15)
+s2 = s10 + s3
+if s7 < s12: s11, v13 = f(s9, v15, i5)
+if s4 < s11: s0, v9, i13 = 0, 0, -1
+s10, action[i5] = sqrt(s7), s6
+if s7 < s9: s15 = 0
+if s14 < s11: s3 = -0.920261 * s11
+if s8 < s5: s10, v15, i1 = 0, min(v13, sqrt(min(0, v0))), -1
+return action
+Fig. 1: Automatically discovered Python code representing an adaptable
+policy for a realistic quadruped robot simulator (top–right inset). This evolved
+policy outperforms MLP and LSTM baselines when a random leg is suddenly
+broken at a random time. (Lines in red will be discussed in the text).
+policies as programs instead of neural networks and demon-
+strate how the adaptable policy and its initial parameters
+can be evolved from scratch using only basic mathematical
+operations as building blocks. Evolution can discover control
+programs that use their sensory-motor experience to fine-
+tune their policy parameters or alter their control logic on-
+the-fly while interacting with the environment. This enables
+the adaptive behaviors necessary to maintain near-optimal
+performance under changing environmental conditions. Unlike
+the original AMLZ, we go beyond toy tasks by tackling the
+simulator for the actual Laikago robot [4]. To facilitate this,
+we shifted away from the supervised learning paradigm of
+AMLZ. We show that evolved programs can adapt during
+their lifetime without explicitly receiving any supervised input
+arXiv:2307.16890v2  [cs.RO]  13 Oct 2023

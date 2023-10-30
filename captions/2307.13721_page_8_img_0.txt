@@ -1,0 +1,119 @@
+9
+release the training mechanism and dataset which limits
+the ability to study it. To increase the accessibility, several
+subsequent works have open-sourced large-scale image-text
+datasets, reproduced CLIP, and studied its properties. The
+excellent performance of CLIP hinges on the large-scale
+image-text dataset, which is not publicly available. To ad-
+dress this problem, Schuhmann et al. [226] released LAION-
+400M, an image-text dataset consisting of 400 million data
+points curated after filtering common crawl.
+Schuhmann
+et al. [227] further scaled it up and released a multilin-
+gual, multi-modal dataset called LAION-5B which contains
+5.8 billion data points curated from Common Crawl after
+filtering through existing CLIP model.
+Utilizing large-
+scale LAION datasets [226, 227], Open-CLIP [124] trained
+and reproduced CLIP training experiments and studied its
+properties. Cherti et al. [49] supplemented this open-source
+effort by studying the scaling laws of CLIP. The trained
+OpenCLIP on LAION-5B [227] dataset demonstrated con-
+sistent improvements in performance as data, model, and
+compute are scaled. They also observed some divergence of
+scaling from the OpenAI’s CLIP [215] and postulated that
+the difference arises because of the difference in training
+distributions.
+It is well known that the performance of CLIP scales with
+model and dataset sizes [215, 49]. Li et al. [159] revealed a
+surprising finding: larger image-text models allow the use of
+smaller token sizes during the training without significant
+sacrifice in accuracy. Based on this finding, called inverse
+scaling law, they introduced a new efficient training recipe
+and CLIP-like model trained on academic-scale resources
+and dubbed it CLIPA. CLIPA can achieve 63.2%, 67.8%, and
+6.9.3% zero-shot ImageNet accuracy in 2, 3, and 4 days of
+training on 8 A100 GPUs, respectively.
+Building on the
+inverse scaling law observed by CLIPA [159], Li et al. [158]
+trained CLIP-like model on a large scale with significantly
+less computational budget and training costs. With their
+large-scale training, they demonstrated two interesting re-
+sults. First, they showed that the inverse scaling law is
+also applicable to fine-tuning: models can be fine-tuned on
+fewer input tokens. Second, larger models exhibit a smaller
+performance drop compared with smaller models when
+fine-tuned with the same number of input tokens. Their
+trained CLIPA model achieves 69.3% zero-shot ImageNet
+classification accuracy in 4 days of training on 8 A100 GPUs.
+Several works have explored CLIP and contrastive methods
+from different prespectives [168, 175, 139]
+3.1.2
+CL for Visual Grounding Foundational Models
+CLIP and its variants have shown impressive performance
+for tasks that require global information (e.g., classification
+and image-text retrieval). However, they perform poorly on
+localization tasks that need fine-grained, pixel, and region-
+level information. We illustrate two failure cases obtained
+from Zhong et al. [354], Ghiasi et al. [90] in Fig. 5. In this
+section, we discuss foundational models that are designed
+to leverage contrastive learning for visual grounding tasks.
+•CLIP-adaptation for Grounding:
+MaskCLIP by Dong
+et al. [67] model earlier investigated masked self-distillation
+for contrastive learning. Different f that, MaskCLIP by Zhou
+et al. [358] proposes to use the CLIP model for dense pre-
+diction with minimal changes. To this end, they proposed
+Fig. 5. Naive application of CLIP does not work well for localization tasks.
+Failure case for object detection is taken from Zhong et al. [354] and for
+segmentation from Ghiasi et al. [90].
+to extract dense features from the vision encoder and use
+text embeddings for classification. To further enhance dense
+predictions, they also proposed to train a backbone for clas-
+sification. Their method shows a reasonable performance of
+CLIP for localization tasks.
+Zhong et al. [354] proposed RegionCLIP that extends
+CLIP to explicitly align image regions and their textual
+descriptions for object detection. Its training consists of
+three phases: a CLIP-based image-text pre-training, a CLIP-
+like region-text contrastive training, and object-detection-
+specific fine-tuning. Since large-scale region-description
+datasets are not widely available, authors utilized region-
+class names, prompt templates, and a pre-trained CLIP to
+bootstrap a dataset. Specifically, they used a pre-trained
+teacher encoder to extract regions. All class labels are con-
+verted into phrases following simple prompt templates and
+a teacher language encoder is utilized to get corresponding
+embeddings. The matching score between image features
+and class embeddings is calculated and the highest score
+pair is used as a pseudo-region-text pair. The authors pre-
+trained their dual-encoder-based model on these pseudo-
+region-description pairs. Finally, they also proposed a sim-
+ple fine-tuning method to mitigate the noisy nature of
+region-text pairs. For task-specific finetuning, the visual
+encoder is used as a base network initiated from a pre-
+trained ViT. An off-the-shelf region proposal network (RPN)
+localizes objects and the language encoder’s embeddings are
+used to obtain object categories. RegionCLIP has zero-shot
+capabilities and when transferred, established a new SOTA
+for open-vocabulary object detection.
+Wang et al. [281] extended CLIP for referring image
+segmentation task [118, 313] and proposed CLIP-Driven
+Referring Image Segmentation (CRIS). Referring image seg-
+mentation task aims to segment a region of the image based
+on an input text prompt [118], and hence a natural fit for
+a CLIP-like framework. However, CLIP is not designed for
+learning pixel-level information as it is focused on global
+features. Wang et al. [281] proposed two modifications in the
+CLIP framework to make it learn pixel-level information.
+First, a visual-language decoder is introduced to capture
+long-range dependencies. Second, a text-to-pixel contrastive
+loss is introduced to align textual features with the corre-
+sponding pixel-level features. CRIS outperforms previous
+SOTA for three referring image segmentation tasks.
+•Direct localized Visual-Semantic Alignment: Instead of
+adapting CLIP for grounding tasks, some works leveraged
+strong pre-trained specialized models and modified them to
+add language-vision modeling through contrastive learning.
+Phrase grounding is the task of identifying phrases in the
+input text for corresponding regions of an image. Li et al.

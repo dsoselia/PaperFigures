@@ -1,0 +1,38 @@
+For the coverage exploration task, the agent is placed in an unknown environment and tasked with
+exploring the environment maximally in search of the goal without any additional cues. Table 1
+summarizes the success rates for this task in indoor and outdoor environments. We find that, while
+end-to-end baselines avoid collisions with their surroundings, they fail to explore new areas and
+often get stuck in small areas of the environment. Graph-based methods avoid this trap by explicitly
+Indoor: Position
+Outdoor: GPS
+Outdoor: Satellite
+Method
+Success
+Distance
+Success
+SPL
+Distance
+Success
+SPL
+Distance
+ViKiNG [29]
+0.60
+56m
+0.64
+0.42
+720m
+0.77
+0.68
+780m
+ViNT
+0.90
+91m
+0.95
+0.84
+1270m
+1.00
+0.94
+1040m
+Table 2: ViNT can effectively utilize goal-directed heuristics, such as 2D goal positions and satellite images,
+to explore novel kilometer-scale environments successfully and without interventions.
+7

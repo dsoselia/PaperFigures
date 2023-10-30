@@ -1,0 +1,87 @@
+Erro
+Figure 3: Human evaluation on rel. (left) and fact. (right) error,
+measured by % of sub-sentences that contain the error type (↓).
+Pref. RLHF
+19.5%
+71.0%
+9.5%
+Table 2: Human pairwise compari-
+son on information completeness
+(comp.) , where win/lose refers to
+FINE-GRAINED RLHF.
+FINE-GRAINED RLHF outperforms SFT and Preference RLHF on all error types. Figure 3
+and Table 2 show that our FINE-GRAINED RLHF leads to generation that is much more factually
+correct and contains more complete information, compared to all other systems. It generates fewer
+irrelevance & repetition & incoherence errors, compared with SFT and Preference RLHF. In the
+meantime, Preference RLHF, despite greatly reducing factual errors compared to the initial policy
+model SFT, generates even more irrelevance & repetition & incoherence errors than SFT. FINE-
+GRAINED RLHF outperforms Preference RLHF potentially due to more specific and localized training
+signals. Surprisingly, FINE-GRAINED RLHF outperforms SFT-Full with more factual and complete
+generation, despite much lower annotation cost.
+RLHF is particularly effective in reducing factual errors. Figure 3 shows that both FINE-
+GRAINED RLHF and Preference RLHF are effective in reducing factual errors in model generation.
+Meanwhile, we see no or little improvement in reducing irrelevance & repetition & incoherence
+errors. We provide more in-depth analysis for this observation in § 4.5.
+Table 3 shows automatic scores on the QA-FEEDBACK test set, which show similar trends as human
+evaluation in terms of system comparisons, while all four systems achieve similar Rouge scores.
+rel.
+fact.
+comp.
+Rϕ1(↑)
+Rϕ2(↑)
+Rϕ3(↑)
+Rouge(↑)
+SFT-Full
+0.508
+0.756
+0.044
+49.63
+SFT
+0.513
+0.749
+-0.053
+48.96
++ Pref. RLHF
+0.482
+0.781
+0.101
+49.84
++ F.G. RLHF
+0.513
+0.816
+0.139
+49.93
+Table 3: Automatic evaluation on the QA-
+FEEDBACK test set.
+rel.
+fact.
+comp.
+avg.
+Config
+Rϕ1(↑)
+Rϕ2(↑)
+Rϕ3(↑)
+Rouge(↑)
+len
+Short
+0.637
+0.760
+-0.231
+48.99
+74.92
+Medium
+0.513
+0.816
+0.139
+49.93
+98.66
+Long
+0.425
+0.860
+0.241
+48.72
+109.63
+Table 4: Automatic evaluation results (test set)
+of FINE-GRAINED RLHF trained with different
+reward model weight configurations.
+7

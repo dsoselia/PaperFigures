@@ -1,0 +1,43 @@
+AST Parser
+Tree-sitter, PMD, 
+ANTLR, …
+Process Tokens
+NLTK, Spacy, …
+……..
+Quantization
+Bitsandbyes, GPTQ, 
+Optimum, CTranslate2, …
+Distributed Serving
+TorchServer, Triton, Faster 
+Transformer, …
+Model Deployment
+Flask, Fast API, KubeFlow, 
+MLFlow
+…..
+Post Processing
+Spacy, Regex, ….
+Metric Implementation
+Pass@K, CodeBLEU
+…..
+Serving
+Evaluating
+Figure 2: Illustration of how practitioners utilize Code LLMs for software engineering problems.
+2
+Library Design
+Figure 3 provides a detailed overview of the CodeTF system implementation, highlighting its essential components
+that empower users to effortlessly engage in various code-related tasks. Our system follows a modular architecture,
+enhancing its extensibility by allowing seamless integration of additional programming languages, models, and utilities
+tailored to specific requirements.
+2.1
+Motivation
+To illustrate the motivation behind CodeTF’s design, we present use cases of practitioners and researchers adopting Code
+LLMs for practical and research purposes (see Figure 2). These use cases involve four main tasks: Data Preparation,
+Training, Serving, and Evaluation.
+Data Preparation:
+In the first task, users utilize Code LLMs for code completion, code translation to other languages,
+defect prediction, or code refinement. These tasks rely on making predictions based on input code snippets. However,
+Code LLMs are typically pretrained for next-token prediction tasks, necessitating fine-tuning on specific datasets for
+desired tasks. This requires intricate steps for preparing source code data, such as formatting the source code (e.g.,
+using clang-formatter, ESLint), parsing the code into an Abstract Syntax Tree (AST) (e.g., with tree-sitter, PMD), and
+processing code tokens (e.g., using NLTK, Spacy). Preprocessing the code to extract important information, rather than
+using raw code, often leads to better results, especially for tasks like defect prediction or program repair.i

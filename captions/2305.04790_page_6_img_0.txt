@@ -1,0 +1,3 @@
+Figure 4: The MultiModal-GPT knows there are 4 women in the image, and knows what they are
+doing.
+Figure 5: The MultiModal-GPT knows the film and knows which studio made the film.

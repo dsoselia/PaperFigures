@@ -1,0 +1,6 @@
+truth, including itself. After identifying the top-level acceptable element, we include all its visible
+descendants that are located within its post-rendering bounding box as acceptable as well. Manual
+checking on 100 instances where the heuristic identifies a top-level element other than the ground
+truth confirms the validity of the approach. For both training and evaluation stages, all acceptable
+elements are considered positive.
+19

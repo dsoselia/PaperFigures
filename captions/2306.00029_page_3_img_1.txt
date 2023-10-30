@@ -1,0 +1,40 @@
+Comment Removal
+AST Parser
+Code Attribute Extractor
+…
+<>
+CodeT5-
+Summarization
+CodeT5-
+Text2Code
+CodeT5-
+Completion
+CodeGen-
+Mono
+CodeGen-
+Multi
+…
+Code data
+codetf.model
+Figure 3: An overview of the system design of CodeTF. The modular design improves the library extensibility
+and allows users to easily customizer and integrate additional models, data, and programming languages as needed.
+Key components in CodeTF include: model zoo - codetf.model, model serving - codetf.predict, model train-
+ing - codetf.trainer, data utility - codetf.data_utility, code utility codetf.data_utility, and evaluation
+codetf.performance.
+Additionally, deploying the models in specific environments requires setting up the deployment environment and
+ensuring compatibility with the target system. This involves configuring the necessary infrastructure and handling the
+deployment logistics, such as managing server resources and network communication. Serving Code LLMs effectively
+is crucial for integrating them into real-world applications and enabling users to leverage their capabilities.
+Evaluation:
+For large models, users often want to evaluate their quality against standard benchmarks. For example,
+when evaluating fine-tuned models for code generation tasks, users may assess the passing rate (pass@k). This involves
+using the model to generate code tokens and execute the generated outputs with unit tests. However, the generated code
+tokens might require post-processing steps, such as truncating incomplete generations or applying formatting rules to
+ensure code readability. Moreover, metrics specific to code, such as CodeBLEU and Edit Similarity, are also utilized to
+assess the models’ performance accurately. Implementing these metrics can be challenging as different works may
+adopt diverse approaches, hindering the reproducibility of pretrained model results and the verification of newly trained
+models. Ensuring proper evaluation of Code LLMs allows users to gain insights into their performance and make
+informed decisions about their suitability for specific tasks.
+Performing the above tasks individually requires users to integrate different libraries and tools into a single codebase,
+making it challenging to promote the usability of Code LLMs in production-level tools. Existing libraries like
+HuggingFace Transformers (HF-T) provide unified interfaces to handle diverse and complex tools for working with

@@ -1,0 +1,46 @@
+User
+Can you explain this meme in detail?
+OpenFlamingo
+It’s a picture of a chicken nugget on the International Space Station.
+Table 5: Example prompt demonstrating LLaVA and GPT-4’s visual input capability. The prompt
+requires image understanding.
+Whenever GPT-4 fails to provide answers, we use the prediction from our method. This schemes
+yields 90.97% accuracy, which is almost the same as applying our method alone. (ii) GPT-4 as the
+judge. Whenever GPT-4 and LLaVA produce different answers, we prompt GPT-4 again, asking it
+to provide its own ﬁnal answer based on the question and two outcomes. The spirit is similar with
+CoT, but with the external knowledge from the other model. Surprisingly, GPT-4 is able to provide
+consistent improvement over all question classes, and achieves a new SoTA accuracy of 92.53%. To
+the best of our knowledge, this is the ﬁrst time that GPT-4 is used for model ensembling. We hope
+this ﬁnding can encourage future research to explore more effective methods to leverage LLMs for
+model ensembling.
+Visual features
+Before
+Last
+Best variant
+90.92
+89.96 (-0.96)
+Predict answer ﬁrst
+-
+89.77 (-1.15)
+Training from scratch
+85.81 (-5.11)
+-
+7B model size
+89.84 (-1.08)
+-
+Table 7: Design choice ablations (%). The differ-
+ence with the best variant is reported in red text.
+Ablations.
+We ablate several design choices
+on ScienceQA in Table 7. (i) Visual features.
+We tried using the last layer feature from CLIP
+vision encoder, which yields 89.96% and is
+0.96% lower than the feature before the last year.
+We hypothesize that this is because CLIP’s last
+year features may focus more on global image
+properties compared to the layer before it, which
+can focus more on localized properties that can
+be more useful for understanding speciﬁc image
+details. (ii) Chain-of-thoughts. To decide the order between the answer and reasoning process in the
+model prediction, we run both variants and observe that answer-ﬁrst reports the best number 89.77%
+8

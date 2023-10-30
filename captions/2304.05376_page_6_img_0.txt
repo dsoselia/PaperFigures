@@ -1,0 +1,25 @@
+Figure 5: Safety guidelines provided by ChemCrow Example task, where safety information is explicitly
+requested along with the synthesis procedure for paracetamol (left). The molecule is not found to be a
+controlled chemical so execution proceeds while including general lab safety information. In cases where
+the input molecule is found to be a controlled chemical (right), execution stops with a warning indicating
+that it is illegal and unethical to propose compounds with similar properties to a controlled chemical.
+of proprietary information, need to be established. Collaboration with legal experts, as well as industry
+stakeholders, can help in navigating these complex issues and implementing appropriate measures to
+protect intellectual property.
+In summary, it is crucial to carefully consider and address the potential drawbacks associated with LLM-
+powered chemistry engines, such as ChemCrow, to ensure their safe and responsible application. By
+integrating expert-designed tools, the issue of model hallucination can be mitigated, while improving the
+quality and breadth of training data can enhance the engine’s understanding of complex chemistry concepts.
+Implementing effective mitigation strategies, such as access controls, safety guidelines, and ethical policies,
+further contributes to minimizing risks and maximizing the positive impact of these engines on the field of
+chemistry. As the technology continues to evolve, collaboration and vigilance among developers, users, and
+industry stakeholders are essential in identifying and addressing new risks and challenges74,75, fostering
+responsible innovation and progress in the domain of LLM-powered chemistry engines.
+4
+Conclusion
+In this study, we have demonstrated the development of ChemCrow, a novel LLM-powered method for
+integrating computational tools in chemistry. By combining the reasoning power of LLMs with the chemical
+expert knowledge from computational tools, ChemCrow showcases one of the first chemistry-related LLM
+agent interactions with the physical world. ChemCrow has successfully planned and synthesized an insect
+repellent, three organocatalysts, and guided the screening and synthesis of a novel chromophore with target
+7

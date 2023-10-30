@@ -1,0 +1,22 @@
+have observed on other datasets. Further analysis reveals that one possible problem is the model’s
+propensity to select the None option, asserting that the task cannot be finished on the current webpage.
+This is somewhat accurate since tasks typically necessitate navigation through multiple webpages
+and performing a series of actions before reaching the final result. This aspect indeed represents the
+primary difficulty of our task. On the other hand, we observe highly promising outcomes with GPT-4.
+The performance is on par with the tuned Flan-T5 models under Cross-Website and Cross-Domain
+settings for element selection, indicating a great potential for developing generalist agents using
+LLMs. Nevertheless, GPT-4’s high operational cost remains a concern. Developing smaller models
+specialized for the web is an interesting future avenue.
+5
+Related Work
+Autonomous Agents for Web and Mobile Applications. Considerable initiatives have been in-
+vested in automating web navigation, driven by a vision of facilitating effortless human-web interac-
+tion. Yet, previous research has been limited by the types of tasks and websites it can handle, either
+confined to simplified simulation environments [19, 28, 37], or limited to a narrow set of domains and
+websites [36, 37]. Recent studies [3, 18, 32] have utilized similar techniques for mobile applications,
+however, these are often simpler and offer fewer functions compared with full-fledged websites. In
+contrast, MIND2WEB aims to adapt to a realistic web environment, characterized by its high diversity.
+Also related is the research on web automation systems [1, 16]. These technologies often demand
+programming skills, which can make them less accessible to general users. We aim to equip the web
+automation system with a natural language interface, thereby reducing the entry barrier significantly.
+8

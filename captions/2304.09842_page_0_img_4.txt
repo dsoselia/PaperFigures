@@ -1,0 +1,22 @@
+Chameleon: Plug-and-Play Compositional Reasoning
+with Large Language Models
+Pan Lu1, Baolin Peng2, Hao Cheng2, Michel Galley2
+Kai-Wei Chang1, Ying Nian Wu1, Song-Chun Zhu1, Jianfeng Gao2
+1University of California, Los Angeles
+2Microsoft Research, Redmond
+lupantech@gmail.com
+{bapeng, chehao, mgalley, jfgao}@microsoft.com
+https://chameleon-llm.github.io
+[194, 21]: Earthzy paper
+[244 70]: plates now
+Analyze the advertisement to determine which persuasive appeal is used. The 
+ad mentions that Earthzy paper plates carry the Sierra Club seal of approval
+What is the direction of this push?
+(A) away from the baseball bat 
+Image Captioner
+Knowledge Retrieval
+Answer Generator
+Solution Generator
+1
+1
+4 May 2023

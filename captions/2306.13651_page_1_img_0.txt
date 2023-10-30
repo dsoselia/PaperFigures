@@ -1,0 +1,45 @@
+Figure 1: In our proposed self-supervised evaluation, pairs are created from a corpus. Each pair contains the
+original and perturbed text, which in the figure above is creating a negation via applying a “not.” These pairs are
+then fed into the network, and the outputs (perplexity, probability distributions, or text) are compared for each
+pair. These measures are then aggregated to produce an invariance or sensitivity score.
+LLMs, making older datasets unreliable unless they are painstakingly removed from the training set,
+which does not reliably happen [Brown et al., 2020, Gao et al., 2021].1 Second, LLM evaluation
+is by its nature multi-faceted, since different LLM applications rely on distinct capabilities, and an
+ever-increasing number of such capabilities needs to be tested in modern LLMs. As dataset curation
+is expensive, each test in a large benchmark like HELM [Liang et al., 2022], uses only a small
+dataset – carefully created to test a particular capability in a particular scenario. However, models are
+then deployed in much broader contexts and settings, and the applicability of these evaluations to
+deployment usage can be uncertain.
+To complement conventional evaluation, we propose a framework for self-supervised model
+evaluation. In this framework, metrics are defined as invariances and sensitivities that can be
+checked in a self-supervised fashion using interventions based only on the model in question rather
+than external labels. Self-supervised evaluation pipelines are dataset-agnostic, and so they can
+be utilized over larger corpora of evaluation data than conventional metrics, or even directly in
+production systems to monitor day-to-day performance. In this work, we develop this framework,
+discuss desiderata for such metrics, and provide several case studies for self-supervised metrics:
+measuring knowledge through negations, toxicity detection, long-range dependency, word-order, and
+tokenization sensitivity. By developing these new metrics, we hope to provide a more comprehensive
+and nuanced understanding of the strengths and limitations of LLMs.
+2
+A Procedure for Self-Supervised Evaluation
+Our goal is to measure properties of LLMs such as toxicity, closed-book knowledge, and word
+order sensitivity without relying on benchmark-specific datasets or human annotations. Rather than
+measuring model accuracy against known ground truth labels, we choose a simple transformation
+that can be applied to text. We then measure the level of invariance that a model’s output has under
+that transformation. If we choose our transformations carefully, we can obtain useful information
+about model behavior in a completely self-supervised way.
+More concretely, given a corpus D (e.g., Wikipedia), we construct pairs of original passages/sentences
+x, and transformed counterparts x′. An example is seen in Figure 1, where we negate the original
+sentence x to construct x′. X is the set of all transformed pairs. We then feed input pairs into
+the language model, f, to extract a pair of outputs. Depending on the construction, the output
+being considered can be the softmax probability vector over tokens, a perplexity score, or a feature
+vector. We then compare the outputs f(x) and f(x′) using a similarity metric, M. Finally, we
+aggregate the results over all pairs in the data corpus using an aggregation operator, A, to produce an
+invariance/sensitivity score.
+SCORE = A{M(f(x), f(x′)) ∀(x, x′) ∈ X}.
+(1)
+In this work, we bring wikipedia as our own dataset, but note that we do so to enable comparisons
+to existing metrics that use human labels on similar data. We use this methodology to study several
+1Efforts such as https://github.com/hitz-zentroa/lm-contamination are trying to catalog this
+phenomenon for ChatGPT.
+2

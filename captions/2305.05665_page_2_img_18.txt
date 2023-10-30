@@ -1,0 +1,64 @@
+space by using pairs of related examples (positives) and un
+related examples (negatives). Using pairs of aligned ob-
+servations, contrastive learning can align pairs of modal-
+ities such as (image, text) [60], (audio, text) [27], (image,
+depth) [70], (video, audio) [50] etc. However, in each case,
+the joint embeddings are trained and evaluated using the
+same pairs of modalities. Thus, (video, audio) embeddings
+are not directly applicable for text-based tasks while (image,
+text) embeddings cannot be applied for audio tasks.
+Zero-shot image classification using text prompts.
+CLIP [60] popularized a ‘zero-shot’ classification task
+based on an aligned (image, text) embedding space. This
+involves constructing a list of text descriptions that describe
+the classes in a dataset. An input image is classified based
+on its similarity to the text descriptions in the embedding
+space.
+Unlocking such zero-shot classification for other
+modalities requires specifically training using paired text
+data, e.g., (audio, text) [27] or (point-clouds, text) [85]. In
+contrast, IMAGEBIND unlocks zero-shot classification for
+modalities without paired text data.
+3.2. Binding modalities with images
+IMAGEBIND uses pairs of modalities (I, M), where I
+represents images and M is another modality, to learn a sin-
+gle joint embedding. We use large-scale web datasets with
+(image, text) pairings that span a wide range of semantic
+concepts. Additionally, we use the natural, self-supervised
+pairing of other modalities – audio, depth, thermal, and In-
+tertial Measurement Unit (IMU) – with images.
+Consider the pair of modalities (I, M) with aligned ob-
+servations. Given an image Ii and its corresponding obser-
+vation in the other modality Mi, we encode them into nor-
+tions, also called ‘negatives’. We follow [76] and consider
+every example j ̸= i in the mini-batch to be a negative. The
+loss makes the embeddings qi and ki closer in the joint em-
+bedding space, and thus aligns I and M. In practice, we
+use a symmetric loss LI,M + LM,I.
+Emergent alignment of unseen pairs of modalities. IM-
+AGEBIND uses modalities paired with images, i.e., pairs of
+the form (I, M) to align each the embeddings from each
+modality M to those from images. We observe an emer-
+gent behavior in the embedding space that aligns two pairs
+of modalities (M1, M2) even though we only train using
+the pairs (I, M1) and (I, M2). This behavior allows us
+to perform a wide variety of zero-shot and cross-modal re-
+trieval tasks without training for them. We achieve state-
+of-the-art zero-shot text-audio classification results without
+observing a single sample of paired (audio, text).
+3.3. Implementation Details
+IMAGEBIND is conceptually simple and can be imple-
+mented in many different ways. We deliberately choose a
+vanilla implementation that is flexible and allows for an ef-
+fective study and easy adoption. In § 5, we present design
+decisions that are critical for good emergent ‘binding’.
+Encoding modalities.
+We use a Transformer architec-
+ture [73] for all the modality encoders. We use the Vision
+Transformer (ViT) [13] for images. Following [20], we use
+the same encoder for images and videos. We temporally
+inflate [7] the patch projection layer of the ViT and use 2
+frame video clips sampled from 2 seconds. We follow [22]
+for encoding audio and convert a 2 second audio sampled at
+16kHz into spectrograms using 128 mel-spectrogram bins.
+As the spectrogram is also a 2D signal like an image, we use

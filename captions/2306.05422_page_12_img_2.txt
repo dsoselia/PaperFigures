@@ -1,0 +1,76 @@
+A. Preparing pairwise correspondences
+Our method uses pairwise correspondences from existing
+methods, such as RAFT [66] and TAP-Net [15], and con-
+solidates them into dense, globally consistent, and accurate
+correspondences that span an entire video. As a preprocess-
+ing stage, we exhaustively compute all pairwise correspon-
+dences (i.e., between every pair of frames i and j) and filter
+them using cycle consistency and appearance consistency
+checks.
+When computing the flow field between a base frame
+i and a target frame j as i → j, we always use the flow
+prediction for the previous target frame (i → j − 1) as ini-
+tialization for the optical flow model (when possible). We
+find this improves flow predictions between distant frames.
+Still, the flow predictions between distant frames can contain
+significant errors, and therefore we filter out flow vector esti-
+mates with cycle consistency errors (i.e., forward-backward
+flow consistency error) greater than 3 pixels.
+Despite this filtering process, we still frequently observe
+a persistent type of error that remains undetected by cycle
+consistency checks. This type of spurious correspondence,
+illustrated in Fig. 5, occurs because flow networks can strug-
+gle to estimate motion for regions that undergo significant
+deformation between the two input frames, and instead opt
+to interpolate motion from the surrounding areas. In the ex-
+ample in Fig. 5, this leads to flow on the foreground person
+“locking on” to the background layer instead. This behavior
+results in incorrect flows that survive the cycle consistency
+check, since they are consistent with a secondary layer’s
+motion (e.g., background motion). To address this issue,
+we additionally use an appearance check: we extract dense
+features for each pixel using DINO [10] and filter out cor-
+respondences whose features’ cosine similarity is < 0.5.
+In practice, we apply the cycle consistency check for all
+pairwise flows and supplement it with an appearance check
+when the two frames are more than 3 frames apart. We found
+this filtering process consistently eliminates major errors in
+flow fields across different sequences without per-sequence
+tuning. The results of our filtering approach, after both cycle
+and appearance consistency checks, are illustrated in Fig. 6.
+One drawback of such a filtering process is that it will
+also remove correct flows for regions that become occluded
+in the target frame. For certain correspondence methods
+(such as RAFT), including these motion signals during oc-
+clusion events can result in better final motion estimates.
+Therefore, we devise a simple strategy for detecting reliable
+flow in occluded regions. For each pixel, we compute its
+forward flow to a target frame (a), cycle flow (flow back to
+the source frame from the target pixel) (b), and a second for-
+ward flow (c). This process effectively amounts to a 2-pass
+cycle consistency check: the consistency between (a) and
+(b) forms a standard cycle consistency check, and the consis-
+tency between (b) and (c) forms a secondary, supplementary
+Figure 5: Erroneous correspondences after cycle consistency
+check. The red bounding box highlights a common type of incorrect
+correspondences from flow networks like RAFT [66] that remains
+undetected by cycle consistency check. The left images are query
+frames with query points and the right images are target frames
+with the corresponding predictions. Only correspondences on the
+foreground object are shown for better clarity.
+Figure 6: Correspondences from RAFT [66] after both cycle and
+appearance checks. The left column shows a single query frame,
+and the right column displays target frames with increasing frame
+distances to the query frame from top to bottom. The filtered
+correspondences are reliable without significant errors.
+one. We identify pixels where (a) and (b) are inconsistent
+but (b) and (c) are consistent and deem these to be occluded
+pixels. We found this approach effective in identifying reli-
+able flows for occluded regions—particularly when the two
+frames are close to each other. Therefore, we allow these
+correspondences to bypass cycle consistency checks if they
+span a temporal distance of less than 3 frames. Our exper-
+iments use this added signal for the variant of our method
+that uses RAFT flow, but not for the TAP-Net variant, as we
+found the predicted correspondences from the latter were
+13

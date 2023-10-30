@@ -1,0 +1,43 @@
+p
+g
+p
+g
+g
+(
+examples) in the multi-step setting and 1.5 hours in single-step settings.
+Baselines.
+A straightforward way to construct prediction sets given a desired 1−ϵ coverage is to rank
+options according to confidence and construct a set such that the cumulative confidence exceeds 1−ϵ; we
+consider two baselines that are based on such cumulative thresholding but use different kinds of scores:
+Simple Set uses the same ˆf as KNOWNO; Ensemble Set [14] instead uses the frequencies of the LLM out-
+putting y∈Y (out of 20 trials total) with randomized sampling of few-shot examples in the prompt. However,
+the resulting prediction sets are not guaranteed to achieve 1−ϵ coverage as the probabilities can be miscali-
+brated [15], and often include additional unnecessary options [16]. Instead of using cumulative thresholding,
+KNOWNO constructs prediction sets by including options with scores higher than a threshold computed
+using CP, which results in statistical guarantees. We also introduce two prompt-based baselines: Prompt Set
+prompts the LLM to directly output the prediction set (e.g., “Prediction set: [A, C]”); Binary prompts the
+LLM to directly output a binary indicator for uncertainty (e.g., “Certain/Uncertain: Certain”), which is used
+in other LLM-based planning work [2] for triggering human intervention. Note that the ϵ level is not used
+in Prompt Set or Binary, and so the user cannot explicitly control the task success rate. Lastly, we consider
+No Help where the option with the highest score is always executed without any human intervention.
+4.1
+Simulation: Tabletop Rearrangement
+Deviation from
+…
+Figure 3: Deviation from specified task success
+level 1−ϵ=0.85 to the empirical success rate
+for the three settings in Simulation. 200 trials
+are run for each method/setting.
+A robot arm is asked to rearrange objects on a table in the
+PyBullet simulator [17] (Fig. 1 right top). Each scenario is
+initialized with three bowls and blocks of green, yellow, and
+blue colors. The task is to move a certain number of blocks
+or bowls towards a different object or at a specific location
+around it. We introduce three settings based on different
+types of ambiguities in the user instruction: (1) Attribute (e.g.,
+referring to the bowl with the word “receptacle”), (2) Numeric
+(e.g., under-specifying the number of blocks to be moved by
+saying “a few blocks”), and (3) Spatial (e.g., “put the yellow
+block next to the green bowl”, but the human has a preference
+over placing it at the front/back/left/right). For each setting,
+6

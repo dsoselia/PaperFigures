@@ -1,0 +1,31 @@
+Fig. 3. We demonstrate our retargeting solution on three different characters (from left to right): a mouse-like
+creature named Oppy, a human named Jesse, and a dinosaur we call Dino.
+In the following we give an overview of reinforcement learning and then describe each component
+in detail.
+3.1
+Reinforcement Learning
+We use deep reinforcement learning (RL) to learn a retargeting policy for each character. In RL, at
+each time step 𝐴���, the control policy reacts to an environment state 𝐴���𝐴��� by performing an action 𝐴���𝐴���.
+Based on the action performed, the policy receives a reward signal 𝐴���𝐴��� = 𝐴��� (𝐴���𝐴���,𝐴���𝐴���). In deep RL, the
+control policy 𝜋𝜀��� (𝐴���|𝐴���) is a neural network. The goal of deep RL is to find the network parameters 𝜀���
+which maximize the expected return defined as follows:
+𝐴���𝐴���𝐴���(𝜀���) = E
+� ∞
+∑︁
+𝐴���=0
+𝛽���𝐴���𝐴��� (𝐴���𝐴���,𝐴���𝐴���)
+�
+,
+(1)
+where 𝛽��� ∈ [0, 1) is the discount factor. Tuning 𝛽��� affects the importance we give to future states. We
+solve this optimization problem using the proximal policy optimization (PPO) algorithm [Schulman
+et al. 2017], a policy gradient actor-critic algorithm. A review of PPO algorithm is provided in
+Appendix B.
+3.2
+Characters
+We demonstrate our retargeting solution on three characters with unique features: Oppy [Meta
+2023] is a mouse with a short lower body, a big head, big ears and a tail; Dino is a tall dinosaur,
+with a long and heavy tail and head, and short arms; Jesse is a human-like cartoon character
+with a skeleton structure similar to the mocap data. Figure 3 shows a visual representation of the
+characters and Table 1 details the structure of their skeletons.
+Proc. ACM Comput. Graph. Interact. Tech., Vol. 6, No. 2, Article . Publication date: August 2023.

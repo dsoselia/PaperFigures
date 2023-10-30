@@ -1,4 +1,0 @@
-(a) Input Distribution
-(b) Output Distribution
-Figure 13: MNIST Input and output distributions. For two test set images the figure shows the white
-pixel probability at 20 steps evenly spaced between t = 0 and t = 1/3. Note how the input probabilities are

@@ -1,0 +1,14 @@
+Here, the model sizes are denoted by ‘L’, ‘B’, ‘M’,
+and ‘S’, which stand for large-, base-, medium-, and
+small-sized models, respectively.
+,
+p
+suggests that multi-modal pretraining may influence the
+unimodal tasks, especially text-only tasks, as the image
+is not necessarily required. In contrast, for image-only
+tasks, at least a dictionary of text tokens is needed for label generation.
+3.6
+Ablation Study on Pretraining Modalities
+This section addresses the query: “Can the proposed model handle unseen data modalities (e.g., images
+from a new different imaging device like an ultrasound)?” To investigate this, we have adjusted our dataset
+10

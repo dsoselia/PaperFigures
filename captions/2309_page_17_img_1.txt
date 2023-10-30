@@ -1,3 +1,0 @@
-Figure 7: Another example of hallucinations for a different query, e.g., John F. Kennedy Jr was born
-in Washington D.C.
-18

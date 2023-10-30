@@ -1,0 +1,75 @@
+the power of large language models (LLMs). Our system uses a language model to reason over
+outputs from a set of independent and highly descriptive vision modules that provide exhaustive
+information about an image. We evaluate the approach on pure computer vision settings such
+as zero- and few-shot object recognition, as well as on vision and language problems. LENS
+can be applied to any off-the-shelf LLM and we find that the LLMs with LENS perform highly
+competitively with much bigger and much more sophisticated systems, without any multimodal
+training whatsoever. We open-source our code at https://github.com/ContextualAI/lens
+and provide an interactive demo1.
+Pretrained and frozen
+Trained from scratch
+Architecture
+Data 
+Source
+LENS     (Ours)
+ No additional
+pre-training data
+Flamingo
+Frozen LLM
+LM Block
+XATTN
+Layer
+XATTN
+Layer
+Surfing
+Q: What is the 
+     dog doing?
+Image 
+Encoder
+Output Text
+LM Block
+Perceiver
+M3W
+43M webpages
+~2B samples 
+     
+image-video
+text pairs
+BLIP-2
+Q- Former
+FC Layer
+Surfing
+Q: What is the 
+     dog doing?
+Image 
+Encoder
+Frozen LLM
+Output Text
+COCO   Visual Genome
+CC12M  SBU   LAION-400M
+115M images + synthetic captions
+Old-Style Pretraining
+Surfing
+Output Text
+Q: What is the 
+     dog doing?
+Image
+Encoder
+Text
+Encoder
+Cross - Modality
+Encoder
+COCO   Visual Genome
+VQA   GQA   Visual7W ...
+Millions of paired image/text samples
+Visual 
+Descriptors
+Attributes
+Objects
+Captions
+Frozen LLM
+Q: What is the 
+     dog doing?
+Surfing
+Output Text
+arXiv:2306.16410v1  [cs.CL]  28 J

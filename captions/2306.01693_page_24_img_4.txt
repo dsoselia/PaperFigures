@@ -1,0 +1,4 @@
+Figure 5: Fine-grained feedback annotation interface.
+Figure 6: Error types in the fine-grained feedback annotation interface.
+Figure 7: Preference feedback annotation interface. The task input is omitted (same as in Figure 5).
+25

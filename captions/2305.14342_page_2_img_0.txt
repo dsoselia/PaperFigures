@@ -1,0 +1,22 @@
+dimensions and converges to the minimum
+with a few steps.
+13:
+θt+1 = θt − ηt · clip(mt/ max{γ · ht, ϵ}, 1)
+mini-batch gradient calculated with resampled labels. Both the two estimators only introduce 5%
+overheads per step (in average). At every step, Sophia updates the parameter with an exponential
+moving average (EMA) of the gradient divided by the EMA of the diagonal Hessian estimate,
+subsequently clipped by a scalar. (All operations are element-wise.) See Algorithm 3 for the
+pseudo-code.
+Additionally, Sophia can be seamlessly integrated into existing training pipelines, without any
+special requirements on the model architecture or computing infrastructure. With the either of the
+Hessian estimators, Sophia only require either standard mini-batch gradients, or Hessian-vector
+products which are supported in auto-differentiation frameworks such as PyTorch (Paszke et al.,
+2019) and JAX (Bradbury et al., 2018).
+Thanks to the Hessian-based pre-conditioner, Sophia adapts more efficiently, than Adam does, to the
+heterogeneous curvatures in different parameter dimensions, which can often occur in the landscape
+of LLMs losses and cause instability or slowdown. Sophia has a more aggressive pre-conditioner
+than Adam—Sophia applies a stronger penalization to updates in sharp dimensions (where the
+Hessian is large) than the flat dimensions (where the Hessian is small), ensuring a uniform loss
+decrease across all parameter dimensions. In contrast, Adam’s updates are mostly uniform across all
+parameter dimensions, leading to a slower loss decrease in flat dimensions. (See Section 2.1 for more
+3

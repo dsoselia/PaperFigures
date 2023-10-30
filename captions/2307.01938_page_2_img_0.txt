@@ -1,0 +1,35 @@
+Fig. 2. Overview of our system. The policy 𝜋 receives the Quest sensor input 𝐴���𝐴���,𝐴���𝐴���𝐴���𝐴��� and the current state
+of the simulated character 𝐴���𝐴���,𝐴���𝐴���𝐴��� as observation and computes torques 𝐴���𝐴��� to apply to a physics simulator.
+During training, we use human motion capture data 𝐴���𝐴���,𝐴���𝐴��� to estimate a rough pose 𝐴���𝐴���,𝐴���𝐴���𝐴��� of the simulated
+character ("kinematic retargeting"). The reward encourages the simulated character 𝐴���𝐴���,𝐴���𝐴���𝐴��� to imitate this
+rough kinematic pose 𝐴���𝐴���,𝐴���𝐴���𝐴��� as best as possible, while respecting all the physical constraints imposed by the
+simulator. After the policy is trained, full-body data or kinematic retargeting is not required anymore, and
+the simulated character can be driven purely by the HMD and controller sparse sensor.
+as Inertial Measurement Unit (IMU) devices, e.g., [Huang et al. 2018; Jiang et al. 2022; von Marcard
+et al. 2017].
+When using AR/VR devices, systems are further limited by the sparse sensors available. Most
+commonly available units are comprised of 3 tracker devices: a head-mounted device (HMD) and
+two controllers, one for each hand. As a human motion tracking device, these are handicapped
+by the lack of sensory information regarding the lower body and legs, which are essential to
+synthesizing believable full-body motion. Multiple methods have been proposed to address this,
+using transformers [Jiang et al. 2022; Vaswani et al. 2017], VAEs [Dittadi et al. 2021] and normalizing
+flows generative models [Aliakbarian et al. 2022]. Being kinematic-based approaches, however,
+these methods do not enforce physical properties and thus suffer from motion artifacts such as
+foot-skating and jitter. Physics-based approaches have also recently been proposed [Winkler et al.
+2022; Ye et al. 2022]. These both make use of reinforcement learning and physics to learn general
+and robust policies that drive full-body avatars, conditioned on input from a VR device. These are
+closest to the work we present in this paper, and have great promise, although come with their own
+limitations. The Neural3Points method [Ye et al. 2022] is specific to a single user and uses auxiliary
+losses and an intermediate full-body pose predictor. Relatedly, Winkler et al. [2022] proposes a
+more direct approach that is able to control a simulated human avatar and generalizes to users
+of different heights and multiple type of motions. Our work generalizes the method of Winkler
+et al. [2022] in two important ways: (1) we learn physics-based retargeting to characters having
+different morphologies, and (2) we enable real-time retargeting.
+2.2
+Retargeting Motions
+The motion retargeting problem is that of remapping motion from a source character or skeleton,
+often driven by motion capture data, to another character of possibly different dimensions. This
+is a long-standing problem for which many solutions have been proposed. Arguably the most
+challenging version of this problem arises when the source and target characters may differ
+significantly in terms of their morphology and skeleton, as is also the case for our work.
+Proc. ACM Comput. Graph. Interact. Tech., Vol. 6, No. 2, Article . Publication date: August 2023.

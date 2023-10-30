@@ -1,0 +1,14 @@
+101
+102
+103
+N = number of solutions per problem
+62
+Majority Voting
+Figure 3: A comparison of outcome-supervised and process-supervised reward
+models, evaluated by their ability to search over many test solutions. Majority
+voting is shown as a strong baseline. For N ≤ 1000, we visualize the variance
+across many subsamples of the 1860 solutions we generated in total per problem.
+3
+Large-scale Supervision
+We train the large-scale PRM using the step-level labels in PRM800K. To ensure
+the large scale ORM baseline is as strong as possible we train on 100 uniform

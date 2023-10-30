@@ -1,0 +1,47 @@
+(a) Winogrande
+(b) PIQA
+(c) ARC-Challenge
+(d) ARC-Easy
+(e) LAMBADA
+(f) SciQ
+Figure 4: Zero-Shot Performance: The horizontal axis is a number of parameters and the vertical axis is accuracy.
+21
+23
+25
+27
+29
+211
+Context Length
+21
+22
+Pile test loss
+7B 8k
+14B 8k
+Figure 5: Increasing context length contributes to lower
+test loss on the Pile (Gao et al., 2020).
+• Further improving RWKV computational ef-
+ﬁciency by applying parallel scan in the
+wkvt step to reduce the computational cost
+to O(B log(T)d)
+ing would be the performance under different
+datasets and speciﬁc use cases.
+• Adapting
+parameter-efﬁcient
+ﬁne-tuning
+methods such as LoRA (Hu et al., 2022)
+and characterizing behavior under different
+quantization
+schemes
+for
+the
+proposed
+architecture
+8
+Conclusions
+We introduced RWKV, a new approach to RNN
+models exploiting the potential of time-based mix-
+ing components. RWKV introduces several key
+strategies which allow it to capture locality and
+long-range dependencies, while addressing limi-
+tations of current architectures by: (1) replacing
+the quadratic QK attention by a scalar formulation

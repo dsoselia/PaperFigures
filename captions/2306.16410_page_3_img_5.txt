@@ -1,0 +1,12 @@
+3.1
+Visual Vocabularies
+For LENS, visual vocabularies act as a bridge to convert an image into textual information which can
+then be handled by an existing LLM. We develop vocabularies for common objects and attributes.
+Tags: To create a diverse and comprehensive tag vocabulary for a contrastive model’s image tagging,
+we collect tags from various sources. These include multiple image classification datasets such as
+[48, 33, 8, 46, 41, 4, 57, 28], object detection and semantic segmentation datasets [18, 36, 31] along
+with the visual genome dataset [29].
+Attributes: Following the methodology presented in Menon & Vondrick [40], we employ a large
+language model, GPT-3, to generate descriptions of the visual characteristics that differentiate each
+object category within our object vocabulary.
+4

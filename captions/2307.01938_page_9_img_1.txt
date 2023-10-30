@@ -1,0 +1,22 @@
+input. Lower-body motion perfectly matches the one of the user and feet contacts are correctly estimated.
+Watch the accompanying video for more results.
+.
+4.1
+Real-time Retargeting with Headset and Controller
+We thank the QuestSim [Winkler et al. 2022] authors for providing us with testing data and video
+references. With our method, we are able to control different characters in real time with only
+headset and controller information. Importantly, we are able to estimate the lower-body pose
+of the user from only three points in the upper body and correctly match the user action while
+transferring it to a character with a different morphology. Our virtual characters respect physical
+behaviors and do not suffer from jittering, foot sliding or penetration. Moreover, we are able to
+generalize to users not present in the training set and users of different heights. In Figure 7 we
+show a sequence in which all three characters are controlled by an unseen user.
+4.2
+Retargeting using only Headset
+Some VR systems provide only a head-mounted device (HMD), without the two controllers. This
+provides an even more challenging domain, requiring the policy to predict a full-body pose and
+control a virtual character from a one-point input. Nonetheless, our trained models are robust to
+the lack of controller signal and are able to retarget real time user data from unseen users even
+from this extremely sparse input, albeit with a lower quality compared to before. We invite the
+reader to watch the video available in the supplementary material.
+Proc. ACM Comput. Graph. Interact. Tech., Vol. 6, No. 2, Article . Publication date: August 2023.

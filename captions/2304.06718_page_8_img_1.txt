@@ -1,0 +1,31 @@
+Figure 6: Zero-shot visual referring segmentation with SEEM. Given a referring image with simple
+spatial hints, SEEM can segment the regions which are semantically similar in different target images.
+Figure 7: Zero-shot video object segmentation using the first frame plus one stroke. From top
+to bottom, the videos are “parkour" and “horsejump-low” from DAVIS [73], and video 101 from
+YouCook2 [74]. SEEM precisely segments referred objects even with significant appearance changes
+caused by blurring or intensive deformations.
+attributes to understand language. In addition, SEEM is able to generalize to unseen scenarios like
+cartoons, movies, and games.
+Visual referring segmentation. In Fig.6, we show SEEM’s segmentation results when prompted with
+referring regions from another image. By simply drawing a click or scribble on one referring image,
+SEEM can take it as input and segment objects with similar semantics on other images. Notably,
+this referring segmentation has a powerful generalization capability to images of other domains.
+For example, by referring to the elephant in the forest, another object of the same category can be
+segmented well under drastically different scenes like cartoons, plush toys, and grassland.
+Video object segmentation. In Fig. 7, we further show SEEM’s referring segmentation ability on the
+video object segmentation task in a zero-shot manner. By referring to the objects in the first frame
+with scribbles, SEEM can precisely segment the corresponding objects in the following frames, even
+when the following objects change in appearance by blurring or intensive deformations.
+5
+Conclusion
+We presented SEEM, which can segment everything (all semantics) everywhere (all pixels) all at
+once (all possible prompt compositions). Apart from performing generic open-vocabulary segmenta-
+tion, SEEM can interactively take different types of visual prompts from the user, including click,
+box, polygon, scribble, text, and referring region from another image. These visual prompts are
+mapped into a joint visual-semantic space with a prompt encoder, which makes our model versatile
+to various prompts and can flexibly compose different prompts. Extensive experiments indicate that
+our model yields competitive performance on several open-vocabulary and interactive segmentation
+benchmarks. Further studies revealed the robust generalization ability of our model in accurately
+segmenting images based on diverse user intents. We hope our work will serve as a stepping stone
+toward a universal and interactive interface for image segmentation and beyond.
+9

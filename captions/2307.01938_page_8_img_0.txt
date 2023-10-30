@@ -1,0 +1,23 @@
+3.7
+Learning Control Policies
+The policy for each simulated character outputs torque values in the range [−1, 1] which are
+then rescaled according to minimum and maximum torque values for each joint (provided in
+Appendix D). We find this to perform better and be more clear with respect to outputting PD
+target angles, as shown by previous works [Reda et al. 2020]. We train the policy with PPO and
+PyTorch auto differentiation software [Paszke et al. 2019; Schulman et al. 2017] and simulate physics
+with NVIDIA PhysX Isaac Gym physics simulator [Makoviychuk et al. 2021]. A complete set of
+hyperparameter details for reproducibility are summarized in Appendix C.
+4
+RESULTS
+All experiments are performed on a single 12-core machine with one NVIDIA RTX 2070 GPU. All
+models are trained for 24 hours which translates to approximately 6 billion environment steps.
+We demonstrate comparable results with two different motion capture datasets. Our in-house
+mocap data consists of 4 hours of motion clips of 120 subjects. Specifically, the dataset contains 130
+minutes of walking and 110 minutes of jogging. We also demonstrate robust and general results
+with the Ubisoft La Forge Animation (LaFAN1) dataset [Harvey et al. 2020], an open source motion
+capture dataset containing 5 subjects and 77 sequences. For the purposes of this work, we only
+considered actions themed Walk and Run, which consist of a total of 15 sequences and 74 minutes of
+data. We note that these motions are very different from the ones in our in-house dataset, containing
+diverse and hard behaviors and gaiting styles. At inference, we provide input to the policy with a
+Meta Quest headset and controllers device.
+Proc. ACM Comput. Graph. Interact. Tech., Vol. 6, No. 2, Article . Publication date: August 2023.

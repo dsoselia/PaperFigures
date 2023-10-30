@@ -1,0 +1,17 @@
+SIGGRAPH ’23 Conference Proceedings, August 6–10, 2023, Los Angeles, CA, USA
+X. Pan, A. Tewari, T. Leimkühler, L. Liu, A. Meka, C. Theobalt
+Inputs
+Ours
+UserControllableLT
+Inputs
+Ours
+UserControllableLT
+Fig. 10. Qualitative comparison. This is an extension of Fig. 4.
+Input
+Target
+Ours
+Input
+Target
+Ours
+Fig. 11. Face landmark manipulation. Our method works well even for such dense keypoint cases.
+10

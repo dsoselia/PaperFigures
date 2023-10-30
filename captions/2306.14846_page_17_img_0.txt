@@ -1,0 +1,52 @@
+Figure 12: Different goal-conditioning architectures considered for ViNT.
+Method
+Performance
+Adaptation
+Late Fusion
+✗
+✓
+Early Fusion
+✓
+✗
+FiLM (RT-1) [30]
+✗
+✓
+ViNT
+✓
+✓
+Table 5: Comparing merits (✓) and demerits (✗) of different goal-conditioning architectures. While “Early
+Fusion” works the best for the core navigation task, it does not support downstream adaptation (Section 5).
+“Late Fusion” is ideal for adaptation, but does not perform well for our tasks. Our goal fusion architecture is
+able to closely match the performance of early fusion, while also supporting adaptation.
+goal images that are important, rather than absolute goal features. An “early fusion” architecture
+would fuse the goal image with all the past and current observation images immediately, which
+allows for learning joint features between the goal image and current state. However, this architec-
+ture is inflexible as the observation encoder would have to be learned entirely from scratch when
+adapting to a new goal modality. ViNT avoids this issue by using two distinct types of encoders:
+an observation-only encoder used to tokenize each observation image, and a joint observation and
+goal encoder that should extract relative goal features. This latter encoder can be replaced to allow
+alternative goal specifications in downstream tasks, as described in Appendix B.4. Specifically, we
+adapt to new tasks by learning the final token conditioned on the new task goal information in place
+of the joint observation/goal encoder.
+B
+Implementation Details
+B.1
+Training ViNT
+See Table 6 for a detailed list of hyperparameters for training the ViNT foundation model.2
+B.2
+Subgoal Diffusion
+For generating subgoals, we use an image-to-image diffusion model. It takes an image ot as input
+and produces samples from g(osi | ot), where osi are candidate subgoal images reachable from ot.
+To produce training pairs for the diffusion model, we first select ot uniformly at random from the
+training data and then select osi to fall between 5 and 20 timesteps in the future from ot.
+Following Saharia et al. [39], we implement image conditioning as simple channel-wise concatena-
+tion to the U-Net input. We use the Flax U-Net implementation from the diffusers library [48] with
+textual cross-attention removed since we do not condition on text inputs.
+We use the continuous-time diffusion formulation from Kingma et al. [49] with a fixed linear noise
+schedule rather than a learned one. Also unlike Kingma et al. [49], we use the unweighted training
+objective, called Lsimple in Ho et al. [38, Equation 14] and Kingma et al. [49, Appendix K]. We
+2We used a variety of workstations equipped with different GPU configurations over the course of this
+research, including 2×4090, 3×Titan Xp, 4×P100, 8×1080Ti, 8×V100, and 8×A100. With the model archi-
+tecture fixed, the batch size and training time varies significantly across these devices, and the entry in Table 6
+is representative of our most common training configuration.
+18

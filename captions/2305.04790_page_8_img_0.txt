@@ -1,0 +1,2 @@
+Figure 7: The MultiModal-GPT can answer general questions about the traveling of users.
+9

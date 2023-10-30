@@ -1,0 +1,8 @@
+Figure 3: A schematic diagram of the software development process within the MetaGPT framework. This diagram
+illustrates the sequential software development process within the MetaGPT framework. Upon receiving a requirement
+from humans, the product manager commences the process by conducting requirement and feasibility analyses. The
+architect then formulates a specific technical design for the project. Next, the project manager performs sequence flow
+illustrations to address each requirement. The engineer takes responsibility for the actual code development, followed
+by a quality assurance (QA) engineer who carries out comprehensive testing. This schematic showcases MetaGPT’s
+emulation of the real world.
+7

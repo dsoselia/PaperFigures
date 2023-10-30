@@ -1,0 +1,87 @@
+17
+Fig. 9. An overview of three phases proposed by UniDetector [282] to prepare a CLIP-like model for open-world object detection: general vision-
+language training (similar to CLIP [214]), object detection-based heterogenous label space training on data combined data from various sources,
+and inference-time output calibration. Here, V and L refer to vision and language, respectively. The figure is taken from Wang et al. [282].
+granularity such as image level, object level, and pixel level.
+Zou et al. [365] argued that a method operating at all three
+levels can exploit the synergy of these tasks and proposed X-
+Decoder which formulates all levels of a task into a general
+decoding procedure. X-Decoder is built on top of a vision
+backbone based on Mask2Former [45]. The decoder takes
+multi-scale image features extracted by a vision encoder and
+two sets of queries: textual queries encoded by a text en-
+coder and generic non-semantic queries that aim to decode
+segmentation masks. The decoder has two different types
+of outputs: pixel-level masks and token-level semantics.
+Different combinations of queries and output types can
+facilitate different tasks. This architecture is trained end-
+to-end on panoptic segmentation, referring segmentation,
+and image-text pairs datasets with task-specific semantic
+losses and mask-based loss. X-decoder exhibits strong zero-
+shot and task-specific transferability across a wide range of
+segmentation tasks as well as vision-language tasks.
+Zhang et al. [332] propose to use vision-language
+grounding as a meta capability for both localization and
+understanding tasks. To this end, they proposed a new inter-
+image region-word contrastive loss that utilizes negative
+phrases from different examples as potential negatives. A
+generic model consisting of a vision and a text encoder and
+a fusion decoder is trained with their proposed loss and
+grounding loss and masked language modeling loss [181]
+on both image-text and detection datasets. The model can be
+used in zero-shot settings as well as in fine-tuning settings.
+Experimental results show both task benefits from each
+other.
+4
+CONVERSATIONAL VISION-LANGUAGE MODELS
+After the impressive performance of Large Language Mod-
+els (LLMs) for comprehending, reasoning, and holding
+human-like conversations, there have been several works to
+incorporate visual modality in them. Conversational VLMs
+are a subcategory of textually prompted models, however,
+are equipped to hold human-like conversations based on
+multi-modal inputs. In this section, we review efforts to
+create conversational VLMs.
+OpenAI developed the first vision-language GPT4
+model [204] which c hold multi-modal conversations and
+can describe intricate images and solve complex real-world
+problems. Due to ‘competitive landscape and ethical con-
+siderations’, they decided not to open-source this model but
+provided an API-access through a paywall5. This model is
+based on transformer-based architecture [265], pre-trained
+to predict the next word token using public and pri-
+vate datasets. GPT4 is then fine-tuned with Reinforcement
+Learning from Human Feedback (RLHF) [53]. GPT4 shows
+excellent performance across a span of conventional and
+real-world NLP, vision, and vision-language tasks. GPT4
+performs exceptionally well on HumanEval [36], has a
+human-level performance on professional and academic
+exams designed for humans, outperforms previous SOTA
+language models on conventional NLP tasks, works well
+on even MMLU [111] dataset translated across languages,
+and substantially improves model’s ability to follow human
+intent. GPT4 also shows remarkable performance on vision
+tasks and describing intricate and complex scenes, of which
+an example is shown in Fig. 10.
+GPT4 [204] has remarkable emerging properties but the
+model behind it is closed-sourced and even its architectural
+details are unknown. Zhu et al. [360] aimed to unravel this
+and hypothesized that these models utilize large language
+models. To this end, they presented an open-source version
+of GPT4 called miniGPT4 that consists of a pre-trained
+large language model (LLM) called Vicuna [50] and a visual
+component that consists of ViT-G [249] and a Q-Former.
+MiniGPT-4 adds a single linear projection layer on top of
+the vision encoder and freezes all other parameters. To
+align visual features with the LLM, the authors proposed
+a two-stage training-finetuning scheme. First, MiniGPT-4 is
+trained on a large set of multi-modal examples consisting
+of Conceptual Captions [235], SBU [205], and LAION [226].
+Second, to improve the naturalness and usability, MiniGPT-
+4 is fine-tuned on a high-quality curated dataset of in-
+structions and respective image and text pairs. MiniGPT-
+4 exhibits several intriguing properties of GPT4 such as
+generating intricate image descriptions, creating a website
+from its sketch, and explaining visual scenarios (see Fig. 11).
+5. https://help.openai.com/en/articles/7127956-how-much-does-
+gpt-4-cost

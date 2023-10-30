@@ -1,0 +1,17 @@
+Additionally, Eve, the project manager, will list out the project dependencies, including third-party packages written in
+Python as well as other languages and API specs. When there are missing details, the review/reflection process will
+iteratively improve the generated content in the current phase until the reviewer is satisfied. e.g.
+1
+## Anything UNCLEAR
+2
+There is no main entry point defined in the project. We need to clarify whether the main
+3
+game loop will be in 'main.py' or in another file.
+Alex (Engineer): ready to WriteCode and WriteCodeReview.
+Given concrete tasks and a coherent overall
+implementation plan in the form of "WriteTasks" messages, the LLM-based agent has enough information to generate
+error-free code. Alex will go through the list of files in the specified order and generate each file. On the first try,
+MetaGPT successfully generated an error-free 2048 sliding tile puzzle game. All these are from a single line of user
+instruction.
+Figure 6: The MetaGPT-generated runtime interface for the 2048 sliding tile puzzle game.
+12

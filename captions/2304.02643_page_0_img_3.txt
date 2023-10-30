@@ -1,0 +1,78 @@
+Segment Anything
+Alexander Kirillov1,2,4
+Eric Mintun2
+Nikhila Ravi1,2
+Hanzi Mao2
+Chloe Rolland3
+Laura Gustafson3
+Tete Xiao3
+Spencer Whitehead
+Alexander C. Berg
+Wan-Yen Lo
+Piotr Doll´ar4
+Ross Girshick4
+1project lead
+2joint ﬁrst author
+3equal contribution
+4directional lead
+Meta AI Research, FAIR
+(b) Model: Segment Anything Model (SAM)
+prompt
+image
+valid mask
+image 
+encoder
+prompt 
+encoder
+lightweight mask decoder
+(a) Task: promptable segmentation
+segmentation prompt
+image
+model
+cat with
+black ears
+valid mask
+(c) Data: data engine (top) & dataset (bottom)
+• 1+ billion masks
+• 11 million images 
+• privacy respecting
+• licensed images
+annotate
+train
+data
+model
+Segment Anything 1B (SA-1B):
+Figure 1: We aim to build a foundation model for segmentation by introducing three interconnected components: a prompt-
+able segmentation task, a segmentation model (SAM) that powers data annotation and enables zero-shot transfer to a range
+of tasks via prompt engineering, and a data engine for collecting SA-1B, our dataset of over 1 billion masks.
+Abstract
+We introduce the Segment Anything (SA) project: a new
+task, model, and dataset for image segmentation. Using our
+efﬁcient model in a data collection loop, we built the largest
+segmentation dataset to date (by far), with over 1 billion
+masks on 11M licensed and privacy respecting images. The
+model is designed and trained to be promptable, so it can
+transfer zero-shot to new image distributions and tasks. We
+evaluate its capabilities on numerous tasks and ﬁnd that
+its zero-shot performance is impressive – often competitive
+matching in some cases) ﬁne-tuned models [10, 21]. Empir-
+ical trends show this behavior improving with model scale,
+dataset size, and total training compute [56, 10, 21, 51].
+Foundation models have also been explored in computer
+vision, albeit to a lesser extent. Perhaps the most promi-
+nent illustration aligns paired text and images from the web.
+For example, CLIP [82] and ALIGN [55] use contrastive
+learning to train text and image encoders that align the two
+modalities. Once trained, engineered text prompts enable
+zero-shot generalization to novel visual concepts and data
+di
+ib i
+S
+h
+d
+l
+ff
+i
+l
+i h
+2304.02643v1  [cs.CV]  5 Apr 2023

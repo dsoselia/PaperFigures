@@ -1,0 +1,30 @@
+omy of the system, as it enables the object classi-
+fier to work with a small set of generalized object
+categories. The approach is (i) robust as there are
+only a small number of categories to differentiate
+between, and (ii) flexible because it supports arbi-
+trary sets of object categories for different users. In
+contrast, without LLM summarization, the object
+classifier would have to be able to recognize all
+possible fine-grained object classes, which is much
+more difficult. Alternatively, the user would have
+to manually specify the list of objects present in
+each target scene, which would be impractical for
+an autonomous system.
+4 Experiments
+of which has a set of objects, a set of recepta-
+cles, a set of example “seen” object placements
+(preferences), and a set of “unseen” evaluation
+placements, all specified as text. The task is to
+predict the placements in the “unseen” set given
+the examples in the “seen” set.
+The benchmark scenarios are defined in 4 room
+types (living room, bedroom, kitchen, pantry
+room), with 24 scenarios per room type. Each sce-
+nario contains 2–5 receptacles (potential places
+to put objects, such as shelves, cabinets, etc.),
+4–10 “seen” example object placements provided
+as input to the task, and an equal number of
+“unseen” object placements (distinct from the
+seen examples) provided for evaluation. There are
+2 seen and 2 unseen object placements per recep-

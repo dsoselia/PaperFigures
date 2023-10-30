@@ -1,0 +1,4 @@
+Figure 7: Our Amazon Mechanical Turk interface for comparing the quality of different model
+outputs. Evaluators are presented with an instruction and two model outputs, and must rate which
+one is better or whether they are equal.
+15

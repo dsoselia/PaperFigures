@@ -1,0 +1,9 @@
+Figure 1. The pipeline illustrating how GPT-4 is utilized to control HVACs.
+3. Method
+In this section, we provide a detailed explanation of how we utilize GPT-4 to optimize the
+control of HVAC devices. The entire pipeline is depicted in Figure 1, which consists of the following
+components:
+LLM. A pre-trained large language model is employed as the decision-maker. Given a prompt,
+it generates corresponding actions. The prompt includes a description of the current state, simple
+HVAC control instructions, demonstrations of relevant states, and more. Further details on the
+prompt design will be discussed in the subsequent sections.

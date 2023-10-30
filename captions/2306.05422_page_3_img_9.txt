@@ -1,0 +1,76 @@
+frame (Li) to another (Lj):
+xj = T −1
+j
+◦ Ti(xi).
+(1)
+Bijective mappings ensure that the resulting correspondences
+between 3D points in individual frames are all cycle consis-
+tent, as they arise from the same canonical point.
+To allow for expressive maps that can capture real-world
+motion, we parameterize these bijections as invertible neural
+networks (INNs). Inspired by recent work on homeomor-
+phic shape modeling [35,49], we use Real-NVP [14] due to
+its simple formulation and analytic invertibility. Real-NVP
+builds bijective mappings by composing simple bijective
+transformations called affine coupling layers. An affine cou-
+pling layer splits the input into two parts; the first part is left
+unchanged, but is used to parametrize an affine transforma-
+tion that is applied to the second part.
+We modify this architecture to also condition on a per-
+frame latent code ψi [35,49]. Then all invertible mappings
+Ti are parameterized by the same invertible network Mθ, but
+with different latent codes: Ti(·) = Mθ(·; ψi).
+4.3. Computing frame-to-frame motion
+Given this representation, we now describe how we can
+compute 2D motion for any query pixel pi in frame i. Intu-
+itively, we “lift” the query pixel to 3D by sampling points
+on a ray, “map” these 3D points to a target frame j using
+bijections Ti and Tj, “render” these mapped 3D points from
+the different samples through alpha compositing, and finally
+“project” back to 2D to obtain a putative correspondence.
+Specifically, since we assume that camera motion is sub-
+fixed, orthographic camera. The ray at pi can then be defined
+as ri(z) = oi+zd, where oi = [pi, 0] and d = [0, 0, 1]. We
+sample K samples on the ray {xk
+i }, which are equivalent to
+appending a set of depth values {zk
+i }K
+k=1 to pi. Despite not
+being a physical camera ray, it captures the notion of multiple
+surfaces at each pixel and suffices to handle occlusion.
+Next we obtain densities and colors for these samples
+by mapping them to the canonical space and then querying
+the density network Fθ. Taking the k-th sample xk
+i as an
+example, its density and color can be written as (σk, ck) =
+Fθ(Mθ(xk
+i ; ψi)). We can also map each sample along the
+ray to a corresponding 3D location xk
+j in frame j (Eq. 1).
+We can now aggregate the correspondences xk
+j from all
+samples to produce a single correspondence ˆxj. This ag-
+gregation is similar to how the colors of sample points are
+aggregated in NeRF: we use alpha compositing, with the
+alpha value for the k-th sample as αk = 1 − exp(−σk). We
+then compute ˆxj as:
+ˆxj =
+K
+�
+k=1
+Tkαkxk
+j , where Tk =
+k−1
+�
+l=1
+(1 − αl)
+(2)
+A similar process is used to composite ck to get the image-
+space color ˆ
+Ci for pi. ˆxj is then projected using our sta-
+tionary orthographic camera model to yield the predicted 2D
+corresponding location ˆpj for the query location pi.
+5. Optimization
+Our optimization process takes as input a video sequence
+and a collection of noisy correspondence predictions (from
+an existing method) as guidance, and generates a complete,

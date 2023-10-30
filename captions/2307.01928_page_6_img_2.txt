@@ -1,0 +1,67 @@
+we construct a distribution over scenarios (detailed in Section A7) and perform experiments separately.
+This is a single-step setting with single acceptable option per step.
+KNOWNO achieves target task success rate consistently.
+First, we investigate whether KNOWNO
+and the baselines achieve a given target task success rate consistently in the three settings — we set the
+failure level ϵ=0.15. In Fig. 3 we show the difference between achieved and target rates for all methods.
+Results show that KNOWNO achieve the least deviations overall, due to the coverage guarantee from CP.
+Simple Set and Ensemble Set cannot achieve coverage consistently. Prompt Set, Binary, and No Help have
+larger deviations from the target since the user has no control over the error rate. Also, as the scenarios get
+increasingly ambiguous (least in Attribute and most in Spatial), the baselines show larger deviations.
+KNOWNO achieves high task success rate with lower human help as ϵ varies.
+In Fig. 4 we vary
+the target error rate ϵ and show the curves of task success rate vs. prediction set size and human help
+rate averaged over the three settings. For KNOWNO, Simple Set, and Ensemble Set, specifying a lower
+ϵ improves the empirical task success rate while also requiring more human help. The most natural
+comparison is between KNOWNO and Simple Set, as both use next-token probabilities from the LLM as
+the confidence score. KNOWNO achieves higher success-to-help ratios across ϵ levels, thanks to calibrated
+confidence from CP. Meanwhile, Prompt Set and Binary do not allow controlling success rates. Prompt Set
+performs the worst, indicating the challenge of prompting-based methods for calibrated prediction sets.
+Binary works favorably at some success levels, but lacks flexibility and doesn’t provide prediction sets for
+human feedback. In addition, Fig. A10 shows the results for individual ambiguity settings. As the scenarios
+become more ambiguous, KNOWNO shows a greater reduction of human help compared to Simple Set —
+as much as 24% at certain success levels.
+Prediction set size
+Task success rate
+Task success rate
+lower
+Human help rate
+lower
+Figure 4: Comparison of task success rate vs average prediction set size
+(Left) and vs. human help rate (Right) in Simulation averaged over the three
+settings. 200 trials are run for each method. ϵ is varied from 0.25 to 0.01 for
+KNOWNO, and from 0.6 to 0.01 for Simple Set and Ensemble Set. Binary
+and No Help are not shown on the left since prediction sets are not provided.
+Ensemble Set can perform well
+but is computationally expensive.
+Fig. 4 also shows that Ensemble
+Set provides high task success rate
+with small amount of human help
+at higher ϵ levels. However, there
+are two main drawbacks. First, we
+find in some scenarios that even
+with 20 randomized prompts, the
+LLM can fail to choose the correct
+option and thus assigns zero proba-
+bility to it. As shown in Fig. 4, this
+means that Ensemble Set can fail
+to improve once it reaches some
+level of human help. Second, it re-
+quires 20× inference time compared to other methods. Investigating how to lower the computational
+burden and combining ensemble-based probabilities with CP can be a fruitful future direction.
+4.2
+Hardware: Multi-Step Tabletop Rearrangement
+In this example, a UR5 robot arm is asked to sort a variety of toy food items on a table (Fig. 5 left). In
+each scenario, three items are placed on the table initially, and the task is to sort them based on human
+preferences; we simulate a human with strong preferences for healthy food like eggs and fruits, and dislike
+for less healthy food like donuts and Skittles candies. To introduce ambiguities, the context for the LLM
+reveals only a subset of the preferences. Here we consider a multi-step setting with possibly multiple
+acceptable options per step — the LLM plans the new step conditioned on the previous action taken.
+KNOWNO reduces step-wise and trial-wise intervention rates in multi-step setting.
+Since Section 4.1
+has shown that Ensemble Set can be expensive (even more so in the multi-step setting) and Prompt Set
+and Binary can fail to achieve the user-specified success level, we focus on comparing KNOWNO with
+Simple Set for the remainder of the evaluation. Here we set the desired error level ϵ=0.25. Since Simple
+Set does not provide calibrated coverage, we first find ϵ=0.42 for Simple Set to achieve the same planning
+error rate as KNOWNO in simulation. Then we run 50 trials for both methods in hardware. Table 1 shows
+7

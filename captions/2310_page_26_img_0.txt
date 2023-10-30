@@ -1,4 +1,0 @@
-Technical report. In progress
-Figure 17: Random samples from the trained MDM on CC12M 1024 × 1024 given various prompts. The
-guidance weight is set 7.0.
-27

@@ -1,0 +1,80 @@
+15
+Fig. 8. An overview of FLAVA [243] architecture. The model consists of an image, text, and multimodal encoder as well as vision, NLP, and
+multimodal heads. Figure from Singh et al. [243].
+modularized language-vision model which can perform
+unimodal (language, vision) and multimodal tasks. PaLI
+architecture consists of a text encoder-decoder transformer
+(mT5) [301] and a ViT [324] for visual tokens. Both compo-
+nents are pre-trained and only the language component is
+updated and trained on a myriad of vision and language
+tasks. The language model is also trained on pure language
+understanding tasks to avoid catastrophic forgetting.
+Second, they introduced a WebLI, 10 billion images, and
+12 billion alt-text (textual alternative for images 4) datasets.
+For their training, authors used a 1 billion clean subset of
+this dataset. They also used a combination of vision and
+language task-specific datasets, such as span corruption and
+object detection. For task-specific vision dataset training
+(such as object detection), the output is reformulated with
+the help of a template-based prompt. Third, they studied
+scaling laws in vision-language models and showed the
+importance of scaling vision components and the benefits
+of a mixture of language models. The PaLI model is pre-
+trained on over 100 languages and achieves SOTA results
+on various vision, language, and vision-language tasks.
+Existing models can work across modalities but their
+performance is not comparable to individual-type founda-
+tional models. To solve this problem,
+Zhang et al. [341]
+proposed a new foundational model called X-FM and a
+new training mechanism. The X-FM architecture consists
+of three modular encoders, including language, vision, and
+fusion encoders. The language and vision encoders are a
+stack of BERT [61] and ViT [68] like transformer layers
+along with post-layer and pre-norm, respectively. In the
+fusion encoder’s self-attention sub-layers, queries are from
+language, and keys and values are from vision.
+The proposed learning method for X-FM trains encoder
+with a combination of uni and multi-modal objectives
+and two new techniques. The language is trained with
+an encoder with masked language modeling (MLM) and
+4. https://webaim.org/techniques/alttext/
+image-text contrastive learning (ITC), a vision encoder with
+masked image modeling (MIM) and ITC, and a fusion
+encoder is trained with ITM and image-conditioned masked
+language modeling (IMLM), and bounding box prediction
+(BBP). The first new training technique is stopping gradient
+from vision-language when learning the language encoder.
+This way, the language encoder is isolated from fusion
+and trained on MLM and ITC for language modeling and
+language-vision alignment. The second new technique is
+the training vision encoder with masked images where the
+difference between its masked and unmasked outputs is
+minimized by using MSE loss. This way, the vision encoder
+is trained on cross-modal and unimodal objectives. This
+MIM training is resource-efficient, and convenient, enhanc-
+ing vision and fusion encoder mutually. The X-FM outper-
+forms other general foundational models on twenty-two
+tasks across language, vision, and language-vision tasks.
+Previous works rely on the large-scale nature of noisy
+image-text datasets which, Li et al. [154] argues, is sub-
+optimal. They introduced the BLIP framework which has
+both understanding and generation capabilities as it ef-
+fectively utilizes image-text datasets and uses a new ar-
+chitecture. First, they proposed a captioner that produces
+synthetic captions and a filter that filters noisy captions.
+This makes it possible to synthesize and filter noisy captions
+cost-effectively. Second, BLIP has a Multimodal mixture
+of Encoder-Decocer (MED) architecture which consists of
+unimodal encoders for image and text and image-grounded
+text encoder and image-grounded text decoder. This model
+is trained on two understanding-based (i.e. image-text con-
+trastive, image-text matching) objectives and one generative
+objective (i.e. language modeling). This framework achieves
+significant improvements and state-of-the-art performance
+across a wide variety of tasks.
+•Efficient Utilization of Pre-Trained Models:
+BLIP and
+other similar models are prohibitively expensive to train
+as they require large-scale, end-to-end image-text training,
+often from scratch. Here, we explain methods that aim to

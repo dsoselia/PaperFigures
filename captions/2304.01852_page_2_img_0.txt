@@ -1,0 +1,32 @@
+Figure 1: The graphical representation is utilized to depict the number of research articles related to ChatGPT published
+from 2022 to April, 2023, revealing the trend and growth of ChatGPT-related research over time. The graph showcases
+the monthly count of submissions and cumulative daily submitted count in arXiv. Over time, there has been an increasing
+amount of research related to ChatGPT.
+The open release of the multi-modal GPT-4 model further expands the horizon of large language models and empowers
+exciting developments that involve diverse data beyond text.
+The purpose of this paper is to provide a comprehensive survey of the existing research on ChatGPT and its potential
+applications in various fields. To achieve this goal, we conducted a thorough analysis of papers related to ChatGPT
+in the arXiv repository. As of April 1st, 2023, there are a total of 194 papers mentioning ChatGPT on arXiv. In this
+study, we conducted a trend analysis of these papers and generated a word cloud to visualize the commonly used terms.
+Additionally, we also examined the distribution of the papers across various fields and presented the corresponding
+statistics. Figure 1 displays the submission trend of papers related to ChatGPT, indicating a growing interest in this
+field. Figure 2 illustrates the word cloud analysis of all the papers. We can observe that the current research is primarily
+focused on natural language processing, but there is still significant potential for research in other fields such as
+education, medical and history. This is further supported by Figure 3, which displays the distribution of submitted
+papers across various fields, highlighting the need for more research and development in these areas. Due to the rapid
+advancement in research related to ChatGPT, we have also introduced a dynamic webpage that provides real-time
+updates on the latest trends in these area. Interested readers can access the webpage and stay informed about the
+evolving research directions by following this link 1.
+This paper aims to shed light on the promising capabilities of ChatGPT and provide insight into its potential
+impact in the future, including ethical considerations. Through this survey, we hope to provide insights into how these
+models can be improved and extended in the future. In section 2, we will review the existing work related to ChatGPT,
+including its applications and ethical considerations. In section 3, we conducted a review of existing literature that
+assesses the capabilities of ChatGPT. We comprehensively evaluated the performance of ChatGPT based on these
+studies. In addition to discussing the current state of research related to ChatGPT, we will also explore its limitations
+in section 4. Furthermore, we will provide guidance on future directions for language model development.
+2. Related work of ChatGPT
+In this section, we review the latest research related to the application and ethics of ChatGPT. Figure 4 shows the
+overall framework of this part.
+1https://snnubiai.github.io/chatgpt_arxiv_analysis/
+Yiheng Liu et al.: Preprint submitted to Elsevier
+Page 2 of 21

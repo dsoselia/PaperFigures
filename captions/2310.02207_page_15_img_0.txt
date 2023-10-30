@@ -1,4 +1,0 @@
-Figure 9: Llama-2-70b layer 50 model of the world. Points are projections of activations of heldout
-world places onto learned latitude and longitude directions colored by true continent. All points
-depicted are from the test set.
-16

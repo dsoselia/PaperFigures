@@ -1,0 +1,22 @@
+Figure 3: Evaluation loss and the GPT-Eval scores during training for the GPT-neo models with embedding
+dimension 768 and different number of layers. We can see that the GPT-4 evaluation scores increase as evaluation
+losses decrease.
+3.1
+First insights that arise from our evaluation method
+Our proposed evaluation method gives a way to obtain a more fine-grained assessment of the model, due to which
+we can draw conclusions regarding the dependence of different types of capabilities on the size and architecture of
+the model. While all the evaluation scores are consistently increasing with the decrease of evaluation loss, a more
+careful scrutiny of the results reveals the following:
+• Figure 3 suggests that shallower models perform better in terms of grammar compared to content consistency,
+meaning that model depth is more important for keeping consistent with the content than for generating
+syntactically correct language (we provide additional evidence for this in the next section).
+• In the same figure, we observe that the score for grammar plateaus at an earlier stage than the other two
+scores. Furthermore, in Table 4, we also see that while grammar can be mastered by relatively small models,
+consistency and creativity only emerge at a larger size.
+• Table 4 further suggests that the ability to generate a completion that is consistent with the beginning of the
+story emerges when the hidden size of the model increases from 64 to 128.
+• We also see that the largest model that we have trained on TinyStories (with roughly 80M parameters) reaches
+almost perfect scores in terms of grammar and consistency. However, it falls short of GPT-4’s abilities in
+terms of creativity quite significantly, suggesting that creativity continues to improve more substantially with
+the sizes of the model and dataset, compared to grammar and consistency.
+• The right-hand columns of Table 4 suggests that the models that have only 1 layer seem to struggle quite

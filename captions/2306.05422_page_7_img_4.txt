@@ -1,0 +1,197 @@
+Method
+Kinetics
+DAVIS
+RGB-Stacking
+AJ ↑
+< δx
+avg ↑
+OA ↑
+TC ↓
+AJ ↑
+< δx
+avg ↑
+OA ↑
+TC ↓
+AJ ↑
+< δx
+avg ↑
+OA ↑
+TC ↓
+RAFT-C [66]
+31.7
+51.7
+84.3
+0.82
+30.7
+46.6
+80.2
+0.93
+42.0
+56.4
+91.5
+0.18
+RAFT-D [66]
+50.6
+66.9
+85.5
+3.00
+34.1
+48.9
+76.1
+9.83
+72.1
+85.1
+92.1
+1.04
+TAP-Net [15]
+48.5
+61.7
+86.6
+6.65
+38.4
+53.4
+81.4
+10.82
+61.3
+73.7
+91.5
+1.52
+PIPs [23]
+39.1
+55.3
+82.9
+1.30
+39.9
+56.0
+81.3
+1.78
+37.3
+50.6
+89.7
+0.84
+Flow-Walk-C [5]
+40.9
+55.5
+84.5
+0.77
+35.2
+51.4
+80.6
+0.90
+41.3
+55.7
+92.2
+0.13
+Flow-Walk-D [5]
+46.9
+65.9
+81.8
+3.04
+24.4
+40.9
+76.5
+10.41
+66.3
+82.7
+91.2
+0.47
+Deformable-Sprites [81]
+25.6
+39.5
+71.4
+1.70
+20.6
+32.9
+69.7
+2.07
+45.0
+58.3
+84.0
+0.99
+Ours (TAP-Net)
+53.8
+68.3
+88.8
+0.77
+50.9
+66.7
+85.7
+0.86
+73.4
+84.1
+92.2
+0.11
+Ours (RAFT)
+55.1
+69.6
+89.6
+0.76
+51.7
+67.5
+85.3
+0.74
+77.5
+87.0
+93.5
+0.13
+Table 1: Quantitative comparison of our method and baselines on the TAP-Vid benchmark [15]. We refer to our method as Ours, and
+present two variants, Ours (TAP-Net) and Ours (RAFT), which are optimized using input pairwise correspondences from TAP-Net [15]
+and RAFT [66], respectively. Both Ours and Deformable Sprites [81] estimate global motion via test-time optimization on each individual
+video, while all other methods estimate motion locally in a feed-forward manner. Our method notably improves the quality of the input
+correspondences, achieving the best position accuracy, occlusion accuracy, and temporal coherence among all methods tested.
+Method
+AJ ↑
+< δx
+avg ↑
+OA ↑
+TC ↓
+No invertible
+12.5
+21.4
+76.5
+0.97
+No photometric
+42.3
+58.3
+84.1
+0.83
+Uniform sampling
+47.8
+61.8
+83.6
+0.88
+Full
+51.7
+67.5
+85.3
+0.74
+Table 2: Ablation study on DAVIS [50].
+identify and track through (long) occlusion events while also
+providing plausible locations for points during occlusion, as
+well as handling large camera motion parallax. Please refer
+to the supplementary video for animated comparisons.
+6.4. Ablations and analysis
+Ablations.
+We perform ablations to verify the effective-
+ness of our design decisions in Tab. 2. No invertible is a
+model variant that replaces our invertible mapping network
+Mθ with separate forward and backward mapping networks
+between local and canonical frames (i.e., without the strict
+cycle consistency guarantees of our proposed bijections).
+While we additionally add a cycle consistency loss for this
+ablation, it still fails to construct a meaningful canonical
+space, and can only represent simple motions of the static
+background
+No photometric is a version that omits the
+Figure 4: Pseudo-depth maps extracted from our representation,
+where blue indicates closer objects and red indicates further.
+ordering between different surfaces, which is crucial for
+tracking through occlusions. More ablations and analyses
+are provided in the supplemental material.
+7. Limitations
+Like many motion estimation methods, our method strug-
+gles with rapid and highly non-rigid motion as well as thin
+structures. In these scenarios, pairwise correspondence meth-
+ods can fail to provide enough reliable correspondences for
+our method to compute accurate global motion.
+In addition, due to the highly non-convex nature of the

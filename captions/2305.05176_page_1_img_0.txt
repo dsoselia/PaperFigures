@@ -1,0 +1,53 @@
+Query
+Answer
+(a) Existing LLM Usage
+(c) Performance and cost tradeoffs
+LLM Approximation
+Prompt  
+Adaptation
+LLM  
+Cascade
+LLM 
+Approximation
+Query
+Budget
+Answer
+(b) Proposed FrugalGPT
+GPT-4
+ChatGPT
+GPT-J
+Zero-shot
+CoT
+Few-shot ...
+...
+GPT-Neo
+FSQ
+GPT-J
+   J1
+J1-G
+J1-L
+ CoHere
+FQ
+GPT-3
+ChatGPT
+GPT-C
+GPT-4
+0
+10
+20
+30
+40
+0.7
+0.72
+0.74
+0.76
+0.78
+0.8
+0.82
+0.84
+0.86
+0.88
+FrugalGPT
+Cost ($)
+Accuracy
+Figure 1: Our vision for reducing LLM cost while improving accuracy (a) The standard usage sends

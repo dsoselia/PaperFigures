@@ -1,0 +1,77 @@
+11
+Fig. 6. GroupViT [296] consists of grouping blocks transformer layers. Image tokens and learnable group tokens are input to the first transformer
+layer and the output from the last transformer layer is average pooled and used in image-text-based contrastive learning. The figure is taken from
+Xu et al. [296].
+Frozen is trained on single image-text pairs, it can work
+with an ordered set of multiple image-text pairs enabling
+it to do few-shot tasks. At inference, the LLM encoder and
+vision encoder are prompted with the ordered textual and
+visual prompts. The textual and visual embeddings are
+concatenated and fed to the decoder of the LLM, which
+generates a textual output autoregressively. Frozen has
+demonstrated few-shot visual-language capabilities across
+vision-language tasks.
+Similar to Frozen, Alayrac et al. [7] also aimed to build
+models that can adapt to new tasks using only a few
+examples. For this purpose, they proposed a new family of
+Flamingo models that leverage fixed pre-trained vision and
+language models along with a Perceiver Resampler-based
+bridge. The Perceiver Resampler connects the visual en-
+coder to LLM by producing a fixed number of visual tokens.
+These visual tokens conditions LLM’s output using gated
+cross-attention dense blocks that are interleaved between
+LM’s layers. These new layers provide an efficient way for
+the LLM to incorporate visual information and are trained
+with next-token prediction tasks conditioned on preceding
+text and a set of images or videos.
+Flamingo models can handle large image and video in-
+puts since Perceiver Resample converts varying size visual
+inputs to a few visual tokens. During inference, interleaved
+support examples, (image, text) or (video, text), are followed
+by a query visual input fed to the model for computa-
+tion. Flamingo shows excellent few-shot performance for
+several vision-language tasks, even surpassing state-of-the-
+art for fine-tuned models despite requiring significantly
+fewer annotated examples.
+Awadalla et al. [11] aimed to
+build an open-source version of the Flamingo model called
+OpenFlamingo. They mostly followed Flamingo’s original
+architecture but trained it on a new Multimodal C4 dataset
+and 10M samples from LAION-2B and released open-source
+checkpoints. Their models utilized LLaMA-7B and CLIP’s
+visual encoder and achieve 80% performance of the respec-
+tive Flamingo model.
+•LLMs as a General Interface for other Modalities: Hao
+et al. [104] proposed to utilize language models as a uni-
+versal task layer and to dock other modalities to it through
+the pre-trained encoders. Here, we describe these methods.
+Hao et al. [104] proposed MetaLM, a semi-casual model
+that consists of a unidirectional transformer decoder and
+multiple bi-directional encoders that are connected with
+the decoder through the connector layers. In this way,
+MetaLM enjoys excellent zero and few-shot capabilities of
+the casual language models [20] and better transferability
+of non-casual encoders [61, 216]. The authors propose to
+jointly train encoders and decoders on a new semi-casual
+language modeling objective which learns to generate the
+next word given the previous tokens and encoded represen-
+tations. This joint framework inherits in-context learning,
+instruction following, and fine-tuning abilities. To under-
+stand the capabilities of MetaLM a multitude of experiments
+are performed. On NLP tasks, it outperforms GPT on a
+multitude of multi-task fine-tuning, single-task fine-tuning,
+instruction-tuned zero-shot, and in-context learning. Simi-
+larly, zero-shot generalization, in-context learning, and fine-
+tuning capabilities on two vision-language tasks (captioning
+and VQA) show MetaLM’s superior performance compared
+with previous strong baselines.
+Following MetaLM [104], Huang et al. [120] aimed to
+align perception with LLMs to create models that can work
+with multiple modalities. The proposed model, KOSMOS-
+1, consists of a Magneto-based LLM [268] as a general
+interface and xPos [250] encoders to encode different modal-
+ities. This model is trained on web-scale data consisting of
+text corpus, image-caption pairs, and interleaved image-
+captions pairs to generate the next token given context.
+To further align it with the human interface, training data
+also consists of several language-only instruction tuning

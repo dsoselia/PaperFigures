@@ -1,0 +1,42 @@
+2019
+2018
+2020
+2021
+BERT
+ALBERT
+DeBERTa
+ELECTRA
+T5
+BART
+mT5
+T0
+GPT-1
+GPT-2
+XLNet
+RoBERTa
+ERNIE
+Distill
+BERT
+Word2Vec
+GloVe
+FastText
+Encoder-Only
+Decoder-Only
+Encoder-Decoder
+ELMo
+ULMFiT
+Fig. 1. The evolutionary tree of modern LLMs traces the development of language models in recent years and highlights some of the
+most well-known models. Models on the same branch have closer relationships. Transformer-based models are shown in non-grey
+colors: decoder-only models in the blue branch, encoder-only models in the pink branch, and encoder-decoder models in the green
+branch. The vertical position of the models on the timeline represents their release dates. Open-source models are represented by
+solid squares, while closed-source models are represented by hollow ones. The stacked bar plot in the bottom right corner shows the
+number of models from various companies and institutions.
+b) OpenAI consistently maintains its leadership position in LLM, both currently and potentially in the future. Other
+companies and institutions are struggling to catch up with OpenAI in developing models comparable to GPT-3
+and the current GPT-4. This leadership position may be attributed to OpenAI’s steadfast commitment to its
+technical path, even when it was not widely acknowledged initially.
+c) Meta contributes significantly to open-source LLMs and promotes research of LLMs. When considering contri-
+butions to the open-source community, particularly those related to LLMs, Meta stands out as one of the most
+generous commercial companies, as all the LLMs developed by Meta are open-sourced.
+d) LLMs exhibit a tendency towards closed-sourcing. In the early stages of LLM development (before 2020), the
+majority of models were open-sourced. However, with the introduction of GPT-3, companies have increasingly

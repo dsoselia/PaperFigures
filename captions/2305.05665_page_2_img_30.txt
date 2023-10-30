@@ -1,0 +1,61 @@
+Web Image-Text
+Thermal Data
+Depth Sensor Data
+IMAGEBIND
+Images Videos
+Text
+Audio Depth Thermal
+IMU
+Naturally Aligned
+Emergent Alignment
+Web Videos
+Egocentric Videos
+Figure 2. IMAGEBIND overview. Different modalities occur naturally aligned in different data sources, for instance images+text and
+video+audio in web data, depth or thermal information with images, IMU data in videos captured with egocentric cameras, etc. IMAGE-
+BIND links all these modalities in a common embedding space, enabling new emergent alignments and capabilities.
+cific pair. We illustrate our approach in Figure 2.
+3.1. Preliminaries
+Aligning specific pairs of modalities. Contrastive learn-
+ing [28] is a general technique for learning an embedding
+space by using pairs of related examples (positives) and un-
+related examples (negatives). Using pairs of aligned ob-
+servations, contrastive learning can align pairs of modal-
+ities such as (image, text) [60], (audio, text) [27], (image,
+depth) [70], (video, audio) [50] etc. However, in each case,
+the joint embeddings are trained and evaluated using the
+same pairs of modalities. Thus, (video, audio) embeddings
+are not directly applicable for text-based tasks while (image,
+text) embeddings cannot be applied for audio tasks.
+Zero-shot image classification using text prompts.
+CLIP [60] popularized a ‘zero-shot’ classification task
+based on an aligned (image, text) embedding space. This
+involves constructing a list of text descriptions that describe
+are optimized using an InfoNCE [54] loss:
+LI,M = − log
+exp(q⊺
+i ki/τ)
+exp(q⊺
+i ki/τ) + �
+j̸=i exp(q⊺
+i kj/τ), (1)
+where τ is a scalar temperature that controls the smoothness
+of the softmax distribution and j denotes unrelated observa-
+tions, also called ‘negatives’. We follow [76] and consider
+every example j ̸= i in the mini-batch to be a negative. The
+loss makes the embeddings qi and ki closer in the joint em-
+bedding space, and thus aligns I and M. In practice, we
+use a symmetric loss LI,M + LM,I.
+Emergent alignment of unseen pairs of modalities. IM-
+AGEBIND uses modalities paired with images, i.e., pairs of
+the form (I, M) to align each the embeddings from each
+modality M to those from images. We observe an emer-
+gent behavior in the embedding space that aligns two pairs
+of modalities (M1, M2) even though we only train using
+the pairs (I, M1) and (I, M2). This behavior allows us
+f
+id
+i
+f
+h
+d
+d l

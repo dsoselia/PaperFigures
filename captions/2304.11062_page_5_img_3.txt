@@ -1,0 +1,17 @@
+NTMs, followed by Differentiable Neural Computer (DNC) (Graves et al., 2016) and Sparse DNC
+(Rae et al., 2016), are implemented as recurrent neural networks capable of writing to memory
+storage over time. All these models are differentiable and trainable via backpropagation through
+time (BPTT). Parallel research lines extend recurrent neural networks, such as LSTM, with data
+structures like stacks, lists, or queues (Joulin and Mikolov, 2015; Grefenstette et al., 2015). MANN
+architectures with more advanced addressing mechanisms, such as address-content separation and
+multi-step addressing, have been proposed in (Gulcehre et al., 2016, 2017; Meng and Rumshisky,
+2018). The Global Context Layer model (Meng and Rumshisky, 2018) employs address-content
+separation to address the challenge of training content-based addressing in canonical NTMs.
+Memory is often combined with Transformers in a recurrent approach. Long inputs are divided into
+smaller segments, processed sequentially with memory to access information from past segments.
+Transformer-XL (Dai et al., 2019) preserves previous hidden states for reuse in subsequent segments,
+while Compressive Transformer (Rae et al., 2020) adds new compressed memory. Ernie-Doc (Ding
+et al., 2021) enhances contextual information ﬂow by employing same-layer recurrence instead of
+attending to previous layer outputs of preceding segments. Memformer (Wu et al., 2022a) introduces
+a dedicated memory module to store previous hidden states in summarized representations. Using a
+6

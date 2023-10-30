@@ -1,0 +1,21 @@
+task. IMAGEBIND s emergent zero-shot performance approaches
+those of specialist supervised models.
+4.2. Comparison to prior work
+We now compare IMAGEBIND against prior work in
+zero-shot retrieval and classification tasks.
+Zero-shot text to audio retrieval and classification. Un-
+like IMAGEBIND, prior work trains using paired data for
+that modality e g
+AudioCLIP [27] uses (audio text) su
+benchmarks validates its ability to align the audio and text
+modalities using images as a bridge.
+Text to audio and video retrieval. We use the MSR-VTT
+1k-A benchmark to evaluate the text to audio and video re-
+trieval performance in Table 4. Only using audio, IMAGE-
+BIND achieves strong emergent retrieval performance com-
+pared to the video retrieval performance of prior work like
+MIL-NCE. The text to video performance for our model is
+strong (36.1% R@1 in Table 2) as it uses OpenCLIP’s vi-
+sion and text encoders and outperforms many prior meth-
+ods
+However combining the audio and video modalities

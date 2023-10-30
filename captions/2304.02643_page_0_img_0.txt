@@ -1,0 +1,32 @@
+Segment Anything
+Alexander Kirillov1,2,4
+Eric Mintun2
+Nikhila Ravi1,2
+Hanzi Mao2
+Chloe Rolland3
+Laura Gustafson3
+Tete Xiao3
+Spencer Whitehead
+Alexander C. Berg
+Wan-Yen Lo
+Piotr Doll´ar4
+Ross Girshick4
+1project lead
+2joint ﬁrst author
+3equal contribution
+4directional lead
+Meta AI Research, FAIR
+valid mask
+image 
+encoder
+prompt
+lightweight mask decoder
+model
+valid mask
+• 1+ billion masks
+annotate
+train
+data
+model
+Segment Anything 1B (SA-1B):
+pr 2023

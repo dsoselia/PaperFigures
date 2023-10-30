@@ -1,0 +1,54 @@
+Figure 2: Overview of SEEM- Decoder. (a) SEEM encodes image, text, and human inputs into joint
+visual-semantic space as queries, features, and prompts, and then decodes queries to class and mask
+embeddings. (b) With the benefit of SEEM decoder, the machine loop enables memorizing history
+mask information, and the human loop provides new corrections to the next round.
+2
+Related Work
+Interactive segmentation. Interactive segmentation is the task of segmenting objects by interactively
+taking user inputs. It has been a longstanding problem and has achieved considerable progress [33, 34,
+35, 20, 21, 36]. Generally, the interaction types can take various forms, such as clicks, boxes, polygons,
+and scribbles, among which click-based interaction models are the most prevalent. Concurrent to
+our work, SAM [36] proposed a promptable segmentation model trained on 11 million images and
+1.1 billion masks. It takes user interactions as prompts for general segmentation. Though SAM
+demonstrates strong zero-shot performance, it produces segmentations without semantic meaning. In
+addition, its prompt types are limited to points, boxes, and text, whereas our model can also take in a
+referred region from another image as a prompt.
+Generic segmentation. Segmentation of visual concepts has been a persistent challenge in the field
+of computer vision, as evidenced by its extensive literature [37, 38, 39, 40]. Generic segmentation
+techniques encompass several subtasks, including instance segmentation, semantic segmentation, and
+panoptic segmentation [4, 2, 3], each focusing on a different semantic level. For example, semantic
+segmentation aims to identify and label each pixel within an image based on its corresponding
+semantic class [41, 6, 42]. On the other hand, instance segmentation involves grouping pixels that
+belong to the same semantic class into separate object instances [4, 43, 7]. Recently, the Detection
+Transformer (DETR)[31], a model based on the Transformer [44] architecture, has made significant
+advances in segmentation [45, 6, 7, 46, 47] tasks. However, these approaches cannot recognize
+objects absent in the training set, which constrains the model to a limited vocabulary size.
+Unified vision models. Unified vision models [11, 48, 49, 36, 50] have recently drawn a lot of
+attention because of their advantage in generalizing to various tasks and flexibility. These models can
+deal with multiple vision tasks or data distributions. Among them, some [11, 48, 49] train multiple
+tasks together with only one model and thus can deal with all training tasks without finetuning on
+each target task. On the other hand, SAM [36] and SegGPT [50] propose training strategies that
+enable their models to handle new tasks and data distributions in a zero-shot manner. The second
+approach is more favorable since there is no need to resolve conflicts among tasks during training.
+3
+Method
+3.1
+Model Design
+SEEM employs a generic encoder-decoder architecture but also employs a sophisticated interaction
+scheme between queries and prompts, as shown in Fig. 2 (a). Given an input image I ∈ RH×W ×3,
+an image encoder is first used to extract image features Z. Then, SEEM-Decoder predicts the masks
+M and semantic concepts C based on the query outputs Om
+h (mask embeddings) and Oc
+h (class
+embeddings), which interact with text, visual, and memory prompts ⟨Pt, Pv, Pm⟩:
+⟨Om
+h , Oc
+h⟩ = Decoder(Qh; ⟨Pt, Pv, Pm⟩|Z)
+(1)
+M = MaskPredictor(Om
+h )
+(2)
+C = ConceptClassifier(Oc
+h)
+(3)
+3

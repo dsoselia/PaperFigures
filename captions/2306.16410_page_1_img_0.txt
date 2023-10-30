@@ -1,0 +1,51 @@
+generation [42, 10, 6], especially in zero-shot and few-shot settings. Several approaches have been
+proposed for employing LLMs on vision-related tasks as shown in Fig. 1(a). One technique involves
+training a vision encoder to represent each image as a sequence of continuous embeddings, enabling
+comprehension by the LLM [55]. Another employs a frozen vision encoder that has been trained
+contrastively while introducing new layers into the frozen LLM that are subsequently trained from
+scratch [47, 52, 2]. Furthermore, an alternative approach suggests using both a frozen vision encoder
+(pre-trained contrastively) and a frozen LLM aligning them by training a lightweight transformer
+[35, 27, 63].
+While we have seen progress in the above research directions, the computational expense associated
+with the additional pretraining stage(s) still remains a challenge. Besides, large corpora of datasets
+containing images/videos and text are needed for aligning visual and language modalities on top of
+an existing LLM. An example of this is Flamingo [2] which introduces new cross-attention layers
+into an LLM to incorporate visual features, which are then pre-trained from scratch. Despite using a
+pretrained image encoder [5] and a pretrained frozen LLM [19], the multimodal pre-training stage
+still demands a staggering 2 billion image-text pairs along with 43 million webpages [64, 32], an
+undertaking that can last for approximately 15 days. Instead, as shown in Fig. 1(b), we can extract
+information from visual inputs and generate detailed textual representations (e.g. tags, attributes,
+actions, relationships, among others) using a diverse set of “vision modules” and then feed this
+information directly to the LLM avoiding the additional multimodal pretraining.
+We introduce LENS
+(Large Language Models ENnhanced to See) a modular approach that
+leverages a LLM as the “reasoning module” and operates over independent “vision modules”. In the
+LENS approach, we first extract rich textual information using pretrained vision modules such as
+contrastive models [47, 50, 13, 5] and image-captioning models[34, 35]. Subsequently, the text is
+fed into the LLM allowing it to perform object recognition and vision and language (V&L) tasks.
+LENS eliminates the need for extra multimodal pretraining stages or data, bridging the gap between
+the modalities at zero cost. By integrating LENS, we get a model which works across domains
+out of the box without any additional cross-domain pretraining [24, 20, 2, 35]. Furthermore, this
+integration enables us to leverage the latest advancements in both computer vision and natural
+language processing out of the box, maximizing the benefits derived from these fields.
+In summary, our contributions are as follows:
+• We propose LENS, a modular approach that addresses computer vision tasks by harnessing the
+few-shot, in-context learning abilities of language models through natural language descriptions of
+visual inputs.
+• LENS enables any off-the-shelf LLM to have visual capabilities without requiring auxiliary training
+or data. We utilize frozen LLMs to handle object recognition and visual reasoning tasks without the
+need for additional vision-and-language alignment or multimodal data.
+• Experimental results demonstrate that our approach achieves zero-shot performance that is compet-
+itive with or superior to end-to-end jointly pre-trained models like Kosmos and Flamingo.
+2
+Related Work
+2.1
+Large Language Models capabilities
+LLMs have demonstrated remarkable abilities for natural language understanding and reasoning.
+GPT-3 [6] is a notable example of such models, which can accurately solve complex tasks including
+translation, natural language inference, and common sense reasoning in a zero-shot or few-shot setting.
+Recently, more powerful versions such as GPT-3.5 and GPT-4 [45] were designed to understand,
+interact and generate human-like responses [43]. These models are also known for their ability to
+perform a wide variety of tasks by showing a few examples in the prompt [6]. Recent efforts have
+also been made to develop open-source LLMs that can compete with GPT-3, such as BLOOM [56],
+2

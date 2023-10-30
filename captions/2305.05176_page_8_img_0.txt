@@ -1,0 +1,237 @@
+FrugalGPT
+Kinross Gold
+upgraded to
+outperformer from
+neutral at CIBC
+FrugalGPT
+GPT-J 0.17 < 0.96
+GPT-4
+J1-L
+Up
+Up
+None
+0.13 < 0.37
+None
+GPT-4
+None
+Gold holds ground
+at 1-month low on
+hawkish Fed
+comments
+0.16 < 0.96
+GPT-J
+J1-L
+Up
+Down
+neutral
+Down
+Gold off the lows
+after dismal U.S.
+GDP
+FrugalGPT
+0.97>0.96
+GPT-J
+Down
+Down
+GPT-4
+Up
+0.44>0.37
+GPT-4
+GPT-Neo
+FSQ
+GPT-J
+   J1
+J1-G
+J1-L
+ CoHere
+FQ
+GPT-3
+ChatGPT
+GPT-C
+GPT-4
+0
+10
+20
+30
+40
+0.7
+0.72
+0.74
+0.76
+0.78
+0.8
+0.82
+0.84
+0.86
+0.88
+FrugalGPT
+Cost ($)
+Accuracy
+FrugalGPT
+[...] results from
+denying an
+available and
+accommodation. Q:
+Is it overruling?
+FrugalGPT
+0.2<0.9
+GPT-J
+GPT-3
+ChatGPT
+Yes
+No
+No
+0.8<0.9
+No
+GPT-4
+No
+The court [...] was
+expressly
+overruled by this
+court in lima. Q: Is
+it overruling?
+0.6< 0.9
+GPT-J
+J1-L
+Yes
+Yes
+No
+Yes
+The time has come
+to reconcile and
+regularize our
+cases in this field.
+Q: Is it overruling?
+FrugalGPT
+0.91>0.9
+GPT-J
+Yes
+Yes
+GPT-4
+No
+1.0>0.9
+GPT-4
+FrugalGPT
+When I [...] a little
+black-walnut shelf
+[...] Q: What was
+the shelf made of?
+FrugalGPT
+GPT-3
+GPT-4
+J1
+GPT-4
+[...] told every
+Tuesday for their
+story time. [...].  Q:
+when did they have
+time free?
+0.1 < 0.2
+GPT-3
+J1
+[..] Cap Winters [...]
+added a thousand
+grey hairs to his
+head [...] Q: Did he
+have red hair?
+FrugalGPT
+0.8>0.2
+GPT-3
+GPT-4
+0.6>0.3
+GPT-4
+The text
+does not
+mention this.
+No
+Tuesday
+their day off
+from school
+black-walnut
+black-walnut
+Tuesday
+black-walnut
+black walnut
+black-walnut
+their day off
+from school
+Tuesday
+No
+0.1<0.2
+0.2<0.3
+When I [...] a little
+black-walnut shelf
+[...] Q: What was
+the shelf made of?
+[...] told every
+Tuesday for their
+story time. [...].  Q:
+when did they have
+time free?
+[..] Cap Winters [...]
+added a thousand
+grey hairs to his
+head [...] Q: Did he
+have red hair?
+(a) HEADLINES
+(b) OVERRULING
+(a) COQA
+GPT-Neo
+GPT-J
+J1
+J1-G
+J1-L
+CoHere
+FQ
+GPT-3
+CHATGPT
+GPT-4
+0
+20
+40
+60
+80
+100
+120
+140
+0.2
+0.25
+0.3
+0.35
+0.4
+0.45
+0.5
+FrugalGPT
+Cost ($)
+Accuracy
+FSQ
+GPT-J
+J1
+J1-G
+ CoHere
+    FQ
+GPT-3
+ChatGPT
+GPT-C
+GPT-4
+0
+2
+4
+6
+8
+10
+12
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+FrugalGPT
+Cost ($)
+Accuracy
+Figure 5: Accuracy and cost tradeoﬀs achieved by FrugalGPT. Overall, FrugalGPT often achieves the
+same performance of the best individual LLM API (e.g., GPT-4) with orders of magnitudes smaller
+cost. When incurring the same cost, FrugalGPT can improves the accuracy by up to 5%. Examples of
+LLM cascade for each dataset are shown on the right.
+9

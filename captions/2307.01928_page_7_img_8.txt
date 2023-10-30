@@ -1,0 +1,105 @@
+Figure 5: (Left) Multi-step CP is applied in Hardware Tabletop Rearrangement. (Right) CP models ambiguity in
+possible human locations and triggers clarification from the human in Bimanual.
+that KNOWNO reduces the human help rate by 14% step-wise and 8% trial-wise, while also reducing the
+average prediction set size. Compared to Simple Set which uses a much higher ϵ, KNOWNO achieves the
+specified trial-level task success rate precisely by leveraging the Multi-Step Uncertainty Alignment from
+Sec. 3.3. We also find that if we set ϵ=0.25 for Simple Set, the planner is grossly over-conservative and
+requires a step-wise help rate of 87%.
+Method
+1−ϵ Plan Succ Task Succ Set Size Help-Step Help-Trial
+KNOWNO 0.75
+0.76
+0.74
+1.72
+0.58
+0.92
+Simple Set 0.58
+0.76
+0.72
+2.04
+0.72
+1.00
+No Help
+-
+0.41
+0.38
+-
+0
+0
+Table 1: Results for Hardware Multi-Step Tabletop
+Rearrangement. Plan success rate is fixed between
+KNOWNO and Simple Set for comparing the other
+metrics.
+Bimanual manipulation.
+We additionally present
+results for a bimanual object rearrangement setup
+where ambiguities arise from the choice of the arm
+due to the limited reachability of each arm (Fig. 5
+right); results are deferred to Section A5.
+4.3
+Hardware: Mobile Manipulator in a Kitchen
+Method
+Model
+1−ϵ Plan Succ Task Succ Set Size Help
+KNOWNO
+PaLM-2L
+0.85
+0.87
+0.76
+2.22
+0.67
+Simple Set
+PaLM-2L
+0.76
+0.87
+0.75
+2.38
+0.81
+No Help
+PaLM-2L
+-
+0.62
+0.51
+-
+0
+KNOWNO PaLM-2L-IF 0.85
+0.86
+-
+1.86
+0.67
+KNOWNO
+GPT-3.5
+0.85
+0.87
+-
+2.50
+0.86
+Table 2: Results for Hardware Mobile Manipulation.
+Plan success rate is fixed between KNOWNO and Sim-
+ple Set to compare the other metrics.
+In this example, each scenario involves a mobile ma-
+nipulator in front of a countertop and next to a set
+of recycling/compost/landfill bins in an office kitchen
+(Fig. 1). The tasks include picking up some object
+from the counter, and possibly putting it in the drawer,
+or disposing of it in one of the bins. For the distribu-
+tion of possible scenarios, we introduce new types of
+ambiguities based on Winograd Schemas [18] (e.g.,
+“There is an apple and bottled water on the counter...it
+is rotten. Can you dispose of it?”), and ones that potentially involve unsafe actions (e.g., “place the bowl in
+the microwave.”; there is a plastic bowl and a metal bowl, but only the plastic one is safe for the microwave).
+This is a single-step setting with multiple acceptable options. In Table 2, we compare KNOWNO to Simple
+Set again by first setting ϵ = 0.15 and also finding ϵ = 0.24 for Simple Set that achieves the same plan
+success rate in simulation. The hardware experiment results again show that KNOWNO reduces the human
+help rate by 14% and also reduces the average prediction set size.
+Target success guarantee from KnowNo is robust to varying LLM choice.
+We also run KNOWNO
+with two other LLMs (without hardware evaluation). First, we use an instruction-finetuned version of
+PaLM-2L (PaLM-2L-IF); there is no significant performance difference from PaLM-2L; however, it
+generates smaller prediction sets in general by reducing the number of larger prediction sets (size 3 and 4)
+significantly. Second, we run GPT-3.5 (text-davinci-003) from OpenAI. However, we find that it exhibits
+significant MCQA bias towards options D and E and against A and B, affecting the overall performance.
+Nonetheless, KnowNo still achieves 1−ϵ target success rate, as the coverage guarantee from CP makes no
+assumption about the LLM confidences (e.g., calibrated or accurate) — KnowNo flexibly compensates for
+the degraded LLM performance by triggering more human intervention.
+8

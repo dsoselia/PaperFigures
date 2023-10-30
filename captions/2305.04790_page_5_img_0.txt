@@ -1,0 +1,5 @@
+Figure 2: The MultiModal-GPT can give a recipe to bake lasagna, and tell users where to eat it.
+Figure 3: The MultiModal-GPT can recognize the image of Elon Musk, and answer questions about
+El
+M
+k

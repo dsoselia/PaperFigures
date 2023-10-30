@@ -1,0 +1,21 @@
+Figure 6 how Dino without the head orientation component is unable to correctly move its head
+in the same way as the user. As shown in the supplementary video, both Oppy and Dino without
+head orientation reward component show the head wobbling left and right while walking. These
+characters have heavy heads needing learned control.
+5
+DISCUSSION
+We discuss different capabilities and components of our system.
+5.1
+Physics-based control
+Physics acts as a powerful helper in driving the motion of components with missing pose informa-
+tion, with the skeleton description as underlying prior. For the tail of Dino, the simulator affords
+several stylization options, i.e., whether we allow more joint mobility and passively actuate it
+through a PD controller with fixed-set input as secondary motion or we let the policy make active
+control decisions. In Figure 8 we show three examples, in which Dino’s tail is fixed, passively
+actuated, or controlled by the learned policy. Tail and ears of Oppy are all treated as secondary
+dynamics. This stylization would not be possible in a kinematic retargeting setting.
+5.2
+Controlling the style
+Our method is robust to different set of parameters. Once changed, most parameters still output
+a reasonable motion controller with different styles. As described in subsection 4.3, the contact
+Proc. ACM Comput. Graph. Interact. Tech., Vol. 6, No. 2, Article . Publication date: August 2023.

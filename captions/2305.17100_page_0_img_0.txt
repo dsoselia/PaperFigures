@@ -1,0 +1,23 @@
+1Lehigh University, 2Mayo Clinic, 3Samsung Research America, 4University of Central Florida, 5University of California, Santa
+Cruz, 6Massachusetts General Hospital and Harvard Medical School, 7University of Pennsylvania, †Corresponding authors
+{kaz321, lis221}@lehigh.edu
+Abstract
+In this paper, we introduce a unified and generalist Biomedical Generative Pre-trained
+Transformer (BiomedGPT) model, which leverages self-supervision on large and diverse
+datasets to accept multi-modal inputs and perform a range of downstream tasks.
+Our
+experiments demonstrate that BiomedGPT delivers expansive and inclusive representations
+of biomedical data, outperforming the majority of preceding state-of-the-art models across
+five distinct tasks with 20 public datasets spanning over 15 unique biomedical modalities.
+Through the ablation study, we also showcase the efficacy of our multi-modal and multi-
+task pretraining approach in transferring knowledge to previously unseen data. Overall,
+our work presents a significant step forward in developing unified and generalist models for
+biomedicine, with far-reaching implications for improving healthcare outcomes.
+Figure 1: Illustration of the diverse range of tasks supported by BiomedGPT during pretraining and subsequent
+fine-tuning. During the pretraining phase, we employ prevalent unimodal strategies, including masked language
+modeling and masked image infilling, and multimodal techniques, such as visual question answering and captioning.
+Object detection is also incorporated into the pretraining to infuse locational data. Following pretraining, the
+enhanced model is leveraged for a suite of five downstream tasks, encompassing image classification and natural
+language inference, demonstrating its efficient utilization of data.
+1
+arXiv:2305.17100v1  [cs.CL]  26 May 2023

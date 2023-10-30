@@ -1,0 +1,79 @@
+Supplementary Material
+S1. METHODS ADDITIONAL DETAILS
+Old 
+Population
+New 
+Population
+Fig. S1: Simplified example of a population of algorithms, modified via
+crossover and mutation to produce a new population. Complete list of
+mutation operators is provided in Table S1
+A. Baseline Details
+Augmented Random Search (ARS): We used a standard implementation
+from [24] and hyperparameter tuned over a cross product between:
+• learning rate: [0.001, 0.005, 0.01, 0.05, 0.1, 0.5]
+• Gaussian standard deviation: [0.001, 0.005, 0.01, 0.05, 0.1, 0.5]
+and used a 2-layer MLP of hidden layer sizes (32,32) with Tanh non-linearity,
+along with an LSTM of size 32.
+Proximal Policy Optimization (PPO): We used a standard implementation
+from TF-Agents [34], which we verified to reproduce standard Mujoco
+results from [26]. We varied the following hyperparameters:
+• nsteps ("collect sequence length"): [256, 1024]
+• learning rate: [5e-5, 1e-4, 5e-4, 1e-3, 5e-3]
+• entropy regularization: [0.0, 0.05, 0.1, 0.5]
+and due to the use of a shared value network, we used a 2-layer MLP of
+hidden layer sizes (256, 256) with ReLU nonlinearity alongside an LSTM
+of size 256. Since PPO significantly underperformed (e.g., obtaining only
+≈100 reward on quadruped tasks), we omitted its results in this paper to
+save space.
+B. Quadruped Tasks
+We perform 20 independent repeats for each method with unique random
+seeds. All repeats are allowed to train until convergence. NSGA-II uses parent
+and child population sizes of 100 and 1000, respectively. No search restarts or
+FEC are enabled. The set of operations available for inclusion in any program
+are listed in Table S2. For ARS experiments, we run a hyperparameter
+sweep consisting of 36 repeats with unique hyperparameters. We then run
+an additional 20 repeats using the best hyperparameter configuration.
+C. Cataclysmic Cartpole Tasks
+Cartpole [28], [35] is a classic control task in which a pole is attached by
+an un-actuated joint to a cart that moves Left or Right along a frictionless
+track, Figure S3. The observable state of the system at each timestep, ⃗s(t),
+is described by 4 variables including the cart position (x), cart velocity ( ˙x),
+pole angle relative to the cart (θ), and pole angular velocity ( ˙θ). We use a
+continuous-action version of the problem in which the system is controlled
+by applying a force ∈ [−1, 1] to the cart. The pole starts nearly upright,
+and the goal is to prevent it from falling over. An episode ends when the
+pole is more than 12 degrees from vertical, the cart moves more than 2.4
+units from the center, or a time constraint is reached (1000 timesteps). A
+reward of (1 − |θvert|/12)2 is provided for every timestep that the pole
+remains upright, where θvert is a fixed reference for the angle of the pole
+relative to the vertical plane. As such, the objective is to balance the pole
+close to vertical for as long as possible.
+˙θ
+˙x
+x
+θ
+x
+˙x
+˙θ
+θ
+Fig. S3: Illustration of a track angle change in the Cataclysmic Cartpole
+task with the 4 variables in the state observation ⃗s(t). Note that θ always
+represents the angle between the pole and the line running perpendicular to
+the track and cart, thus the desired value of θ to maintain balance (θvert = 0)
+changes with the track angle and is not directly observable to the policy.
+1) Sudden: A sudden change in each change parameter occurs at a
+unique random timestep in [200, 800], Figure S4a.
+2) Continuous: Each parameter changes over a window with random,
+independently chosen start and stop timesteps in [200, 800], Figure
+S4b.
+For the ARZ methods, we execute 10 repeats of each experiment with
+unique random seeds. For ARS, we run a hyperparameter sweep consisting
+of 36 repeats with unique hyperparameters. In each case, we select 5 repeats
+with the best search fitness and test the single best policy from each. Plots
+show mean fitness over 100 episodes for each policy in each task.
+S2. ADDITIONAL EXPERIMENTS: CATACLYSMIC
+CARTPOLE
+A. Adaptation Gap
+In this section we use stateless policies (ARZ and MLP) to confirm
+that Cataclysmic Cartpole dynamics are significant enough to create an
+adaptation gap: when stateless policies (i e generalists) fail to perform

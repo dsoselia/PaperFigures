@@ -1,0 +1,38 @@
+Figure 1: A toy model of an autoregressive generation problem, such as language modelling. Our task
+is to learn a set of conditional distributions that continue the sequence similarly to those sequences in
+the dataset (green arrows), and avoid incorrect next tokens (red arrows). Our method trains against
+divergences that more heavily punish out-of-distribution sequences. We additionally introduce a
+<backspace> action which can backtrack from an erroneous token (dashed purple arrows).
+issues can prevent autoregressive models trained with maximum-likelihood from generating fluent
+sequences at evaluation time. First is the divergence measure used to evaluate the difference between
+the model and the data distribution. Because the MLE loss does not have any contribution from OOD
+sequences, the behavior of the model on OOD sequences (such as those generated autoregressively)
+is not constrained. We address this by minimizing the χ2-divergence between a mixture of the data
+and autoregressively generated sequences. This divergence is known to perform much better than
+MLE in imitiation learning [11, 1].
+Secondly, if a model generates an OOD token, there may be no natural continuation which is similar to
+sequences from the data distribution, and so the model may be unable to return to the data distribution
+even if our χ2-divergence encourages this. To address this, we augment the generation process
+with a <backspace> action, which deletes the previous token, and allows the model to correct for
+erroneous generations. By incorporating recent work in non-adversarial imitation learning [11],
+our method, SequenceMatch, is able to train autoregressive models against alternative divergences
+such as the χ2-mixture divergence while augmenting the policy with a <backspace> action. The
+SequenceMatch loss is a fully supervised loss without adversarial training, and can be applied on top
+of pretrained models as a finetuning step. To summarize our contributions:
+• We formulate the sequence generation problem as an imitation learning (IL) problem, and
+formulate a general non-adverarial objective for minimizing divergences between occupancy
+measures based on [11], handling (among others) the forward and reverse KL-divergence,
+JS-divergence, and χ2 divergence.
+• We develop a novel masking scheme allowing training of a transformer-based autoregressive
+model with a <backspace> action with no additional overhead vs MLE.
+• Finally we evaluate the empirical performance of SequenceMatch-trained models, showing
+improved performance over the maximum likelihood objective in general text generation.
+2
+Preliminaries: Training Objectives for Autoregressive Models
+2.1
+KL-Divergence
+Typically, autoregressive models are trained against a maximum-likelihood objective. This objective
+can be motivated by treating our dataset as consisting of sequences of random variables (x1, . . . , xN),
+with a corresponding probability distribution Pdata(x1, . . . , xN), with a fixed length N. The goal is
+to learn a parameterized model Pθ(x1, . . . , xN) that is close to Pdata. The KL-divergence between
+2

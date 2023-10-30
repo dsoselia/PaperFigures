@@ -1,0 +1,33 @@
+Drag Your GAN: Interactive Point-based Manipulation on the Generative Image Manifold
+SIGGRAPH ’23 Conference Proceedings, August 6–10, 2023, Los Angeles, CA, USA
+1st Edit (foot)
+2nd Edit (mouth)
+3rd Edit (ears)
+Fig. 12. Continuous image manipulation. Users can continue the manipulation based on previous manipulation results.
+Real image
+1st Edit (hair)
+2nd Edit (expression)
+3rd Edit (pose)
+GAN Inversion
+GAN Inversion
+GAN Inversion
+GAN Inversion
+GAN Inversion
+Fig. 13. Real image manipulation.
+(b) Texture-less handle point
+(c) Texture-rich handle point
+(a) Out-of-distribution pose
+Fig. 14. Limitations. (a) the StyleGAN-human [Fu et al. 2022] is trained on a fashion dataset where most arms and legs are downward. Editing toward
+out-of-distribution poses can cause distortion artifacts as shown in the legs and hands. (b)&(c) The handle point (red) in texture-less regions may suffer from
+more drift during tracking, as can be observed from its relative position to the rearview mirror.
+Fig. 15. Effects of the mask. By masking the foreground object, we can fix the back-
+ground. The details of the trees and grasses are kept nearly unchanged. Better back-
+ground preservation could potentially be achieved via feature blending [Suzuki et al.
+2018].
+Input
+W+
+W
+Fig. 16. Effects of W/W+ space. Optimizing the latent code in W+
+space is easier to achieve out-of-distribution manipulations such as
+closing only one eye of the cat. In contrast, W space struggles to
+achieve this as it tends to keep the image within the distribution of

@@ -1,0 +1,174 @@
+Drag Your GAN: Interactive Point-based Manipulation on the Generative Image Manifold
+SIGGRAPH ’23 Conference Proceedings, August 6–10, 2023, Los Angeles, CA, USA
+Table 2. Quantitative evaluation on paired image reconstruction. We follow the evaluation
+in [Endo 2022] and report MSE (×102)↓ and LPIPS (×10)↓ scores.
+Dataset
+Lion
+LSUN Cat
+Dog
+LSUN Car
+Metric
+MSE
+LPIPS
+MSE
+LPIPS
+MSE
+LPIPS
+MSE
+LPIPS
+UserControllableLT
+1.82
+1.14
+1.25
+0.87
+1.23
+0.92
+1.98
+0.85
+Ours w. RAFT tracking
+1.09
+0.99
+1.84
+1.15
+0.91
+0.76
+2.37
+0.94
+Ours w. PIPs tracking
+0.80
+0.82
+1.11
+0.85
+0.78
+0.63
+1.81
+0.79
+Ours
+0.66
+0.72
+1.04
+0.82
+0.48
+0.44
+1.67
+0.74
+Table 3. Effects of which feature to use. x+y means the con-
+catenation of two features. We report the performance (MD)
+of face landmark manipulation (1 point).
+Block No.
+4
+5
+6
+7
+5+6
+6+7
+Motion sup.
+2.73
+2.50
+2.44
+2.51
+2.47
+2.45
+Tracking
+3.61
+2.55
+2.44
+2.58
+2.47
+2.45
+Table 4. Effects of 𝐴���1.
+𝐴���1
+1
+2
+3
+4
+5
+MD
+2.49
+2.51
+2.44
+2.45
+2.46
+w/ mask
+w/o mask
+Fig. 8. Effects of the mask. Our approach allows masking the movable
+region. After masking the head region of the dog, the rest part would be
+almost unchanged.
+of the first image to match the landmarks of the second image.
+After manipulation, we detect the landmarks of the final image
+and compute the mean distance (MD) to the target landmarks. The
+results are averaged over 1000 tests. The same set of test samples is
+used to evaluate all methods. In this way, the final MD score reflects
+how well the method can move the landmarks to the target positions.
+We perform the evaluation under 3 settings with different numbers
+of landmarks including 1, 5, and 68 to show the robustness of our
+approach under different numbers of handle points. We also report
+the FID score between the edited images and the initial images as
+an indication of image quality. In our approach and its variants, the
+maximum optimization step is set to 300.
+The results are provided in Table 1. Our approach significantly
+outperforms UserControllableLT under different numbers of points.
+A qualitative comparison is shown in Fig. 7, where our method
+opens the mouth and adjusts the shape of the jaw to match the
+target face while UserControllableLT fails to do so. Furthermore,
+our approach preserves better image quality as indicated by the FID
+scores. Thanks to a better tracking capability, we also achieve more
+accurate manipulation than RAFT and PIPs. Inaccurate tracking
+also leads to excessive manipulation, which deteriorates the image
+quality as shown in FID scores. Although UserControllableLT is
+faster, our approach largely pushes the upper bound of this task,
+achieving much more faithful manipulation while maintaining a
+comfortable running time for users.
+Paired image reconstruction. In this evaluation, we follow the
+same setting as UserControllableLT [Endo 2022]. Specifically, we
+sample a latent code 𝑨���1 and randomly perturb it to get 𝑨���2 in the
+same way as in [Endo 2022]. Let I1 and I2 be the StyleGAN images
+generated from the two latent codes. We then compute the optical
+flow between I1 and I2 and randomly sample 32 pixels from the flow
+field as the user input U. The goal is to reconstruct I2 from I1 and
+U. We report MSE and LPIPS [Zhang et al. 2018] and average the
+results over 1000 samples. The maximum optimization step is set
+to 100 in our approach and its variants. As shown in Table 2, our
+approach outperforms all the baselines in different object categories,
+which is consistent with previous results.
+Fig. 9. Out-of-distribution manipulations. Our approach has extrapolation
+capability for creating images out of the training image distribution, for
+example, an extremely opened mouth and a greatly enlarged wheel.
+Ablation Study. Here we study the effects of which feature to use
+in motion supervision and point tracking. We report the perfor-
+mance (MD) of face landmark manipulation using different features.
+As Table 3 shows, in both motion supervision and point tracking,
+the feature maps after the 6th block of StyleGAN perform the best,
+showing the best balance between resolution and discriminative-
+ness. We also provide the effects of 𝐴���1 in Table 4. It can be observed
+that the performance is not very sensitive to the choice of 𝐴���1, and
+𝐴���1 = 3 performs slightly better.
+4.3
+Discussions
+Effects of mask. Our approach allows users to input a binary
+mask denoting the movable region. We show its effects in Fig. 8.
+When a mask over the head of the dog is given, the other regions
+are almost fixed and only the head moves. Without the mask, the
+manipulation moves the whole dog’s body. This also shows that
+point-based manipulation often has multiple possible solutions and
+the GAN will tend to find the closest solution in the image manifold
+learned from the training data. The mask function can help to reduce
+ambiguity and keep certain regions fixed.
+Out-of-distribution manipulation. So far, the point-based manipu-
+lations we have shown are "in-distribution" manipulations, i.e., it
+is possible to satisfy the manipulation requirements with a natural
+image inside the image distribution of the training dataset. Here we
+showcase some out-of-distribution manipulations in Fig. 9. It can be
+seen that our approach has some extrapolation capability, creating
+images outside the training image distribution, e.g., an extremely
+opened mouth and a large wheel. In some cases, users may want to
+always keep the image in the training distribution and prevent it
+from reaching such out-of-distribution manipulations. A potential
+way to achieve this is to add additional regularization to the latent
+code 𝑨���, which is not the main focus of this paper.
+Limitations. Despite some extrapolation capability, our editing
+quality is still affected by the diversity of training data. As exem-
+plified in Fig. 14 (a), creating a human pose that deviates from the
+training distribution can lead to artifacts. Besides, handle points in
+texture-less regions sometimes suffer from more drift in tracking, as
+7
